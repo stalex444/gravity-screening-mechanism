@@ -218,6 +218,16 @@ of `d`, fix the physical metric/source frame, and obtain a consistent ordinary
 matter coupling and nonlinear completion. See
 [`DUALITY_ACTION_COMPATIBILITY.md`](DUALITY_ACTION_COMPATIBILITY.md).
 
+The two factors of `d` are now unified inside one normalized channel geometry.
+The reference channel `(1,0)` and the defect-completed quartic channel
+`(-lambda4,d)` have unit norm and forced overlap `-lambda4`; their Gram matrix
+is exactly the raw response block `K`. Its oriented area is `d`, its
+determinant is `d^2`, and dividing by that area gives the symplectic block
+`Khat`. This removes an independent normalization choice from the abstract
+mechanism. The remaining premise is that the gravitational prepotential pair
+uses this Q-channel Gram metric. See
+[`GRAM_DUALITY_BRIDGE.md`](GRAM_DUALITY_BRIDGE.md).
+
 The normalized block is also an exact canonical squeeze, which makes the
 earlier Barbero-Immirzi intuition worth testing in a narrower form. Its
 half-squeeze scale is `u_Q=(2Q-1)^(1/4)=1.0957280275...`. The simplest direct

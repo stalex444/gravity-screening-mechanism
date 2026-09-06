@@ -63,6 +63,37 @@ noncomputable def unimodularConstitutive
     (l d : ℝ) : Matrix (Fin 2) (Fin 2) ℝ :=
   (1 / d) • constitutiveBlock l
 
+/-- Two normalized channel vectors assembled as columns: the reference
+channel `(1,0)` and a channel with overlap `-l` and positive defect coordinate
+`d`. -/
+def channelEmbedding (l d : ℝ) : Matrix (Fin 2) (Fin 2) ℝ :=
+  !![1, -l; 0, d]
+
+/-- The oriented area of the two-channel embedding is the defect amplitude. -/
+theorem channelEmbedding_det (l d : ℝ) :
+    Matrix.det (channelEmbedding l d) = d := by
+  simp [channelEmbedding, Matrix.det_fin_two]
+
+/-- Norm preservation forces the Gram matrix of the reference and residual
+channels to be exactly the raw constitutive block. -/
+theorem channelEmbedding_gram
+    (l d : ℝ) (hd : d ^ 2 = screening l) :
+    (channelEmbedding l d).transpose * channelEmbedding l d =
+      constitutiveBlock l := by
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    norm_num [channelEmbedding, constitutiveBlock, Matrix.transpose_apply,
+      Matrix.mul_apply, Fin.sum_univ_succ, screening] at hd ⊢
+  all_goals nlinarith
+
+/-- There is only one nonnegative defect coordinate with the required norm. -/
+theorem nonnegative_defect_unique
+    (l d e : ℝ)
+    (hd : d ^ 2 = screening l) (he : e ^ 2 = screening l)
+    (hd0 : 0 ≤ d) (he0 : 0 ≤ e) :
+    d = e := by
+  nlinarith
+
 theorem constitutiveBlock_det (l : ℝ) :
     Matrix.det (constitutiveBlock l) = screening l := by
   simp [constitutiveBlock, Matrix.det_fin_two, screening]
@@ -1217,6 +1248,9 @@ end GravityScreening
 #print axioms GravityScreening.response_completed_square
 #print axioms GravityScreening.response_at_stationary
 #print axioms GravityScreening.normalized_block_det
+#print axioms GravityScreening.channelEmbedding_det
+#print axioms GravityScreening.channelEmbedding_gram
+#print axioms GravityScreening.nonnegative_defect_unique
 #print axioms GravityScreening.constitutiveBlock_det
 #print axioms GravityScreening.raw_constitutive_twist_sq
 #print axioms GravityScreening.raw_constitutive_conformal_symplectic

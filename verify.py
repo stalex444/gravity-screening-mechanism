@@ -211,6 +211,7 @@ def main():
     identity = [[int(i == j) for j in range(4)] for i in range(4)]
     assert matrix_mul(companion, companion_inv) == identity
     assert matrix_mul(companion_inv, companion) == identity
+    assert determinant(companion) == -1
 
     # M^10 is strictly positive, so the substitution is primitive.
     companion_power = identity
@@ -325,6 +326,10 @@ def main():
         [entry / constitutive_scale for entry in row] for row in constitutive
     ]
     omega = [[Decimal(0), Decimal(-1)], [Decimal(1), Decimal(0)]]
+    channel_embedding = [
+        [Decimal(1), -lambda4],
+        [Decimal(0), constitutive_scale],
+    ]
 
     def matmul2(a, b):
         return [
@@ -357,6 +362,12 @@ def main():
                 - constitutive_scale * normalized_constitutive[i][j]
             ) < Decimal("1e-65")
     assert abs(det_matrix2(constitutive) - S) < Decimal("1e-65")
+    assert abs(det_matrix2(channel_embedding) - constitutive_scale) < Decimal("1e-65")
+    channel_embedding_transpose = [list(row) for row in zip(*channel_embedding)]
+    channel_gram = matmul2(channel_embedding_transpose, channel_embedding)
+    for i in range(2):
+        for j in range(2):
+            assert abs(channel_gram[i][j] - constitutive[i][j]) < Decimal("1e-65")
     assert abs(det_matrix2(normalized_constitutive) - Decimal(1)) < Decimal("1e-65")
     normalized_schur = (
         normalized_constitutive[0][0]
@@ -520,6 +531,7 @@ def main():
     print(f"Julia row cross-product    = {row_cross}")
     print("Julia block squared         = identity")
     print("companion inverse           = EXACT")
+    print("companion determinant       = -1 EXACT")
     print("residual Perron eigenvalue  = lambda4 EXACT")
     print("left/right residual readout  = lambda4 EXACT")
     print("quartic residual normality   = NON-NORMAL EXACT")
@@ -534,6 +546,7 @@ def main():
     print("Hodge even inverse response  = 1/(1-lambda4^2) EXACT")
     print("full bivector determinant    = (1-lambda4^2)^3 EXACT")
     print("normalized constitutive det  = 1 EXACT")
+    print("normalized channel Gram      = constitutive block EXACT")
     print("normalized duality twist^2   = -I EXACT")
     print("scale x shape Schur factors  = sqrt(S) x sqrt(S) = S EXACT")
     print(f"quartic half-squeeze scale   = {half_squeeze_scale}")
