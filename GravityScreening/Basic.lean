@@ -425,6 +425,34 @@ theorem quadraticInducedPlanckSq_forced
   rw [normalized_even_null_quadratic_forced a b c l hbase heven hnull]
   ring
 
+/-- Curvature weight obtained by subtracting a residue compensator of relative
+amplitude `l` from a scalar amplitude `phi`. -/
+def residueCompensatedCurvatureWeight (phi l : ℝ) : ℝ :=
+  phi ^ 2 - (l * phi) ^ 2
+
+theorem residueCompensatedCurvatureWeight_eq (phi l : ℝ) :
+    residueCompensatedCurvatureWeight phi l = screening l * phi ^ 2 := by
+  simp [residueCompensatedCurvatureWeight, screening]
+  ring
+
+/-- After canonical normalization, only the ratio of a curvature weight to a
+kinetic weight is invariant under a constant scalar-field rescaling. -/
+noncomputable def canonicalRelativeCurvatureWeight
+    (kineticWeight curvatureWeight : ℝ) : ℝ :=
+  curvatureWeight / kineticWeight
+
+/-- A uniform nonzero trace factor on both kinetic and curvature terms is a
+field-normalization effect and leaves unit relative curvature weight. -/
+theorem commonWeight_cancels (s : ℝ) (hs : s ≠ 0) :
+    canonicalRelativeCurvatureWeight s s = 1 := by
+  simp [canonicalRelativeCurvatureWeight, hs]
+
+/-- A trace factor survives when it weights curvature relative to an already
+canonical scalar kinetic term. -/
+theorem curvatureOnlyWeight_survives (s : ℝ) :
+    canonicalRelativeCurvatureWeight 1 s = s := by
+  simp [canonicalRelativeCurvatureWeight]
+
 /-- There is only one nonnegative defect coordinate with the required norm. -/
 theorem nonnegative_defect_unique
     (l d e : ℝ)
@@ -809,6 +837,18 @@ theorem quarticBiResidualCoefficient_eq_lambda4
     ring
   rw [hdot]
   field_simp [hden]
+
+/-- The normalized Perron inverse-step residue, used as a nondynamical
+curvature compensator, gives the exact rational quartic screening weight. -/
+theorem quarticPerron_compensator_curvature
+    (q phi : ℝ) (hq : q ^ 4 = q + 1) (hq1 : 1 < q) :
+    residueCompensatedCurvatureWeight phi
+        (quarticBiResidualCoefficient q) =
+      ((2 * q - 1) / q ^ 2) * phi ^ 2 := by
+  have hq0 : q ≠ 0 := by linarith
+  rw [quarticBiResidualCoefficient_eq_lambda4 q hq hq1]
+  rw [residueCompensatedCurvatureWeight_eq]
+  rw [quartic_screening_identity q hq0]
 
 /-! ## Minimal unitary completion of the residue contraction -/
 
@@ -1609,6 +1649,9 @@ end GravityScreening
 #print axioms GravityScreening.conditional_pdt_planck_chain
 #print axioms GravityScreening.conditional_pdt_quartic_planck_chain
 #print axioms GravityScreening.quadraticInducedPlanckSq_forced
+#print axioms GravityScreening.residueCompensatedCurvatureWeight_eq
+#print axioms GravityScreening.commonWeight_cancels
+#print axioms GravityScreening.curvatureOnlyWeight_survives
 #print axioms GravityScreening.nonnegative_defect_unique
 #print axioms GravityScreening.constitutiveBlock_det
 #print axioms GravityScreening.raw_constitutive_twist_sq
@@ -1638,6 +1681,7 @@ end GravityScreening
 #print axioms GravityScreening.quarticResidual_left_perron
 #print axioms GravityScreening.quarticPerron_pairing
 #print axioms GravityScreening.quarticBiResidualCoefficient_eq_lambda4
+#print axioms GravityScreening.quarticPerron_compensator_curvature
 #print axioms GravityScreening.defect_sq_forced
 #print axioms GravityScreening.defect_sqrt_sq
 #print axioms GravityScreening.julia_row_norm

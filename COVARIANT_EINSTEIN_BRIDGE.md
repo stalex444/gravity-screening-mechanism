@@ -1,5 +1,11 @@
 # A covariant Einstein-term bridge
 
+**Refined scope.**  The safest reading of this bridge is as a constant
+post-condensation matching of the infrared metric action.  A common off-shell
+factor multiplying both scalar kinetic and curvature terms is removable by
+canonical field normalization.  See [`POST_CONDENSATION_MATCHING.md`](POST_CONDENSATION_MATCHING.md)
+and [`PERRON_COMPENSATOR_ACTION.md`](PERRON_COMPENSATOR_ACTION.md).
+
 ## The smallest completion of the existing action
 
 The induced-gravity companion uses

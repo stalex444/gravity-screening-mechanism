@@ -14,6 +14,13 @@ Q^4=Q+1.
 It is an exploratory repository. It does not alter the PDT canon and it does
 not claim that the physical screening mechanism has been derived.
 
+The strongest current formulation treats `S_Q` as a post-condensation matching
+coefficient of the infrared Einstein term.  This placement survives canonical
+field normalization.  Its information-geometric reading is the partial Fisher
+information left after the quartic clock coordinate is eliminated.  See
+[`POST_CONDENSATION_MATCHING.md`](POST_CONDENSATION_MATCHING.md) and
+[`INFORMATION_GEOMETRIC_MATCHING.md`](INFORMATION_GEOMETRIC_MATCHING.md).
+
 ## The useful result
 
 The factor `1 - lambda^2` is the universal residual coefficient for a
@@ -382,6 +389,9 @@ minimal mechanism.
 - [`DECISIVE_ACTION_TARGET.md`](DECISIVE_ACTION_TARGET.md) reduces the open
   physics to the trace-weighted induced Einstein term and states the quadratic
   conditions that force its coefficient.
+- [`PERRON_COMPENSATOR_ACTION.md`](PERRON_COMPENSATOR_ACTION.md) derives the
+  same coefficient from the normalized quartic inverse-step residue, and proves
+  the canonical-normalization control that a viable gravity mechanism must pass.
 - [`GravityScreening/Basic.lean`](GravityScreening/Basic.lean) kernel-checks
   the algebraic core.
 - [`verify.py`](verify.py) reproduces the exact quartic arithmetic using only
