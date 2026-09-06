@@ -84,10 +84,14 @@ E[L_tau^2]   = 1,
 E[L_g L_tau] = lambda4.
 ```
 
-The natural candidate is the existing quartic equilibrium/history process:
+The natural candidate is a coupled cubic-quartic equilibrium/history process:
 `g` perturbs geometric scale and `tau` perturbs one inverse Perron step.  If its
 normalized score covariance is `lambda4`, ordinary information geometry forces
 the screening coefficient.  No further choice of quadratic form is available.
+
+The quartic process by itself and the uncoupled tensor-product pQ state do not
+pass this test.  The explicit calculation is in
+[`FISHER_SCORE_AUDIT.md`](FISHER_SCORE_AUDIT.md).
 
 For a noncommutative KMS-state construction, the same program requires choosing
 and justifying a quantum Fisher metric.  The Bogoliubov-Kubo-Mori metric is the
@@ -99,10 +103,10 @@ that additional metric-choice issue and is the cleaner first test.
 ## Present status
 
 The Schur-complement theorem and all identities involving `lambda4` are exact.
-PDT also has an existing Fisher-geometric layer.  What is not established is
-the state family whose geometric and quartic-clock score overlap equals
-`lambda4`, or the identification of its partial Fisher information with the
-Einstein coefficient.  Those two statements are the physical bridge.
+What is not established is the coupled state family whose geometric and
+quartic-clock score overlap equals `lambda4`, or the identification of its
+partial Fisher information with the Einstein coefficient.  Those two
+statements are the physical bridge.
 
 ## Reference
 

@@ -20,6 +20,8 @@ field normalization.  Its information-geometric reading is the partial Fisher
 information left after the quartic clock coordinate is eliminated.  See
 [`POST_CONDENSATION_MATCHING.md`](POST_CONDENSATION_MATCHING.md) and
 [`INFORMATION_GEOMETRIC_MATCHING.md`](INFORMATION_GEOMETRIC_MATCHING.md).
+The canonical-candidate calculation is in
+[`FISHER_SCORE_AUDIT.md`](FISHER_SCORE_AUDIT.md).
 
 ## The useful result
 

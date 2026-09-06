@@ -641,6 +641,28 @@ theorem relativeSchur_eq_screening_iff
   · field_simp [ha, hc]
     nlinarith
 
+/-- A two-parameter statistical family that depends on only one scalar
+combination has a rank-one Fisher matrix.  Eliminating either identifiable
+coordinate leaves zero relative partial information.  Here `u,w` are the two
+components of the gradient of that scalar combination and `variance` is its
+one-dimensional Fisher information. -/
+theorem oneStatistic_twoParameterFisher_relativeSchur_zero
+    (variance u w : ℝ)
+    (hvariance : variance ≠ 0) (hu : u ≠ 0) (hw : w ≠ 0) :
+    relativeSchur (variance * u ^ 2) (variance * u * w)
+      (variance * w ^ 2) = 0 := by
+  unfold relativeSchur
+  field_simp [hvariance, hu, hw]
+  ring
+
+/-- Independent normalized score directions have zero cross-information, so
+eliminating the second direction leaves all of the first direction's Fisher
+information. -/
+theorem independentFisher_relativeSchur_one
+    (a c : ℝ) (ha : a ≠ 0) :
+    relativeSchur a 0 c = 1 := by
+  simp [relativeSchur, ha]
+
 /-- Opposite affine responses have the same difference-of-squares factor. -/
 theorem paired_response (l : ℝ) :
     (1 - l) * (1 + l) = screening l := by
@@ -1666,6 +1688,8 @@ end GravityScreening
 #print axioms GravityScreening.quarticScale_firstOrderMode_reduction
 #print axioms GravityScreening.scaledUnimodular_source_solution
 #print axioms GravityScreening.relativeSchur_eq_screening_iff
+#print axioms GravityScreening.oneStatistic_twoParameterFisher_relativeSchur_zero
+#print axioms GravityScreening.independentFisher_relativeSchur_one
 #print axioms GravityScreening.screening_pos
 #print axioms GravityScreening.quartic_screening_identity
 #print axioms GravityScreening.lambda4_eq_relative_increment
