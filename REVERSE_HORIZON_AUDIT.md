@@ -178,6 +178,12 @@ pQ algebra is a sufficient observable subalgebra for those response values.
 The existing state-embedding theorem does not guarantee such an expectation.
 This is a real strengthening, not a change of words.
 
+There is no obstruction at the level of the bare hyperfinite factor: tensor
+self-absorption constructs an expected pQ copy for a suitably chosen product
+state. The unresolved intersection is preservation of the **specified wedge
+vacuum**. `EXPECTED_SUBFACTOR_STATUS.md` separates these two existence results
+and gives the first modular-eigenoperator test.
+
 ## 5. What the deposited action looks like backward
 
 The reverse quadratic condition requires

@@ -106,6 +106,14 @@ expectation from the wedge algebra onto the embedded pQ algebra. See
 [`MODULAR_MAP_AUDIT.md`](MODULAR_MAP_AUDIT.md), and
 [`REVERSE_HORIZON_AUDIT.md`](REVERSE_HORIZON_AUDIT.md).
 
+The expected-subfactor condition is not automatic for the physical vacuum.
+Tensor absorption supplies an expected pQ copy for a chosen product state, and
+type-III embedding theory separately supplies a copy preserving the actual
+wedge state. No checked theorem forces those to be the same copy. The fastest
+model-specific test is whether the wedge modular flow has a nonzero bounded
+eigenoperator at ratio `1/Q`. See
+[`EXPECTED_SUBFACTOR_STATUS.md`](EXPECTED_SUBFACTOR_STATUS.md).
+
 Expanding the deposited two-scalar action about `(phi,chi)=(v,0)` sharpens that
 condition. Its quadratic operator has no `h`-`chi` mixing, so a sectorwise
 modular identification is cocycle-neutral on the one-particle quartic mode at
@@ -147,6 +155,10 @@ minimal mechanism.
   from the gravity coefficient backward, fixes the required boost gap, and
   reformulates exact modular covariance as a state-preserving conditional
   expectation problem.
+- [`EXPECTED_SUBFACTOR_STATUS.md`](EXPECTED_SUBFACTOR_STATUS.md) proves that a
+  bare expected copy and an actual-state-preserving copy exist separately,
+  explains why their intersection is not automatic, and states the first
+  modular point-spectrum test.
 - [`GravityScreening/Basic.lean`](GravityScreening/Basic.lean) kernel-checks
   the algebraic core.
 - [`verify.py`](verify.py) reproduces the exact quartic arithmetic using only
