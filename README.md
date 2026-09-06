@@ -88,6 +88,16 @@ Planck-mass formula. The operator mathematics is exact; identifying its
 complementary channel with gravity remains the decisive physical premise. See
 [`UNITARY_DEFECT_MECHANISM.md`](UNITARY_DEFECT_MECHANISM.md).
 
+The same matrix now supplies a sharper physical bridge. Its Cuntz--Krieger
+algebra has a unique gauge-KMS equilibrium at inverse temperature `log Q`.
+KMS detailed balance makes the normalized difference between a process and its
+thermal reverse exactly `1-exp(-log Q) = lambda4`. Thus the residue is
+simultaneously the renewal frequency, the inverse-step transfer eigenvalue, and
+the canonical equilibrium causal-response defect. Embedding this graph flow
+covariantly into a relativistic wedge algebra would complete the local-horizon
+identification; that embedding has not yet been constructed. See
+[`PERRON_HORIZON_AUDIT.md`](PERRON_HORIZON_AUDIT.md).
+
 That negative result sharpens the next calculation. A successful derivation
 must obtain the matrix from a kinetic or curvature sector, with its
 normalization and reality conditions fixed independently. A different
@@ -105,6 +115,12 @@ minimal mechanism.
 - [`PHYSICAL_BRIDGE_AUDIT.md`](PHYSICAL_BRIDGE_AUDIT.md) tests the proposed
   horizon/gravity identification, gives the one-tick Hamiltonian, and records
   the neighboring-family and reverse controls.
+- [`PERRON_HORIZON_AUDIT.md`](PERRON_HORIZON_AUDIT.md) proves the exact
+  renewal-frequency theorem and reports the classical-horizon obstruction that
+  localizes the remaining physical quantization rule.
+- [`PQ_MODULAR_HORIZON.md`](PQ_MODULAR_HORIZON.md) proves that the joint cubic
+  and quartic KMS factors have the hyperfinite type-`III_1` algebra required by
+  a generic relativistic local region, while preserving the quartic response.
 - [`GravityScreening/Basic.lean`](GravityScreening/Basic.lean) kernel-checks
   the algebraic core.
 - [`verify.py`](verify.py) reproduces the exact quartic arithmetic using only
@@ -120,6 +136,8 @@ lake build
 
 ## Status
 
-The arithmetic, Schur-complement identity, and four-dimensional homogeneity
-criterion are exact mathematics. Identifying `lambda4` with a normalized
-curvature or kinetic overlap is an open physical hypothesis.
+The arithmetic, Schur-complement identity, four-dimensional homogeneity
+criterion, renewal-frequency identity, and KMS causal-response identity are
+exact mathematics. The remaining physical hypothesis is the covariant
+state-preserving embedding of the quartic graph dynamics into a local wedge
+algebra; the filed two-scalar action does not yet supply it.

@@ -106,6 +106,23 @@ theorem quarticCompanion_perron (q : ℝ) (hq : q ^ 4 = q + 1) :
       Fin.sum_univ_succ] <;>
     nlinarith [hq]
 
+/-- The total mass of the Perron frequency vector. -/
+def quarticPerronMass (q : ℝ) : ℝ := 1 + q + q ^ 2 + q ^ 3
+
+/-- After normalizing the positive Perron vector by total letter count, the
+frequency of the renewal letter `1` is exactly `lambda4`. Standard primitive-
+substitution theory identifies this normalized Perron coordinate with the
+unique invariant letter frequency. -/
+theorem quarticRenewalFrequency (q : ℝ) (hq : q ^ 4 = q + 1) (hq1 : 1 < q) :
+    1 / quarticPerronMass q = lambda4 q := by
+  have hq0 : q ≠ 0 := by linarith
+  have hs : quarticPerronMass q ≠ 0 := by
+    unfold quarticPerronMass
+    positivity
+  unfold quarticPerronMass lambda4 at *
+  field_simp [hq0, hs]
+  nlinarith [hq]
+
 /-- Current state minus one inverse companion step. -/
 def quarticResidual : Matrix (Fin 4) (Fin 4) ℝ :=
   !![2,-1,0,0; 0,1,-1,0; 0,0,1,-1; -1,0,0,1]
@@ -172,6 +189,75 @@ theorem juliaBlock_sq (l d : ℝ) (hdefect : d ^ 2 = screening l) :
   fin_cases i <;> fin_cases j <;>
     simp [juliaBlock, Matrix.mul_apply, Fin.sum_univ_succ] <;>
     nlinarith [hsum]
+
+/-- A scalar real coefficient acting on a one-dimensional complex amplitude
+space. -/
+noncomputable def scalarKraus (a : ℝ) (z : ℂ) : ℂ := (a : ℂ) * z
+
+/-- The minimal two-channel completion conserves the Born norm exactly. -/
+theorem scalarKraus_completeness (l d : ℝ)
+    (hdefect : d ^ 2 = screening l) (z : ℂ) :
+    Complex.normSq (scalarKraus l z) +
+      Complex.normSq (scalarKraus d z) = Complex.normSq z := by
+  have hsum := julia_row_norm l d hdefect
+  rw [show Complex.normSq (scalarKraus l z) =
+      l ^ 2 * Complex.normSq z by
+    simp [scalarKraus, Complex.normSq_mul, Complex.normSq_ofReal, pow_two]]
+  rw [show Complex.normSq (scalarKraus d z) =
+      d ^ 2 * Complex.normSq z by
+    simp [scalarKraus, Complex.normSq_mul, Complex.normSq_ofReal, pow_two]]
+  calc
+    l ^ 2 * Complex.normSq z + d ^ 2 * Complex.normSq z =
+        (l ^ 2 + d ^ 2) * Complex.normSq z := by ring
+    _ = Complex.normSq z := by rw [hsum]; ring
+
+/-- The exact conditional Perron-horizon theorem: the quartic inverse-step
+residue has amplitude `lambda4` on its positive scaling line, and any supplied
+minimal complementary amplitude conserves Born norm with it. The mathematical
+statement does not identify this completion with a physical causal horizon. -/
+theorem quarticPerron_horizon_instrument
+    (q d : ℝ) (z : ℂ) (hq : q ^ 4 = q + 1) (hq0 : q ≠ 0)
+    (hdefect : d ^ 2 = screening (lambda4 q)) :
+    quarticResidual.mulVec (quarticPerronVector q) =
+        (fun i => lambda4 q * quarticPerronVector q i) ∧
+      Complex.normSq (scalarKraus (lambda4 q) z) +
+        Complex.normSq (scalarKraus d z) = Complex.normSq z := by
+  exact ⟨quarticResidual_perron q hq hq0,
+    scalarKraus_completeness (lambda4 q) d hdefect z⟩
+
+/-! ## The same residue from KMS detailed balance -/
+
+/-- The normalized causal asymmetry between a process and its thermal reverse. -/
+noncomputable def detailedBalanceDefect (β ω : ℝ) : ℝ :=
+  1 - Real.exp (-β * ω)
+
+/-- If the reverse spectral weight is fixed by KMS detailed balance, subtracting
+it from the forward weight and normalizing by the forward weight gives the
+thermal causal-response defect. -/
+theorem kms_causal_response (β ω forward reverse : ℝ) (hforward : forward ≠ 0)
+    (hkms : reverse = Real.exp (-β * ω) * forward) :
+    (forward - reverse) / forward = detailedBalanceDefect β ω := by
+  rw [hkms]
+  unfold detailedBalanceDefect
+  field_simp [hforward]
+
+/-- At the Perron inverse temperature of the quartic graph and unit gauge
+frequency, the KMS causal-response defect is exactly the quartic residue. -/
+theorem quartic_kms_defect (q : ℝ) (hq : 0 < q) :
+    detailedBalanceDefect (Real.log q) 1 = lambda4 q := by
+  unfold detailedBalanceDefect lambda4
+  rw [mul_one, Real.exp_neg, Real.exp_log hq]
+  simp [one_div]
+
+/-- The residue eigen-amplitude and the unit-frequency KMS response coincide
+at the quartic Perron inverse temperature. -/
+theorem quarticPerron_kms_response
+    (q : ℝ) (hq4 : q ^ 4 = q + 1) (hq : 0 < q) :
+    quarticResidual.mulVec (quarticPerronVector q) =
+        (fun i => detailedBalanceDefect (Real.log q) 1 *
+          quarticPerronVector q i) := by
+  rw [quartic_kms_defect q hq]
+  exact quarticResidual_perron q hq4 (ne_of_gt hq)
 
 /-- If a mass amplitude is multiplied by the defect coefficient, its square is
 multiplied by the screening coefficient. -/
@@ -240,6 +326,7 @@ end GravityScreening
 #print axioms GravityScreening.quarticCompanion_mul_inv
 #print axioms GravityScreening.quarticCompanion_inv_mul
 #print axioms GravityScreening.quarticCompanion_perron
+#print axioms GravityScreening.quarticRenewalFrequency
 #print axioms GravityScreening.quarticResidual_eq_one_sub_inv
 #print axioms GravityScreening.quarticResidual_perron
 #print axioms GravityScreening.defect_sq_forced
@@ -247,6 +334,11 @@ end GravityScreening
 #print axioms GravityScreening.julia_row_norm
 #print axioms GravityScreening.julia_rows_orthogonal
 #print axioms GravityScreening.juliaBlock_sq
+#print axioms GravityScreening.scalarKraus_completeness
+#print axioms GravityScreening.quarticPerron_horizon_instrument
+#print axioms GravityScreening.kms_causal_response
+#print axioms GravityScreening.quartic_kms_defect
+#print axioms GravityScreening.quarticPerron_kms_response
 #print axioms GravityScreening.defect_mass_square
 #print axioms GravityScreening.radial_homogeneity_iff
 #print axioms GravityScreening.ehrenfest_marginal_iff

@@ -106,6 +106,20 @@ def matrix_vec_mul(a, v):
             for i in range(len(a))]
 
 
+def polynomial_remainder_mod2(dividend, divisor):
+    """Remainder over F_2; coefficients are listed from low to high."""
+    out = [coefficient % 2 for coefficient in dividend]
+    while out and out[-1] == 0:
+        out.pop()
+    while len(out) >= len(divisor):
+        shift = len(out) - len(divisor)
+        for i, coefficient in enumerate(divisor):
+            out[i + shift] ^= coefficient % 2
+        while out and out[-1] == 0:
+            out.pop()
+    return out
+
+
 def positive_root_n(n):
     getcontext().prec = 70
     x = Decimal("1.5")
@@ -137,6 +151,23 @@ def polynomial_roots_xn_x_1(n):
     return roots
 
 
+def beta_parry_hole_measure(beta, steps=400):
+    """Parry measure of (1/beta,1] from its standard invariant density sum."""
+    one = Decimal(1)
+    cutoff = one / beta
+    orbit = one
+    weight = one
+    normalizer = Decimal(0)
+    hole_mass = Decimal(0)
+    for _ in range(steps):
+        normalizer += weight * orbit
+        if orbit > cutoff:
+            hole_mass += weight * (orbit - cutoff)
+        orbit = (beta * orbit) % one
+        weight /= beta
+    return hole_mass / normalizer
+
+
 def main():
     one = QElement((1,))
     q = QElement((0, 1))
@@ -149,6 +180,11 @@ def main():
     assert screen == 3 * q**3 - q**2 - 3
     assert q**2 * screen == 2 * q - 1
     assert screen**4 + 3 * screen**3 - 2 * screen**2 + 22 * screen - 23 == 0
+
+    # The first Perron coordinate, normalized by total letter frequency, is
+    # lambda4: lambda4 * (1+q+q^2+q^3) = 1 exactly.
+    perron_mass = one + q + q**2 + q**3
+    assert lam * perron_mass == one
 
     norm_screen = determinant(multiplication_matrix(screen))
     assert norm_screen == -23
@@ -176,6 +212,34 @@ def main():
     assert matrix_mul(companion, companion_inv) == identity
     assert matrix_mul(companion_inv, companion) == identity
 
+    # M^10 is strictly positive, so the substitution is primitive.
+    companion_power = identity
+    for _ in range(10):
+        companion_power = matrix_mul(companion_power, companion)
+    assert all(x > 0 for row in companion_power for x in row)
+
+    # The cubic founding graph is primitive as well. Together with the quartic
+    # graph, it supplies the two discrete KMS factor scales used in the pQ
+    # type-III_1 completion argument.
+    cubic_companion = [
+        [0, 0, 1],
+        [1, 0, 1],
+        [0, 1, 0],
+    ]
+    cubic_identity = [[int(i == j) for j in range(3)] for i in range(3)]
+    cubic_power = cubic_identity
+    for _ in range(5):
+        cubic_power = matrix_mul(cubic_power, cubic_companion)
+    assert all(x > 0 for row in cubic_power for x in row)
+
+    # Over F_2, x^4+x+1 has no linear root and has remainder 1 on division by
+    # the only monic irreducible quadratic x^2+x+1. This certifies the degree-4
+    # field used in the coprime-degree multiplicative-independence proof.
+    assert all((x**4 + x + 1) % 2 for x in (0, 1))
+    assert polynomial_remainder_mod2(
+        [1, 1, 0, 0, 1], [1, 1, 1]
+    ) == [1]
+
     residual = [[identity[i][j] - companion_inv[i][j] for j in range(4)]
                 for i in range(4)]
     perron = [one, q**3, q**2, q]
@@ -186,6 +250,15 @@ def main():
     lambda4 = Decimal(1) - Decimal(1) / Q
     S = Decimal(1) - lambda4**2
     defect = S.sqrt()
+
+    # The graph gauge dynamics has Perron inverse temperature log(Q). KMS
+    # detailed balance then gives reverse/forward = exp(-log(Q)) = 1/Q,
+    # so its normalized causal-response defect is exactly lambda4.
+    beta_q = Q.ln()
+    kms_reverse_factor = (-beta_q).exp()
+    kms_response_defect = Decimal(1) - kms_reverse_factor
+    assert abs(kms_reverse_factor - Decimal(1) / Q) < Decimal("1e-65")
+    assert abs(kms_response_defect - lambda4) < Decimal("1e-65")
 
     # Scalar Julia dilation [[lambda4, defect], [defect, -lambda4]].
     # Its row norms are one and its rows are orthogonal.
@@ -216,6 +289,11 @@ def main():
     )
     assert sum(m < 1 for m in quartic_residual_magnitudes) == 1
 
+    parry_hole = beta_parry_hole_measure(Q)
+    # The canonical invariant beta measure does not supply the gravity square.
+    assert abs(parry_hole - lambda4) > Decimal("0.01")
+    assert abs(parry_hole - lambda4**2) > Decimal("0.01")
+
     # Current-potential diagnostic: the mixed stationary Hessian is indefinite
     # in the PDT bistable regime.
     getcontext().prec = 70
@@ -234,6 +312,13 @@ def main():
     print("Julia block squared         = identity")
     print("companion inverse           = EXACT")
     print("residual Perron eigenvalue  = lambda4 EXACT")
+    print("renewal-symbol frequency    = lambda4 EXACT")
+    print(f"KMS inverse temperature     = {beta_q}")
+    print(f"KMS reverse/forward factor  = {kms_reverse_factor}")
+    print("KMS causal response defect  = lambda4 EXACT")
+    print("companion matrix primitive  = M^10 strictly positive")
+    print("cubic matrix primitive      = M^5 strictly positive")
+    print("founding field degrees      = 3 and 4 (coprime)")
     print(f"Norm_Q(Q)(1-lambda4^2)    = {norm_screen}")
     print("minimal polynomial         = x^4 + 3*x^3 - 2*x^2 + 22*x - 23")
     print("basis determinant          = -241")
@@ -242,6 +327,8 @@ def main():
         print(f"  {n}: {r:.12f}  {l:.12f}  {s:.12f}")
     print("quartic residual magnitudes= " + ", ".join(
         f"{m:.12f}" for m in quartic_residual_magnitudes))
+    print(f"Parry measure of beta hole = {parry_hole}")
+    print("classical horizon measure  = not lambda4 and not lambda4^2")
     print(f"kappa^2/(4 lambda3 lambda4)= {bistability_ratio}")
     print("portal mixed Hessian sign  = negative" if bistability_ratio > 1 else "portal diagnostic failed")
     print("all exact checks           = PASS")
