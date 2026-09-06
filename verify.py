@@ -92,6 +92,19 @@ def multiplication_matrix(a):
     return [[columns[j][i] for j in range(4)] for i in range(4)]
 
 
+def matrix_mul(a, b):
+    return [
+        [sum((a[i][k] * b[k][j] for k in range(len(b))), 0)
+         for j in range(len(b[0]))]
+        for i in range(len(a))
+    ]
+
+
+def matrix_vec_mul(a, v):
+    return [sum((a[i][j] * v[j] for j in range(len(v))), QElement())
+            for i in range(len(a))]
+
+
 def positive_root_q():
     getcontext().prec = 70
     x = Decimal("1.22")
@@ -123,9 +136,40 @@ def main():
     recovered_q = (293 - 63 * screen + 49 * screen**2 + 18 * screen**3) * Fraction(1, 241)
     assert recovered_q == q
 
+    # The founding quartic substitution and its exact inverse.
+    companion = [
+        [0, 0, 0, 1],
+        [1, 0, 0, 1],
+        [0, 1, 0, 0],
+        [0, 0, 1, 0],
+    ]
+    companion_inv = [
+        [-1, 1, 0, 0],
+        [0, 0, 1, 0],
+        [0, 0, 0, 1],
+        [1, 0, 0, 0],
+    ]
+    identity = [[int(i == j) for j in range(4)] for i in range(4)]
+    assert matrix_mul(companion, companion_inv) == identity
+    assert matrix_mul(companion_inv, companion) == identity
+
+    residual = [[identity[i][j] - companion_inv[i][j] for j in range(4)]
+                for i in range(4)]
+    perron = [one, q**3, q**2, q]
+    assert matrix_vec_mul(companion, perron) == [q * x for x in perron]
+    assert matrix_vec_mul(residual, perron) == [lam * x for x in perron]
+
     Q = positive_root_q()
     lambda4 = Decimal(1) - Decimal(1) / Q
     S = Decimal(1) - lambda4**2
+    defect = S.sqrt()
+
+    # Scalar Julia dilation [[lambda4, defect], [defect, -lambda4]].
+    # Its row norms are one and its rows are orthogonal.
+    row_norm = lambda4**2 + defect**2
+    row_cross = lambda4 * defect + defect * (-lambda4)
+    assert abs(row_norm - Decimal(1)) < Decimal("1e-65")
+    assert abs(row_cross) < Decimal("1e-65")
 
     # Current-potential diagnostic: the mixed stationary Hessian is indefinite
     # in the PDT bistable regime.
@@ -138,6 +182,12 @@ def main():
     print(f"Q                         = {Q}")
     print(f"lambda4                   = {lambda4}")
     print(f"1 - lambda4^2             = {S}")
+    print(f"sqrt(1 - lambda4^2)       = {defect}")
+    print(f"1/(1 - lambda4^2)         = {Decimal(1) / S}")
+    print(f"Julia row norm             = {row_norm}")
+    print(f"Julia row cross-product    = {row_cross}")
+    print("companion inverse           = EXACT")
+    print("residual Perron eigenvalue  = lambda4 EXACT")
     print(f"Norm_Q(Q)(1-lambda4^2)    = {norm_screen}")
     print("minimal polynomial         = x^4 + 3*x^3 - 2*x^2 + 22*x - 23")
     print("basis determinant          = -241")

@@ -79,6 +79,15 @@ exactly zero `phi`-`chi` kinetic entry. Together with the unbroken
 `chi -> -chi` symmetry at `(v,0)`, this makes the tree-level normalized mixing
 `c = 0`, not `lambda4`. See [`CURRENT_ACTION_AUDIT.md`](CURRENT_ACTION_AUDIT.md).
 
+A more promising source is the minimal unitary completion of the Q-sector
+residue contraction. On the positive eigenline of the founding quartic
+companion matrix, `I-M_Q^(-1)` has the exact eigen-amplitude
+`lambda4 = 1-1/Q`. Its minimal unitary completion has the unique defect weight
+`1-lambda4^2`. This also produces exactly the square-root factor used by the
+Planck-mass formula. The operator mathematics is exact; identifying its
+complementary channel with gravity remains the decisive physical premise. See
+[`UNITARY_DEFECT_MECHANISM.md`](UNITARY_DEFECT_MECHANISM.md).
+
 That negative result sharpens the next calculation. A successful derivation
 must obtain the matrix from a kinetic or curvature sector, with its
 normalization and reality conditions fixed independently. A different
@@ -91,6 +100,8 @@ minimal mechanism.
   with assumptions separated from consequences.
 - [`CURRENT_ACTION_AUDIT.md`](CURRENT_ACTION_AUDIT.md) applies the decisive
   kinetic and curvature test to the deposited two-scalar action.
+- [`UNITARY_DEFECT_MECHANISM.md`](UNITARY_DEFECT_MECHANISM.md) gives a
+  norm-conserving channel mechanism for the square-root and screening factors.
 - [`GravityScreening/Basic.lean`](GravityScreening/Basic.lean) kernel-checks
   the algebraic core.
 - [`verify.py`](verify.py) reproduces the exact quartic arithmetic using only
