@@ -140,6 +140,13 @@ Merely observing that a continuous boost spectrum passes through
 copy of the whole graded pQ algebra, together with its state and conditional
 expectation.
 
+There is also a direct conditional obstruction: if the physical wedge vacuum
+satisfies the absolute-Cesàro spectral-mixing condition, every nonzero-
+frequency bounded modular eigenoperator vanishes. In that case the exact
+bounded-subfactor route cannot work. A weaker ordinary-Cesàro condition does
+not suffice. See `WEAK_MIXING_OBSTRUCTION.md` for the proof, the terminology
+caveat, and the crossed-product alternative.
+
 ## Verdict
 
 The stronger expectation is not automatic for the physical vacuum. The bare

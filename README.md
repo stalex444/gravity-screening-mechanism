@@ -114,6 +114,15 @@ model-specific test is whether the wedge modular flow has a nonzero bounded
 eigenoperator at ratio `1/Q`. See
 [`EXPECTED_SUBFACTOR_STATUS.md`](EXPECTED_SUBFACTOR_STATUS.md).
 
+This point-spectrum test has a sharp conditional outcome. A wedge vacuum that
+satisfies the absolute-Cesàro spectral-mixing condition admits no nonzero
+bounded modular eigenoperator at any nonzero frequency, so it cannot contain
+the graph clock as an exactly covariant bounded subsystem. An ordinary Cesàro
+decay statement is too weak to imply this. If the stronger condition holds,
+the natural next home for the pQ clock is an observer or crossed-product
+extension of the local algebra. See
+[`WEAK_MIXING_OBSTRUCTION.md`](WEAK_MIXING_OBSTRUCTION.md).
+
 Expanding the deposited two-scalar action about `(phi,chi)=(v,0)` sharpens that
 condition. Its quadratic operator has no `h`-`chi` mixing, so a sectorwise
 modular identification is cocycle-neutral on the one-particle quartic mode at
@@ -159,6 +168,10 @@ minimal mechanism.
   bare expected copy and an actual-state-preserving copy exist separately,
   explains why their intersection is not automatic, and states the first
   modular point-spectrum test.
+- [`WEAK_MIXING_OBSTRUCTION.md`](WEAK_MIXING_OBSTRUCTION.md) proves that the
+  explicit absolute-Cesàro mixing condition excludes exact nonzero-frequency
+  bounded modular eigenoperators, records a terminology trap, and identifies
+  the observer/crossed-product alternative.
 - [`GravityScreening/Basic.lean`](GravityScreening/Basic.lean) kernel-checks
   the algebraic core.
 - [`verify.py`](verify.py) reproduces the exact quartic arithmetic using only
