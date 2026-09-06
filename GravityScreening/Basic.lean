@@ -102,6 +102,55 @@ theorem projectionResidual_normSq
   unfold screening
   ring
 
+/-! ## The complex-place trace-form realization
+
+The completed complex place carries both the untwisted trace form
+`Tr(z*w)` and its conjugation-twisted positive form `Tr(z*conj w)`.  On the
+affine response `1+i*l`, these give the difference and sum of squares.  The
+identification of the first with a physical curvature response is not made by
+the theorems below.
+-/
+
+/-- The affine complex-place response with real residual coefficient `l`. -/
+noncomputable def affineComplexResponse (l : ℝ) : ℂ :=
+  1 + (l : ℂ) * Complex.I
+
+/-- The normalized untwisted local trace form. -/
+noncomputable def normalizedIntrinsicTrace (z : ℂ) : ℝ :=
+  Algebra.traceForm ℝ ℂ z z / Algebra.traceForm ℝ ℂ 1 1
+
+/-- The normalized conjugation-twisted local trace form. -/
+noncomputable def normalizedHermitianTrace (z : ℂ) : ℝ :=
+  Algebra.traceForm ℝ ℂ z (starRingEnd ℂ z) /
+    Algebra.traceForm ℝ ℂ 1 1
+
+/-- On `1+i*l`, the intrinsic complex-place trace form is the screening
+difference of squares. -/
+theorem normalizedIntrinsicTrace_affine (l : ℝ) :
+    normalizedIntrinsicTrace (affineComplexResponse l) = screening l := by
+  simp [normalizedIntrinsicTrace, affineComplexResponse,
+    Algebra.traceForm_apply, Algebra.trace_complex_apply, screening,
+    Complex.mul_re, Complex.mul_im]
+  ring
+
+/-- Conjugating the second argument changes the same local response into the
+positive Hermitian sum of squares. -/
+theorem normalizedHermitianTrace_affine (l : ℝ) :
+    normalizedHermitianTrace (affineComplexResponse l) = 1 + l ^ 2 := by
+  simp [normalizedHermitianTrace, affineComplexResponse,
+    Algebra.traceForm_apply, Algebra.trace_complex_apply,
+    Complex.mul_re, Complex.mul_im]
+  ring
+
+/-- Reverse uniqueness: within the affine family `1+i*c`, reproducing the
+screening factor fixes the magnitude of the timelike coefficient. -/
+theorem intrinsicTrace_eq_screening_iff (c l : ℝ) :
+    normalizedIntrinsicTrace (affineComplexResponse c) = screening l ↔
+      c ^ 2 = l ^ 2 := by
+  rw [normalizedIntrinsicTrace_affine]
+  unfold screening
+  constructor <;> intro h <;> linarith
+
 /-- There is only one nonnegative defect coordinate with the required norm. -/
 theorem nonnegative_defect_unique
     (l d e : ℝ)
@@ -1267,6 +1316,9 @@ end GravityScreening
 #print axioms GravityScreening.channelEmbedding_det
 #print axioms GravityScreening.channelEmbedding_gram
 #print axioms GravityScreening.projectionResidual_normSq
+#print axioms GravityScreening.normalizedIntrinsicTrace_affine
+#print axioms GravityScreening.normalizedHermitianTrace_affine
+#print axioms GravityScreening.intrinsicTrace_eq_screening_iff
 #print axioms GravityScreening.nonnegative_defect_unique
 #print axioms GravityScreening.constitutiveBlock_det
 #print axioms GravityScreening.raw_constitutive_twist_sq

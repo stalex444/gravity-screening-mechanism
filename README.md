@@ -238,6 +238,15 @@ Its one physical premise is that classical curvature is this projected
 information channel.  See
 [`DIRECT_CURVATURE_PROJECTION.md`](DIRECT_CURVATURE_PROJECTION.md).
 
+There is now an even closer link to PDT's existing spacetime and quantum
+foundations.  On the quartic complex place, the normalized untwisted trace
+form of `1+i*lambda4` is exactly `1-lambda4^2`, while the conjugation-twisted
+positive form of the same element is `1+lambda4^2`.  Thus the gravity factor
+is the Lorentzian reading of the same local imaginary direction whose
+Hermitian reading supplies positive quantum norm.  This is exact arithmetic;
+placing that local response in the physical Einstein kinetic term remains the
+identification.  See [`TRACE_FORM_SCREENING.md`](TRACE_FORM_SCREENING.md).
+
 The normalized block is also an exact canonical squeeze, which makes the
 earlier Barbero-Immirzi intuition worth testing in a narrower form. Its
 half-squeeze scale is `u_Q=(2Q-1)^(1/4)=1.0957280275...`. The simplest direct
@@ -332,6 +341,10 @@ minimal mechanism.
   minimal information-geometric mechanism: the ordinary `rho*Q` exponent sets
   the base scale and the orthogonal Q-residue projection supplies the sole
   curvature correction.
+- [`TRACE_FORM_SCREENING.md`](TRACE_FORM_SCREENING.md) proves that the same
+  coefficient is the normalized intrinsic trace-form norm of
+  `1+i*lambda4`, contrasted with the positive Hermitian norm used in the
+  Q-as-QM account.
 - [`GravityScreening/Basic.lean`](GravityScreening/Basic.lean) kernel-checks
   the algebraic core.
 - [`verify.py`](verify.py) reproduces the exact quartic arithmetic using only
@@ -371,3 +384,10 @@ stiffness and Newton response. What remains is to derive that mode and its
 quartic residual supplies `lambda4` exactly after canonical left/right Perron
 compression; the surviving question is whether the physical action forces
 that compression with unit normalization.
+
+The local trace-form calculation gives the leanest current formulation of the
+same question.  The quartic complex place already supplies the negative
+direction, and `1+i*lambda4` already has normalized intrinsic square
+`1-lambda4^2`.  The remaining step is therefore the placement of this affine
+local response in the gravitational kinetic term, rather than the derivation
+of another determinant or normalization factor.
