@@ -391,6 +391,49 @@ theorem coreSelfDefect_survivor (q mass : ℝ)
   rw [htwo, quartic_screening_identity q (ne_of_gt hq)]
   field_simp [ne_of_gt hq, hmass]
 
+/-! ## Jacobson scaling consequences -/
+
+/-- In natural units, Jacobson's area-entropy density fixes the gravitational
+coupling by `G = 1/(4*eta)`. This declaration records that scalar relation. -/
+noncomputable def jacobsonCoupling (eta : ℝ) : ℝ :=
+  1 / (4 * eta)
+
+/-- Reducing the horizon entropy density by a nonzero factor `s` increases
+Jacobson's gravitational coupling by the inverse factor. -/
+theorem jacobsonCoupling_density_scale (eta s : ℝ)
+    (heta : eta ≠ 0) (hs : s ≠ 0) :
+    jacobsonCoupling (s * eta) = jacobsonCoupling eta / s := by
+  unfold jacobsonCoupling
+  field_simp [heta, hs]
+
+/-- If the continuous-core self-defect multiplies the microscopic entropy
+density, Jacobson's relation gives precisely the inverse screening correction
+to Newton's coupling. -/
+theorem coreSurvivor_jacobsonCoupling (q eta : ℝ)
+    (hq : 0 < q) (heta : eta ≠ 0)
+    (hs : screening (lambda4 q) ≠ 0) :
+    jacobsonCoupling (screening (lambda4 q) * eta) =
+      jacobsonCoupling eta / ((2 * q - 1) / q ^ 2) := by
+  rw [jacobsonCoupling_density_scale eta (screening (lambda4 q)) heta hs]
+  rw [quartic_screening_identity q (ne_of_gt hq)]
+
+/-- The squared Planck scale is the reciprocal gravitational coupling. -/
+noncomputable def planckScaleSq (G : ℝ) : ℝ :=
+  1 / G
+
+/-- The same entropy-density correction multiplies the squared Planck scale,
+so a positive Planck mass is multiplied by its positive square root. -/
+theorem coreSurvivor_planckScaleSq (q eta : ℝ)
+    (heta : eta ≠ 0)
+    (hs : screening (lambda4 q) ≠ 0) :
+    planckScaleSq
+        (jacobsonCoupling (screening (lambda4 q) * eta)) =
+      screening (lambda4 q) *
+        planckScaleSq (jacobsonCoupling eta) := by
+  rw [jacobsonCoupling_density_scale eta (screening (lambda4 q)) heta hs]
+  unfold planckScaleSq jacobsonCoupling
+  field_simp [heta, hs]
+
 /-- If a mass amplitude is multiplied by the defect coefficient, its square is
 multiplied by the screening coefficient. -/
 theorem defect_mass_square (l d m : ℝ)
@@ -510,6 +553,9 @@ end GravityScreening
 #print axioms GravityScreening.coreTraceDefect_log
 #print axioms GravityScreening.coreTraceScale_add
 #print axioms GravityScreening.coreSelfDefect_survivor
+#print axioms GravityScreening.jacobsonCoupling_density_scale
+#print axioms GravityScreening.coreSurvivor_jacobsonCoupling
+#print axioms GravityScreening.coreSurvivor_planckScaleSq
 #print axioms GravityScreening.defect_mass_square
 #print axioms GravityScreening.radial_homogeneity_iff
 #print axioms GravityScreening.ehrenfest_marginal_iff

@@ -273,6 +273,17 @@ def main():
     assert abs(core_trace_defect - lambda4) < Decimal("1e-65")
     assert abs(core_self_defect_survivor - S) < Decimal("1e-65")
 
+    # Jacobson scaling check with an arbitrary nonzero baseline density.  The
+    # value cancels: eta -> S*eta forces G -> G/S and M_P^2 -> S*M_P^2.
+    eta0 = Decimal("2.375")
+    eta_q = S * eta0
+    gravity0 = Decimal(1) / (Decimal(4) * eta0)
+    gravity_q = Decimal(1) / (Decimal(4) * eta_q)
+    planck_sq0 = Decimal(1) / gravity0
+    planck_sq_q = Decimal(1) / gravity_q
+    assert abs(gravity_q - gravity0 / S) < Decimal("1e-65")
+    assert abs(planck_sq_q - S * planck_sq0) < Decimal("1e-65")
+
     # Scalar Julia dilation [[lambda4, defect], [defect, -lambda4]].
     # Its row norms are one and its rows are orthogonal.
     row_norm = lambda4**2 + defect**2
@@ -332,6 +343,8 @@ def main():
     print("core Q-step trace ratio      = 1/Q EXACT")
     print("core Q-step trace defect     = lambda4 EXACT")
     print("core self-defect survivor    = 1-lambda4^2 EXACT")
+    print("Jacobson G correction        = divide by survivor EXACT")
+    print("Planck-scale-square correction= multiply by survivor EXACT")
     print("companion matrix primitive  = M^10 strictly positive")
     print("cubic matrix primitive      = M^5 strictly positive")
     print("founding field degrees      = 3 and 4 (coprime)")

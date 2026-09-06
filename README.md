@@ -136,6 +136,14 @@ complete coefficient while leaving its identification with the gravitational
 response open. See
 [`FREE_WEDGE_CORE_AUDIT.md`](FREE_WEDGE_CORE_AUDIT.md).
 
+This trace response has exactly the correction pattern required by Jacobson's
+entropy-density relation. Multiplying the microscopic density by
+`S_Q=1-lambda4^2` divides Newton's coupling by `S_Q` and multiplies the squared
+Planck scale by `S_Q`, matching all three deposited gravity formulas. The
+mathematical scaling is forced; identifying the core trace per unit area with
+Jacobson's microscopic entropy density remains the physical premise. See
+[`JACOBSON_CORE_BRIDGE.md`](JACOBSON_CORE_BRIDGE.md).
+
 Expanding the deposited two-scalar action about `(phi,chi)=(v,0)` sharpens that
 condition. Its quadratic operator has no `h`-`chi` mixing, so a sectorwise
 modular identification is cocycle-neutral on the one-particle quartic mode at
@@ -189,6 +197,10 @@ minimal mechanism.
   point-spectrum test for the linearized two-scalar Fock vacuum, proves the
   bounded local-clock obstruction, and realizes the complete screening
   polynomial on the continuous core's canonical trace ray.
+- [`JACOBSON_CORE_BRIDGE.md`](JACOBSON_CORE_BRIDGE.md) shows that the same
+  trace-ray survivor forces the deposited correction factors for Jacobson's
+  entropy density, Newton's coupling, and the Planck mass, and isolates the
+  remaining entropy-per-area identification.
 - [`GravityScreening/Basic.lean`](GravityScreening/Basic.lean) kernel-checks
   the algebraic core.
 - [`verify.py`](verify.py) reproduces the exact quartic arithmetic using only
@@ -210,7 +222,9 @@ exact mathematics. A state-preserving embedding into a local wedge algebra
 exists abstractly, but the linearized Fock wedge cannot make it modularly
 covariant because its nonzero bounded modular eigenspaces vanish. The
 continuous core supplies an exact trace-ray realization of the quartic defect
-and its self-complement. The remaining physical hypothesis is that this
-surviving Type-II trace response is the gravitational kinetic or entropy
-response. The filed two-scalar action does not yet derive that identification
-or protect it in the interacting theory.
+and its self-complement. Jacobson's relation then forces the exact correction
+pattern of the deposited entropy-density, Newton-coupling, and Planck-mass
+formulas. The remaining physical hypothesis is that this surviving Type-II
+trace response is the microscopic entropy-per-area response. The filed
+two-scalar action does not yet derive that identification or protect it in the
+interacting theory.

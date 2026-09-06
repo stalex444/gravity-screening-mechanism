@@ -239,10 +239,12 @@ deposited paper. The theorem `coreSelfDefect_survivor` in
 from the standard trace-scaling law.
 
 There is one caveat. The linear map `2 theta_s-theta_(2s)` is not asserted to
-be positive on the whole core. The exact statement is its action on the
-positive trace ray. A physical response construction must still explain why
-this traced self-defect, rather than a different function of the dual flow,
-multiplies the gravitational kinetic or entropy coefficient.
+be positive on the whole core. The exact construction is best stated on the
+ray of trace weights: the pullback operation `T_Q(tau)=tau after theta_(log Q)`
+has eigenvalue `1/Q`, and `[I-(I-T_Q)^2]tau=S_Q tau` is a positive functional.
+A physical response construction must still explain why this traced
+self-defect, rather than a different function of the dual flow, multiplies the
+gravitational kinetic or entropy coefficient. See `JACOBSON_CORE_BRIDGE.md`.
 
 ## 6. Why p and Q together reconstruct a continuous clock
 
@@ -310,8 +312,10 @@ quartic inverse step
    -> surviving trace response 1-lambda4^2.
 ```
 
-The first four arrows are exact once the continuous-core theorem and the PDT
-choice of `s_Q=log Q` are supplied. The last physical identification remains:
+Every displayed scalar equality is exact. Selecting `s_Q=log Q`, reading
+quartic self-action as the repeated defect `D_Q^2`, and identifying the
+surviving trace weight with gravity are physical premises. The final bridge is
+therefore:
 
 ```text
 surviving Type-II trace response
