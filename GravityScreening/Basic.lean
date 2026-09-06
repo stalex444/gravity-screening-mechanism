@@ -86,6 +86,22 @@ theorem channelEmbedding_gram
       Matrix.mul_apply, Fin.sum_univ_succ, screening] at hd ⊢
   all_goals nlinarith
 
+/-- Squared norm of the reference channel after orthogonally removing its
+component along the normalized residual channel `(-l,d)`.  In coordinates the
+residual is `(1-l^2,l*d)`. -/
+def projectionResidualNormSq (l d : ℝ) : ℝ :=
+  (1 - l ^ 2) ^ 2 + (l * d) ^ 2
+
+/-- Projection away from a normalized channel of overlap `l` leaves exactly
+the screening norm `1-l^2`. -/
+theorem projectionResidual_normSq
+    (l d : ℝ) (hd : d ^ 2 = screening l) :
+    projectionResidualNormSq l d = screening l := by
+  unfold projectionResidualNormSq
+  rw [mul_pow, hd]
+  unfold screening
+  ring
+
 /-- There is only one nonnegative defect coordinate with the required norm. -/
 theorem nonnegative_defect_unique
     (l d e : ℝ)
@@ -1250,6 +1266,7 @@ end GravityScreening
 #print axioms GravityScreening.normalized_block_det
 #print axioms GravityScreening.channelEmbedding_det
 #print axioms GravityScreening.channelEmbedding_gram
+#print axioms GravityScreening.projectionResidual_normSq
 #print axioms GravityScreening.nonnegative_defect_unique
 #print axioms GravityScreening.constitutiveBlock_det
 #print axioms GravityScreening.raw_constitutive_twist_sq

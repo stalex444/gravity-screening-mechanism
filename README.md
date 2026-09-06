@@ -228,6 +228,16 @@ mechanism. The remaining premise is that the gravitational prepotential pair
 uses this Q-channel Gram metric. See
 [`GRAM_DUALITY_BRIDGE.md`](GRAM_DUALITY_BRIDGE.md).
 
+The same result admits a much shorter physical reading.  Keep the ordinary
+`rho*Q` exponent prediction as the unscreened Planck scale, and project the
+geometric channel orthogonally away from the normalized quartic Perron-residue
+channel.  Their exact overlap is `lambda4`, so the surviving curvature norm is
+`1-lambda4^2`; its inverse response is the deposited Newton correction.  This
+does not require the longer duality machinery to state the linear mechanism.
+Its one physical premise is that classical curvature is this projected
+information channel.  See
+[`DIRECT_CURVATURE_PROJECTION.md`](DIRECT_CURVATURE_PROJECTION.md).
+
 The normalized block is also an exact canonical squeeze, which makes the
 earlier Barbero-Immirzi intuition worth testing in a narrower form. Its
 half-squeeze scale is `u_Q=(2Q-1)^(1/4)=1.0957280275...`. The simplest direct
@@ -318,6 +328,10 @@ minimal mechanism.
   that the deposited scalar portal coefficient gives the wrong screening if
   reused as the Hodge coupling and identifies the residual graph norm as the
   cleaner conditional normalization.
+- [`DIRECT_CURVATURE_PROJECTION.md`](DIRECT_CURVATURE_PROJECTION.md) states the
+  minimal information-geometric mechanism: the ordinary `rho*Q` exponent sets
+  the base scale and the orthogonal Q-residue projection supplies the sole
+  curvature correction.
 - [`GravityScreening/Basic.lean`](GravityScreening/Basic.lean) kernel-checks
   the algebraic core.
 - [`verify.py`](verify.py) reproduces the exact quartic arithmetic using only
