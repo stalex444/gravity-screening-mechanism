@@ -40,6 +40,190 @@ theorem normalized_block_det (l : ℝ) :
   simp [det2, screening]
   ring
 
+/-! ## Symplectic normalization of the two-channel block
+
+The raw response block has determinant `1-l^2`.  A twisted-self-duality
+operator should square to minus the identity, which requires separating this
+determinant from the unimodular shape of the block.  The statements below are
+only two-dimensional linear algebra; their use as a gravitational
+constitutive law remains an additional physical premise.
+-/
+
+/-- The symmetric two-channel constitutive block. -/
+def constitutiveBlock (l : ℝ) : Matrix (Fin 2) (Fin 2) ℝ :=
+  !![1, -l; -l, 1]
+
+/-- The canonical symplectic matrix on the doubled pair. -/
+def symplecticBlock : Matrix (Fin 2) (Fin 2) ℝ :=
+  !![0, -1; 1, 0]
+
+/-- Divide the constitutive block by a positive square root `d` of its
+determinant. -/
+noncomputable def unimodularConstitutive
+    (l d : ℝ) : Matrix (Fin 2) (Fin 2) ℝ :=
+  (1 / d) • constitutiveBlock l
+
+theorem constitutiveBlock_det (l : ℝ) :
+    Matrix.det (constitutiveBlock l) = screening l := by
+  simp [constitutiveBlock, Matrix.det_fin_two, screening]
+  ring
+
+/-- Before normalization the associated twist squares to
+`-(1-l^2) I`, not to `-I`. -/
+theorem raw_constitutive_twist_sq (l : ℝ) :
+    (symplecticBlock * constitutiveBlock l) *
+        (symplecticBlock * constitutiveBlock l) =
+      (-screening l) • (1 : Matrix (Fin 2) (Fin 2) ℝ) := by
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    norm_num [symplecticBlock, constitutiveBlock, Matrix.mul_apply,
+      Fin.sum_univ_succ, screening] <;>
+    ring
+
+/-- The raw constitutive block is conformally symplectic, with multiplier
+`1-l^2`. -/
+theorem raw_constitutive_conformal_symplectic (l : ℝ) :
+    (constitutiveBlock l).transpose * symplecticBlock * constitutiveBlock l =
+      screening l • symplecticBlock := by
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    norm_num [symplecticBlock, constitutiveBlock, Matrix.transpose_apply,
+      Matrix.mul_apply, Fin.sum_univ_succ, screening] <;>
+    ring
+
+/-- If `d^2=1-l^2`, the normalized block has determinant one. -/
+theorem unimodularConstitutive_det
+    (l d : ℝ) (hd : d ^ 2 = screening l) (hd0 : d ≠ 0) :
+    Matrix.det (unimodularConstitutive l d) = 1 := by
+  simp [unimodularConstitutive, constitutiveBlock, Matrix.det_fin_two]
+  unfold screening at hd
+  field_simp [hd0]
+  nlinarith
+
+/-- The normalized constitutive shape defines a genuine complex structure
+when composed with the symplectic form. -/
+theorem unimodular_constitutive_twist_sq
+    (l d : ℝ) (hd : d ^ 2 = screening l) (hd0 : d ≠ 0) :
+    (symplecticBlock * unimodularConstitutive l d) *
+        (symplecticBlock * unimodularConstitutive l d) =
+      -(1 : Matrix (Fin 2) (Fin 2) ℝ) := by
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    norm_num [symplecticBlock, unimodularConstitutive, constitutiveBlock,
+      Matrix.mul_apply, Fin.sum_univ_succ] <;>
+    unfold screening at hd <;>
+    field_simp [hd0] <;>
+    nlinarith
+
+/-- The determinant-one constitutive shape preserves the canonical
+symplectic form exactly. -/
+theorem unimodularConstitutive_symplectic
+    (l d : ℝ) (hd : d ^ 2 = screening l) (hd0 : d ≠ 0) :
+    (unimodularConstitutive l d).transpose * symplecticBlock *
+        unimodularConstitutive l d = symplecticBlock := by
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    norm_num [symplecticBlock, unimodularConstitutive, constitutiveBlock,
+      Matrix.transpose_apply, Matrix.mul_apply, Fin.sum_univ_succ] <;>
+    unfold screening at hd <;>
+    field_simp [hd0] <;>
+    nlinarith
+
+/-- The raw block is the product of the scalar scale `d` and its determinant-
+one constitutive shape. -/
+theorem constitutiveBlock_scale_shape
+    (l d : ℝ) (hd0 : d ≠ 0) :
+    constitutiveBlock l = d • unimodularConstitutive l d := by
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    simp [constitutiveBlock, unimodularConstitutive, hd0]
+
+/-- Eliminating the second channel from the determinant-one shape leaves the
+single square-root stiffness `d`. -/
+theorem unimodularConstitutive_schur
+    (l d : ℝ) (hd : d ^ 2 = screening l) (hd0 : d ≠ 0) :
+    1 / d - (-l / d) ^ 2 / (1 / d) = d := by
+  unfold screening at hd
+  field_simp [hd0]
+  nlinarith
+
+/-- Multiplying the determinant-one shape by its scalar scale supplies the
+second factor of `d`, so the full Schur complement is `d^2=1-l^2`. -/
+theorem scale_times_unimodular_schur
+    (l d : ℝ) (hd : d ^ 2 = screening l) :
+    d * d = screening l := by
+  nlinarith
+
+/-! ## A first-order mode check
+
+This finite oscillator is the internal algebra of a doubled canonical mode.
+It shows why the common action scale and the determinant-one constitutive
+shape multiply in the second-order response.  It is not by itself a
+gravitational field action.
+-/
+
+/-- A first-order doubled mode with overall scale `a` and symmetric
+Hamiltonian block `[[c,-s],[-s,c]]`. -/
+noncomputable def firstOrderMode
+    (a c s position velocity momentum : ℝ) : ℝ :=
+  a * (momentum * velocity -
+    (c * position ^ 2 - 2 * s * position * momentum +
+      c * momentum ^ 2) / 2)
+
+/-- Eliminating the canonical partner leaves a second-order mode with overall
+coefficient `a/c`; the mixed term is a total derivative when `s` is constant. -/
+theorem firstOrderMode_at_momentum_stationary
+    (a c s position velocity : ℝ)
+    (hc : c ≠ 0) (hcs : c ^ 2 - s ^ 2 = 1) :
+    firstOrderMode a c s position velocity
+        ((velocity + s * position) / c) =
+      a / (2 * c) *
+        (velocity ^ 2 - position ^ 2 +
+          2 * s * position * velocity) := by
+  have hc2 : c ^ 2 = 1 + s ^ 2 := by linarith
+  unfold firstOrderMode
+  field_simp [hc]
+  rw [hc2]
+  ring
+
+/-- With `c=1/d`, `s=l/d`, and the common action scale `a=d`, the even
+second-order kinetic/potential coefficient is exactly `(1-l^2)/2`. -/
+theorem quarticScale_firstOrderMode_reduction
+    (l d position velocity : ℝ)
+    (hd : d ^ 2 = screening l) (hd0 : d ≠ 0) :
+    firstOrderMode d (1 / d) (l / d) position velocity
+        ((velocity + (l / d) * position) / (1 / d)) =
+      screening l / 2 *
+        (velocity ^ 2 - position ^ 2 +
+          2 * (l / d) * position * velocity) := by
+  have hc : (1 / d : ℝ) ≠ 0 := one_div_ne_zero hd0
+  have hcs : (1 / d : ℝ) ^ 2 - (l / d) ^ 2 = 1 := by
+    unfold screening at hd
+    field_simp [hd0]
+    nlinarith
+  rw [firstOrderMode_at_momentum_stationary d (1 / d) (l / d)
+    position velocity hc hcs]
+  rw [← hd]
+  field_simp [hd0]
+
+/-- A source coupled to one selected member of the doubled pair sees the full
+inverse screening response when the common scale and constitutive shape both
+use the same defect `d`. -/
+theorem scaledUnimodular_source_solution
+    (l d source : ℝ)
+    (hd0 : d ≠ 0)
+    (hs : screening l ≠ 0) :
+    let position := source / screening l
+    let momentum := l * position
+    d * ((1 / d) * position - (l / d) * momentum) = source ∧
+    d * ((1 / d) * momentum - (l / d) * position) = 0 := by
+  dsimp
+  constructor
+  · field_simp [hd0, hs]
+    simp [screening]
+  · field_simp [hd0]
+    ring
+
 /-- The surviving coefficient after eliminating the second coordinate of a
 general symmetric two-channel quadratic block, expressed relative to the first
 diagonal coefficient. -/
@@ -1025,6 +1209,18 @@ end GravityScreening
 #print axioms GravityScreening.response_completed_square
 #print axioms GravityScreening.response_at_stationary
 #print axioms GravityScreening.normalized_block_det
+#print axioms GravityScreening.constitutiveBlock_det
+#print axioms GravityScreening.raw_constitutive_twist_sq
+#print axioms GravityScreening.raw_constitutive_conformal_symplectic
+#print axioms GravityScreening.unimodularConstitutive_det
+#print axioms GravityScreening.unimodular_constitutive_twist_sq
+#print axioms GravityScreening.unimodularConstitutive_symplectic
+#print axioms GravityScreening.constitutiveBlock_scale_shape
+#print axioms GravityScreening.unimodularConstitutive_schur
+#print axioms GravityScreening.scale_times_unimodular_schur
+#print axioms GravityScreening.firstOrderMode_at_momentum_stationary
+#print axioms GravityScreening.quarticScale_firstOrderMode_reduction
+#print axioms GravityScreening.scaledUnimodular_source_solution
 #print axioms GravityScreening.relativeSchur_eq_screening_iff
 #print axioms GravityScreening.screening_pos
 #print axioms GravityScreening.quartic_screening_identity

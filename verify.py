@@ -308,6 +308,83 @@ def main():
     assert abs(chiral_even_compliance - Decimal(1) / S) < Decimal("1e-65")
     assert abs(full_bivector_det - S**3) < Decimal("1e-65")
 
+    # Symplectic normalization of the two-channel constitutive block.  The
+    # raw twist squares to -S*I.  Removing the determinant scale makes it a
+    # genuine complex structure, while the Schur complement splits into two
+    # factors sqrt(S): one from shape and one from the overall scale.
+    constitutive_scale = S.sqrt()
+    constitutive = [
+        [Decimal(1), -lambda4],
+        [-lambda4, Decimal(1)],
+    ]
+    normalized_constitutive = [
+        [entry / constitutive_scale for entry in row] for row in constitutive
+    ]
+    omega = [[Decimal(0), Decimal(-1)], [Decimal(1), Decimal(0)]]
+
+    def matmul2(a, b):
+        return [
+            [sum((a[i][k] * b[k][j] for k in range(2)), Decimal(0))
+             for j in range(2)]
+            for i in range(2)
+        ]
+
+    def det_matrix2(a):
+        return a[0][0] * a[1][1] - a[0][1] * a[1][0]
+
+    raw_twist_sq = matmul2(
+        matmul2(omega, constitutive), matmul2(omega, constitutive)
+    )
+    normalized_twist_sq = matmul2(
+        matmul2(omega, normalized_constitutive),
+        matmul2(omega, normalized_constitutive),
+    )
+    minus_s_identity = [[-S, Decimal(0)], [Decimal(0), -S]]
+    minus_identity = [
+        [Decimal(-1), Decimal(0)],
+        [Decimal(0), Decimal(-1)],
+    ]
+    for i in range(2):
+        for j in range(2):
+            assert abs(raw_twist_sq[i][j] - minus_s_identity[i][j]) < Decimal("1e-65")
+            assert abs(normalized_twist_sq[i][j] - minus_identity[i][j]) < Decimal("1e-65")
+            assert abs(
+                constitutive[i][j]
+                - constitutive_scale * normalized_constitutive[i][j]
+            ) < Decimal("1e-65")
+    assert abs(det_matrix2(constitutive) - S) < Decimal("1e-65")
+    assert abs(det_matrix2(normalized_constitutive) - Decimal(1)) < Decimal("1e-65")
+    normalized_schur = (
+        normalized_constitutive[0][0]
+        - normalized_constitutive[0][1] ** 2
+        / normalized_constitutive[1][1]
+    )
+    assert abs(normalized_schur - constitutive_scale) < Decimal("1e-65")
+    assert abs(constitutive_scale * normalized_schur - S) < Decimal("1e-65")
+
+    # First-order canonical mode.  With c=1/d and s=lambda4/d, eliminating
+    # the canonical partner yields an even second-order coefficient d/c=S.
+    position, velocity = Decimal("0.37"), Decimal("-0.61")
+    c = Decimal(1) / constitutive_scale
+    s = lambda4 / constitutive_scale
+    momentum = (velocity + s * position) / c
+    first_order_mode = constitutive_scale * (
+        momentum * velocity
+        - (
+            c * position**2
+            - Decimal(2) * s * position * momentum
+            + c * momentum**2
+        )
+        / Decimal(2)
+    )
+    reduced_mode = S / Decimal(2) * (
+        velocity**2
+        - position**2
+        + Decimal(2) * s * position * velocity
+    )
+    assert abs(c**2 - s**2 - Decimal(1)) < Decimal("1e-65")
+    assert abs(first_order_mode - reduced_mode) < Decimal("1e-65")
+
     # Real doubled Hodge action.  For J(x1,x2)=(-x2,x1), the auxiliary
     # stationary point y=-lambda4*Jx leaves stiffness S on the sourced mode.
     x1, x2 = Decimal("0.7"), Decimal("-0.3")
@@ -452,6 +529,10 @@ def main():
     print("Hodge-pair determinant       = 1-lambda4^2 EXACT")
     print("Hodge even inverse response  = 1/(1-lambda4^2) EXACT")
     print("full bivector determinant    = (1-lambda4^2)^3 EXACT")
+    print("normalized constitutive det  = 1 EXACT")
+    print("normalized duality twist^2   = -I EXACT")
+    print("scale x shape Schur factors  = sqrt(S) x sqrt(S) = S EXACT")
+    print("first-order mode reduction   = second-order coefficient S EXACT")
     print("real doubled-action response = 1/(1-lambda4^2) EXACT")
     print("trace-normalization entropy  = shifts by log(survivor)")
     print("entropy-difference response  = unchanged EXACT")

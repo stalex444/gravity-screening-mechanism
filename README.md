@@ -198,6 +198,26 @@ conditionally from treating the action as the graph norm of the actual
 quartic residual contraction and its minimal defect completion. See
 [`PORTAL_K_NORMALIZATION_AUDIT.md`](PORTAL_K_NORMALIZATION_AUDIT.md).
 
+Comparison with the standard two-prepotential action for linearized gravity
+adds a sharper constraint and a useful factorization. The established action
+uses an antisymmetric internal tensor in its canonical kinetic term and the
+identity in its positive Hamiltonian. The symmetric quartic block therefore
+belongs, if it can be derived at all, in a Q-dependent constitutive
+Hamiltonian. Writing that block as `K=d*Khat`, where
+`d=sqrt(1-lambda4^2)` and `det(Khat)=1`, makes `Omega*Khat` a normalized
+twisted-duality complex structure. Eliminating the dual channel of `Khat`
+produces one factor `d`; its overall scale supplies the second, leaving the
+full stiffness `d^2=1-lambda4^2`. This links the square-root Planck correction
+and the Newton correction. It also passes a necessary propagation test: using
+the raw block only in the Hamiltonian would change the free mode speed, while
+the determinant-one block preserves it and the overall factor cancels from
+the vacuum equations. For constant `lambda4`, the normalized block is a
+canonical squeeze of ordinary source-free linearized gravity and preserves
+its linear gauge structure. The remaining task is to derive both occurrences
+of `d`, fix the physical metric/source frame, and obtain a consistent ordinary
+matter coupling and nonlinear completion. See
+[`DUALITY_ACTION_COMPATIBILITY.md`](DUALITY_ACTION_COMPATIBILITY.md).
+
 Expanding the deposited two-scalar action about `(phi,chi)=(v,0)` sharpens that
 condition. Its quadratic operator has no `h`-`chi` mixing, so a sectorwise
 modular identification is cocycle-neutral on the one-particle quartic mode at
