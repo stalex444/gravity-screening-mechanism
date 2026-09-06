@@ -73,6 +73,12 @@ so it cannot be the positive Gram or Fisher matrix required by the projection
 mechanism. The existing action therefore supplies the arithmetic coefficient
 but not this response map.
 
+The full curvature audit is stronger: the filed induced-gravity coefficient is
+`f(phi,chi) = xi phi^2`, so the standard frame-covariant field metric has
+exactly zero `phi`-`chi` kinetic entry. Together with the unbroken
+`chi -> -chi` symmetry at `(v,0)`, this makes the tree-level normalized mixing
+`c = 0`, not `lambda4`. See [`CURRENT_ACTION_AUDIT.md`](CURRENT_ACTION_AUDIT.md).
+
 That negative result sharpens the next calculation. A successful derivation
 must obtain the matrix from a kinetic or curvature sector, with its
 normalization and reality conditions fixed independently. A different
@@ -83,6 +89,8 @@ minimal mechanism.
 
 - [`DERIVATION.md`](DERIVATION.md) gives the mathematical and physical chain,
   with assumptions separated from consequences.
+- [`CURRENT_ACTION_AUDIT.md`](CURRENT_ACTION_AUDIT.md) applies the decisive
+  kinetic and curvature test to the deposited two-scalar action.
 - [`GravityScreening/Basic.lean`](GravityScreening/Basic.lean) kernel-checks
   the algebraic core.
 - [`verify.py`](verify.py) reproduces the exact quartic arithmetic using only
@@ -101,4 +109,3 @@ lake build
 The arithmetic, Schur-complement identity, and four-dimensional homogeneity
 criterion are exact mathematics. Identifying `lambda4` with a normalized
 curvature or kinetic overlap is an open physical hypothesis.
-

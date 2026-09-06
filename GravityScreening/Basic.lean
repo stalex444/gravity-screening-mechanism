@@ -76,6 +76,40 @@ theorem ehrenfest_marginal_iff (d : ℝ) :
     4 - d = 0 ↔ d = 4 := by
   constructor <;> intro h <;> linarith
 
+/-! ## Audit of the deposited two-scalar action
+
+For a scalar-curvature theory with curvature coefficient `f`, scalar kinetic
+matrix `k`, and fields indexed by `A,B`, the standard frame-covariant field
+metric is
+
+`G_AB = k_AB / f + (3/2) * f_A * f_B / f^2`.
+
+The theorem below checks the algebraic consequence used in the accompanying
+audit. The transformation formula itself is a physics input, not proved here.
+-/
+
+/-- The off-diagonal entry of the standard two-field frame-covariant metric. -/
+noncomputable def frameMetricCross
+    (kCross f fPhi fChi : ℝ) : ℝ :=
+  kCross / f + (3 / 2 : ℝ) * fPhi * fChi / f ^ 2
+
+/-- A diagonal Jordan-frame kinetic term and a curvature coefficient independent
+of the second field cannot produce an off-diagonal Einstein-frame kinetic term. -/
+theorem frameMetricCross_eq_zero (f fPhi : ℝ) :
+    frameMetricCross 0 f fPhi 0 = 0 := by
+  simp [frameMetricCross]
+
+/-- The mixed scalar Hessian of the portal potential is proportional to the
+product of the two background fields. -/
+def portalMixedHessian (kappa phi chi : ℝ) : ℝ :=
+  4 * kappa * phi * chi
+
+/-- At the selected `chi = 0` axis vacuum, the portal potential supplies no
+bilinear mixing between the two fluctuations. -/
+theorem portalMixedHessian_at_chi_axis (kappa phi : ℝ) :
+    portalMixedHessian kappa phi 0 = 0 := by
+  simp [portalMixedHessian]
+
 end GravityScreening
 
 #print axioms GravityScreening.response_completed_square
@@ -85,3 +119,5 @@ end GravityScreening
 #print axioms GravityScreening.quartic_screening_identity
 #print axioms GravityScreening.radial_homogeneity_iff
 #print axioms GravityScreening.ehrenfest_marginal_iff
+#print axioms GravityScreening.frameMetricCross_eq_zero
+#print axioms GravityScreening.portalMixedHessian_at_chi_axis
