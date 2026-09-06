@@ -328,6 +328,13 @@ induced-gravity term `(xi/2) phi^2 R`. -/
 noncomputable def inducedPlanckSq (xi phi : ℝ) : ℝ :=
   8 * Real.pi * xi * phi ^ 2
 
+/-- At conformal coupling `xi=1/6`, the filed induced-gravity normalization is
+exactly `(4*pi/3) phi^2`. -/
+theorem inducedPlanckSq_conformal (phi : ℝ) :
+    inducedPlanckSq (1 / 6) phi = (4 * Real.pi / 3) * phi ^ 2 := by
+  unfold inducedPlanckSq
+  ring
+
 /-- Minimal quartic trace completion of the induced Planck-square coefficient. -/
 noncomputable def traceInducedPlanckSq (xi phi l : ℝ) : ℝ :=
   inducedPlanckSq xi phi *
@@ -339,6 +346,14 @@ coefficient. -/
 theorem traceInducedPlanckSq_eq (xi phi l : ℝ) :
     traceInducedPlanckSq xi phi l = screening l * inducedPlanckSq xi phi := by
   rw [traceInducedPlanckSq, quarticTimeObserverResponse_sq]
+  ring
+
+/-- The conformally coupled trace completion has the displayed screened
+Planck-square normalization. -/
+theorem traceInducedPlanckSq_conformal (phi l : ℝ) :
+    traceInducedPlanckSq (1 / 6) phi l =
+      (4 * Real.pi / 3) * phi ^ 2 * screening l := by
+  rw [traceInducedPlanckSq_eq, inducedPlanckSq_conformal]
   ring
 
 /-- Newton's coupling corresponding to a nonzero Planck-square coefficient. -/
@@ -1534,7 +1549,9 @@ end GravityScreening
 #print axioms GravityScreening.quarticTraceResponse_sq
 #print axioms GravityScreening.quarticTimeObserverResponse_sq
 #print axioms GravityScreening.normalizedLorentzPair_weight
+#print axioms GravityScreening.inducedPlanckSq_conformal
 #print axioms GravityScreening.traceInducedPlanckSq_eq
+#print axioms GravityScreening.traceInducedPlanckSq_conformal
 #print axioms GravityScreening.traceInducedNewton_eq
 #print axioms GravityScreening.nonnegative_defect_unique
 #print axioms GravityScreening.constitutiveBlock_det

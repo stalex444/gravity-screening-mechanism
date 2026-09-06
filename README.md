@@ -266,6 +266,11 @@ The corresponding minimal completion of the filed induced-gravity term is
 the spacetime metric remains dynamical.  See
 [`COVARIANT_EINSTEIN_BRIDGE.md`](COVARIANT_EINSTEIN_BRIDGE.md).
 
+The older induced-gravity companion's absolute normalization has also been
+audited.  Its stated values of `v` and `M_Pl` do not satisfy its own equation
+`M_Pl^2=(4 pi/3)v^2`; corrected values and the screened convention are recorded
+in [`INDUCED_GRAVITY_NORMALIZATION_AUDIT.md`](INDUCED_GRAVITY_NORMALIZATION_AUDIT.md).
+
 The normalized block is also an exact canonical squeeze, which makes the
 earlier Barbero-Immirzi intuition worth testing in a narrower form. Its
 half-squeeze scale is `u_Q=(2Q-1)^(1/4)=1.0957280275...`. The simplest direct
