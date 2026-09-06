@@ -243,8 +243,11 @@ be positive on the whole core. The exact construction is best stated on the
 ray of trace weights: the pullback operation `T_Q(tau)=tau after theta_(log Q)`
 has eigenvalue `1/Q`, and `[I-(I-T_Q)^2]tau=S_Q tau` is a positive functional.
 A physical response construction must still explain why this traced
-self-defect, rather than a different function of the dual flow, multiplies the
-gravitational kinetic or entropy coefficient. See `JACOBSON_CORE_BRIDGE.md`.
+self-defect, rather than a different function of the dual flow, changes a
+gravitational operator. It cannot act only as an overall trace normalization:
+after compensating the state density, that changes entropy by an additive
+constant and leaves the first variation unchanged. See
+`TRACE_NORMALIZATION_OBSTRUCTION.md` and `JACOBSON_CORE_BRIDGE.md`.
 
 ## 6. Why p and Q together reconstruct a continuous clock
 
@@ -295,10 +298,12 @@ suggests that PDT time is not a particle oscillation located at one spacetime
 point. It is the arithmetic skeleton of the relational clock used to turn a
 type-III local algebra into a type-II gravitational algebra.
 
-That reading also explains why the same construction is relevant to
-Jacobson's entropy density. A type-III local algebra has no ordinary trace;
-the observer/core algebra does. The quartic defect acts directly on the object
-that measures finite gravitational entropy.
+That reading explains why the same construction is relevant to gravitational
+entropy. A type-III local algebra has no ordinary trace; the observer/core
+algebra does. But relevance is not yet a coupling derivation: the quartic
+polynomial acts on the trace ray, while Jacobson's equation depends on an
+entropy variation. A global change of trace normalization disappears from
+that variation.
 
 ## 8. What remains to prove
 
@@ -318,18 +323,18 @@ surviving trace weight with gravity are physical premises. The final bridge is
 therefore:
 
 ```text
-surviving Type-II trace response
-       = gravitational kinetic/entropy response.
+quartic core operation
+       -> nontrivial area or modular response.
 ```
 
 A completion needs one of the following:
 
-1. derive the Newton/Jacobson coefficient from a variation of the core trace
-   under the Q dual-flow step;
+1. derive a Q-dependent physical area calibration that survives normalized
+   entropy variations;
 2. construct a clock-dressed version of the two-scalar action and show that
    integrating out or constraining the clock yields `2T_Q-T_Q^2`;
-3. prove that the horizon entropy functional responds to the quartic
-   self-defect by exactly the same polynomial.
+3. prove that the noncentral part of the horizon modular generator responds to
+   the quartic self-defect by exactly the same polynomial.
 
 The second route is the most concrete because recent gravitational-algebra
 constructions already formulate observables by adding an observer clock and

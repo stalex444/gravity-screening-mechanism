@@ -273,8 +273,36 @@ def main():
     assert abs(core_trace_defect - lambda4) < Decimal("1e-65")
     assert abs(core_self_defect_survivor - S) < Decimal("1e-65")
 
-    # Jacobson scaling check with an arbitrary nonzero baseline density.  The
-    # value cancels: eta -> S*eta forces G -> G/S and M_P^2 -> S*M_P^2.
+    # A global rescaling of a semifinite trace does not multiply normalized
+    # entropy. The same state has density p/c relative to c*tau, so its
+    # entropy shifts only by log(c). The shift cancels from differences.
+    state1 = [Decimal("0.2"), Decimal("0.3"), Decimal("0.5")]
+    state2 = [Decimal("0.1"), Decimal("0.4"), Decimal("0.5")]
+
+    def entropy(state):
+        return -sum((p * p.ln() for p in state), Decimal(0))
+
+    def entropy_after_trace_rescale(state, c):
+        return -sum(
+            (c * (p / c) * (p / c).ln() for p in state), Decimal(0)
+        )
+
+    entropy1 = entropy(state1)
+    entropy2 = entropy(state2)
+    entropy1_scaled_trace = entropy_after_trace_rescale(state1, S)
+    entropy2_scaled_trace = entropy_after_trace_rescale(state2, S)
+    assert abs(
+        entropy1_scaled_trace - entropy1 - S.ln()
+    ) < Decimal("1e-65")
+    assert abs(
+        (entropy1_scaled_trace - entropy2_scaled_trace)
+        - (entropy1 - entropy2)
+    ) < Decimal("1e-65")
+
+    # Conditional Jacobson algebra with an arbitrary nonzero baseline density.
+    # If an independent physical mechanism gives eta -> S*eta, it forces
+    # G -> G/S and M_P^2 -> S*M_P^2. Trace normalization alone does not
+    # establish the premise, as the calculation above proves.
     eta0 = Decimal("2.375")
     eta_q = S * eta0
     gravity0 = Decimal(1) / (Decimal(4) * eta0)
@@ -343,8 +371,10 @@ def main():
     print("core Q-step trace ratio      = 1/Q EXACT")
     print("core Q-step trace defect     = lambda4 EXACT")
     print("core self-defect survivor    = 1-lambda4^2 EXACT")
-    print("Jacobson G correction        = divide by survivor EXACT")
-    print("Planck-scale-square correction= multiply by survivor EXACT")
+    print("trace-normalization entropy  = shifts by log(survivor)")
+    print("entropy-difference response  = unchanged EXACT")
+    print("conditional Jacobson G rule  = divide by survivor EXACT")
+    print("conditional Planck-square rule= multiply by survivor EXACT")
     print("companion matrix primitive  = M^10 strictly positive")
     print("cubic matrix primitive      = M^5 strictly positive")
     print("founding field degrees      = 3 and 4 (coprime)")

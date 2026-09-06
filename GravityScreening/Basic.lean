@@ -391,7 +391,76 @@ theorem coreSelfDefect_survivor (q mass : ℝ)
   rw [htwo, quartic_screening_identity q (ne_of_gt hq)]
   field_simp [ne_of_gt hq, hmass]
 
-/-! ## Jacobson scaling consequences -/
+/-! ## Trace normalization and entropy
+
+The continuous-core trace is canonical only up to an overall positive scalar.
+For a normalized state, rescaling the trace by `c` simultaneously rescales its
+density by `1/c`.  The entropy therefore changes by the additive constant
+`log c`, rather than being multiplied by `c`.  The declarations below isolate
+this obstruction in a finite scalar model and record its first-law consequence.
+-/
+
+/-- The entropy contribution of one positive density value relative to a
+trace whose scalar normalization is `traceWeight`. -/
+noncomputable def entropyContribution
+    (traceWeight density : ℝ) : ℝ :=
+  -traceWeight * density * Real.log density
+
+/-- Compensating the density when a trace is rescaled changes a normalized
+entropy contribution by `density * log c`.  Summing a normalized density gives
+the state-independent shift `log c`. -/
+theorem entropyContribution_trace_rescale (c density : ℝ)
+    (hc : c ≠ 0) (hdensity : density ≠ 0) :
+    entropyContribution c (density / c) =
+      entropyContribution 1 density + density * Real.log c := by
+  unfold entropyContribution
+  rw [Real.log_div hdensity hc]
+  field_simp [hc]
+  ring
+
+/-- The additive trace-normalization ambiguity cancels from entropy
+differences. -/
+theorem entropyDifference_trace_rescale (S1 S2 c : ℝ) :
+    (S1 + Real.log c) - (S2 + Real.log c) = S1 - S2 := by
+  ring
+
+open scoped BigOperators
+
+/-- A finite diagonal model of the entropy first-law pairing
+`delta S = Tr(delta rho K)`. -/
+def firstLawVariation {n : ℕ} (k delta : Fin n → ℝ) : ℝ :=
+  ∑ i, delta i * k i
+
+/-- Adding a scalar to a modular Hamiltonian cannot change its pairing with a
+normalization-preserving state perturbation. -/
+theorem firstLaw_add_constant {n : ℕ} (k delta : Fin n → ℝ) (c : ℝ)
+    (hdelta : ∑ i, delta i = 0) :
+    firstLawVariation (fun i => k i + c) delta =
+      firstLawVariation k delta := by
+  unfold firstLawVariation
+  calc
+    (∑ i, delta i * (k i + c)) =
+        (∑ i, delta i * k i) + (∑ i, delta i * c) := by
+      simp only [mul_add, Finset.sum_add_distrib]
+    _ = ∑ i, delta i * k i := by
+      rw [← Finset.sum_mul, hdelta, zero_mul, add_zero]
+
+/-- An affine change `K -> s K + c I` multiplies every normalized first-law
+variation by `s`; the scalar part is invisible.  Thus a genuine uniform
+screening of entropy variations requires a multiplicative change of the
+noncentral modular generator, not an overall trace normalization. -/
+theorem firstLaw_affine_scale {n : ℕ} (k delta : Fin n → ℝ) (s c : ℝ)
+    (hdelta : ∑ i, delta i = 0) :
+    firstLawVariation (fun i => s * k i + c) delta =
+      s * firstLawVariation k delta := by
+  rw [firstLaw_add_constant (fun i => s * k i) delta c hdelta]
+  unfold firstLawVariation
+  simp_rw [show ∀ i, delta i * (s * k i) = s * (delta i * k i) by
+    intro i
+    ring]
+  exact (Finset.mul_sum Finset.univ (fun i => delta i * k i) s).symm
+
+/-! ## Conditional Jacobson scaling consequences -/
 
 /-- In natural units, Jacobson's area-entropy density fixes the gravitational
 coupling by `G = 1/(4*eta)`. This declaration records that scalar relation. -/
@@ -406,9 +475,10 @@ theorem jacobsonCoupling_density_scale (eta s : ℝ)
   unfold jacobsonCoupling
   field_simp [heta, hs]
 
-/-- If the continuous-core self-defect multiplies the microscopic entropy
-density, Jacobson's relation gives precisely the inverse screening correction
-to Newton's coupling. -/
+/-- If an independent physical mechanism multiplies the microscopic entropy
+density by the core-survivor scalar, Jacobson's relation gives precisely the
+inverse screening correction to Newton's coupling.  The trace-scaling law by
+itself does not supply this premise. -/
 theorem coreSurvivor_jacobsonCoupling (q eta : ℝ)
     (hq : 0 < q) (heta : eta ≠ 0)
     (hs : screening (lambda4 q) ≠ 0) :
@@ -421,8 +491,8 @@ theorem coreSurvivor_jacobsonCoupling (q eta : ℝ)
 noncomputable def planckScaleSq (G : ℝ) : ℝ :=
   1 / G
 
-/-- The same entropy-density correction multiplies the squared Planck scale,
-so a positive Planck mass is multiplied by its positive square root. -/
+/-- Under the same independent entropy-density premise, the squared Planck
+scale is multiplied by the screening coefficient. -/
 theorem coreSurvivor_planckScaleSq (q eta : ℝ)
     (heta : eta ≠ 0)
     (hs : screening (lambda4 q) ≠ 0) :
@@ -553,6 +623,10 @@ end GravityScreening
 #print axioms GravityScreening.coreTraceDefect_log
 #print axioms GravityScreening.coreTraceScale_add
 #print axioms GravityScreening.coreSelfDefect_survivor
+#print axioms GravityScreening.entropyContribution_trace_rescale
+#print axioms GravityScreening.entropyDifference_trace_rescale
+#print axioms GravityScreening.firstLaw_add_constant
+#print axioms GravityScreening.firstLaw_affine_scale
 #print axioms GravityScreening.jacobsonCoupling_density_scale
 #print axioms GravityScreening.coreSurvivor_jacobsonCoupling
 #print axioms GravityScreening.coreSurvivor_planckScaleSq
