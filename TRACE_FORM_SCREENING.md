@@ -85,6 +85,8 @@ This removes a possible objection to the local `1+i*lambda4` notation: the
 screening response has an explicit representative in the quartic field's
 power-basis geometry.  The timelike axis is the negative column in the
 existing rational congruence that diagonalizes the genuine trace form.
+It is also exactly one sixth of the observer vector already used in the
+quartic time construction; see `TIME_GRAVITY_TRACE_BRIDGE.md`.
 
 ## Why this matters
 

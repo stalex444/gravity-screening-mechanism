@@ -208,11 +208,17 @@ def main():
         QElement((Fraction(-1, 2),)),
         QElement(),
     ]
+    time_observer = [
+        QElement(), QElement((4,)), QElement((-3,)), QElement()
+    ]
     assert quartic_trace_pair(space_axis, space_axis) == one
     assert quartic_trace_pair(time_axis, time_axis) == -one
     assert quartic_trace_pair(space_axis, time_axis) == QElement()
+    assert quartic_trace_pair(time_observer, time_observer) == -36
+    assert [Fraction(1, 6) * x for x in time_observer] == time_axis
     trace_response = [
-        space_axis[i] + lam * time_axis[i] for i in range(4)
+        space_axis[i] + Fraction(1, 6) * lam * time_observer[i]
+        for i in range(4)
     ]
     assert quartic_trace_pair(trace_response, trace_response) == screen
 
@@ -570,6 +576,8 @@ def main():
     print("residual Perron eigenvalue  = lambda4 EXACT")
     print("left/right residual readout  = lambda4 EXACT")
     print("quartic residual normality   = NON-NORMAL EXACT")
+    print("quartic time observer square = -36 EXACT")
+    print("normalized observer           = timelike axis EXACT")
     print("quartic trace axes            = (+1,-1,0) EXACT")
     print("quartic affine trace square   = 1-lambda4^2 EXACT")
     print("renewal-symbol frequency    = lambda4 EXACT")

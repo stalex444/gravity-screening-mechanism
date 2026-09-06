@@ -254,6 +254,12 @@ and `-1`; their affine combination with coefficient `lambda4` therefore has
 square `1-lambda4^2`.  These are the axes of the rational diagonalization
 already used to prove the quartic signature `(3,1)`.
 
+The negative axis is also exactly the chosen observer direction from the
+time-dimensional construction: `u=4Q-3Q^2`, with trace square `-36`.  Hence
+the screening element can be written directly as
+`a_Q=1/2+(lambda4/6)u`.  See
+[`TIME_GRAVITY_TRACE_BRIDGE.md`](TIME_GRAVITY_TRACE_BRIDGE.md).
+
 The normalized block is also an exact canonical squeeze, which makes the
 earlier Barbero-Immirzi intuition worth testing in a narrower form. Its
 half-squeeze scale is `u_Q=(2Q-1)^(1/4)=1.0957280275...`. The simplest direct

@@ -173,6 +173,13 @@ structure QuarticTraceCoords where
   c2 : ℝ
   c3 : ℝ
 
+@[ext] theorem quarticTraceCoords_ext {x y : QuarticTraceCoords}
+    (h0 : x.c0 = y.c0) (h1 : x.c1 = y.c1)
+    (h2 : x.c2 = y.c2) (h3 : x.c3 = y.c3) : x = y := by
+  cases x
+  cases y
+  simp_all
+
 /-- The bilinear pairing represented by the quartic trace matrix. -/
 def quarticTracePair (x y : QuarticTraceCoords) : ℝ :=
   4 * x.c0 * y.c0 + 3 * x.c0 * y.c3 +
@@ -188,6 +195,20 @@ noncomputable def quarticSpaceUnit : QuarticTraceCoords :=
 noncomputable def quarticTimeUnit : QuarticTraceCoords :=
   ⟨0, 2 / 3, -1 / 2, 0⟩
 
+/-- The timelike observer `u = 4Q-3Q^2` used in the quartic time geometry. -/
+noncomputable def quarticTimeObserver : QuarticTraceCoords :=
+  ⟨0, 4, -3, 0⟩
+
+/-- Coordinatewise scalar multiplication. -/
+noncomputable def quarticCoordsScale (a : ℝ) (x : QuarticTraceCoords) :
+    QuarticTraceCoords :=
+  ⟨a * x.c0, a * x.c1, a * x.c2, a * x.c3⟩
+
+/-- Coordinatewise addition. -/
+noncomputable def quarticCoordsAdd (x y : QuarticTraceCoords) :
+    QuarticTraceCoords :=
+  ⟨x.c0 + y.c0, x.c1 + y.c1, x.c2 + y.c2, x.c3 + y.c3⟩
+
 /-- The identity direction has trace square `+1`. -/
 theorem quarticSpaceUnit_sq :
     quarticTracePair quarticSpaceUnit quarticSpaceUnit = 1 := by
@@ -198,6 +219,18 @@ theorem quarticTimeUnit_sq :
     quarticTracePair quarticTimeUnit quarticTimeUnit = -1 := by
   norm_num [quarticTracePair, quarticTimeUnit]
 
+/-- The time observer has the established trace square `-36`. -/
+theorem quarticTimeObserver_sq :
+    quarticTracePair quarticTimeObserver quarticTimeObserver = -36 := by
+  norm_num [quarticTracePair, quarticTimeObserver]
+
+/-- Dividing the established observer by six gives the normalized negative
+axis used in the screening identity. -/
+theorem quarticTimeUnit_eq_normalized_observer :
+    quarticCoordsScale (1 / 6) quarticTimeObserver = quarticTimeUnit := by
+  ext <;>
+    norm_num [quarticCoordsScale, quarticTimeObserver, quarticTimeUnit]
+
 /-- The normalized identity and timelike axes are trace-orthogonal. -/
 theorem quarticSpaceTime_orthogonal :
     quarticTracePair quarticSpaceUnit quarticTimeUnit = 0 := by
@@ -207,6 +240,21 @@ theorem quarticSpaceTime_orthogonal :
 noncomputable def quarticTraceResponse (l : ℝ) : QuarticTraceCoords :=
   ⟨1 / 2, 2 * l / 3, -l / 2, 0⟩
 
+/-- The same response written directly as unit background plus `l/6` times
+the timelike observer used in the time construction. -/
+noncomputable def quarticTimeObserverResponse (l : ℝ) : QuarticTraceCoords :=
+  quarticCoordsAdd quarticSpaceUnit
+    (quarticCoordsScale (l / 6) quarticTimeObserver)
+
+/-- The time-observer and diagonal-axis presentations are exactly equal. -/
+theorem quarticTimeObserverResponse_eq (l : ℝ) :
+    quarticTimeObserverResponse l = quarticTraceResponse l := by
+  ext <;>
+    norm_num [quarticTimeObserverResponse, quarticCoordsAdd,
+      quarticCoordsScale, quarticSpaceUnit, quarticTimeObserver,
+      quarticTraceResponse] <;>
+    ring
+
 /-- The genuine quartic trace matrix evaluates the affine response to the
 screening difference of squares. -/
 theorem quarticTraceResponse_sq (l : ℝ) :
@@ -215,6 +263,13 @@ theorem quarticTraceResponse_sq (l : ℝ) :
   norm_num [quarticTracePair, quarticTraceResponse, quarticSpaceUnit,
     quarticTimeUnit, screening]
   ring
+
+/-- The time observer itself therefore gives the screening norm. -/
+theorem quarticTimeObserverResponse_sq (l : ℝ) :
+    quarticTracePair (quarticTimeObserverResponse l)
+      (quarticTimeObserverResponse l) = screening l := by
+  rw [quarticTimeObserverResponse_eq]
+  exact quarticTraceResponse_sq l
 
 /-- There is only one nonnegative defect coordinate with the required norm. -/
 theorem nonnegative_defect_unique
@@ -1386,8 +1441,11 @@ end GravityScreening
 #print axioms GravityScreening.intrinsicTrace_eq_screening_iff
 #print axioms GravityScreening.quarticSpaceUnit_sq
 #print axioms GravityScreening.quarticTimeUnit_sq
+#print axioms GravityScreening.quarticTimeObserver_sq
+#print axioms GravityScreening.quarticTimeUnit_eq_normalized_observer
 #print axioms GravityScreening.quarticSpaceTime_orthogonal
 #print axioms GravityScreening.quarticTraceResponse_sq
+#print axioms GravityScreening.quarticTimeObserverResponse_sq
 #print axioms GravityScreening.nonnegative_defect_unique
 #print axioms GravityScreening.constitutiveBlock_det
 #print axioms GravityScreening.raw_constitutive_twist_sq
