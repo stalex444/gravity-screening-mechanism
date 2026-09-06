@@ -204,24 +204,32 @@ coefficients.
 
 ## 6. The next proof target
 
-The strongest clean completion is now:
+The subsequent free-wedge calculation rules out the original bounded-local
+version of this target in the linearized two-scalar vacuum: there is no
+nonzero bounded boost eigenoperator at the required frequency. The
+continuous-core calculation realizes the frequency and the quartic trace-ray
+polynomial, but global trace normalization cancels from entropy variations.
+The strongest clean completion is therefore now:
 
-1. specify the local wedge algebra and faithful vacuum state of the candidate
-   physical model;
-2. identify a copy of the joint pQ factor inside it;
-3. construct a normal conditional expectation onto that copy and prove that
-   it preserves the vacuum;
-4. identify the quartic degree-one operator as a boost eigenoperator with
-   charge `log Q/(2*pi)`;
-5. derive that the complementary defect weight rescales the gravitational
-   kinetic response.
+1. retain the generalized quartic clock in the continuous core or observer
+   algebra;
+2. derive the standing F373 affine Hodge operator
+   `A=I+lambda4 C` as a normalized gravitational kinetic stiffness;
+3. show that the physical source reads its orientation-even inverse, which is
+   exactly `I/(1-lambda4^2)`;
+4. recover the equivalent inverse-length amplitude
+   `sqrt(1-lambda4^2)` and horizon area-density calibration;
+5. apply Jacobson's area law to the same response.
 
-Steps 2--4 would close the operator-algebraic horizon map. Step 5 remains the
-information-to-gravity identification.
+Step 1 and the operator algebra in step 2 have standard or exact realizations.
+Deriving that operator from the action and fixing the physical source in steps
+2--3 is the remaining physical theorem.
+See `FREE_WEDGE_CORE_AUDIT.md`, `TRACE_NORMALIZATION_OBSTRUCTION.md`, and
+`HORIZON_AREA_CALIBRATION.md`.
 
-The weaker one-mode route is still available: prove only that the Connes
-cocycle is neutral on the quartic Perron line. The expected-subfactor route is
-stronger because it secures the entire pQ modular dynamics at once.
+The earlier expected-subfactor construction remains meaningful for interacting
+or non-Fock models, but it is no longer the shortest route to the gravity
+factor.
 
 ## Falsifiers
 
@@ -232,8 +240,8 @@ The reverse chain fails if any of the following occurs:
 - no exact wedge spectral line has modular gap `log Q`;
 - every state-preserving pQ embedding fails modular invariance;
 - the relative cocycle shifts or mixes the quartic line;
-- the defect complement cannot be identified with the gravitational kinetic
-  response.
+- no physical affine Hodge stiffness or equivalent noncentral response yields
+  the orientation-even factor `1/(1-lambda4^2)`.
 
 ## References
 

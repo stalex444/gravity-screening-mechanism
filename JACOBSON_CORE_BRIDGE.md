@@ -151,12 +151,18 @@ The corrected calculation leaves three mathematically distinct routes:
 3. **Local cell structure.** The Q operation changes the number or weights of
    physical horizon cells. A global trace normalization is insufficient; the
    change must survive normalization within each physical area element.
+4. **Chiral kinetic response.** On the standing F373 Hodge pair, the affine
+   stiffness `I+lambda4 C` has an orientation-even inverse response
+   `I/(1-lambda4^2)`. This places the reciprocal factor directly in the
+   gravitational compliance rather than in entropy normalization.
 
-The first route is presently the cleanest. Geometric wedge modular flow has a
-fixed boost normalization, so multiplying the matter modular Hamiltonian by
-`S_Q` would require an additional physical explanation. Placing `S_Q` in the
-gravitational area calibration preserves the ordinary matter first law while
-changing the coefficient that Jacobson identifies with `1/(4G)`.
+The fourth route is presently the cleanest operator mechanism, with the first
+route its area-density reading. Geometric wedge modular flow has a fixed boost
+normalization, so multiplying the matter modular Hamiltonian by `S_Q` would
+require an additional physical explanation. A chiral gravitational stiffness
+or area-density calibration preserves the ordinary matter first law while
+changing the coefficient that Jacobson identifies with `1/(4G)`. The filed
+action does not yet derive the required affine Hodge term.
 
 ## 5. Exact conditional consequences retained
 

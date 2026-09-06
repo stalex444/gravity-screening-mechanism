@@ -209,9 +209,129 @@ theorem juliaBlock_sq (l d : ℝ) (hdefect : d ^ 2 = screening l) :
     simp [juliaBlock, Matrix.mul_apply, Fin.sum_univ_succ] <;>
     nlinarith [hsum]
 
+/-! ## Lorentzian Hodge-pair realization
+
+On the complexified span of a bivector and its dual, Lorentzian Hodge duality
+has eigenvalues `+i` and `-i`. Multiplication by `i` converts it to an
+involution. The non-scalar response `I-i*l*star` then has opposite real chiral
+weights and determinant `1-l^2`.
+-/
+
+/-- Lorentzian Hodge star on one complex chiral pair. -/
+def lorentzHodge : Matrix (Fin 2) (Fin 2) ℂ :=
+  !![Complex.I, 0; 0, -Complex.I]
+
+theorem lorentzHodge_sq : lorentzHodge * lorentzHodge = -1 := by
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    norm_num [lorentzHodge, Matrix.mul_apply, Fin.sum_univ_succ,
+      Complex.I_mul_I]
+
+/-- The complexified chiral response `I-i*l*star`. -/
+noncomputable def chiralAreaResponse (l : ℝ) :
+    Matrix (Fin 2) (Fin 2) ℂ :=
+  1 - (Complex.I * (l : ℂ)) • lorentzHodge
+
+/-- Its two real chiral weights are `1+l` and `1-l`. -/
+theorem chiralAreaResponse_eq (l : ℝ) :
+    chiralAreaResponse l =
+      !![(1 + (l : ℂ)), 0; 0, (1 - (l : ℂ))] := by
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    simp [chiralAreaResponse, lorentzHodge]
+  all_goals
+    rw [mul_comm Complex.I (l : ℂ), mul_assoc, Complex.I_mul_I]
+    ring
+
+/-- The determinant on one chiral pair is the screening coefficient. Unlike
+the scalar Kraus split, this operator acts differently on the two chiral
+subspaces. -/
+theorem chiralAreaResponse_det (l : ℝ) :
+    Matrix.det (chiralAreaResponse l) = (screening l : ℂ) := by
+  rw [chiralAreaResponse_eq]
+  simp [Matrix.det_fin_two, screening]
+  ring
+
+/-- Multiplying the response by its orientation flip removes chirality and
+leaves the scalar screening stiffness. -/
+theorem chiralAreaResponse_mul_flip (l : ℝ) :
+    chiralAreaResponse l * chiralAreaResponse (-l) =
+      (screening l : ℂ) • 1 := by
+  rw [chiralAreaResponse_eq, chiralAreaResponse_eq]
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    simp [Matrix.mul_apply, Fin.sum_univ_succ, screening] <;>
+    ring
+
+/-- At the quartic residue, the chiral Hodge-pair determinant is exactly the
+deposited gravity-screening rational function. -/
+theorem quartic_chiralAreaResponse_det (q : ℝ) (hq : q ≠ 0) :
+    Matrix.det (chiralAreaResponse (lambda4 q)) =
+      (((2 * q - 1) / q ^ 2 : ℝ) : ℂ) := by
+  rw [chiralAreaResponse_det, quartic_screening_identity q hq]
+
+/-- On the full six-dimensional bivector space in four dimensions, the two
+chiral eigenweights each occur three times, so the full determinant would
+carry the third power of the screening coefficient. This distinguishes a
+single horizon binormal/area pair from a determinant over all bivectors. -/
+theorem fullBivector_chiralDet (l : ℝ) :
+    (1 + l) ^ 3 * (1 - l) ^ 3 = screening l ^ 3 := by
+  simp [screening]
+  ring
+
+/-- If the two chiral weights are kinetic stiffnesses and an orientation-even
+source reads the normalized average of their inverse responses, the resulting
+compliance is exactly enhanced by `1/(1-l^2)`. -/
+theorem orientationEven_chiralCompliance (l : ℝ)
+    (hplus : 1 + l ≠ 0) (hminus : 1 - l ≠ 0) :
+    (1 / 2 : ℝ) * (1 / (1 + l) + 1 / (1 - l)) =
+      1 / screening l := by
+  have hs : 1 - l ^ 2 ≠ 0 := by
+    rw [show 1 - l ^ 2 = (1 - l) * (1 + l) by ring]
+    exact mul_ne_zero hminus hplus
+  unfold screening
+  field_simp [hplus, hminus, hs]
+  ring
+
+/-- At the positive quartic root, the orientation-even inverse chiral response
+is exactly the reciprocal screening factor appearing in Newton's coupling. -/
+theorem quartic_orientationEven_chiralCompliance (q : ℝ) (hq : 1 < q) :
+    (1 / 2 : ℝ) *
+        (1 / (1 + lambda4 q) + 1 / (1 - lambda4 q)) =
+      q ^ 2 / (2 * q - 1) := by
+  have hq0 : q ≠ 0 := by linarith
+  have hplus : 1 + lambda4 q ≠ 0 := by
+    intro h
+    unfold lambda4 at h
+    field_simp [hq0] at h
+    nlinarith
+  have hminus : 1 - lambda4 q ≠ 0 := by
+    intro h
+    unfold lambda4 at h
+    field_simp [hq0] at h
+    nlinarith
+  rw [orientationEven_chiralCompliance (lambda4 q) hplus hminus]
+  rw [quartic_screening_identity q hq0]
+  have hden : 2 * q - 1 ≠ 0 := by nlinarith
+  field_simp [hq0, hden]
+
 /-- A scalar real coefficient acting on a one-dimensional complex amplitude
 space. -/
 noncomputable def scalarKraus (a : ℝ) (z : ℂ) : ℂ := (a : ℂ) * z
+
+/-- A scalar Kraus branch has a state-independent relative weight. This is why
+the bare scalar dilation is algebraically useful but cannot by itself transmit
+information about the input state to its branch flag. -/
+theorem scalarKraus_normSq (a : ℝ) (z : ℂ) :
+    Complex.normSq (scalarKraus a z) =
+      a ^ 2 * Complex.normSq z := by
+  simp [scalarKraus, Complex.normSq_mul, Complex.normSq_ofReal, pow_two]
+
+theorem scalarKraus_relativeWeight (a : ℝ) (z : ℂ)
+    (hz : Complex.normSq z ≠ 0) :
+    Complex.normSq (scalarKraus a z) / Complex.normSq z = a ^ 2 := by
+  rw [scalarKraus_normSq]
+  field_simp [hz]
 
 /-- The minimal two-channel completion conserves the Born norm exactly. -/
 theorem scalarKraus_completeness (l d : ℝ)
@@ -219,12 +339,7 @@ theorem scalarKraus_completeness (l d : ℝ)
     Complex.normSq (scalarKraus l z) +
       Complex.normSq (scalarKraus d z) = Complex.normSq z := by
   have hsum := julia_row_norm l d hdefect
-  rw [show Complex.normSq (scalarKraus l z) =
-      l ^ 2 * Complex.normSq z by
-    simp [scalarKraus, Complex.normSq_mul, Complex.normSq_ofReal, pow_two]]
-  rw [show Complex.normSq (scalarKraus d z) =
-      d ^ 2 * Complex.normSq z by
-    simp [scalarKraus, Complex.normSq_mul, Complex.normSq_ofReal, pow_two]]
+  rw [scalarKraus_normSq, scalarKraus_normSq]
   calc
     l ^ 2 * Complex.normSq z + d ^ 2 * Complex.normSq z =
         (l ^ 2 + d ^ 2) * Complex.normSq z := by ring
@@ -460,6 +575,55 @@ theorem firstLaw_affine_scale {n : ℕ} (k delta : Fin n → ℝ) (s c : ℝ)
     ring]
   exact (Finset.mul_sum Finset.univ (fun i => delta i * k i) s).symm
 
+/-! ## Horizon area-density calibration
+
+If a positive scalar `d` rescales both inverse-length resolution directions on
+a two-dimensional horizon section, the number of microscopic cells per unit
+physical area is multiplied by `d^2`. This is a change in physical area
+calibration, not a normalization of the Type-II trace.
+-/
+
+/-- Isotropic rescaling of a two-dimensional inverse-length frame multiplies
+its cell count per physical area by the square of the frame amplitude. -/
+def horizonAreaDensityScale (d countedArea : ℝ) : ℝ :=
+  d ^ 2 * countedArea
+
+/-- A unitary-defect amplitude therefore gives exactly the screening factor as
+the horizon area-density response. -/
+theorem defect_horizonAreaDensity_scale (l d countedArea : ℝ)
+    (hdefect : d ^ 2 = screening l) :
+    horizonAreaDensityScale d countedArea =
+      screening l * countedArea := by
+  simp [horizonAreaDensityScale, hdefect]
+
+/-- The area-density response is uniformly `s` for every counted area exactly
+when the inverse-length frame amplitude has square `s`. -/
+theorem horizonAreaDensityScale_all_iff (d s : ℝ) :
+    (∀ countedArea : ℝ,
+      horizonAreaDensityScale d countedArea = s * countedArea) ↔
+        d ^ 2 = s := by
+  constructor
+  · intro h
+    simpa [horizonAreaDensityScale] using h 1
+  · intro h countedArea
+    simp [horizonAreaDensityScale, h]
+
+/-- Entropy variation for a constant microscopic density per unit area. -/
+def horizonEntropyVariation (eta deltaArea : ℝ) : ℝ :=
+  eta * deltaArea
+
+/-- Rescaling the inverse-length horizon resolution by a defect amplitude is
+equivalent, in Jacobson's local area law, to multiplying the entropy-per-area
+coefficient by the defect weight. -/
+theorem defect_areaDensityMap_eq_densityScale
+    (eta l d deltaArea : ℝ)
+    (hdefect : d ^ 2 = screening l) :
+    horizonEntropyVariation eta
+        (horizonAreaDensityScale d deltaArea) =
+      horizonEntropyVariation (screening l * eta) deltaArea := by
+  simp [horizonEntropyVariation, horizonAreaDensityScale, hdefect]
+  ring
+
 /-! ## Conditional Jacobson scaling consequences -/
 
 /-- In natural units, Jacobson's area-entropy density fixes the gravitational
@@ -611,6 +775,16 @@ end GravityScreening
 #print axioms GravityScreening.julia_row_norm
 #print axioms GravityScreening.julia_rows_orthogonal
 #print axioms GravityScreening.juliaBlock_sq
+#print axioms GravityScreening.lorentzHodge_sq
+#print axioms GravityScreening.chiralAreaResponse_eq
+#print axioms GravityScreening.chiralAreaResponse_det
+#print axioms GravityScreening.chiralAreaResponse_mul_flip
+#print axioms GravityScreening.quartic_chiralAreaResponse_det
+#print axioms GravityScreening.fullBivector_chiralDet
+#print axioms GravityScreening.orientationEven_chiralCompliance
+#print axioms GravityScreening.quartic_orientationEven_chiralCompliance
+#print axioms GravityScreening.scalarKraus_normSq
+#print axioms GravityScreening.scalarKraus_relativeWeight
 #print axioms GravityScreening.scalarKraus_completeness
 #print axioms GravityScreening.quarticPerron_horizon_instrument
 #print axioms GravityScreening.kms_causal_response
@@ -627,6 +801,9 @@ end GravityScreening
 #print axioms GravityScreening.entropyDifference_trace_rescale
 #print axioms GravityScreening.firstLaw_add_constant
 #print axioms GravityScreening.firstLaw_affine_scale
+#print axioms GravityScreening.defect_horizonAreaDensity_scale
+#print axioms GravityScreening.horizonAreaDensityScale_all_iff
+#print axioms GravityScreening.defect_areaDensityMap_eq_densityScale
 #print axioms GravityScreening.jacobsonCoupling_density_scale
 #print axioms GravityScreening.coreSurvivor_jacobsonCoupling
 #print axioms GravityScreening.coreSurvivor_planckScaleSq

@@ -269,10 +269,10 @@ its tensor factor. The exact argument is given in `PQ_MODULAR_HORIZON.md`.
 ## The role of Jacobson's theorem
 
 Jacobson's local-horizon arguments establish that matter-energy or entanglement
-balance across every local causal horizon determines gravitational response.
-They justify looking for gravity in the complementary channel of a horizon
-reduction. They do not specify PDT's microscopic horizon channel and therefore
-do not choose `L_Q` over the interval projection.
+balance across every local causal horizon determines gravitational response
+once the entropy-per-area coefficient is supplied. They do not identify a
+quantum-channel complement with gravity, specify PDT's microscopic horizon
+channel, or choose `L_Q` over the interval projection.
 
 The combined argument is therefore:
 
@@ -284,7 +284,8 @@ The combined argument is therefore:
    horizon mode;
 4. the minimal coherent completion of that mode forces the complement
    `1-lambda4^2`;
-5. Jacobson supplies the established information-to-gravity map.
+5. an additional horizon-area or noncentral modular map must place that weight
+   in the entropy variation to which Jacobson's theorem applies.
 
 Published type-III embedding theory guarantees that a state-preserving
 embedding exists, so the response ratio can be realized exactly in a wedge

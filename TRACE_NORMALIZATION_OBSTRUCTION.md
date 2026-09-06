@@ -88,6 +88,12 @@ This localizes the next search to mechanisms that alter at least one of:
 It also supplies a decisive rejection test: a mechanism that produces only an
 overall rescaling of `tau` cannot be the gravity-screening mechanism.
 
+The strongest current escape uses the standing F373 Lorentzian Hodge-pair
+operator. If `I+lambda4 C` is a gravitational kinetic stiffness, the
+orientation-even mean of its two inverse chiral responses is
+`1/(1-lambda4^2)`. This is a noncentral operator effect and is therefore not
+removed by state normalization. See `HODGE_CHIRAL_SCREENING.md`.
+
 ## Formal verification
 
 `GravityScreening/Basic.lean` contains four declarations for this point:

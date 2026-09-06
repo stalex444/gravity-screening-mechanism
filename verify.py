@@ -273,6 +273,21 @@ def main():
     assert abs(core_trace_defect - lambda4) < Decimal("1e-65")
     assert abs(core_self_defect_survivor - S) < Decimal("1e-65")
 
+    # On a Lorentzian Hodge pair the affine chiral stiffnesses are 1+lambda4
+    # and 1-lambda4. Their determinant is S, while the orientation-even mean
+    # inverse response is exactly 1/S. A determinant over all three chiral
+    # pairs would instead produce S^3.
+    chiral_plus = Decimal(1) + lambda4
+    chiral_minus = Decimal(1) - lambda4
+    chiral_pair_det = chiral_plus * chiral_minus
+    chiral_even_compliance = (
+        Decimal(1) / chiral_plus + Decimal(1) / chiral_minus
+    ) / Decimal(2)
+    full_bivector_det = chiral_plus**3 * chiral_minus**3
+    assert abs(chiral_pair_det - S) < Decimal("1e-65")
+    assert abs(chiral_even_compliance - Decimal(1) / S) < Decimal("1e-65")
+    assert abs(full_bivector_det - S**3) < Decimal("1e-65")
+
     # A global rescaling of a semifinite trace does not multiply normalized
     # entropy. The same state has density p/c relative to c*tau, so its
     # entropy shifts only by log(c). The shift cancels from differences.
@@ -371,6 +386,9 @@ def main():
     print("core Q-step trace ratio      = 1/Q EXACT")
     print("core Q-step trace defect     = lambda4 EXACT")
     print("core self-defect survivor    = 1-lambda4^2 EXACT")
+    print("Hodge-pair determinant       = 1-lambda4^2 EXACT")
+    print("Hodge even inverse response  = 1/(1-lambda4^2) EXACT")
+    print("full bivector determinant    = (1-lambda4^2)^3 EXACT")
     print("trace-normalization entropy  = shifts by log(survivor)")
     print("entropy-difference response  = unchanged EXACT")
     print("conditional Jacobson G rule  = divide by survivor EXACT")

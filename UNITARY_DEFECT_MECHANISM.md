@@ -156,6 +156,20 @@ K_Q^*K_Q+K_G^*K_G=I.
 Given `K_Q`, the positive scalar magnitude of `K_G` is unique. No independent
 continuous coefficient remains in the two-channel scalar completion.
 
+This scalar completion has an important limitation. Its Stinespring vector
+factorizes:
+
+\[
+V_Q\psi
+=\psi\otimes(\lambda_4|Q\rangle+d_Q|G\rangle).
+\]
+
+Both branch probabilities are independent of the input state. The construction
+therefore fixes a norm split but does not, by itself, transfer information to
+the branch flag. A genuine information-geometric channel needs distinct
+state-dependent branch operators, even if symmetry keeps their overall
+weights equal to `lambda4^2` and `1-lambda4^2`.
+
 ## Exact match to the gravity formula
 
 The gravity construction multiplies the tree-level Planck-mass amplitude by
@@ -196,15 +210,17 @@ not yield `lambda4`. The two operators can instead perform different jobs:
 
 - the rho/Q Hodge operator labels the two orientation-exchanged geometric
   sectors;
-- the Q-residue contraction and its unitary defect distribute conserved norm
-  between the Q interaction channel and its complementary channel.
+- the Q-residue contraction and its unitary defect fix the two conserved norm
+  weights; an additional nontrivial action must connect the positive defect
+  amplitude to the inverse-length horizon resolution.
 
 This separation meets the earlier audit's requirement that the dimensional
 divide and the screening response be derived as two different operators.
 
 The Julia operator is itself an involutive orthogonal reflection. That makes it
-compatible with a two-channel Hilbert-space description, but does not by itself
-identify its complementary channel with curvature or gravity.
+compatible with a two-channel Hilbert-space description, but does not by
+itself identify its positive defect amplitude with curvature or the horizon
+area-density calibration.
 
 ## What is proved and what remains physical
 
@@ -223,9 +239,10 @@ Physical premises still requiring derivation:
 
 1. the positive Perron residual mode is the physical Q-sector information
    channel relevant to gravity;
-2. the complementary defect channel is the geometric/gravitational response;
-3. the physical reduction is the minimal two-channel scalar dilation, without
-   additional Kraus channels, phases, or momentum dependence;
+2. the positive defect amplitude acts on the inverse-length horizon
+   resolution;
+3. any information-transfer completion has nontrivial relative branch action
+   while preserving the universal defect weight;
 4. the channel acts at the normalization scale used by the gravity formula.
 
 The current two-scalar action does not establish these premises. Its tree-level
@@ -250,16 +267,18 @@ complement after that observable has been selected.
 
 ## Decisive next derivation
 
-The next calculation should formulate the Q-to-geometry transition as a
-reduced quantum channel or horizon response. Starting from a specified joint
-evolution, trace out the inaccessible Q degrees of freedom and compute its
-Kraus operators. The mechanism succeeds if the physical Q Kraus amplitude is
-`lambda4 I` and the geometric complementary amplitude is its defect operator.
+The next calculation should formulate the Q-to-geometry transition as a local
+horizon area-density response. The most economical target is an isotropic map
+on the two inverse-length tangent-resolution directions with amplitude
+`sqrt(1-lambda4^2)`, which makes the cell-density response exactly
+`1-lambda4^2`. A quantum-channel realization must additionally make the two
+branches act differently on the state; the bare scalar Kraus pair is too
+trivial to carry information. See `HORIZON_AREA_CALIBRATION.md`.
 
-It fails if the reduction produces `1/Q`, a non-scalar operator, additional
-independent channels, a scale-dependent coefficient, or a different
-normalization. These outcomes are calculable before comparing with Newton's
-constant.
+It fails if the geometric response produces `1/Q`, a scale-dependent
+coefficient, anisotropy without a horizon-symmetry reason, or additional
+unfixed parameters. These outcomes are calculable before comparing with
+Newton's constant.
 
 ## References
 

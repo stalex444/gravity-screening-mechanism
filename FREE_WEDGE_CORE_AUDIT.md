@@ -317,9 +317,10 @@ quartic inverse step
    -> surviving trace response 1-lambda4^2.
 ```
 
-Every displayed scalar equality is exact. Selecting `s_Q=log Q`, reading
-quartic self-action as the repeated defect `D_Q^2`, and identifying the
-surviving trace weight with gravity are physical premises. The final bridge is
+Every displayed scalar equality is exact. Selecting `s_Q=log Q` and reading
+quartic self-action as the repeated defect `D_Q^2` are physical premises. A
+global identification of the surviving trace normalization with gravity is
+excluded by the normalized-entropy calculation. The remaining bridge is
 therefore:
 
 ```text
@@ -336,9 +337,10 @@ A completion needs one of the following:
 3. prove that the noncentral part of the horizon modular generator responds to
    the quartic self-defect by exactly the same polynomial.
 
-The second route is the most concrete because recent gravitational-algebra
-constructions already formulate observables by adding an observer clock and
-passing from type III to type II.
+The strongest current route uses the standing F373 Hodge-pair response as a
+noncentral chiral kinetic operator. Its orientation-even inverse is exactly
+`1/(1-lambda4^2)`, while the core remains the natural home of the generalized
+clock. See `HODGE_CHIRAL_SCREENING.md`.
 
 ## Prior-art control
 

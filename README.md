@@ -84,8 +84,9 @@ residue contraction. On the positive eigenline of the founding quartic
 companion matrix, `I-M_Q^(-1)` has the exact eigen-amplitude
 `lambda4 = 1-1/Q`. Its minimal unitary completion has the unique defect weight
 `1-lambda4^2`. This also produces exactly the square-root factor used by the
-Planck-mass formula. The operator mathematics is exact; identifying its
-complementary channel with gravity remains the decisive physical premise. See
+Planck-mass formula. The operator mathematics is exact; deriving its positive
+defect amplitude as an inverse-length horizon-resolution response remains the
+decisive physical premise. See
 [`UNITARY_DEFECT_MECHANISM.md`](UNITARY_DEFECT_MECHANISM.md).
 
 The same matrix now supplies a sharper physical bridge. Its Cuntz--Krieger
@@ -145,6 +146,31 @@ Newton's coupling. A successful mechanism must put `S_Q` into the physical
 area calibration, the noncentral modular generator, or local horizon-cell
 weights. See [`TRACE_NORMALIZATION_OBSTRUCTION.md`](TRACE_NORMALIZATION_OBSTRUCTION.md)
 and [`JACOBSON_CORE_BRIDGE.md`](JACOBSON_CORE_BRIDGE.md).
+
+Running that obstruction backward yields a cleaner geometric target. If the
+positive defect amplitude `sqrt(1-lambda4^2)` rescales both inverse-length
+resolution directions tangent to a two-dimensional local horizon, the density
+of microscopic cells per physical area is multiplied by exactly
+`1-lambda4^2`; Jacobson then gives the deposited inverse correction to `G`.
+This avoids the trace-normalization cancellation. The missing theorem is the
+Q-to-area-density coupling, which the filed two-scalar action does not
+provide. The same audit shows that the bare scalar Kraus pair is state
+independent and therefore cannot by itself serve as an information-transfer
+channel. See
+[`HORIZON_AREA_CALIBRATION.md`](HORIZON_AREA_CALIBRATION.md).
+
+The standing PDT Hodge-pair model (F373, with the F374 source no-go) supplies a
+non-scalar candidate for that missing response. On a Lorentzian chiral pair,
+`I-i*lambda4*star` has real weights `1+lambda4` and `1-lambda4`, so its paired
+determinant is exactly `1-lambda4^2`. The full six-dimensional bivector
+determinant would give the wrong third power; one factor arises naturally only
+after localizing to the horizon binormal and its dual tangent-area form. This
+sharpens the determinant reading to a per-horizon-pair response. More directly,
+the orientation-even average of the two inverse chiral stiffnesses is
+`1/(1-lambda4^2)`, exactly the required enhancement of `G`, without taking a
+full determinant. The remaining premise is to derive this affine chiral
+kinetic operator from the physical action. See
+[`HODGE_CHIRAL_SCREENING.md`](HODGE_CHIRAL_SCREENING.md).
 
 Expanding the deposited two-scalar action about `(phi,chi)=(v,0)` sharpens that
 condition. Its quadratic operator has no `h`-`chi` mixing, so a sectorwise
@@ -206,6 +232,14 @@ minimal mechanism.
   proves that global trace normalization contributes only an additive entropy
   constant and derives the noncentral modular or area-calibration target that
   must replace it.
+- [`HORIZON_AREA_CALIBRATION.md`](HORIZON_AREA_CALIBRATION.md) derives the exact
+  two-dimensional area-density response from the defect amplitude, proves its
+  reverse uniqueness under isotropy, and records why the scalar Kraus model
+  carries no state information.
+- [`HODGE_CHIRAL_SCREENING.md`](HODGE_CHIRAL_SCREENING.md) integrates the
+  standing F373/F374 Hodge results with the trace no-go, proves the full-space
+  third-power control, and isolates the single local-horizon Hodge pair that
+  could carry the observed first power.
 - [`GravityScreening/Basic.lean`](GravityScreening/Basic.lean) kernel-checks
   the algebraic core.
 - [`verify.py`](verify.py) reproduces the exact quartic arithmetic using only
@@ -231,5 +265,9 @@ and its self-complement. It does not convert that scalar into a physical
 entropy variation: global trace rescaling cancels after state normalization.
 Jacobson's correction pattern remains exact conditional algebra if an
 independent mechanism scales the physical entropy-per-area coefficient. The
-open target is now a Q-dependent area calibration or noncentral modular
-response. The filed two-scalar action does not yet derive either mechanism.
+standing F373 affine Hodge operator now supplies the strongest candidate: its
+orientation-even inverse has exactly the required `1/(1-lambda4^2)` response,
+and its geometric-mean amplitude gives the matching area-density and Planck-
+mass powers. The filed two-scalar and Holst sources do not derive that operator
+(F374), so the Q-dependent chiral kinetic term and its Lorentzian reality
+conditions remain the open physical step.

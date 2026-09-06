@@ -8,12 +8,13 @@ The strongest present mechanism is a three-stage chain:
    `lambda4 = 1 - 1/Q` on its positive Perron mode;
 2. norm-preserving completion forces the complementary squared weight
    `1 - lambda4^2`;
-3. local-horizon thermodynamics supplies a known physical setting in which an
-   information complement is read as gravitational response.
+3. an isotropic action of the complementary amplitude on the two inverse-
+   length horizon-resolution directions would force the area-density response
+   `1-lambda4^2`.
 
-The first two stages are exact mathematics. The third is a physically
-motivated correspondence, not yet a consequence of the deposited two-scalar
-action. This chain explains more than the bare identity: it gives separate
+The first two stages are exact mathematics. The third is a precise geometric
+target, not yet a consequence of the deposited two-scalar action. This chain
+explains more than the bare identity: it gives separate
 reasons for the coefficient, its square, its sign, its inverse appearance in
 Newton's constant, and its association with a four-dimensional boundary.
 
@@ -75,7 +76,7 @@ This does not uniquely determine a microscopic Hamiltonian: logarithms of a
 unitary have branch freedom. It does prove that the same coefficient defines a
 closed, norm-preserving one-tick dynamics without adding a coupling.
 
-## Why the complement can be gravitational
+## The candidate horizon-area map
 
 The beta-dilation picture gives the residue a boundary meaning. Under
 `x -> Qx` on a normalized interval, the set `(1/Q,1]` crosses the unit
@@ -89,18 +90,21 @@ together with entropy proportional to horizon area, yields the Einstein
 equation as an equation of state. In the 2015 entanglement-equilibrium version,
 stationarity of vacuum entanglement in small geodesic balls yields the
 semiclassical Einstein equation under the stated field-theory assumptions.
-Those results do not contain PDT's coefficient, but they establish the kind of
-bridge needed here: information crossing or hidden by a local causal boundary
-has a complementary geometric response governed by gravity.
+Those results do not contain PDT's coefficient or identify a channel
+complement with gravity. They establish the narrower bridge needed here:
+horizon entropy variation per physical area fixes the gravitational response.
 
 The proposed PDT reading is consequently precise:
 
 - the quartic residue is the one-step Q-channel amplitude at the boundary;
-- its Stinespring/Julia complement is the accessible geometric response;
-- Jacobson's local equilibrium condition promotes that response to Einstein
-  dynamics;
-- the defect weight rescales the gravitational kinetic coefficient or squared
-  Planck amplitude by `1-lambda4^2`.
+- its Julia defect fixes the positive amplitude
+  `d=sqrt(1-lambda4^2)`;
+- the open physical step is that `d` acts isotropically on the two inverse-
+  length resolution directions tangent to a local horizon;
+- the density of microscopic cells per physical area then scales by
+  `d^2=1-lambda4^2`, and Jacobson's local equilibrium condition converts that
+  entropy-per-area coefficient into Newton's
+  coupling.
 
 This yields
 
@@ -112,10 +116,30 @@ G_{\mathrm{eff}}
 =\frac{G_0}{1-\lambda_4^2}.
 \]
 
-Jacobson's theorem supports the identification of an information complement
-with a gravitational response. It does not prove that the PDT Perron residue
-is the horizon channel. That identification is now the single exposed
-physical premise.
+Jacobson's theorem supplies the area-law-to-gravity implication. It does not
+prove that the PDT defect amplitude acts on the inverse-length horizon
+resolution. That local area-density identification is the exposed physical
+premise.
+
+The bare scalar Kraus pair also requires a warning: it factorizes as
+`psi tensor (lambda|Q>+d|G>)`, so its outcome weights are independent of the
+input state. It is a norm decomposition, not yet an information-transfer
+mechanism. A full channel must have nontrivial relative branch action while
+retaining the universal weights. See `HORIZON_AREA_CALIBRATION.md`.
+
+The standing F373 Hodge-pair response supplies the first non-scalar candidate
+that passes this warning. If `A=I+lambda4 C` is a normalized chiral kinetic
+operator, its stiffnesses are `1+lambda4` and `1-lambda4`. The
+orientation-even mean of their inverse responses is exactly
+
+```text
+1/(1-lambda4^2).
+```
+
+This is the required enhancement of `G` as an inverse kinetic response, and it
+does not reinterpret global trace normalization as entropy. The current action
+still does not derive `A`; that source-forcing no-go is F374. See
+`HODGE_CHIRAL_SCREENING.md`.
 
 Primary references:
 
@@ -173,35 +197,38 @@ Running the construction backward reveals four sharp failure modes.
 2. **Classical measure instead of amplitude.** If the interval length
    `lambda4` is treated directly as a probability, the complement is
    `1-lambda4`, also wrong. The square requires Hilbert norm.
-3. **More than two physical channels.** Completeness then fixes only the sum
-   of the complementary weights; it no longer forces all of
-   `1-lambda4^2` into gravity.
-4. **A nonscalar residue.** A momentum-dependent or mode-dependent reduction
-   would generally produce an operator-valued screening rather than the
-   observed scalar factor.
+3. **Bare scalar instrument.** The pair `lambda4 I,d I` factorizes and carries
+   no information about the input state. It fixes weights but supplies no
+   Q-to-geometry dynamics.
+4. **Wrong horizon determinant.** A nontrivial operator-valued completion is
+   allowed, but its positive isotropic horizon projection must have determinant
+   `1-lambda4^2`; otherwise it does not produce the observed universal factor.
 
 The proposed mechanism is therefore falsifiable. A derivation from the actual
-joint Q-geometry dynamics must produce a two-channel scalar reduction with
-Kraus amplitude `lambda4` on the physical mode. Producing `1/Q`, extra active
-channels, or a nonconstant operator would reject this mechanism.
+joint Q-geometry dynamics must preserve the quartic residue weight while
+acting nontrivially on the state, and its horizon area-density response must
+have the required determinant. Producing `1/Q`, a trivial state-independent model
+only, or a different area determinant rejects this mechanism.
 
 ## Honest status
 
 This closes the algebraic and normalization questions:
 
 - **why `lambda4`:** inverse-step residue of the founding quartic operator;
-- **why a square:** probabilities and kinetic strengths are Hilbert norms;
+- **why a square:** the defect is a Hilbert norm and a two-dimensional horizon
+  cell density is quadratic in its inverse-length amplitude;
 - **why a minus sign:** norm conservation in the complementary channel;
 - **why the reciprocal in `G`:** Newton's constant is inverse-square in the
   Planck mass;
 - **why four dimensions:** the Pisot boundary and the Ehrenfest marginal point
   coincide at the quartic rung.
 
-A published type-III theorem now supplies an abstract state-preserving
-realization of the quartic response inside a wedge algebra. What remains is
-dynamical and gravitational: make the embedded pQ algebra invariant under the
-wedge modular flow, and then identify its defect complement with the
-gravitational kinetic response. `MODULAR_MAP_AUDIT.md` states the cocycle test;
-`REVERSE_HORIZON_AUDIT.md` gives the stronger equivalent target of a vacuum-
-preserving conditional expectation. Until those conditions are met, this is a
-tightly constrained candidate mechanism with explicit falsifiers.
+A published type-III theorem supplies an abstract state-preserving realization
+of the quartic response inside a wedge algebra, while the free-wedge audit
+excludes an exact bounded local clock. The continuous-core trace realizes the
+coefficient but global trace normalization cannot change the entropy first
+law. What remains is a local gravitational construction: derive the affine
+chiral kinetic operator whose orientation-even inverse supplies the screening,
+or derive an equivalent horizon area-density or noncentral modular response.
+Until then this is a tightly constrained candidate mechanism with explicit
+falsifiers.
