@@ -260,6 +260,19 @@ def main():
     assert abs(kms_reverse_factor - Decimal(1) / Q) < Decimal("1e-65")
     assert abs(kms_response_defect - lambda4) < Decimal("1e-65")
 
+    # The dual action on the continuous core scales its canonical trace by
+    # exp(-s).  At s=log(Q), one step retains 1/Q.  The complement of the
+    # twice-applied defect is 2*T_Q-T_Q^2 and reproduces the gravity factor.
+    core_trace_one_step = (-beta_q).exp()
+    core_trace_two_steps = (-Decimal(2) * beta_q).exp()
+    core_trace_defect = Decimal(1) - core_trace_one_step
+    core_self_defect_survivor = (
+        Decimal(2) * core_trace_one_step - core_trace_two_steps
+    )
+    assert abs(core_trace_one_step - Decimal(1) / Q) < Decimal("1e-65")
+    assert abs(core_trace_defect - lambda4) < Decimal("1e-65")
+    assert abs(core_self_defect_survivor - S) < Decimal("1e-65")
+
     # Scalar Julia dilation [[lambda4, defect], [defect, -lambda4]].
     # Its row norms are one and its rows are orthogonal.
     row_norm = lambda4**2 + defect**2
@@ -316,6 +329,9 @@ def main():
     print(f"KMS inverse temperature     = {beta_q}")
     print(f"KMS reverse/forward factor  = {kms_reverse_factor}")
     print("KMS causal response defect  = lambda4 EXACT")
+    print("core Q-step trace ratio      = 1/Q EXACT")
+    print("core Q-step trace defect     = lambda4 EXACT")
+    print("core self-defect survivor    = 1-lambda4^2 EXACT")
     print("companion matrix primitive  = M^10 strictly positive")
     print("cubic matrix primitive      = M^5 strictly positive")
     print("founding field degrees      = 3 and 4 (coprime)")

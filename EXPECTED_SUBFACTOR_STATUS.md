@@ -147,6 +147,14 @@ bounded-subfactor route cannot work. A weaker ordinary-Cesàro condition does
 not suffice. See `WEAK_MIXING_OBSTRUCTION.md` for the proof, the terminology
 caveat, and the crossed-product alternative.
 
+For the standard Fock vacuum of the linearized two-scalar action, a direct
+rapidity-spectrum calculation removes the condition: the only boost
+eigenvector is the vacuum, so separatingness rules out the required nonzero
+bounded modular eigenoperator. Hence the state-preserving expected graph
+subfactor does not exist in that linearized wedge model. The continuous core
+does carry the missing logarithmic step as a trace-scaling dual action; see
+`FREE_WEDGE_CORE_AUDIT.md`.
+
 ## Verdict
 
 The stronger expectation is not automatic for the physical vacuum. The bare

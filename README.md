@@ -123,6 +123,19 @@ the natural next home for the pQ clock is an observer or crossed-product
 extension of the local algebra. See
 [`WEAK_MIXING_OBSTRUCTION.md`](WEAK_MIXING_OBSTRUCTION.md).
 
+For the linearized two-scalar model the point-spectrum test can be completed.
+Boosts act by translations of the one-particle rapidity coordinate, so the
+Fock space has no boost eigenvectors beyond the vacuum. Separatingness then
+rules out every nonzero bounded wedge modular eigenoperator at the required
+`Q^(-it)` phase. The exact clock therefore cannot be a bounded local mode of
+the free wedge. In the continuous core, however, the dual action scales the
+canonical trace by `exp(-s)`. The step `s=log Q` has trace defect `lambda4`,
+and the complement of its twice-applied defect is exactly
+`1-lambda4^2`. This supplies a standard observer-algebra realization of the
+complete coefficient while leaving its identification with the gravitational
+response open. See
+[`FREE_WEDGE_CORE_AUDIT.md`](FREE_WEDGE_CORE_AUDIT.md).
+
 Expanding the deposited two-scalar action about `(phi,chi)=(v,0)` sharpens that
 condition. Its quadratic operator has no `h`-`chi` mixing, so a sectorwise
 modular identification is cocycle-neutral on the one-particle quartic mode at
@@ -172,6 +185,10 @@ minimal mechanism.
   explicit absolute-Cesàro mixing condition excludes exact nonzero-frequency
   bounded modular eigenoperators, records a terminology trap, and identifies
   the observer/crossed-product alternative.
+- [`FREE_WEDGE_CORE_AUDIT.md`](FREE_WEDGE_CORE_AUDIT.md) completes the modular
+  point-spectrum test for the linearized two-scalar Fock vacuum, proves the
+  bounded local-clock obstruction, and realizes the complete screening
+  polynomial on the continuous core's canonical trace ray.
 - [`GravityScreening/Basic.lean`](GravityScreening/Basic.lean) kernel-checks
   the algebraic core.
 - [`verify.py`](verify.py) reproduces the exact quartic arithmetic using only
@@ -190,8 +207,10 @@ lake build
 The arithmetic, Schur-complement identity, four-dimensional homogeneity
 criterion, renewal-frequency identity, and KMS causal-response identity are
 exact mathematics. A state-preserving embedding into a local wedge algebra
-exists abstractly. The remaining physical hypothesis is modular and net
-covariance. It can be attacked either as cocycle neutrality on the quartic mode
-or, more strongly, as a vacuum-preserving conditional expectation onto the pQ
-subalgebra. The filed two-scalar action gives conditional tree-level neutrality
-but does not protect it in the interacting theory.
+exists abstractly, but the linearized Fock wedge cannot make it modularly
+covariant because its nonzero bounded modular eigenspaces vanish. The
+continuous core supplies an exact trace-ray realization of the quartic defect
+and its self-complement. The remaining physical hypothesis is that this
+surviving Type-II trace response is the gravitational kinetic or entropy
+response. The filed two-scalar action does not yet derive that identification
+or protect it in the interacting theory.

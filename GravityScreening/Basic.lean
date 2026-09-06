@@ -338,6 +338,59 @@ theorem wedge_response_eq_quartic_iff (q omega : ℝ) (hq : 0 < q) :
   · apply (eq_div_iff (mul_ne_zero (by norm_num) Real.pi_ne_zero)).1 at h
     nlinarith
 
+/-! ## The continuous-core trace ray
+
+For the continuous core of a type-III factor, the canonical trace satisfies
+`tau ∘ theta_s = exp (-s) tau` under the dual action. The operator-algebraic
+existence of the core, trace, and dual action is a carried theorem of
+Connes--Takesaki theory. The declarations below kernel-check the exact scalar
+consequences on its one-dimensional trace ray.
+-/
+
+/-- Scalar action induced on a finite trace value by the dual flow. -/
+noncomputable def coreTraceScale (s mass : ℝ) : ℝ :=
+  Real.exp (-s) * mass
+
+/-- A quartic logarithmic step retains exactly the inverse Perron fraction. -/
+theorem coreTraceScale_log (q mass : ℝ) (hq : 0 < q) :
+    coreTraceScale (Real.log q) mass = mass / q := by
+  unfold coreTraceScale
+  rw [Real.exp_neg, Real.exp_log hq]
+  field_simp [ne_of_gt hq]
+
+/-- The relative trace loss of one quartic logarithmic step is `lambda4`. -/
+theorem coreTraceDefect_log (q mass : ℝ) (hq : 0 < q) (hmass : mass ≠ 0) :
+    (mass - coreTraceScale (Real.log q) mass) / mass = lambda4 q := by
+  rw [coreTraceScale_log q mass hq]
+  unfold lambda4
+  field_simp [ne_of_gt hq, hmass]
+
+/-- Two successive dual-flow steps multiply their trace-scale factors. -/
+theorem coreTraceScale_add (s t mass : ℝ) :
+    coreTraceScale (s + t) mass =
+      coreTraceScale s (coreTraceScale t mass) := by
+  unfold coreTraceScale
+  rw [neg_add, Real.exp_add]
+  ring
+
+/-- On the trace ray, subtracting the quartic scale step twice and taking the
+complement gives exactly the proposed gravitational survivor. Equivalently,
+`I - (I-T_Q)^2 = 2*T_Q - T_Q^2` has eigenvalue `1-lambda4^2` when
+`T_Q` has trace eigenvalue `1/q`. -/
+theorem coreSelfDefect_survivor (q mass : ℝ)
+    (hq : 0 < q) (hmass : mass ≠ 0) :
+    (2 * coreTraceScale (Real.log q) mass -
+        coreTraceScale (2 * Real.log q) mass) / mass =
+      screening (lambda4 q) := by
+  rw [coreTraceScale_log q mass hq]
+  have htwo : coreTraceScale (2 * Real.log q) mass = mass / q ^ 2 := by
+    unfold coreTraceScale
+    have hrewrite : -(2 * Real.log q) = -Real.log q + -Real.log q := by ring
+    rw [hrewrite, Real.exp_add, Real.exp_neg, Real.exp_log hq]
+    field_simp [ne_of_gt hq]
+  rw [htwo, quartic_screening_identity q (ne_of_gt hq)]
+  field_simp [ne_of_gt hq, hmass]
+
 /-- If a mass amplitude is multiplied by the defect coefficient, its square is
 multiplied by the screening coefficient. -/
 theorem defect_mass_square (l d m : ℝ)
@@ -453,6 +506,10 @@ end GravityScreening
 #print axioms GravityScreening.quartic_response_shift_eq_iff
 #print axioms GravityScreening.kms_response_eq_quartic_iff
 #print axioms GravityScreening.wedge_response_eq_quartic_iff
+#print axioms GravityScreening.coreTraceScale_log
+#print axioms GravityScreening.coreTraceDefect_log
+#print axioms GravityScreening.coreTraceScale_add
+#print axioms GravityScreening.coreSelfDefect_survivor
 #print axioms GravityScreening.defect_mass_square
 #print axioms GravityScreening.radial_homogeneity_iff
 #print axioms GravityScreening.ehrenfest_marginal_iff

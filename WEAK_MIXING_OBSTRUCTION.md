@@ -173,6 +173,11 @@ observer algebra rather than the bounded local observables themselves.
 The word “likely” here marks the physical choice. The obstruction under the
 stated absolute-Cesàro hypothesis is an exact mathematical implication.
 
+The model-specific continuation in `FREE_WEDGE_CORE_AUDIT.md` proves the
+needed absence directly for the standard linearized two-scalar Fock vacuum,
+without assuming this mixing condition, and constructs the corresponding
+continuous-core trace response.
+
 ## References
 
 - Brunetti, Guido, and Longo, *Modular Structure and Duality in Conformal
