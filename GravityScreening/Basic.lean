@@ -77,3 +77,11 @@ theorem ehrenfest_marginal_iff (d : ℝ) :
   constructor <;> intro h <;> linarith
 
 end GravityScreening
+
+#print axioms GravityScreening.response_completed_square
+#print axioms GravityScreening.response_at_stationary
+#print axioms GravityScreening.normalized_block_det
+#print axioms GravityScreening.screening_pos
+#print axioms GravityScreening.quartic_screening_identity
+#print axioms GravityScreening.radial_homogeneity_iff
+#print axioms GravityScreening.ehrenfest_marginal_iff
