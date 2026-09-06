@@ -369,15 +369,28 @@ minimal mechanism.
   coefficient is the normalized intrinsic trace-form norm of
   `1+i*lambda4`, contrasted with the positive Hermitian norm used in the
   Q-as-QM account.
+- [`TIME_GRAVITY_TRACE_BRIDGE.md`](TIME_GRAVITY_TRACE_BRIDGE.md) identifies the
+  normalized negative trace axis with the explicit quartic time observer.
+- [`COVARIANT_EINSTEIN_BRIDGE.md`](COVARIANT_EINSTEIN_BRIDGE.md) places the
+  fixed trace scalar in the existing induced Einstein term while keeping the
+  internal trace form distinct from the dynamical spacetime metric.
+- [`INDUCED_GRAVITY_NORMALIZATION_AUDIT.md`](INDUCED_GRAVITY_NORMALIZATION_AUDIT.md)
+  corrects a factor-of-two numerical inconsistency in the companion drafts.
+- [`BASELINE_CONDENSATE_CHAIN.md`](BASELINE_CONDENSATE_CHAIN.md) combines the
+  deposited unscreened scale, the corrected conformal condensate, and the
+  quartic response into a reproducible Planck-mass comparison.
 - [`GravityScreening/Basic.lean`](GravityScreening/Basic.lean) kernel-checks
   the algebraic core.
 - [`verify.py`](verify.py) reproduces the exact quartic arithmetic using only
   the Python standard library.
+- [`condensate_chain.py`](condensate_chain.py) reproduces the conditional
+  baseline-to-condensate numerical chain and its experimental score.
 
 ## Reproduce
 
 ```bash
 python3 verify.py
+python3 condensate_chain.py
 lake exe cache get
 lake build
 ```
@@ -415,3 +428,14 @@ direction, and `1+i*lambda4` already has normalized intrinsic square
 `1-lambda4^2`.  The remaining step is therefore the placement of this affine
 local response in the gravitational kinetic term, rather than the derivation
 of another determinant or normalization factor.
+
+The corrected induced-gravity normalization also closes a conditional
+numerical chain.  Starting from the deposited unscreened relation
+`M_Pl,0/m_e=(rho Q)^112/pi^2`, conformal coupling predicts
+`v=6.0653766424e18 GeV`; applying the quartic trace response then predicts
+`M_Pl,Q=1.2209081472e19 GeV`, which is `+0.00148639%` or `+1.30` current
+experimental standard uncertainties above the 2022 CODATA central value.
+This comparison does not derive the deposited exponent or the physical
+placement of the trace factor, but it removes measured gravity from the
+condensate normalization and makes the remaining action-level premise
+directly testable.
