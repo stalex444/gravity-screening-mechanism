@@ -1,6 +1,6 @@
-# The Jacobson bridge: exact conditional algebra and a normalization obstruction
+# The Jacobson bridge: the solved constant and its microscopic mechanism
 
-## Corrected result
+## What the gravity paper already solves
 
 Let
 
@@ -9,7 +9,16 @@ lambda4 = 1-1/Q,
 S_Q = 1-lambda4^2 = (2Q-1)/Q^2.
 ```
 
-The deposited gravity formulas have the exact common pattern
+The deposited gravity paper supplies the entropy-area density that is left
+undetermined in Jacobson's equation-of-state derivation:
+
+```text
+eta_PDT = m_e^2 (rho Q)^224 (2Q-1)/(4 pi^4 Q^2).
+```
+
+This is the value of Jacobson's constant in the PDT construction.  Using
+`G=1/(4 eta)` in natural units, the deposited formulas have the exact common
+pattern
 
 ```text
 eta_Q       = S_Q eta_0,
@@ -18,8 +27,12 @@ M_P,Q^2     = S_Q M_P,0^2,
 M_P,Q       = sqrt(S_Q) M_P,0.
 ```
 
-Once the first line is assumed, Jacobson's relation `G=1/(4 eta)` forces the
-other three. That scalar implication is exact and is kernel-checked in
+Jacobson's relation forces the equivalence of these four presentations.  That
+equivalence does not reopen the value supplied by the paper.  The question in
+this repository is the microscopic origin of the already present factor
+`S_Q`, so that the entropy density can be obtained directly from the local
+PDT information structure as well as from the derived Planck scale.  The
+scalar implications are exact and kernel-checked in
 `GravityScreening/Basic.lean`.
 
 The continuous-core calculation does **not** derive the first line merely by
@@ -28,6 +41,35 @@ an overall trace rescaling changes entropy only by an additive constant. It
 does not multiply entropy differences or their first variations. The former
 claim that the core trace response itself supplies Jacobson's density scaling
 was therefore too strong.
+
+## The phi-to-rho-Q fold changes the target
+
+The golden ratio `phi` and the joint ruler `rho*Q` are distinct algebraic units
+with the same norm `-1`.  More strongly, the golden-polynomial defect
+
+```text
+(rho Q)^2-rho Q-1
+```
+
+is itself a norm-`-1` unit.  At the positive embedding the defect is tiny; its
+other conjugate values compensate exactly because the total norm has magnitude
+one.  This supplies a natural microscopic conservation law: information is
+redistributed across conjugate directions while total arithmetic volume is
+fixed.
+
+Jacobson's framework says exactly how such a law could become gravitational.
+It must become a variation of locally inaccessible information per unit causal
+horizon area.  The unit norm is therefore a candidate for the fixed-volume
+constraint, while the quartic residue is the candidate visible-channel loss.
+The missing proof is
+
+```text
+fixed norm-volume + local Q coarse-graining
+    => delta S_Q/delta A = eta_Q = S_Q eta_0,
+```
+
+with `S_Q=1-lambda4^2`.  The exact fold is proved and explained in
+`PHI_RULER_FOLD.md`; the displayed implication is not yet derived.
 
 ## 1. What the continuous core really supplies
 

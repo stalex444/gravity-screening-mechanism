@@ -14,6 +14,10 @@ Q^4=Q+1.
 It is an exploratory repository. It does not alter the PDT canon and it does
 not claim that the physical screening mechanism has been derived.
 
+The PDT gravity paper already supplies the value of Jacobson's undetermined
+entropy-area density.  The purpose here is narrower: derive the microscopic
+origin of the quartic factor already present in that value.
+
 The strongest current formulation treats `S_Q` as a post-condensation matching
 coefficient of the infrared Einstein term.  This placement survives canonical
 field normalization.  Its information-geometric reading is the partial Fisher
@@ -22,6 +26,13 @@ information left after the quartic clock coordinate is eliminated.  See
 [`INFORMATION_GEOMETRIC_MATCHING.md`](INFORMATION_GEOMETRIC_MATCHING.md).
 The canonical-candidate calculation is in
 [`FISHER_SCORE_AUDIT.md`](FISHER_SCORE_AUDIT.md).
+
+The arithmetic substrate is sharpened in
+[`PHI_RULER_FOLD.md`](PHI_RULER_FOLD.md).  The golden ratio and `rho*Q` are
+distinct, but both have norm `-1`; moreover the golden-polynomial defect of
+`rho*Q` is itself a norm-`-1` unit.  This makes `rho*Q` a precise
+higher-dimensional lift of the golden unit while keeping the quartic response
+`lambda4` as a separate operation on that ruler.
 
 ## The useful result
 
@@ -396,8 +407,12 @@ minimal mechanism.
   the canonical-normalization control that a viable gravity mechanism must pass.
 - [`GravityScreening/Basic.lean`](GravityScreening/Basic.lean) kernel-checks
   the algebraic core.
+- [`GravityScreening/PhiRulerFold.lean`](GravityScreening/PhiRulerFold.lean)
+  kernel-checks the exact golden-defect unit identity.
 - [`verify.py`](verify.py) reproduces the exact quartic arithmetic using only
   the Python standard library.
+- [`phi_ruler_fold.py`](phi_ruler_fold.py) reproduces the positive-embedding
+  scale comparison and conjugate compensation.
 - [`condensate_chain.py`](condensate_chain.py) reproduces the conditional
   baseline-to-condensate numerical chain and its experimental score.
 
@@ -406,6 +421,7 @@ minimal mechanism.
 ```bash
 python3 verify.py
 python3 condensate_chain.py
+python3 phi_ruler_fold.py
 lake exe cache get
 lake build
 ```
