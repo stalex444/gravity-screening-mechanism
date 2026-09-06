@@ -379,6 +379,9 @@ minimal mechanism.
 - [`BASELINE_CONDENSATE_CHAIN.md`](BASELINE_CONDENSATE_CHAIN.md) combines the
   deposited unscreened scale, the corrected conformal condensate, and the
   quartic response into a reproducible Planck-mass comparison.
+- [`DECISIVE_ACTION_TARGET.md`](DECISIVE_ACTION_TARGET.md) reduces the open
+  physics to the trace-weighted induced Einstein term and states the quadratic
+  conditions that force its coefficient.
 - [`GravityScreening/Basic.lean`](GravityScreening/Basic.lean) kernel-checks
   the algebraic core.
 - [`verify.py`](verify.py) reproduces the exact quartic arithmetic using only

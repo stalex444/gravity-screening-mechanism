@@ -372,6 +372,59 @@ theorem traceInducedNewton_eq
   unfold newtonFromPlanckSq
   field_simp [hbase, hscreen]
 
+/-! ## Conditional closure of the deposited Planck chain -/
+
+/-- The unscreened Planck scale written in the deposited gravity paper.  This
+definition records the formula; it does not assert its physical derivation. -/
+noncomputable def depositedBaselinePlanck (me rho q : ℝ) : ℝ :=
+  me * (rho * q) ^ 112 / Real.pi ^ 2
+
+/-- If the conformal condensate is normalized to the deposited unscreened
+scale, the trace-completed induced action has exactly the screened baseline
+Planck square. -/
+theorem conditional_pdt_planck_chain
+    (me rho q phi l : ℝ)
+    (hphi : (4 * Real.pi / 3) * phi ^ 2 =
+      depositedBaselinePlanck me rho q ^ 2) :
+    traceInducedPlanckSq (1 / 6) phi l =
+      screening l * depositedBaselinePlanck me rho q ^ 2 := by
+  rw [traceInducedPlanckSq_conformal, hphi]
+  ring
+
+/-- Specializing the response to `lambda4(q)` gives the rational quartic
+screening coefficient used in the gravity formula. -/
+theorem conditional_pdt_quartic_planck_chain
+    (me rho q phi : ℝ)
+    (hq : q ≠ 0)
+    (hphi : (4 * Real.pi / 3) * phi ^ 2 =
+      depositedBaselinePlanck me rho q ^ 2) :
+    traceInducedPlanckSq (1 / 6) phi (lambda4 q) =
+      ((2 * q - 1) / q ^ 2) * depositedBaselinePlanck me rho q ^ 2 := by
+  rw [conditional_pdt_planck_chain me rho q phi (lambda4 q) hphi]
+  unfold screening lambda4
+  field_simp [hq]
+  ring
+
+/-- A general quadratic internal response in the induced Einstein coefficient
+is forced to the same screening law by background normalization, time reversal
+and the unit-null boundary. -/
+noncomputable def quadraticInducedPlanckSq
+    (xi phi a b c l : ℝ) : ℝ :=
+  inducedPlanckSq xi phi * quadraticSpacetimeScalar a b c 1 l
+
+theorem quadraticInducedPlanckSq_forced
+    (xi phi a b c l : ℝ)
+    (hbase : quadraticSpacetimeScalar a b c 1 0 = 1)
+    (heven : ∀ t : ℝ,
+      quadraticSpacetimeScalar a b c 1 t =
+        quadraticSpacetimeScalar a b c 1 (-t))
+    (hnull : quadraticSpacetimeScalar a b c 1 1 = 0) :
+    quadraticInducedPlanckSq xi phi a b c l =
+      screening l * inducedPlanckSq xi phi := by
+  unfold quadraticInducedPlanckSq
+  rw [normalized_even_null_quadratic_forced a b c l hbase heven hnull]
+  ring
+
 /-- There is only one nonnegative defect coordinate with the required norm. -/
 theorem nonnegative_defect_unique
     (l d e : ℝ)
@@ -1553,6 +1606,9 @@ end GravityScreening
 #print axioms GravityScreening.traceInducedPlanckSq_eq
 #print axioms GravityScreening.traceInducedPlanckSq_conformal
 #print axioms GravityScreening.traceInducedNewton_eq
+#print axioms GravityScreening.conditional_pdt_planck_chain
+#print axioms GravityScreening.conditional_pdt_quartic_planck_chain
+#print axioms GravityScreening.quadraticInducedPlanckSq_forced
 #print axioms GravityScreening.nonnegative_defect_unique
 #print axioms GravityScreening.constitutiveBlock_det
 #print axioms GravityScreening.raw_constitutive_twist_sq
