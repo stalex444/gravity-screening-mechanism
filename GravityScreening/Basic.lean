@@ -151,6 +151,71 @@ theorem intrinsicTrace_eq_screening_iff (c l : ℝ) :
   unfold screening
   constructor <;> intro h <;> linarith
 
+/-! ## The same realization in the global quartic power basis
+
+The matrix below is the genuine quartic trace-form matrix whose identification
+with `Tr(x*y)` and signature `(3,1)` are proved in the PDT canon.  Here it is
+used only as an explicit real matrix.  Its standard rational diagonalization
+contains the normalized axes declared below.
+-/
+
+/-- Quartic trace-form matrix in the power basis `1,Q,Q^2,Q^3`. -/
+def quarticTraceMatrix : Matrix (Fin 4) (Fin 4) ℝ :=
+  !![4, 0, 0, 3;
+     0, 0, 3, 4;
+     0, 3, 4, 0;
+     3, 4, 0, 3]
+
+/-- Coordinates in the quartic power basis `1,Q,Q^2,Q^3`. -/
+structure QuarticTraceCoords where
+  c0 : ℝ
+  c1 : ℝ
+  c2 : ℝ
+  c3 : ℝ
+
+/-- The bilinear pairing represented by the quartic trace matrix. -/
+def quarticTracePair (x y : QuarticTraceCoords) : ℝ :=
+  4 * x.c0 * y.c0 + 3 * x.c0 * y.c3 +
+  3 * x.c1 * y.c2 + 4 * x.c1 * y.c3 +
+  3 * x.c2 * y.c1 + 4 * x.c2 * y.c2 +
+  3 * x.c3 * y.c0 + 4 * x.c3 * y.c1 + 3 * x.c3 * y.c3
+
+/-- Normalized identity direction `1/2`. -/
+noncomputable def quarticSpaceUnit : QuarticTraceCoords :=
+  ⟨1 / 2, 0, 0, 0⟩
+
+/-- Normalized negative direction `(4Q-3Q^2)/6`. -/
+noncomputable def quarticTimeUnit : QuarticTraceCoords :=
+  ⟨0, 2 / 3, -1 / 2, 0⟩
+
+/-- The identity direction has trace square `+1`. -/
+theorem quarticSpaceUnit_sq :
+    quarticTracePair quarticSpaceUnit quarticSpaceUnit = 1 := by
+  norm_num [quarticTracePair, quarticSpaceUnit]
+
+/-- The distinguished negative direction has trace square `-1`. -/
+theorem quarticTimeUnit_sq :
+    quarticTracePair quarticTimeUnit quarticTimeUnit = -1 := by
+  norm_num [quarticTracePair, quarticTimeUnit]
+
+/-- The normalized identity and timelike axes are trace-orthogonal. -/
+theorem quarticSpaceTime_orthogonal :
+    quarticTracePair quarticSpaceUnit quarticTimeUnit = 0 := by
+  norm_num [quarticTracePair, quarticSpaceUnit, quarticTimeUnit]
+
+/-- The affine field-space response along the normalized timelike axis. -/
+noncomputable def quarticTraceResponse (l : ℝ) : QuarticTraceCoords :=
+  ⟨1 / 2, 2 * l / 3, -l / 2, 0⟩
+
+/-- The genuine quartic trace matrix evaluates the affine response to the
+screening difference of squares. -/
+theorem quarticTraceResponse_sq (l : ℝ) :
+    quarticTracePair (quarticTraceResponse l) (quarticTraceResponse l) =
+      screening l := by
+  norm_num [quarticTracePair, quarticTraceResponse, quarticSpaceUnit,
+    quarticTimeUnit, screening]
+  ring
+
 /-- There is only one nonnegative defect coordinate with the required norm. -/
 theorem nonnegative_defect_unique
     (l d e : ℝ)
@@ -1319,6 +1384,10 @@ end GravityScreening
 #print axioms GravityScreening.normalizedIntrinsicTrace_affine
 #print axioms GravityScreening.normalizedHermitianTrace_affine
 #print axioms GravityScreening.intrinsicTrace_eq_screening_iff
+#print axioms GravityScreening.quarticSpaceUnit_sq
+#print axioms GravityScreening.quarticTimeUnit_sq
+#print axioms GravityScreening.quarticSpaceTime_orthogonal
+#print axioms GravityScreening.quarticTraceResponse_sq
 #print axioms GravityScreening.nonnegative_defect_unique
 #print axioms GravityScreening.constitutiveBlock_det
 #print axioms GravityScreening.raw_constitutive_twist_sq

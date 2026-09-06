@@ -247,6 +247,13 @@ Hermitian reading supplies positive quantum norm.  This is exact arithmetic;
 placing that local response in the physical Einstein kinetic term remains the
 identification.  See [`TRACE_FORM_SCREENING.md`](TRACE_FORM_SCREENING.md).
 
+The local formula also has an explicit representative in the full quartic
+power-basis trace geometry.  The normalized identity axis `1/2` and the
+normalized negative axis `(4Q-3Q^2)/6` are trace-orthogonal with squares `+1`
+and `-1`; their affine combination with coefficient `lambda4` therefore has
+square `1-lambda4^2`.  These are the axes of the rational diagonalization
+already used to prove the quartic signature `(3,1)`.
+
 The normalized block is also an exact canonical squeeze, which makes the
 earlier Barbero-Immirzi intuition worth testing in a narrower form. Its
 half-squeeze scale is `u_Q=(2Q-1)^(1/4)=1.0957280275...`. The simplest direct

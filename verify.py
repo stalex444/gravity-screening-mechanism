@@ -181,6 +181,41 @@ def main():
     assert q**2 * screen == 2 * q - 1
     assert screen**4 + 3 * screen**3 - 2 * screen**2 + 22 * screen - 23 == 0
 
+    # The global quartic trace form contains a normalized positive identity
+    # axis and a normalized negative axis.  Their affine combination with the
+    # Perron residue has trace square exactly 1-lambda4^2.
+    quartic_trace_matrix = [
+        [4, 0, 0, 3],
+        [0, 0, 3, 4],
+        [0, 3, 4, 0],
+        [3, 4, 0, 3],
+    ]
+
+    def quartic_trace_pair(x, y):
+        return sum(
+            (
+                x[i] * quartic_trace_matrix[i][j] * y[j]
+                for i in range(4)
+                for j in range(4)
+            ),
+            QElement(),
+        )
+
+    space_axis = [QElement((Fraction(1, 2),)), QElement(), QElement(), QElement()]
+    time_axis = [
+        QElement(),
+        QElement((Fraction(2, 3),)),
+        QElement((Fraction(-1, 2),)),
+        QElement(),
+    ]
+    assert quartic_trace_pair(space_axis, space_axis) == one
+    assert quartic_trace_pair(time_axis, time_axis) == -one
+    assert quartic_trace_pair(space_axis, time_axis) == QElement()
+    trace_response = [
+        space_axis[i] + lam * time_axis[i] for i in range(4)
+    ]
+    assert quartic_trace_pair(trace_response, trace_response) == screen
+
     # The first Perron coordinate, normalized by total letter frequency, is
     # lambda4: lambda4 * (1+q+q^2+q^3) = 1 exactly.
     perron_mass = one + q + q**2 + q**3
@@ -535,6 +570,8 @@ def main():
     print("residual Perron eigenvalue  = lambda4 EXACT")
     print("left/right residual readout  = lambda4 EXACT")
     print("quartic residual normality   = NON-NORMAL EXACT")
+    print("quartic trace axes            = (+1,-1,0) EXACT")
+    print("quartic affine trace square   = 1-lambda4^2 EXACT")
     print("renewal-symbol frequency    = lambda4 EXACT")
     print(f"KMS inverse temperature     = {beta_q}")
     print(f"KMS reverse/forward factor  = {kms_reverse_factor}")

@@ -41,6 +41,51 @@ S_Q = 1-lambda4^2
 No auxiliary determinant is required to obtain the minus sign.  It is the
 timelike sign of the complex-place trace form.
 
+## Global quartic realization
+
+The same calculation can be made inside the full quartic power-basis trace
+geometry.  Its genuine trace matrix is
+
+```text
+M = [[4,0,0,3],
+     [0,0,3,4],
+     [0,3,4,0],
+     [3,4,0,3]].
+```
+
+The rational diagonalization already used to prove signature `(3,1)` contains
+the two normalized, trace-orthogonal axes
+
+```text
+e0 = 1/2,
+et = (4Q-3Q^2)/6.
+```
+
+Their exact pairings are
+
+```text
+Tr(e0^2)    = +1,
+Tr(et^2)    = -1,
+Tr(e0*et)   = 0.
+```
+
+Consequently the global quartic element
+
+```text
+a_Q = e0 + lambda4*et
+```
+
+has
+
+```text
+Tr(a_Q^2) = 1-lambda4^2.
+```
+
+This removes a possible objection to the local `1+i*lambda4` notation: the
+screening response has an explicit representative in the quartic field's
+power-basis geometry.  The timelike axis is the negative column in the
+existing rational congruence that diagonalizes the genuine trace form.
+
 ## Why this matters
 
 This calculation joins two parts of PDT without identifying their quadratic
@@ -101,6 +146,8 @@ The following are exact mathematics:
 5. the conjugation-twisted form of the same element is `1+lambda4^2`;
 6. inside the affine family `1+i*c`, obtaining the gravity coefficient forces
    `|c|=lambda4`.
+7. the full quartic trace matrix evaluates
+   `1/2 + lambda4*(4Q-3Q^2)/6` to the same coefficient.
 
 Two physical identifications remain:
 
@@ -114,6 +161,12 @@ screening-specific assumption.  The second is the remaining bridge.  The
 Perron calculation fixes the coefficient and the complex place fixes its
 timelike direction, but a microscopic action has not yet been shown to place
 that exact local element in the Einstein kinetic term.
+
+The global realization narrows the second statement further: the candidate
+direction is the normalized negative axis already present in the quartic
+trace-form diagonalization.  What remains is to show that the curvature
+response combines the normalized identity and that negative axis with the
+Perron-residue coefficient.
 
 ## Relation to the projection account
 
@@ -145,6 +198,10 @@ different coefficient or require additional terms.
 - `normalizedIntrinsicTrace_affine`;
 - `normalizedHermitianTrace_affine`;
 - `intrinsicTrace_eq_screening_iff`.
+- `quarticSpaceUnit_sq`;
+- `quarticTimeUnit_sq`;
+- `quarticSpaceTime_orthogonal`;
+- `quarticTraceResponse_sq`.
 
 These theorems use Mathlib's genuine algebra trace from `C` to `R`, rather
 than defining the desired signs by hand.
