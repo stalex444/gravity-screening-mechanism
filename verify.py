@@ -245,6 +245,26 @@ def main():
     perron = [one, q**3, q**2, q]
     assert matrix_vec_mul(companion, perron) == [q * x for x in perron]
     assert matrix_vec_mul(residual, perron) == [lam * x for x in perron]
+    residual_transpose = [list(row) for row in zip(*residual)]
+    left_perron = [one, q, q**2, q**3]
+    assert matrix_vec_mul(residual_transpose, left_perron) == [
+        lam * x for x in left_perron
+    ]
+    perron_pairing = sum(
+        (left_perron[i] * perron[i] for i in range(4)), QElement()
+    )
+    assert perron_pairing == 3 * q + 4
+    paired_residual = sum(
+        (
+            left_perron[i] * matrix_vec_mul(residual, perron)[i]
+            for i in range(4)
+        ),
+        QElement(),
+    )
+    assert paired_residual == lam * perron_pairing
+    assert matrix_mul(residual_transpose, residual) != matrix_mul(
+        residual, residual_transpose
+    )
 
     Q = positive_root_q()
     lambda4 = Decimal(1) - Decimal(1) / Q
@@ -287,6 +307,42 @@ def main():
     assert abs(chiral_pair_det - S) < Decimal("1e-65")
     assert abs(chiral_even_compliance - Decimal(1) / S) < Decimal("1e-65")
     assert abs(full_bivector_det - S**3) < Decimal("1e-65")
+
+    # Real doubled Hodge action.  For J(x1,x2)=(-x2,x1), the auxiliary
+    # stationary point y=-lambda4*Jx leaves stiffness S on the sourced mode.
+    x1, x2 = Decimal("0.7"), Decimal("-0.3")
+    y1, y2 = Decimal("0.2"), Decimal("0.5")
+    norm_x = x1**2 + x2**2
+    norm_y = y1**2 + y2**2
+    hodge_cross = x1 * y2 - x2 * y1
+    doubled_kinetic = norm_x + norm_y + Decimal(2) * lambda4 * hodge_cross
+    completed_doubled = (
+        (y1 - lambda4 * x2) ** 2
+        + (y2 + lambda4 * x1) ** 2
+        + S * norm_x
+    )
+    assert abs(doubled_kinetic - completed_doubled) < Decimal("1e-65")
+
+    stationary_y1 = lambda4 * x2
+    stationary_y2 = -lambda4 * x1
+    stationary_kinetic = (
+        norm_x
+        + stationary_y1**2
+        + stationary_y2**2
+        + Decimal(2)
+        * lambda4
+        * (x1 * stationary_y2 - x2 * stationary_y1)
+    )
+    assert abs(stationary_kinetic - S * norm_x) < Decimal("1e-65")
+
+    j1, j2 = Decimal("0.6"), Decimal("-0.4")
+    response_x1, response_x2 = j1 / S, j2 / S
+    response_y1 = lambda4 * response_x2
+    response_y2 = -lambda4 * response_x1
+    assert abs(response_x1 + lambda4 * response_y2 - j1) < Decimal("1e-65")
+    assert abs(response_x2 - lambda4 * response_y1 - j2) < Decimal("1e-65")
+    assert abs(response_y1 - lambda4 * response_x2) < Decimal("1e-65")
+    assert abs(response_y2 + lambda4 * response_x1) < Decimal("1e-65")
 
     # A global rescaling of a semifinite trace does not multiply normalized
     # entropy. The same state has density p/c relative to c*tau, so its
@@ -366,8 +422,13 @@ def main():
     getcontext().prec = 70
     rho = Decimal("1.3247179572447460259609088544780973407344040569017")
     lambda3 = Decimal(1) - Decimal(1) / rho
-    kappa = (Q / rho) ** 2
+    chi = Q / rho
+    kappa = chi**2
     bistability_ratio = kappa**2 / (Decimal(4) * lambda3 * lambda4)
+    chi_scaled_screen = Decimal(1) - (chi * lambda4) ** 2
+    kappa_scaled_screen = Decimal(1) - (kappa * lambda4) ** 2
+    assert abs(chi_scaled_screen - S) > Decimal("0.001")
+    assert abs(kappa_scaled_screen - S) > Decimal("0.001")
 
     print(f"Q                         = {Q}")
     print(f"lambda4                   = {lambda4}")
@@ -379,6 +440,8 @@ def main():
     print("Julia block squared         = identity")
     print("companion inverse           = EXACT")
     print("residual Perron eigenvalue  = lambda4 EXACT")
+    print("left/right residual readout  = lambda4 EXACT")
+    print("quartic residual normality   = NON-NORMAL EXACT")
     print("renewal-symbol frequency    = lambda4 EXACT")
     print(f"KMS inverse temperature     = {beta_q}")
     print(f"KMS reverse/forward factor  = {kms_reverse_factor}")
@@ -389,6 +452,7 @@ def main():
     print("Hodge-pair determinant       = 1-lambda4^2 EXACT")
     print("Hodge even inverse response  = 1/(1-lambda4^2) EXACT")
     print("full bivector determinant    = (1-lambda4^2)^3 EXACT")
+    print("real doubled-action response = 1/(1-lambda4^2) EXACT")
     print("trace-normalization entropy  = shifts by log(survivor)")
     print("entropy-difference response  = unchanged EXACT")
     print("conditional Jacobson G rule  = divide by survivor EXACT")
@@ -406,6 +470,8 @@ def main():
         f"{m:.12f}" for m in quartic_residual_magnitudes))
     print(f"Parry measure of beta hole = {parry_hole}")
     print("classical horizon measure  = not lambda4 and not lambda4^2")
+    print(f"chi-scaled Hodge survivor = {chi_scaled_screen} (wrong)")
+    print(f"kappa-scaled survivor     = {kappa_scaled_screen} (wrong)")
     print(f"kappa^2/(4 lambda3 lambda4)= {bistability_ratio}")
     print("portal mixed Hessian sign  = negative" if bistability_ratio > 1 else "portal diagnostic failed")
     print("all exact checks           = PASS")

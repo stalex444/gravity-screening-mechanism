@@ -166,6 +166,88 @@ theorem quarticResidual_perron (q : ℝ) (hq : q ^ 4 = q + 1) (hq0 : q ≠ 0) :
     field_simp [hq0] <;>
     nlinarith [hq]
 
+/-- The quartic residual is non-normal in the standard Euclidean coordinates.
+This prevents silently treating its Perron eigenvalue as a singular value of a
+one-field symmetric kinetic form. -/
+theorem quarticResidual_not_normal :
+    quarticResidual.transpose * quarticResidual ≠
+      quarticResidual * quarticResidual.transpose := by
+  intro h
+  have hij := congrArg (fun M => M 0 1) h
+  norm_num [quarticResidual, Matrix.mul_apply, Matrix.transpose_apply,
+    Fin.sum_univ_succ] at hij
+
+/-- A general diagonal weight on the four quartic coordinates. -/
+def diagonalWeight4 (w₀ w₁ w₂ w₃ : ℝ) : Matrix (Fin 4) (Fin 4) ℝ :=
+  !![w₀,0,0,0; 0,w₁,0,0; 0,0,w₂,0; 0,0,0,w₃]
+
+/-- No nondegenerate positive diagonal information metric can make the full
+quartic residual self-adjoint. The one-way `0 -> 1` matrix entry already
+forces the first diagonal weight to vanish. -/
+theorem quarticResidual_no_diagonal_symmetrizer
+    (w₀ w₁ w₂ w₃ : ℝ) (hw₀ : w₀ ≠ 0) :
+    diagonalWeight4 w₀ w₁ w₂ w₃ * quarticResidual ≠
+      quarticResidual.transpose * diagonalWeight4 w₀ w₁ w₂ w₃ := by
+  intro h
+  have hij := congrArg (fun M => M 0 1) h
+  norm_num [diagonalWeight4, quarticResidual, Matrix.mul_apply,
+    Matrix.transpose_apply, Fin.sum_univ_succ] at hij
+  exact hw₀ hij
+
+/-- The left Perron mode of the quartic residual. Its coordinates are the
+reverse of the right Perron vector. -/
+noncomputable def quarticLeftPerronVector (q : ℝ) : Fin 4 → ℝ :=
+  ![1, q, q ^ 2, q ^ 3]
+
+theorem quarticResidual_left_perron
+    (q : ℝ) (hq : q ^ 4 = q + 1) (hq0 : q ≠ 0) :
+    quarticResidual.transpose.mulVec (quarticLeftPerronVector q) =
+      fun i => lambda4 q * quarticLeftPerronVector q i := by
+  have hl := lambda4_eq_relative_increment q hq0
+  funext i
+  fin_cases i <;>
+    simp [quarticResidual, quarticLeftPerronVector, Matrix.transpose_apply,
+      Matrix.mulVec, dotProduct, Fin.sum_univ_succ] <;>
+    rw [hl] <;>
+    field_simp [hq0] <;>
+    nlinarith [hq]
+
+/-- The scale-independent left/right Perron pairing. -/
+theorem quarticPerron_pairing (q : ℝ) (hq : q ^ 4 = q + 1) :
+    dotProduct (quarticLeftPerronVector q) (quarticPerronVector q) =
+      3 * q + 4 := by
+  simp [quarticLeftPerronVector, quarticPerronVector, dotProduct,
+    Fin.sum_univ_succ]
+  nlinarith [hq]
+
+/-- The biorthogonally normalized residual coefficient. -/
+noncomputable def quarticBiResidualCoefficient (q : ℝ) : ℝ :=
+  dotProduct (quarticLeftPerronVector q)
+      (quarticResidual.mulVec (quarticPerronVector q)) /
+    dotProduct (quarticLeftPerronVector q) (quarticPerronVector q)
+
+/-- On the positive quartic Perron mode, the non-normal residual contributes
+exactly `lambda4` when paired with its left mode. -/
+theorem quarticBiResidualCoefficient_eq_lambda4
+    (q : ℝ) (hq : q ^ 4 = q + 1) (hq1 : 1 < q) :
+    quarticBiResidualCoefficient q = lambda4 q := by
+  have hq0 : q ≠ 0 := by linarith
+  have hden :
+      dotProduct (quarticLeftPerronVector q) (quarticPerronVector q) ≠ 0 := by
+    rw [quarticPerron_pairing q hq]
+    nlinarith
+  unfold quarticBiResidualCoefficient
+  rw [quarticResidual_perron q hq hq0]
+  have hdot :
+      dotProduct (quarticLeftPerronVector q)
+          (fun i => lambda4 q * quarticPerronVector q i) =
+        lambda4 q *
+          dotProduct (quarticLeftPerronVector q) (quarticPerronVector q) := by
+    simp [dotProduct, Fin.sum_univ_succ]
+    ring
+  rw [hdot]
+  field_simp [hden]
+
 /-! ## Minimal unitary completion of the residue contraction -/
 
 /-- Once a real contraction coefficient `l` is fixed, conservation of squared
@@ -313,6 +395,189 @@ theorem quartic_orientationEven_chiralCompliance (q : ℝ) (hq : 1 < q) :
   rw [orientationEven_chiralCompliance (lambda4 q) hplus hminus]
   rw [quartic_screening_identity q hq0]
   have hden : 2 * q - 1 ≠ 0 := by nlinarith
+  field_simp [hq0, hden]
+
+/-! ## A real doubled kinetic realization
+
+The complex chiral involution can be realified by retaining a second Hodge-
+paired mode. The resulting quadratic action is real. Eliminating the second
+mode produces the same Schur complement `1-l^2` and hence the reciprocal
+source response.
+-/
+
+/-- Realification of the complex chirality involution on two real Hodge-paired
+modes, in coordinates `(x₁,x₂,y₁,y₂)`. -/
+def realifiedChirality : Matrix (Fin 4) (Fin 4) ℝ :=
+  !![0,0,0,1; 0,0,-1,0; 0,-1,0,0; 1,0,0,0]
+
+theorem realifiedChirality_transpose :
+    realifiedChirality.transpose = realifiedChirality := by
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    norm_num [realifiedChirality, Matrix.transpose_apply]
+
+theorem realifiedChirality_sq :
+    realifiedChirality * realifiedChirality = 1 := by
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    norm_num [realifiedChirality, Matrix.mul_apply, Fin.sum_univ_succ]
+
+/-- The real doubled response operator `I+lR`, written explicitly so its
+coordinate action is transparent. -/
+def realDoubledResponse (l : ℝ) : Matrix (Fin 4) (Fin 4) ℝ :=
+  !![1,0,0,l; 0,1,-l,0; 0,-l,1,0; l,0,0,1]
+
+def realifiedPlus (x₁ x₂ : ℝ) : Fin 4 → ℝ := ![x₁,x₂,-x₂,x₁]
+def realifiedMinus (x₁ x₂ : ℝ) : Fin 4 → ℝ := ![x₁,x₂,x₂,-x₁]
+
+/-- The plus realified-chiral plane has kinetic weight `1+l`. -/
+theorem realDoubledResponse_plus (l x₁ x₂ : ℝ) :
+    (realDoubledResponse l).mulVec (realifiedPlus x₁ x₂) =
+      fun i => (1 + l) * realifiedPlus x₁ x₂ i := by
+  funext i
+  fin_cases i <;>
+    norm_num [realDoubledResponse, realifiedChirality, realifiedPlus,
+      Matrix.mulVec, dotProduct, Fin.sum_univ_succ] <;>
+    ring
+
+/-- The minus realified-chiral plane has kinetic weight `1-l`. -/
+theorem realDoubledResponse_minus (l x₁ x₂ : ℝ) :
+    (realDoubledResponse l).mulVec (realifiedMinus x₁ x₂) =
+      fun i => (1 - l) * realifiedMinus x₁ x₂ i := by
+  funext i
+  fin_cases i <;>
+    norm_num [realDoubledResponse, realifiedChirality, realifiedMinus,
+      Matrix.mulVec, dotProduct, Fin.sum_univ_succ] <;>
+    ring
+
+/-- Euclidean norm squared on one real Hodge pair. -/
+def hodgePairNormSq (x₁ x₂ : ℝ) : ℝ := x₁ ^ 2 + x₂ ^ 2
+
+/-- The oriented pairing `x₁*y₂-x₂*y₁`, equivalently the contraction of one
+mode with the Hodge rotation of the other. -/
+def hodgePairCross (x₁ x₂ y₁ y₂ : ℝ) : ℝ := x₁ * y₂ - x₂ * y₁
+
+/-- The real doubled quadratic kinetic form. The physical mode is `x`; `y`
+is its independent dual or auxiliary partner. -/
+def doubledHodgeKinetic
+    (l x₁ x₂ y₁ y₂ : ℝ) : ℝ :=
+  hodgePairNormSq x₁ x₂ + hodgePairNormSq y₁ y₂ +
+    2 * l * hodgePairCross x₁ x₂ y₁ y₂
+
+/-- Completing the two real squares displays the screened physical stiffness. -/
+theorem doubledHodgeKinetic_completed_square
+    (l x₁ x₂ y₁ y₂ : ℝ) :
+    doubledHodgeKinetic l x₁ x₂ y₁ y₂ =
+      (y₁ - l * x₂) ^ 2 + (y₂ + l * x₁) ^ 2 +
+        screening l * hodgePairNormSq x₁ x₂ := by
+  simp [doubledHodgeKinetic, hodgePairNormSq, hodgePairCross, screening]
+  ring
+
+theorem doubledHodgeKinetic_nonneg
+    (l x₁ x₂ y₁ y₂ : ℝ) (hs : 0 ≤ screening l) :
+    0 ≤ doubledHodgeKinetic l x₁ x₂ y₁ y₂ := by
+  rw [doubledHodgeKinetic_completed_square]
+  have hn : 0 ≤ hodgePairNormSq x₁ x₂ := by
+    simp [hodgePairNormSq]
+    positivity
+  positivity
+
+/-- Eliminating the auxiliary Hodge partner leaves coefficient `1-l^2` on
+both components of the sourced mode. -/
+theorem doubledHodgeKinetic_at_auxiliary_stationary
+    (l x₁ x₂ : ℝ) :
+    doubledHodgeKinetic l x₁ x₂ (l * x₂) (-l * x₁) =
+      screening l * hodgePairNormSq x₁ x₂ := by
+  rw [doubledHodgeKinetic_completed_square]
+  ring
+
+/-- If the second real mode is removed before variation, the Hodge coupling
+vanishes and no screening remains. -/
+theorem doubledHodgeKinetic_on_real_slice (l x₁ x₂ : ℝ) :
+    doubledHodgeKinetic l x₁ x₂ 0 0 = hodgePairNormSq x₁ x₂ := by
+  simp [doubledHodgeKinetic, hodgePairNormSq, hodgePairCross]
+
+/-- Running the action backward: if a nonzero residue `l` is multiplied by an
+additional coupling `g`, reproducing the same screening factor forces the
+coupling magnitude to be one. -/
+theorem normalizedCoupling_magnitude_forced (g l : ℝ) (hl : l ≠ 0) :
+    screening (g * l) = screening l ↔ g ^ 2 = 1 := by
+  unfold screening
+  constructor
+  · intro h
+    have hl2 : 0 < l ^ 2 := sq_pos_of_ne_zero hl
+    nlinarith [sq_nonneg g]
+  · intro h
+    nlinarith
+
+theorem normalizedCoupling_eq_one
+    (g l : ℝ) (hl : l ≠ 0) (hg : 0 ≤ g)
+    (hs : screening (g * l) = screening l) :
+    g = 1 := by
+  have hg2 := (normalizedCoupling_magnitude_forced g l hl).mp hs
+  nlinarith
+
+/-- The deposited scalar portal coefficient as a function of the two positive
+roots. -/
+noncomputable def pdtPortalCoupling (r q : ℝ) : ℝ := (q / r) ^ 2
+
+theorem pdtPortalCoupling_mem_openUnit
+    (r q : ℝ) (hq : 0 < q) (hqr : q < r) :
+    0 < pdtPortalCoupling r q ∧ pdtPortalCoupling r q < 1 := by
+  have hr : 0 < r := lt_trans hq hqr
+  have hratio0 : 0 < q / r := div_pos hq hr
+  have hratio1 : q / r < 1 := (div_lt_one hr).mpr hqr
+  unfold pdtPortalCoupling
+  constructor <;> nlinarith
+
+/-- Directly multiplying the quartic residual by the deposited portal
+coefficient gives the wrong screening factor whenever `1<q<r`. -/
+theorem pdtPortalCoupling_screening_ne
+    (r q : ℝ) (hq : 1 < q) (hqr : q < r) :
+    screening (pdtPortalCoupling r q * lambda4 q) ≠
+      screening (lambda4 q) := by
+  have hl : lambda4 q ≠ 0 := by
+    have hq0 : q ≠ 0 := by linarith
+    intro h
+    unfold lambda4 at h
+    field_simp [hq0] at h
+    nlinarith
+  have hk := pdtPortalCoupling_mem_openUnit r q (by linarith) hqr
+  intro hs
+  have hk2 :=
+    (normalizedCoupling_magnitude_forced
+      (pdtPortalCoupling r q) (lambda4 q) hl).mp hs
+  nlinarith [sq_nonneg (pdtPortalCoupling r q)]
+
+/-- The stationary equations with a source coupled only to the first mode.
+Their solution has response `x=j/(1-l^2)`. -/
+theorem doubledHodge_source_solution
+    (l j₁ j₂ : ℝ) (hs : screening l ≠ 0) :
+    let x₁ := j₁ / screening l
+    let x₂ := j₂ / screening l
+    let y₁ := l * x₂
+    let y₂ := -l * x₁
+    x₁ + l * y₂ = j₁ ∧
+      x₂ - l * y₁ = j₂ ∧
+      y₁ - l * x₂ = 0 ∧
+      y₂ + l * x₁ = 0 := by
+  dsimp
+  constructor
+  · unfold screening at hs ⊢
+    field_simp [hs]
+    ring
+  constructor
+  · unfold screening at hs ⊢
+    field_simp [hs]
+  · constructor <;> ring
+
+/-- At the quartic residue, the sourced-mode response is exactly enhanced by
+`Q^2/(2Q-1)`. -/
+theorem quartic_doubledHodge_response (q j : ℝ) (hq : 1 < q) :
+    j / screening (lambda4 q) = (q ^ 2 / (2 * q - 1)) * j := by
+  have hq0 : q ≠ 0 := by linarith
+  have hden : 2 * q - 1 ≠ 0 := by nlinarith
+  rw [quartic_screening_identity q hq0]
   field_simp [hq0, hden]
 
 /-- A scalar real coefficient acting on a one-dimensional complex amplitude
@@ -770,6 +1035,11 @@ end GravityScreening
 #print axioms GravityScreening.quarticRenewalFrequency
 #print axioms GravityScreening.quarticResidual_eq_one_sub_inv
 #print axioms GravityScreening.quarticResidual_perron
+#print axioms GravityScreening.quarticResidual_not_normal
+#print axioms GravityScreening.quarticResidual_no_diagonal_symmetrizer
+#print axioms GravityScreening.quarticResidual_left_perron
+#print axioms GravityScreening.quarticPerron_pairing
+#print axioms GravityScreening.quarticBiResidualCoefficient_eq_lambda4
 #print axioms GravityScreening.defect_sq_forced
 #print axioms GravityScreening.defect_sqrt_sq
 #print axioms GravityScreening.julia_row_norm
@@ -783,6 +1053,20 @@ end GravityScreening
 #print axioms GravityScreening.fullBivector_chiralDet
 #print axioms GravityScreening.orientationEven_chiralCompliance
 #print axioms GravityScreening.quartic_orientationEven_chiralCompliance
+#print axioms GravityScreening.realifiedChirality_transpose
+#print axioms GravityScreening.realifiedChirality_sq
+#print axioms GravityScreening.realDoubledResponse_plus
+#print axioms GravityScreening.realDoubledResponse_minus
+#print axioms GravityScreening.doubledHodgeKinetic_completed_square
+#print axioms GravityScreening.doubledHodgeKinetic_nonneg
+#print axioms GravityScreening.doubledHodgeKinetic_at_auxiliary_stationary
+#print axioms GravityScreening.doubledHodgeKinetic_on_real_slice
+#print axioms GravityScreening.normalizedCoupling_magnitude_forced
+#print axioms GravityScreening.normalizedCoupling_eq_one
+#print axioms GravityScreening.pdtPortalCoupling_mem_openUnit
+#print axioms GravityScreening.pdtPortalCoupling_screening_ne
+#print axioms GravityScreening.doubledHodge_source_solution
+#print axioms GravityScreening.quartic_doubledHodge_response
 #print axioms GravityScreening.scalarKraus_normSq
 #print axioms GravityScreening.scalarKraus_relativeWeight
 #print axioms GravityScreening.scalarKraus_completeness

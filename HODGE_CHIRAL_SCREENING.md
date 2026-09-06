@@ -275,6 +275,12 @@ factor in `G`, the Planck-mass square root, and a specifically
 four-dimensional selector in one construction. Failure of the action to
 generate this operator would close the Hodge route cleanly.
 
+`CHIRAL_KINETIC_ACTION_TARGET.md` takes the first step through this remaining
+reality problem. It realifies the complex chiral operator by retaining a
+second dual mode, proves that eliminating that mode gives the exact screened
+stiffness and reciprocal source response, and isolates the new source-level
+question: whether the quartic dynamics forces this doubled coupling.
+
 ## References
 
 - Mercuri, *Fermions in Ashtekar-Barbero Connections Formalism for Arbitrary

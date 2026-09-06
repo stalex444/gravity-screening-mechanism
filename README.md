@@ -172,6 +172,32 @@ full determinant. The remaining premise is to derive this affine chiral
 kinetic operator from the physical action. See
 [`HODGE_CHIRAL_SCREENING.md`](HODGE_CHIRAL_SCREENING.md).
 
+A real doubled formulation now sharpens that step. Pairing a sourced horizon
+or curvature mode with an independent dual mode gives a positive real
+quadratic action whose Schur complement is exactly `1-lambda4^2`; its source
+response is therefore the required reciprocal factor. Established
+duality-symmetric formulations of electromagnetism and linearized gravity show
+that such doubling is legitimate field-theory architecture, but they do not
+derive the PDT coefficient or its nonlinear coupling. See
+[`CHIRAL_KINETIC_ACTION_TARGET.md`](CHIRAL_KINETIC_ACTION_TARGET.md).
+
+The coefficient bridge can also be stated without treating the non-normal
+quartic transfer operator as a symmetric kinetic matrix. Its right Perron mode
+is `(1,Q^3,Q^2,Q)`, while its left mode is the reversed vector
+`(1,Q,Q^2,Q^3)`. Their normalized biorthogonal residual readout is exactly
+`lambda4`. Compressing the quartic dynamics to this left/right Perron pair
+therefore supplies the action coefficient; an additional coupling would have
+to have unit magnitude to reproduce the screening formula. The open step is
+to derive that normalized compression as the actual curvature cross-block.
+See [`PERRON_HODGE_ACTION_BRIDGE.md`](PERRON_HODGE_ACTION_BRIDGE.md).
+
+The deposited scalar portal coefficient `kappa=(Q/rho)^2` cannot supply an
+extra normalization: it would predict `1-kappa^2*lambda4^2`, which is exactly
+different from the gravity factor. The more coherent unit normalization comes
+conditionally from treating the action as the graph norm of the actual
+quartic residual contraction and its minimal defect completion. See
+[`PORTAL_K_NORMALIZATION_AUDIT.md`](PORTAL_K_NORMALIZATION_AUDIT.md).
+
 Expanding the deposited two-scalar action about `(phi,chi)=(v,0)` sharpens that
 condition. Its quadratic operator has no `h`-`chi` mixing, so a sectorwise
 modular identification is cocycle-neutral on the one-particle quartic mode at
@@ -240,6 +266,17 @@ minimal mechanism.
   standing F373/F374 Hodge results with the trace no-go, proves the full-space
   third-power control, and isolates the single local-horizon Hodge pair that
   could carry the observed first power.
+- [`CHIRAL_KINETIC_ACTION_TARGET.md`](CHIRAL_KINETIC_ACTION_TARGET.md) gives a
+  real doubled-mode action whose exact Schur complement produces the screened
+  stiffness and reciprocal gravitational response, while exposing the
+  remaining coefficient and nonlinear-reality derivation.
+- [`PERRON_HODGE_ACTION_BRIDGE.md`](PERRON_HODGE_ACTION_BRIDGE.md) proves the
+  non-normality guard and the exact left/right Perron compression that supplies
+  `lambda4`, then isolates the remaining unit-normalization premise.
+- [`PORTAL_K_NORMALIZATION_AUDIT.md`](PORTAL_K_NORMALIZATION_AUDIT.md) proves
+  that the deposited scalar portal coefficient gives the wrong screening if
+  reused as the Hodge coupling and identifies the residual graph norm as the
+  cleaner conditional normalization.
 - [`GravityScreening/Basic.lean`](GravityScreening/Basic.lean) kernel-checks
   the algebraic core.
 - [`verify.py`](verify.py) reproduces the exact quartic arithmetic using only
@@ -271,3 +308,11 @@ and its geometric-mean amplitude gives the matching area-density and Planck-
 mass powers. The filed two-scalar and Holst sources do not derive that operator
 (F374), so the Q-dependent chiral kinetic term and its Lorentzian reality
 conditions remain the open physical step.
+
+The real doubled action now removes the immediate complex-reality obstruction
+at quadratic order: integrating out its dual mode gives the exact screened
+stiffness and Newton response. What remains is to derive that mode and its
+`lambda4` cross-coupling from a gauge-consistent PDT curvature action. The
+quartic residual supplies `lambda4` exactly after canonical left/right Perron
+compression; the surviving question is whether the physical action forces
+that compression with unit normalization.
