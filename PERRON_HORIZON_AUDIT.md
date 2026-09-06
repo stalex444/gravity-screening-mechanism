@@ -286,9 +286,12 @@ The combined argument is therefore:
    `1-lambda4^2`;
 5. Jacobson supplies the established information-to-gravity map.
 
-The one missing physical theorem is item 3: construction of the covariant,
-state-preserving embedding. The coefficient, its direction, and its
-normalization are already fixed on either side of that bridge.
+Published type-III embedding theory guarantees that a state-preserving
+embedding exists, so the response ratio can be realized exactly in a wedge
+vacuum. The remaining physical theorem is that an appropriate such embedding
+is covariant for modular/boost flow. Equivalently, under an onto factor
+identification, the Connes cocycle relating the pQ state to the wedge vacuum
+must be neutral on the quartic mode. See `MODULAR_MAP_AUDIT.md`.
 
 ## What would complete the proof
 
@@ -296,9 +299,11 @@ A complete derivation needs one of the following equivalent constructions:
 
 1. **Covariant action:** derive a horizon influence functional whose one-step
    transfer matrix compresses to `P_Q(I-M_Q^{-1})P_Q`.
-2. **Local operator algebra:** construct the state-preserving covariant map
-   from the quartic Cuntz--Krieger algebra into a wedge algebra and prove the
-   modular intertwining equation above.
+2. **Local operator algebra:** select a state-preserving embedding supplied by
+   the type-III embedding theorem and prove modular covariance; equivalently,
+   construct a vacuum-preserving conditional expectation onto its range, or
+   prove the weaker condition that the associated Connes cocycle is neutral on
+   the quartic mode.
 3. **Microscopic horizon model:** produce the joint Q-geometry unitary and show
    directly that tracing the Q factor yields Kraus operators
    `lambda4 I` and `sqrt(1-lambda4^2) I`.
@@ -311,11 +316,13 @@ normalization follow from an independently specified horizon construction.
 ## Verdict
 
 The Perron residue now has a proved symbolic-information interpretation, a
-proved equilibrium causal-response interpretation, and a proved parameter-free
-quantum completion. This establishes the **Perron residue point** at the level
-of the quartic dynamical system. The claim about a physical local causal horizon
-is conditional on one sharply stated operator-algebraic embedding. The direct
-classical-horizon route is ruled out by the measure and square-root tests.
+proved equilibrium causal-response interpretation, a published-theorem-backed
+state-preserving realization inside a type-III wedge, and a proved parameter-
+free quantum completion. This establishes the **Perron residue point** through
+the static horizon expectation values. The remaining physical condition is
+modular covariance: the Connes cocycle must preserve the quartic spectral line
+without shifting its frequency. The direct classical-horizon route is ruled out
+by the measure and square-root tests.
 
 ## Literature used for the bridge
 
@@ -337,3 +344,5 @@ classical-horizon route is ruled out by the measure and square-root tests.
 - Kawamura, *Tensor products of type III factor representations of
   Cuntz--Krieger algebras* (2008), for the hyperfinite factor tensor-product
   classification used in the pQ completion: <https://arxiv.org/abs/0805.0667>.
+- Kawahigashi--Ogata--Stormer, *Normal states of type III factors* (2014), for
+  the state-preserving embedding theorem: <https://arxiv.org/abs/1301.5737>.

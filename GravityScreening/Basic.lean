@@ -40,6 +40,25 @@ theorem normalized_block_det (l : ℝ) :
   simp [det2, screening]
   ring
 
+/-- The surviving coefficient after eliminating the second coordinate of a
+general symmetric two-channel quadratic block, expressed relative to the first
+diagonal coefficient. -/
+noncomputable def relativeSchur (a b c : ℝ) : ℝ :=
+  (a - b ^ 2 / c) / a
+
+/-- Running the screening formula backward: for nonzero diagonal entries, a
+general two-channel block has relative Schur coefficient `1-l^2` exactly when
+its normalization-invariant squared overlap is `l^2`. -/
+theorem relativeSchur_eq_screening_iff
+    (a b c l : ℝ) (ha : a ≠ 0) (hc : c ≠ 0) :
+    relativeSchur a b c = screening l ↔ b ^ 2 = l ^ 2 * a * c := by
+  unfold relativeSchur screening
+  constructor <;> intro h
+  · field_simp [ha, hc] at h
+    nlinarith
+  · field_simp [ha, hc]
+    nlinarith
+
 /-- Opposite affine responses have the same difference-of-squares factor. -/
 theorem paired_response (l : ℝ) :
     (1 - l) * (1 + l) = screening l := by
@@ -259,6 +278,66 @@ theorem quarticPerron_kms_response
   rw [quartic_kms_defect q hq]
   exact quarticResidual_perron q hq4 (ne_of_gt hq)
 
+/-- A scalar modular-frequency shift preserves the quartic KMS response if and
+only if the shift vanishes. This is the exact cocycle-neutrality test for a
+one-dimensional quartic spectral subspace. -/
+theorem quartic_response_shift_eq_iff (q δ : ℝ) (hq : 0 < q) :
+    detailedBalanceDefect 1 (Real.log q + δ) = lambda4 q ↔ δ = 0 := by
+  have hbase : Real.exp (-Real.log q) = 1 / q := by
+    rw [Real.exp_neg, Real.exp_log hq]
+    simp [one_div]
+  constructor
+  · intro h
+    have h' : 1 - Real.exp (-(Real.log q + δ)) = 1 - 1 / q := by
+      simpa [detailedBalanceDefect, lambda4] using h
+    have hexp : Real.exp (-(Real.log q + δ)) =
+        Real.exp (-Real.log q) := by
+      rw [hbase]
+      linarith [h']
+    have harg := Real.exp_injective hexp
+    linarith
+  · intro hδ
+    subst δ
+    simpa [detailedBalanceDefect] using quartic_kms_defect q hq
+
+/-- The full reverse KMS test: the quartic response fixes the product of
+inverse temperature and spectral frequency to `log q`. -/
+theorem kms_response_eq_quartic_iff (q beta omega : ℝ) (hq : 0 < q) :
+    detailedBalanceDefect beta omega = lambda4 q ↔
+      beta * omega = Real.log q := by
+  have hbase : Real.exp (-Real.log q) = 1 / q := by
+    rw [Real.exp_neg, Real.exp_log hq]
+    simp [one_div]
+  constructor
+  · intro h
+    have h' : 1 - Real.exp (-beta * omega) = 1 - 1 / q := by
+      simpa [detailedBalanceDefect, lambda4] using h
+    have hexp : Real.exp (-beta * omega) =
+        Real.exp (-Real.log q) := by
+      rw [hbase]
+      linarith [h']
+    have harg := Real.exp_injective hexp
+    linarith
+  · intro hproduct
+    unfold detailedBalanceDefect lambda4
+    have hneg : -beta * omega = -Real.log q := by
+      nlinarith
+    rw [hneg, Real.exp_neg, Real.exp_log hq]
+    simp [one_div]
+
+/-- With the conventional wedge inverse temperature `2*pi`, matching the
+quartic response fixes the boost frequency to `log(q)/(2*pi)`. The physical
+choice of this normalization is an input; the equivalence is exact algebra. -/
+theorem wedge_response_eq_quartic_iff (q omega : ℝ) (hq : 0 < q) :
+    detailedBalanceDefect (2 * Real.pi) omega = lambda4 q ↔
+      omega = Real.log q / (2 * Real.pi) := by
+  rw [kms_response_eq_quartic_iff q (2 * Real.pi) omega hq]
+  constructor <;> intro h
+  · apply (eq_div_iff (mul_ne_zero (by norm_num) Real.pi_ne_zero)).2
+    nlinarith
+  · apply (eq_div_iff (mul_ne_zero (by norm_num) Real.pi_ne_zero)).1 at h
+    nlinarith
+
 /-- If a mass amplitude is multiplied by the defect coefficient, its square is
 multiplied by the screening coefficient. -/
 theorem defect_mass_square (l d m : ℝ)
@@ -315,11 +394,43 @@ theorem portalMixedHessian_at_chi_axis (kappa phi : ℝ) :
     portalMixedHessian kappa phi 0 = 0 := by
   simp [portalMixedHessian]
 
+/-- The deposited portal potential written in fluctuations `phi = v + h` and
+`chi = x` about the selected axis background `(v,0)`. -/
+def shiftedPortalPotential
+    (lambda3 lambda4c kappa v u h x : ℝ) : ℝ :=
+  lambda3 * (((v + h) ^ 2 - v ^ 2) ^ 2) +
+    lambda4c * ((x ^ 2 - u ^ 2) ^ 2) +
+    kappa * (v + h) ^ 2 * x ^ 2
+
+/-- The exact fluctuation expansion. There is no bilinear `h*x` term; the
+first cross-sector interaction is the cubic term `2*kappa*v*h*x^2`. -/
+theorem shiftedPortalPotential_expand
+    (lambda3 lambda4c kappa v u h x : ℝ) :
+    shiftedPortalPotential lambda3 lambda4c kappa v u h x =
+      lambda4c * u ^ 4 +
+      4 * lambda3 * v ^ 2 * h ^ 2 +
+      4 * lambda3 * v * h ^ 3 +
+      lambda3 * h ^ 4 +
+      (kappa * v ^ 2 - 2 * lambda4c * u ^ 2) * x ^ 2 +
+      2 * kappa * v * h * x ^ 2 +
+      kappa * h ^ 2 * x ^ 2 +
+      lambda4c * x ^ 4 := by
+  unfold shiftedPortalPotential
+  ring
+
+/-- The unbroken `chi -> -chi` symmetry is exact about the axis background. -/
+theorem shiftedPortalPotential_chi_even
+    (lambda3 lambda4c kappa v u h x : ℝ) :
+    shiftedPortalPotential lambda3 lambda4c kappa v u h (-x) =
+      shiftedPortalPotential lambda3 lambda4c kappa v u h x := by
+  simp [shiftedPortalPotential]
+
 end GravityScreening
 
 #print axioms GravityScreening.response_completed_square
 #print axioms GravityScreening.response_at_stationary
 #print axioms GravityScreening.normalized_block_det
+#print axioms GravityScreening.relativeSchur_eq_screening_iff
 #print axioms GravityScreening.screening_pos
 #print axioms GravityScreening.quartic_screening_identity
 #print axioms GravityScreening.lambda4_eq_relative_increment
@@ -339,8 +450,13 @@ end GravityScreening
 #print axioms GravityScreening.kms_causal_response
 #print axioms GravityScreening.quartic_kms_defect
 #print axioms GravityScreening.quarticPerron_kms_response
+#print axioms GravityScreening.quartic_response_shift_eq_iff
+#print axioms GravityScreening.kms_response_eq_quartic_iff
+#print axioms GravityScreening.wedge_response_eq_quartic_iff
 #print axioms GravityScreening.defect_mass_square
 #print axioms GravityScreening.radial_homogeneity_iff
 #print axioms GravityScreening.ehrenfest_marginal_iff
 #print axioms GravityScreening.frameMetricCross_eq_zero
 #print axioms GravityScreening.portalMixedHessian_at_chi_axis
+#print axioms GravityScreening.shiftedPortalPotential_expand
+#print axioms GravityScreening.shiftedPortalPotential_chi_even

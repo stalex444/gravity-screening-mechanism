@@ -93,10 +93,26 @@ algebra has a unique gauge-KMS equilibrium at inverse temperature `log Q`.
 KMS detailed balance makes the normalized difference between a process and its
 thermal reverse exactly `1-exp(-log Q) = lambda4`. Thus the residue is
 simultaneously the renewal frequency, the inverse-step transfer eigenvalue, and
-the canonical equilibrium causal-response defect. Embedding this graph flow
-covariantly into a relativistic wedge algebra would complete the local-horizon
-identification; that embedding has not yet been constructed. See
-[`PERRON_HORIZON_AUDIT.md`](PERRON_HORIZON_AUDIT.md).
+the canonical equilibrium causal-response defect. Type-III state-embedding
+theory guarantees an abstract wedge-vacuum embedding that preserves these
+response values. Full modular flows are also related up to a Connes unitary
+cocycle. What has not been constructed is a net-compatible embedding that
+identifies the graph modular flow with geometric wedge boosts. Equivalently,
+the cocycle must preserve the quartic spectral line without shifting its
+frequency. At the full-algebra level, Takesaki's theorem turns this into a
+concrete expected-subfactor problem: construct a vacuum-preserving conditional
+expectation from the wedge algebra onto the embedded pQ algebra. See
+[`PERRON_HORIZON_AUDIT.md`](PERRON_HORIZON_AUDIT.md),
+[`MODULAR_MAP_AUDIT.md`](MODULAR_MAP_AUDIT.md), and
+[`REVERSE_HORIZON_AUDIT.md`](REVERSE_HORIZON_AUDIT.md).
+
+Expanding the deposited two-scalar action about `(phi,chi)=(v,0)` sharpens that
+condition. Its quadratic operator has no `h`-`chi` mixing, so a sectorwise
+modular identification is cocycle-neutral on the one-particle quartic mode at
+tree level. The first portal interaction is instead `2*kappa*v*h*chi^2`.
+Because the unbroken parity permits corrections to the quartic two-point
+function, it does not protect the exact modular frequency beyond the Gaussian
+limit. See [`ACTION_COCYCLE_AUDIT.md`](ACTION_COCYCLE_AUDIT.md).
 
 That negative result sharpens the next calculation. A successful derivation
 must obtain the matrix from a kinetic or curvature sector, with its
@@ -121,6 +137,16 @@ minimal mechanism.
 - [`PQ_MODULAR_HORIZON.md`](PQ_MODULAR_HORIZON.md) proves that the joint cubic
   and quartic KMS factors have the hyperfinite type-`III_1` algebra required by
   a generic relativistic local region, while preserving the quartic response.
+- [`MODULAR_MAP_AUDIT.md`](MODULAR_MAP_AUDIT.md) proves existence of a
+  state-preserving horizon embedding, transports the full modular dynamics up
+  to a Connes cocycle, and isolates the exact cocycle-neutrality test.
+- [`ACTION_COCYCLE_AUDIT.md`](ACTION_COCYCLE_AUDIT.md) proves the exact shifted
+  portal expansion and shows that the filed action is compatible with
+  cocycle neutrality at tree level but does not protect it under interactions.
+- [`REVERSE_HORIZON_AUDIT.md`](REVERSE_HORIZON_AUDIT.md) runs the mechanism
+  from the gravity coefficient backward, fixes the required boost gap, and
+  reformulates exact modular covariance as a state-preserving conditional
+  expectation problem.
 - [`GravityScreening/Basic.lean`](GravityScreening/Basic.lean) kernel-checks
   the algebraic core.
 - [`verify.py`](verify.py) reproduces the exact quartic arithmetic using only
@@ -138,6 +164,9 @@ lake build
 
 The arithmetic, Schur-complement identity, four-dimensional homogeneity
 criterion, renewal-frequency identity, and KMS causal-response identity are
-exact mathematics. The remaining physical hypothesis is the covariant
-state-preserving embedding of the quartic graph dynamics into a local wedge
-algebra; the filed two-scalar action does not yet supply it.
+exact mathematics. A state-preserving embedding into a local wedge algebra
+exists abstractly. The remaining physical hypothesis is modular and net
+covariance. It can be attacked either as cocycle neutrality on the quartic mode
+or, more strongly, as a vacuum-preserving conditional expectation onto the pQ
+subalgebra. The filed two-scalar action gives conditional tree-level neutrality
+but does not protect it in the interacting theory.

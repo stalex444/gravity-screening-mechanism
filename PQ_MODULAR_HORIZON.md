@@ -154,11 +154,15 @@ specify a quantum field theory. The physical content lies in the net: how the
 algebras for different spacetime regions sit inside one another, how Poincare
 transformations act, and which state is the vacuum.
 
-The remaining theorem is therefore narrower than before. One must construct a
-net-compatible, state-preserving map that identifies the joint pQ modular flow
-with wedge boosts. If that map carries the quartic degree-one subspace into the
-horizon response subspace, the Perron residue becomes an actual horizon causal
-channel and its minimal coherent complement has weight `1-lambda4^2`.
+The remaining theorem is therefore narrower than before. A published type-III
+embedding theorem already guarantees a state-preserving injection into a wedge
+algebra. One must show that a suitable such map is net-compatible and identifies
+the joint pQ modular flow with wedge boosts. Equivalently, the Connes cocycle
+between the transported pQ state and the wedge vacuum must preserve the quartic
+spectral line. For the full algebra, Takesaki's theorem gives the equivalent
+target of a vacuum-preserving conditional expectation onto the embedded pQ
+range. The exact reductions are in `MODULAR_MAP_AUDIT.md` and
+`REVERSE_HORIZON_AUDIT.md`.
 
 ## References
 
@@ -173,3 +177,5 @@ channel and its minimal coherent complement has weight `1-lambda4^2`.
   <https://arxiv.org/abs/hep-th/0101227>.
 - Yngvason, *The Role of Type III Factors in Quantum Field Theory* (2005):
   <https://arxiv.org/abs/math-ph/0411058>.
+- Kawahigashi, Ogata, and Stormer, *Normal states of type III factors* (2014):
+  <https://arxiv.org/abs/1301.5737>.

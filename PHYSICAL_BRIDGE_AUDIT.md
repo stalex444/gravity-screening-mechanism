@@ -197,8 +197,11 @@ This closes the algebraic and normalization questions:
 - **why four dimensions:** the Pisot boundary and the Ehrenfest marginal point
   coincide at the quartic rung.
 
-One physical statement remains to be derived: the quartic Perron residue is
-the information channel traced across the local causal boundary. If that
-statement follows from a covariant action or a specified horizon reduction,
-the screening mechanism is complete. Until then this is a tightly constrained
-candidate mechanism, with its last premise and its falsifiers explicit.
+A published type-III theorem now supplies an abstract state-preserving
+realization of the quartic response inside a wedge algebra. What remains is
+dynamical and gravitational: make the embedded pQ algebra invariant under the
+wedge modular flow, and then identify its defect complement with the
+gravitational kinetic response. `MODULAR_MAP_AUDIT.md` states the cocycle test;
+`REVERSE_HORIZON_AUDIT.md` gives the stronger equivalent target of a vacuum-
+preserving conditional expectation. Until those conditions are met, this is a
+tightly constrained candidate mechanism with explicit falsifiers.
