@@ -298,6 +298,65 @@ theorem quarticTimeObserverResponse_sq (l : ℝ) :
   rw [quarticTimeObserverResponse_eq]
   exact quarticTraceResponse_sq l
 
+/-! ## Minimal induced-gravity coefficient
+
+The quartic trace form is used here as an internal scalar prefactor for a
+separate dynamical spacetime metric.  No curvature is attributed to the
+constant trace matrix itself.
+-/
+
+/-- Quadratic weight of a background/time pair, expressed only through its
+three pairings. -/
+def lorentzPairWeight
+    (backgroundSq timeSq backgroundTime l : ℝ) : ℝ :=
+  backgroundSq + 2 * l * backgroundTime + l ^ 2 * timeSq
+
+/-- Every normalized orthogonal unit-timelike direction gives the same
+screening weight.  The coefficient is therefore independent of the particular
+observer representative once these invariant pairings are fixed. -/
+theorem normalizedLorentzPair_weight
+    (backgroundSq timeSq backgroundTime l : ℝ)
+    (hbackground : backgroundSq = 1)
+    (htime : timeSq = -1)
+    (horthogonal : backgroundTime = 0) :
+    lorentzPairWeight backgroundSq timeSq backgroundTime l = screening l := by
+  simp [lorentzPairWeight, screening, hbackground, htime, horthogonal]
+  ring
+
+/-- The unscreened non-reduced Planck-square coefficient of the existing
+induced-gravity term `(xi/2) phi^2 R`. -/
+noncomputable def inducedPlanckSq (xi phi : ℝ) : ℝ :=
+  8 * Real.pi * xi * phi ^ 2
+
+/-- Minimal quartic trace completion of the induced Planck-square coefficient. -/
+noncomputable def traceInducedPlanckSq (xi phi l : ℝ) : ℝ :=
+  inducedPlanckSq xi phi *
+    quarticTracePair (quarticTimeObserverResponse l)
+      (quarticTimeObserverResponse l)
+
+/-- The completed induced Planck square is multiplied by the screening
+coefficient. -/
+theorem traceInducedPlanckSq_eq (xi phi l : ℝ) :
+    traceInducedPlanckSq xi phi l = screening l * inducedPlanckSq xi phi := by
+  rw [traceInducedPlanckSq, quarticTimeObserverResponse_sq]
+  ring
+
+/-- Newton's coupling corresponding to a nonzero Planck-square coefficient. -/
+noncomputable def newtonFromPlanckSq (mSq : ℝ) : ℝ :=
+  1 / mSq
+
+/-- For nonzero baseline and screening coefficients, the trace completion
+divides Newton's coupling by the same screening factor. -/
+theorem traceInducedNewton_eq
+    (xi phi l : ℝ)
+    (hbase : inducedPlanckSq xi phi ≠ 0)
+    (hscreen : screening l ≠ 0) :
+    newtonFromPlanckSq (traceInducedPlanckSq xi phi l) =
+      newtonFromPlanckSq (inducedPlanckSq xi phi) / screening l := by
+  rw [traceInducedPlanckSq_eq]
+  unfold newtonFromPlanckSq
+  field_simp [hbase, hscreen]
+
 /-- There is only one nonnegative defect coordinate with the required norm. -/
 theorem nonnegative_defect_unique
     (l d e : ℝ)
@@ -1474,6 +1533,9 @@ end GravityScreening
 #print axioms GravityScreening.quarticSpaceTime_orthogonal
 #print axioms GravityScreening.quarticTraceResponse_sq
 #print axioms GravityScreening.quarticTimeObserverResponse_sq
+#print axioms GravityScreening.normalizedLorentzPair_weight
+#print axioms GravityScreening.traceInducedPlanckSq_eq
+#print axioms GravityScreening.traceInducedNewton_eq
 #print axioms GravityScreening.nonnegative_defect_unique
 #print axioms GravityScreening.constitutiveBlock_det
 #print axioms GravityScreening.raw_constitutive_twist_sq

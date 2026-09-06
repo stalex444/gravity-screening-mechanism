@@ -261,6 +261,10 @@ the screening element can be written directly as
 [`TIME_GRAVITY_TRACE_BRIDGE.md`](TIME_GRAVITY_TRACE_BRIDGE.md).
 On this background/time plane, normalization, time-orientation evenness, and
 the unit null condition uniquely force the quadratic response `1-lambda4^2`.
+The corresponding minimal completion of the filed induced-gravity term is
+`(xi/2) phi^2 Tr(a_Q^2) R[g]`; it keeps the constant trace form internal while
+the spacetime metric remains dynamical.  See
+[`COVARIANT_EINSTEIN_BRIDGE.md`](COVARIANT_EINSTEIN_BRIDGE.md).
 
 The normalized block is also an exact canonical squeeze, which makes the
 earlier Barbero-Immirzi intuition worth testing in a narrower form. Its
