@@ -157,6 +157,22 @@ theorem julia_rows_orthogonal (l d : ℝ) :
     l * d + d * (-l) = 0 := by
   ring
 
+/-- The scalar Julia block is an involution. This is the algebraic reason it
+can be read both as a Hermitian two-channel observable and as a one-tick
+unitary evolution. -/
+def juliaBlock (l d : ℝ) : Matrix (Fin 2) (Fin 2) ℝ :=
+  !![l,d; d,-l]
+
+theorem juliaBlock_sq (l d : ℝ) (hdefect : d ^ 2 = screening l) :
+    juliaBlock l d * juliaBlock l d = 1 := by
+  have hsum : l * l + d * d = 1 := by
+    simp [screening] at hdefect
+    nlinarith [hdefect]
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    simp [juliaBlock, Matrix.mul_apply, Fin.sum_univ_succ] <;>
+    nlinarith [hsum]
+
 /-- If a mass amplitude is multiplied by the defect coefficient, its square is
 multiplied by the screening coefficient. -/
 theorem defect_mass_square (l d m : ℝ)
@@ -230,6 +246,7 @@ end GravityScreening
 #print axioms GravityScreening.defect_sqrt_sq
 #print axioms GravityScreening.julia_row_norm
 #print axioms GravityScreening.julia_rows_orthogonal
+#print axioms GravityScreening.juliaBlock_sq
 #print axioms GravityScreening.defect_mass_square
 #print axioms GravityScreening.radial_homogeneity_iff
 #print axioms GravityScreening.ehrenfest_marginal_iff

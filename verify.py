@@ -5,6 +5,7 @@ No third-party package is required. Exact arithmetic takes place in
 Q[q]/(q^4-q-1) with rational coefficients.
 """
 
+import cmath
 from decimal import Decimal, getcontext
 from fractions import Fraction
 
@@ -105,13 +106,35 @@ def matrix_vec_mul(a, v):
             for i in range(len(a))]
 
 
-def positive_root_q():
+def positive_root_n(n):
     getcontext().prec = 70
-    x = Decimal("1.22")
+    x = Decimal("1.5")
     one = Decimal(1)
-    for _ in range(30):
-        x -= (x**4 - x - one) / (Decimal(4) * x**3 - one)
+    for _ in range(50):
+        x -= (x**n - x - one) / (Decimal(n) * x**(n - 1) - one)
     return x
+
+
+def positive_root_q():
+    return positive_root_n(4)
+
+
+def polynomial_roots_xn_x_1(n):
+    """Durand-Kerner roots, used only for the printed spectral control."""
+    roots = [1.4 * cmath.exp(2j * cmath.pi * k / n) for k in range(n)]
+    for _ in range(200):
+        updated = []
+        for i, z in enumerate(roots):
+            denom = 1
+            for j, w in enumerate(roots):
+                if i != j:
+                    denom *= z - w
+            updated.append(z - (z**n - z - 1) / denom)
+        if max(abs(a - b) for a, b in zip(updated, roots)) < 1e-14:
+            roots = updated
+            break
+        roots = updated
+    return roots
 
 
 def main():
@@ -171,6 +194,28 @@ def main():
     assert abs(row_norm - Decimal(1)) < Decimal("1e-65")
     assert abs(row_cross) < Decimal("1e-65")
 
+    # The Julia block is also an involution, U^2=I.
+    julia = [[lambda4, defect], [defect, -lambda4]]
+    julia_sq = matrix_mul(julia, julia)
+    assert abs(julia_sq[0][0] - Decimal(1)) < Decimal("1e-65")
+    assert abs(julia_sq[0][1]) < Decimal("1e-65")
+    assert abs(julia_sq[1][0]) < Decimal("1e-65")
+    assert abs(julia_sq[1][1] - Decimal(1)) < Decimal("1e-65")
+
+    # Family control: the construction is general. The n=4 selection must
+    # come from the dimensional/Pisot boundary, not the defect identity alone.
+    family = []
+    for n in range(2, 7):
+        r = positive_root_n(n)
+        l = Decimal(1) - Decimal(1) / r
+        family.append((n, r, l, Decimal(1) - l**2))
+    assert abs(family[2][1] - Q) < Decimal("1e-65")
+
+    quartic_residual_magnitudes = sorted(
+        abs(1 - 1 / z) for z in polynomial_roots_xn_x_1(4)
+    )
+    assert sum(m < 1 for m in quartic_residual_magnitudes) == 1
+
     # Current-potential diagnostic: the mixed stationary Hessian is indefinite
     # in the PDT bistable regime.
     getcontext().prec = 70
@@ -186,11 +231,17 @@ def main():
     print(f"1/(1 - lambda4^2)         = {Decimal(1) / S}")
     print(f"Julia row norm             = {row_norm}")
     print(f"Julia row cross-product    = {row_cross}")
+    print("Julia block squared         = identity")
     print("companion inverse           = EXACT")
     print("residual Perron eigenvalue  = lambda4 EXACT")
     print(f"Norm_Q(Q)(1-lambda4^2)    = {norm_screen}")
     print("minimal polynomial         = x^4 + 3*x^3 - 2*x^2 + 22*x - 23")
     print("basis determinant          = -241")
+    print("family control (n, root, residue, defect weight)")
+    for n, r, l, s in family:
+        print(f"  {n}: {r:.12f}  {l:.12f}  {s:.12f}")
+    print("quartic residual magnitudes= " + ", ".join(
+        f"{m:.12f}" for m in quartic_residual_magnitudes))
     print(f"kappa^2/(4 lambda3 lambda4)= {bistability_ratio}")
     print("portal mixed Hessian sign  = negative" if bistability_ratio > 1 else "portal diagnostic failed")
     print("all exact checks           = PASS")

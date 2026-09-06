@@ -102,6 +102,9 @@ minimal mechanism.
   kinetic and curvature test to the deposited two-scalar action.
 - [`UNITARY_DEFECT_MECHANISM.md`](UNITARY_DEFECT_MECHANISM.md) gives a
   norm-conserving channel mechanism for the square-root and screening factors.
+- [`PHYSICAL_BRIDGE_AUDIT.md`](PHYSICAL_BRIDGE_AUDIT.md) tests the proposed
+  horizon/gravity identification, gives the one-tick Hamiltonian, and records
+  the neighboring-family and reverse controls.
 - [`GravityScreening/Basic.lean`](GravityScreening/Basic.lean) kernel-checks
   the algebraic core.
 - [`verify.py`](verify.py) reproduces the exact quartic arithmetic using only
