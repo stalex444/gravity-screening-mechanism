@@ -4,13 +4,18 @@
 
 The determinant-one part of the proposed quartic gravity response has a
 specific structural parallel with the Barbero-Immirzi transformation: both
-are canonical squeezes that can be invisible in classical vacuum dynamics yet
-become physically meaningful when the quantum representation or the geometric
-observable selects particular canonical variables.
+involve canonical changes of variables that can be invisible in classical
+vacuum dynamics yet become physically meaningful when the quantum
+representation or a geometric observable selects particular canonical
+variables.
 
-This does not identify the deposited PDT scalar portal coefficient with the
-Barbero-Immirzi parameter. The transformations act on different variables,
-and their equality has not been derived.
+The direct identification fails at the current level. The quartic squeeze
+mixes the two linearized gravitational prepotentials, while the
+Barbero-Immirzi map is a local affine transformation of connection and triad
+variables. The prepotential-to-metric map has unequal derivative orders and a
+nonlocal inverse, so the two transformations cannot simply be equated. The
+deposited PDT scalar portal coefficient is not identified with the
+Barbero-Immirzi parameter either.
 
 ## 1. The exact quartic squeeze
 
@@ -52,7 +57,7 @@ Numerically,
 ```text
 theta                 = 0.1828380153932759051...,
 sqrt(2Q-1)            = 1.2006199103844309273...,
-gamma_Q candidate     = (2Q-1)^(1/4)
+quartic half-squeeze  = u_Q = (2Q-1)^(1/4)
                       = 1.0957280275617809199....
 ```
 
@@ -76,8 +81,9 @@ The quartic `Khat` has the first part of that pattern:
 4. it can become observable only after a source, geometric observable, or
    quantum representation selects a preferred canonical frame.
 
-This makes the Immirzi question mathematically motivated. It is more than a
-numerical resemblance, because the shared object is a symplectic squeeze.
+This makes the Immirzi comparison mathematically motivated. It is more than a
+numerical resemblance, because both discussions concern canonical scaling.
+It is still only a structural parallel.
 
 ## 3. Why there is no identification yet
 
@@ -89,17 +95,37 @@ A_gamma = Gamma + gamma K,
 E_gamma = E/gamma.
 ```
 
-The quartic construction currently acts on the two gravitational
-prepotentials, or on a reduced Hodge-paired canonical mode. No map has yet
-shown that the positive square root of `Khat` induces the affine connection
-transformation above.
+The quartic construction acts on the two gravitational prepotentials, or on a
+reduced Hodge-paired canonical mode. The standard maps are schematically
 
-There is also a normalization ambiguity until that map is built. If the
-canonical variable map is `sqrt(Khat)`, the natural scale is
-`(2Q-1)^(1/4)`. If one incorrectly identifies the Hamiltonian metric `Khat`
-itself with the variable map, one gets `sqrt(2Q-1)` instead. The full
-connection-triad calculation must decide; dimensional or numerical analogy
-cannot.
+```text
+pi = two spatial derivatives of P,
+h  = one spatial derivative of Phi plus gauge,
+P  = inverse Laplacian applied to pi plus trace terms,
+Phi = inverse Laplacian applied to a derivative of h.
+```
+
+Consequently a constant half-squeeze
+
+```text
+(P,Phi) -> B(P,Phi)
+```
+
+mixes `pi` with second derivatives of `Phi` and mixes `h` with first
+derivatives of `P`. Expressed only in `(h,pi)`, inverse Laplacians appear. This
+is the familiar nonlocal character of gravitational electric-magnetic
+duality; it is not the local affine connection transformation
+`A_gamma=Gamma+gamma K`.
+
+The naive variable-level identification is therefore rejected. A more
+elaborate connection formulation could still relate the two structures, but
+it would need additional derivative operators and cannot be inferred from
+`Khat` alone.
+
+The two numerical scales also refer to different objects. The canonical
+half-squeeze `sqrt(Khat)` carries `u_Q=(2Q-1)^(1/4)`, while the Hamiltonian
+metric `Khat` carries squared eigenvalue `sqrt(2Q-1)`. Neither is an Immirzi
+parameter without a connection-triad map.
 
 The previously audited portal quantities are different:
 
@@ -113,11 +139,12 @@ None of these equalities is forced. The scalar portal coefficient can still
 govern scalar-sector competition while the symplectic squeeze governs the
 gravitational canonical pair.
 
-## 4. The decisive calculation
+## 4. The surviving research question
 
-Start from the linearized connection-triad variables and the two
-prepotentials, then construct the explicit canonical map between them. Apply
-the quartic half-squeeze `sqrt(Khat)` and ask whether it has the form
+The direct prepotential map has failed. The remaining route would start from a
+connection formulation that contains both the ordinary and dual gravitational
+connections. One could then ask whether the quartic half-squeeze, together
+with the required spatial derivative map, induces
 
 ```text
 (K,E) -> (gamma K, E/gamma)
@@ -126,19 +153,27 @@ the quartic half-squeeze `sqrt(Khat)` and ask whether it has the form
 in the extrinsic-curvature/triad directions, with
 
 ```text
-gamma=(2Q-1)^(1/4).
+gamma=u_Q=(2Q-1)^(1/4).
 ```
 
-If it does, the next test is whether the induced connection is
+If such a construction exists, the next test is whether the induced
+connection is
 `Gamma+gamma K`, whether the Gauss and Hamiltonian constraints retain their
 standard form, and whether the area operator scales by the same `gamma`.
 Failure of any of those equalities rejects the Immirzi identification while
 leaving the classical screening response intact.
 
-If it succeeds, PDT would supply a fixed algebraic value for a canonical
-scale that is otherwise free at the kinematical level. That would be a
-substantial result, but it requires the variable-level derivation and cannot
-be inferred from the present matrix alone.
+Until that construction is produced, the honest conclusion is:
+
+```text
+u_Q is the exact scale of the quartic half-squeeze;
+u_Q is not established as the Barbero-Immirzi parameter.
+```
+
+If the stronger construction succeeds, PDT would supply a fixed algebraic
+value for a canonical scale that is otherwise free at the kinematical level.
+That would be a substantial result, but the present prepotential calculation
+does not establish it.
 
 ## References
 

@@ -219,14 +219,14 @@ matter coupling and nonlinear completion. See
 [`DUALITY_ACTION_COMPATIBILITY.md`](DUALITY_ACTION_COMPATIBILITY.md).
 
 The normalized block is also an exact canonical squeeze, which makes the
-earlier Barbero-Immirzi intuition worth testing in a narrower form. If the
-positive square root of that block maps to the Ashtekar-Barbero canonical
-transformation, its scale would be
-`gamma_Q=(2Q-1)^(1/4)=1.0957280275...`. The shared canonical structure is
-real; the identification is still open because the quartic squeeze presently
-acts on dual prepotentials rather than on the connection and densitized triad.
-The deposited scalar portal coefficients have different values and should not
-be substituted for this candidate. See
+earlier Barbero-Immirzi intuition worth testing in a narrower form. Its
+half-squeeze scale is `u_Q=(2Q-1)^(1/4)=1.0957280275...`. The simplest direct
+identification fails: the quartic squeeze mixes prepotentials whose maps to
+metric and momentum have unequal derivative orders and nonlocal inverses,
+whereas the Barbero-Immirzi transformation is local in connection and triad
+variables. A more elaborate dual-connection bridge remains open, but `u_Q`
+is not presently an Immirzi value. The deposited scalar portal coefficients
+have different values as well. See
 [`IMMIRZI_SQUEEZE_AUDIT.md`](IMMIRZI_SQUEEZE_AUDIT.md).
 
 Expanding the deposited two-scalar action about `(phi,chi)=(v,0)` sharpens that
