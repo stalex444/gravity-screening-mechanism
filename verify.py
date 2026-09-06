@@ -313,6 +313,10 @@ def main():
     # genuine complex structure, while the Schur complement splits into two
     # factors sqrt(S): one from shape and one from the overall scale.
     constitutive_scale = S.sqrt()
+    squeeze_ratio = (Decimal(1) + lambda4) / (Decimal(1) - lambda4)
+    squeeze_eigenvalue = squeeze_ratio.sqrt()
+    half_squeeze_scale = squeeze_eigenvalue.sqrt()
+    assert abs(squeeze_ratio - (Decimal(2) * Q - Decimal(1))) < Decimal("1e-65")
     constitutive = [
         [Decimal(1), -lambda4],
         [-lambda4, Decimal(1)],
@@ -532,6 +536,8 @@ def main():
     print("normalized constitutive det  = 1 EXACT")
     print("normalized duality twist^2   = -I EXACT")
     print("scale x shape Schur factors  = sqrt(S) x sqrt(S) = S EXACT")
+    print(f"quartic half-squeeze scale   = {half_squeeze_scale}")
+    print("squeeze ratio                = 2Q-1 EXACT")
     print("first-order mode reduction   = second-order coefficient S EXACT")
     print("real doubled-action response = 1/(1-lambda4^2) EXACT")
     print("trace-normalization entropy  = shifts by log(survivor)")

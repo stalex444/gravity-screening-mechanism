@@ -218,6 +218,17 @@ of `d`, fix the physical metric/source frame, and obtain a consistent ordinary
 matter coupling and nonlinear completion. See
 [`DUALITY_ACTION_COMPATIBILITY.md`](DUALITY_ACTION_COMPATIBILITY.md).
 
+The normalized block is also an exact canonical squeeze, which makes the
+earlier Barbero-Immirzi intuition worth testing in a narrower form. If the
+positive square root of that block maps to the Ashtekar-Barbero canonical
+transformation, its scale would be
+`gamma_Q=(2Q-1)^(1/4)=1.0957280275...`. The shared canonical structure is
+real; the identification is still open because the quartic squeeze presently
+acts on dual prepotentials rather than on the connection and densitized triad.
+The deposited scalar portal coefficients have different values and should not
+be substituted for this candidate. See
+[`IMMIRZI_SQUEEZE_AUDIT.md`](IMMIRZI_SQUEEZE_AUDIT.md).
+
 Expanding the deposited two-scalar action about `(phi,chi)=(v,0)` sharpens that
 condition. Its quadratic operator has no `h`-`chi` mixing, so a sectorwise
 modular identification is cocycle-neutral on the one-particle quartic mode at

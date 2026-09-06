@@ -271,6 +271,14 @@ theorem lambda4_eq_relative_increment (q : ℝ) (hq : q ≠ 0) :
   unfold lambda4
   field_simp [hq]
 
+/-- The hyperbolic squeeze ratio of the quartic residue simplifies to
+`2q-1`.  If `lambda4=tanh theta`, this ratio is `exp(2 theta)`. -/
+theorem quartic_squeeze_ratio (q : ℝ) (hq : q ≠ 0) :
+    (1 + lambda4 q) / (1 - lambda4 q) = 2 * q - 1 := by
+  unfold lambda4
+  field_simp [hq]
+  ring
+
 /-! ## The residue amplitude from the quartic companion operator -/
 
 /-- The nonnegative incidence/companion matrix of the substitution
@@ -1225,6 +1233,7 @@ end GravityScreening
 #print axioms GravityScreening.screening_pos
 #print axioms GravityScreening.quartic_screening_identity
 #print axioms GravityScreening.lambda4_eq_relative_increment
+#print axioms GravityScreening.quartic_squeeze_ratio
 #print axioms GravityScreening.quarticCompanion_mul_inv
 #print axioms GravityScreening.quarticCompanion_inv_mul
 #print axioms GravityScreening.quarticCompanion_perron
