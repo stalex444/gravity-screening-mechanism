@@ -76,6 +76,36 @@ This also clarifies the gravity paper's statement that the Q sector screens
 against itself.  In this realization, its contribution is literally the
 negative term `-lambda4^2` in the spacetime trace norm.
 
+## Why the quadratic form is selected
+
+Consider the most general quadratic scalar on the plane spanned by a
+background coordinate `x` and a time coordinate `t`:
+
+```text
+F(x,t) = A x^2 + 2B x t + C t^2.
+```
+
+Impose three geometric conditions on the normalized-background slice:
+
+1. `F(1,0)=1`: the unscreened background fixes the normalization;
+2. `F(1,t)=F(1,-t)`: reversing time orientation does not change the
+   gravitational strength;
+3. `F(1,1)=0`: equal unit background and time components form a null
+   direction.
+
+The first condition forces `A=1`, the second forces `B=0`, and the third
+forces `C=-1`.  Therefore
+
+```text
+F(1,t)=1-t^2
+```
+
+is the unique quadratic response under these conditions.  Substituting the
+independently fixed `t=lambda4` gives the PDT screening factor.  This does not
+prove that the physical Einstein coefficient obeys the three conditions, but
+it shows that once gravity reads this Lorentzian background/time plane, the
+functional form is no longer adjustable.
+
 ## Minimal action-level statement
 
 Let `M0` be the unscreened Planck scale supplied by the ordinary PDT ruler.  A
@@ -127,6 +157,7 @@ does any of the following:
 
 `GravityScreening/Basic.lean` proves:
 
+- `normalized_even_null_quadratic_forced`;
 - `quarticTimeObserver_sq`;
 - `quarticTimeUnit_eq_normalized_observer`;
 - `quarticTimeObserverResponse_eq`;

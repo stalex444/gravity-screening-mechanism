@@ -16,6 +16,33 @@ noncomputable def lambda4 (q : ℝ) : ℝ := 1 - 1 / q
 /-- The proposed surviving response fraction. -/
 def screening (l : ℝ) : ℝ := 1 - l ^ 2
 
+/-- A general real quadratic scalar on a background/time plane. -/
+def quadraticSpacetimeScalar (a b c x t : ℝ) : ℝ :=
+  a * x ^ 2 + 2 * b * x * t + c * t ^ 2
+
+/-- A quadratic scalar normalized on the background, even under reversal of
+the time coordinate, and zero on the unit null direction is forced to be the
+Lorentzian difference of squares on the normalized-background slice. -/
+theorem normalized_even_null_quadratic_forced
+    (a b c l : ℝ)
+    (hbase : quadraticSpacetimeScalar a b c 1 0 = 1)
+    (heven : ∀ t : ℝ,
+      quadraticSpacetimeScalar a b c 1 t =
+        quadraticSpacetimeScalar a b c 1 (-t))
+    (hnull : quadraticSpacetimeScalar a b c 1 1 = 0) :
+    quadraticSpacetimeScalar a b c 1 l = screening l := by
+  have ha : a = 1 := by
+    simpa [quadraticSpacetimeScalar] using hbase
+  have hb : b = 0 := by
+    have h := heven 1
+    norm_num [quadraticSpacetimeScalar] at h
+    linarith
+  have hc : c = -1 := by
+    simp [quadraticSpacetimeScalar, ha, hb] at hnull
+    linarith
+  simp [quadraticSpacetimeScalar, screening, ha, hb, hc]
+  ring
+
 /-- A normalized two-channel quadratic response. -/
 def response (l x y : ℝ) : ℝ := x ^ 2 + y ^ 2 - 2 * l * x * y
 
@@ -1431,6 +1458,7 @@ theorem shiftedPortalPotential_chi_even
 end GravityScreening
 
 #print axioms GravityScreening.response_completed_square
+#print axioms GravityScreening.normalized_even_null_quadratic_forced
 #print axioms GravityScreening.response_at_stationary
 #print axioms GravityScreening.normalized_block_det
 #print axioms GravityScreening.channelEmbedding_det

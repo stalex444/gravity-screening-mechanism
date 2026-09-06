@@ -259,6 +259,8 @@ time-dimensional construction: `u=4Q-3Q^2`, with trace square `-36`.  Hence
 the screening element can be written directly as
 `a_Q=1/2+(lambda4/6)u`.  See
 [`TIME_GRAVITY_TRACE_BRIDGE.md`](TIME_GRAVITY_TRACE_BRIDGE.md).
+On this background/time plane, normalization, time-orientation evenness, and
+the unit null condition uniquely force the quadratic response `1-lambda4^2`.
 
 The normalized block is also an exact canonical squeeze, which makes the
 earlier Barbero-Immirzi intuition worth testing in a narrower form. Its
