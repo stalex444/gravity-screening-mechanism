@@ -80,6 +80,16 @@ adds it, and that both the local and global quartic trace forms subtract that
 same mass to give `S_Q`. This makes the Born-to-Lorentzian sign change exact;
 the physical horizon identification remains the open link.
 
+[`COMPLEX_HORIZON_DIRECTION.md`](COMPLEX_HORIZON_DIRECTION.md) removes a
+remaining directional freedom. The normalized visible and hidden branches of
+the minimal dilation span a real orthogonal two-plane. Once represented in
+the quartic complex place with the visible branch at `1`, Lean proves that the
+hidden branch must be `+i` or `-i`; a chosen orientation fixes the sign. The
+positive form counts its Born mass while the untwisted trace form makes it
+timelike and subtracts the same mass. What remains is to derive why the local
+horizon algebra identifies this abstract branch plane with Q's arithmetic
+complex place.
+
 [`PQ_TRANSFORM_CHAIN.md`](PQ_TRANSFORM_CHAIN.md) now joins the gravity paper's
 original `pQ`-resolution argument to the later Hodge flip-product, modular
 defect, and information-erasure results.  The combined chain derives the

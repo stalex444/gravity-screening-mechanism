@@ -164,6 +164,13 @@ turning the positive loss into the Lorentzian subtraction required by the
 Einstein coefficient. The still-open physical statement is that nature uses
 this exact form change for the local causal-horizon response.
 
+The hidden direction has now also been classified. In the oriented real plane
+spanned by the two normalized horizon branches, fixing the visible branch to
+`1` forces the orthogonal hidden branch to `+i` or `-i`; orientation selects
+the sign, and the screening factor is sign-independent. This removes a free
+mixing angle. See
+[`COMPLEX_HORIZON_DIRECTION.md`](COMPLEX_HORIZON_DIRECTION.md).
+
 ## The amplitude route
 
 If the same scalar is an operator amplitude on a Hilbert vector, Born's rule
@@ -272,6 +279,7 @@ with the physical causal-horizon channel remains a PDT physical postulate.
 
 - `GravityScreening/PerronTetrahedralBridge.lean`
 - `GravityScreening/TetrahedralFisherCone.lean`
+- `GravityScreening/ComplexHorizonDirection.lean`
 - `GravityScreening/TetrahedralInformationFrame.lean`
 - `GravityScreening/ModularAmplitude.lean`
 - [`MODULAR_GNS_AMPLITUDE.md`](MODULAR_GNS_AMPLITUDE.md)
