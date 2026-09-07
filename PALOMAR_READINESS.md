@@ -58,9 +58,11 @@ instantiation would use; it does not claim that the published action already
 contains the PDT block.
 
 The standard five-coefficient Pauli--Fierz uniqueness calculation is also
-kernel checked.  For the local two-derivative symmetric-tensor ansatz, the
-three divergence relations and formal self-adjointness force every term to
-share one overall coefficient.  Conditional on the Q block being the
+kernel checked.  The new four-dimensional symbol module derives the three
+coefficient relations from the Ward identity using explicit symmetric test
+tensors and derives the fourth from operator self-adjointness.  These
+relations force every term in the local two-derivative symmetric-tensor ansatz
+to share one overall coefficient.  Conditional on the Q block being the
 propagating part of such a gauge-invariant action, its `S_Q` coefficient must
 therefore extend to the lapse and shift sector.  This closes the abstract
 normalization-placement question while leaving the explicit local-action

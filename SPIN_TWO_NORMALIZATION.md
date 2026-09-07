@@ -89,11 +89,17 @@ magnetic/NUT source.
 
 ## Scope
 
-The kernel proves the coefficient uniqueness from the displayed Ward and
-self-adjointness relations and proves its exact quartic specialization.  The
-remaining tensor-calculus task is to derive those relations for the proposed
-Q-completed local action itself.  The theorem does not assume that every
-arbitrary modification of the wave sector preserves them.  A modification
+The kernel proves the coefficient uniqueness and its exact quartic
+specialization.  It now also derives the three Ward relations from the actual
+four-dimensional Fourier symbol of the five-term operator and derives the
+self-adjointness relation from explicit symmetric test tensors.  That symbol
+calculation currently uses a Euclidean flat metric; the polynomial coefficient
+relations are the standard ones, but a direct Lorentz-signature formalization
+would strengthen the artifact.
+
+The remaining field-theory task is to derive the Ward identity for the
+proposed Q-completed local action itself.  The theorem does not assume that
+every arbitrary modification of the wave sector preserves it.  A modification
 that breaks linearized diffeomorphism invariance could normalize waves and
 constraints differently, but it would no longer describe the standard
 massless spin-two gauge field.
@@ -107,6 +113,7 @@ electric-magnetic duality of full general relativity.
 ## Kernel artifact and primary references
 
 - `GravityScreening/PauliFierzUniqueness.lean`
+- `GravityScreening/PauliFierzSymbol.lean`
 - Marc Henneaux and Claudio Teitelboim, *Duality in linearized gravity*:
   <https://arxiv.org/abs/gr-qc/0408101>.
 - S. Deser, *Self-Interaction and Gauge Invariance*:

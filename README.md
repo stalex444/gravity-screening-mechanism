@@ -229,6 +229,13 @@ wave term necessarily multiplies the lapse and shift constraint terms as
 well.  The corresponding coefficient theorem and quartic specialization are
 kernel checked in `GravityScreening/PauliFierzUniqueness.lean`.
 
+[`UNIQUENESS_LADDER.md`](UNIQUENESS_LADDER.md) separates the distinct
+selection and uniqueness results: generator selection, pair distinctiveness,
+the quartic two-channel completion, the source-preserving frame, and the
+massless spin-two operator.  `GravityScreening/PauliFierzSymbol.lean`
+strengthens the last step by deriving its coefficient relations directly from
+the four-dimensional Fourier-symbol Ward identity and self-adjointness.
+
 [`BIVECTOR_RATE_AUDIT.md`](BIVECTOR_RATE_AUDIT.md) records a selective but
 non-exact consequence: `-log(S_Q)/log(Q)` differs from `1/6` by only
 `8.50e-6`, equivalently `S_Q^6 Q - 1 = -1.01759e-5`.  Six is the dimension of
