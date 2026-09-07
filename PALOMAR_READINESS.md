@@ -51,22 +51,35 @@ It is unique among positive source-preserving factors in the stated class.
 
 This connects the formalization to a standard mathematical-relativity problem
 surface: duality-symmetric spin-two fields with sources and constraint
-preservation.  The remaining step is an explicit instantiation of the abstract
-block in the full local derivative variables of the Barnich--Troessaert
-action.  The current theorem proves the internal algebra that such an
-instantiation would use; it does not claim that the published action already
-contains the PDT block.
+preservation.  A new operator theorem now applies the block to the output of
+an arbitrary complete linear operator.  For the Pauli--Fierz operator it gives
+an explicit local doubled equation, preserves the Ward identity and gauge
+kernel, and reduces the full sourced equation to `S_Q E_PF(h)=T` without
+inverting the gauge operator.  The accompanying symmetric-bilinear theorem
+derives the doubled equations from a quadratic action and proves positivity on
+a positive physical mode space.
+
+These results construct a mathematically consistent linear completion; they
+do not claim that the Barnich--Troessaert action already contains the PDT
+block.  The physical step still open is to derive, rather than identify, its
+partner spin-two field and `lambda4` coupling from the PDT Q clock/information
+degree of freedom.
 
 The standard five-coefficient Pauli--Fierz uniqueness calculation is also
 kernel checked.  The new four-dimensional symbol module derives the three
 coefficient relations from the Ward identity using explicit symmetric test
 tensors and derives the fourth from operator self-adjointness.  These
 relations force every term in the local two-derivative symmetric-tensor ansatz
-to share one overall coefficient.  Conditional on the Q block being the
-propagating part of such a gauge-invariant action, its `S_Q` coefficient must
-therefore extend to the lapse and shift sector.  This closes the abstract
-normalization-placement question while leaving the explicit local-action
-identification open.
+to share one overall coefficient.  The doubled-operator construction places
+the Q block on that complete gauge-invariant operator, so its `S_Q`
+coefficient extends to the lapse and shift sector as well as its propagating
+components.  This closes the linear normalization-placement and action-algebra
+questions while leaving the PDT identification of the partner field open.
+
+The calculation is proved in both Euclidean and direct Minkowski signature.
+The Lorentzian module explicitly carries the `(-,+,+,+)` signs through raised
+momenta, traces, divergences, and the tensor pairing, removing any reliance on
+an informal continuation argument.
 
 ## A viable intermediate submission
 
@@ -83,8 +96,8 @@ That package would need:
 - roughly eight to twelve nonredundant statements led by the operator theorem;
 - the Pauli--Fierz coefficient-uniqueness and source-frame closure statements;
 - precise relationship notes to duality-symmetric spin-two literature;
-- a scope statement separating the proved internal constraint algebra from
-  its unproved instantiation in the full derivative action;
+- a scope statement separating the proved linear doubled action and constraint
+  algebra from the unproved PDT identification of the partner field;
 - an explicit falsifier: failure of uniform reduction, symplecticity,
   orientation cancellation, or zero-magnetic-source preservation;
 - valid MSC 2020 codes checked against the official list before submission.

@@ -71,26 +71,28 @@ self-adjointness.  Lean then proves that the coefficient pattern must be
 a (1,-2,1,1,-1).
 ```
 
-Thus only the overall normalization `a` remains.  Conditional on the Q block
-being the propagating part of this gauge-invariant operator, setting `a=S_Q`
-forces the same normalization into the static lapse and shift constraints.
+Thus only the overall normalization `a` remains.  Applying the Q block to the
+complete gauge-invariant operator and setting `a=S_Q` forces the same
+normalization into the propagating, lapse, and shift components.
 
 This answers why gravitational waves and Newtonian gravity cannot choose
 different Q normalizations while remaining one standard massless spin-two
 field.
 
-## The remaining theorem
+## The remaining identification
 
-The remaining question is an identification between structures rather than
-another scalar uniqueness calculation:
+The local linear doubled spin-two equations and their symmetric quadratic
+action have now been constructed.  They preserve the Ward identity, gauge
+kernel, source conservation, and positive quadratic form on the physical mode
+space.  The remaining question is an identification between structures:
 
-> Does the local Lorentzian Q-completed spin-two action realize the same
-> source-preserving internal block whose arithmetic coefficient is
+> Why is the partner field in that minimal doubled action the Q
+> information/clock degree of freedom of PDT, with
 > `lambda4=1-1/Q`?
 
-The existing results determine the consequences if it does.  A direct
-construction of that action, followed by its Ward-identity calculation, would
-turn the conditional chain into a dynamical derivation.
+The existing results determine the consequences of that identification.  A
+derivation of the partner field and coupling from the Q dynamics would turn
+the present mathematical completion into a PDT gravitational derivation.
 
 ## Artifacts
 
@@ -98,5 +100,8 @@ turn the conditional chain into a dynamical derivation.
 - `GravityScreening/ElectricSourceFrame.lean`
 - `GravityScreening/PauliFierzUniqueness.lean`
 - `GravityScreening/PauliFierzSymbol.lean`
+- `GravityScreening/LorentzPauliFierzSymbol.lean`
+- `GravityScreening/DoubledSpinTwoOperator.lean`
+- `GravityScreening/DoubledSpinTwoAction.lean`
 - public exclusion computation:
   <https://github.com/stalex444/dimensional-origin-Newton/blob/main/expanded_exclusion_test.py>

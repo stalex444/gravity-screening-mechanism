@@ -21,4 +21,7 @@ import GravityScreening.SourcedConstraint
 import GravityScreening.ElectricSourceFrame
 import GravityScreening.PauliFierzUniqueness
 import GravityScreening.PauliFierzSymbol
+import GravityScreening.LorentzPauliFierzSymbol
+import GravityScreening.DoubledSpinTwoOperator
+import GravityScreening.DoubledSpinTwoAction
 import GravityScreening.PhiRulerFold

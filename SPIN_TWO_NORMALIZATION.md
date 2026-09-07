@@ -90,19 +90,25 @@ magnetic/NUT source.
 ## Scope
 
 The kernel proves the coefficient uniqueness and its exact quartic
-specialization.  It now also derives the three Ward relations from the actual
+specialization.  It derives the three Ward relations from the actual
 four-dimensional Fourier symbol of the five-term operator and derives the
-self-adjointness relation from explicit symmetric test tensors.  That symbol
-calculation currently uses a Euclidean flat metric; the polynomial coefficient
-relations are the standard ones, but a direct Lorentz-signature formalization
-would strengthen the artifact.
+self-adjointness relation from explicit symmetric test tensors.  The direct
+Lorentzian version carries `diag(-1,1,1,1)` through momentum raising, traces,
+divergences, and tensor pairings; it reaches the same unique coefficient
+pattern without an analytic-continuation premise.
 
-The remaining field-theory task is to derive the Ward identity for the
-proposed Q-completed local action itself.  The theorem does not assume that
-every arbitrary modification of the wave sector preserves it.  A modification
-that breaks linearized diffeomorphism invariance could normalize waves and
-constraints differently, but it would no longer describe the standard
-massless spin-two gauge field.
+The doubled-operator construction now applies the same constant Q block to the
+complete Pauli--Fierz operator.  Because the original operator obeys the Ward
+identity, both completed channels do as well; the construction also preserves
+the gauge kernel and source conservation.  A symmetric-bilinear action gives
+these two equations as its first variations and has a nonnegative completed
+square on any positive physical mode space.
+
+The remaining field-theory task is the PDT identification: derive why the
+second spin-two field and its `lambda4=1-1/Q` mixing arise from the Q
+clock/information degree of freedom.  The present mathematics supplies a
+consistent local linear realization and fixes its consequences once that
+identification is made.
 
 At nonlinear order, the Deser bootstrap explains how consistent
 self-coupling of the linear massless spin-two field generates the Einstein
@@ -114,6 +120,9 @@ electric-magnetic duality of full general relativity.
 
 - `GravityScreening/PauliFierzUniqueness.lean`
 - `GravityScreening/PauliFierzSymbol.lean`
+- `GravityScreening/LorentzPauliFierzSymbol.lean`
+- `GravityScreening/DoubledSpinTwoOperator.lean`
+- `GravityScreening/DoubledSpinTwoAction.lean`
 - Marc Henneaux and Claudio Teitelboim, *Duality in linearized gravity*:
   <https://arxiv.org/abs/gr-qc/0408101>.
 - S. Deser, *Self-Interaction and Gauge Invariance*:

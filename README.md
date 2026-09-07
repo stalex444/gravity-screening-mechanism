@@ -235,6 +235,18 @@ the quartic two-channel completion, the source-preserving frame, and the
 massless spin-two operator.  `GravityScreening/PauliFierzSymbol.lean`
 strengthens the last step by deriving its coefficient relations directly from
 the four-dimensional Fourier-symbol Ward identity and self-adjointness.
+`GravityScreening/LorentzPauliFierzSymbol.lean` repeats the result directly in
+Minkowski signature with every index-raising sign explicit.
+
+[`LOCAL_DOUBLED_SPIN_TWO.md`](LOCAL_DOUBLED_SPIN_TWO.md) lifts the quartic
+block from individual modes to an arbitrary complete linear operator.  For
+the Pauli--Fierz operator, eliminating the source-free partner gives
+`S_Q E_PF(h)=T` without inverting `E_PF`, preserves its gauge kernel and Ward
+identity, and forces source conservation.  The generic operator theorem is
+kernel checked in `GravityScreening/DoubledSpinTwoOperator.lean`.
+`GravityScreening/DoubledSpinTwoAction.lean` proves the corresponding
+variation formulas and a completed-square positivity theorem for the quartic
+mixing on the positive physical polarization space.
 
 [`BIVECTOR_RATE_AUDIT.md`](BIVECTOR_RATE_AUDIT.md) records a selective but
 non-exact consequence: `-log(S_Q)/log(Q)` differs from `1/6` by only
