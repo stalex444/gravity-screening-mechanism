@@ -123,8 +123,9 @@ independent magnetic source equation remains zero. A capstone joins this with
 the retained TT prepotential action, Pauli--Fierz coefficient uniqueness, the
 two-polarization count, and the exact equivalence
 `G_Q=G_0/S_Q`. The remaining linear field-theory seam is to derive the doubled
-constraint block and the TT action together by varying one local sourced
-covariant action.
+constraint block and the TT action together. The next two results close its
+fixed-mode action placement and covariant operator form; the physical partner
+identification remains.
 
 [`SOURCED_TT_HAMILTONIAN_ACTION.md`](SOURCED_TT_HAMILTONIAN_ACTION.md) closes
 the intermediate one-action placement test at fixed momentum. The action has
@@ -133,9 +134,22 @@ multiplier terms. Lean proves their exact variations. After eliminating only
 the zero-source partner equation, while leaving the electric constraints off
 shell, the action becomes
 `S_Q*L_TT + sum_i u_i*(S_Q*E_i-J_i)`. Thus the same coefficient is present in
-propagation and in every unsolved ordinary-source constraint. The remaining
-linear step is to replace the abstract constraint values with the explicit
-local differential constraints of the complete Barnich--Troessaert fields.
+propagation and in every unsolved ordinary-source constraint. The covariant
+compression below then replaces the abstract constraint values with the
+complete Lorentz Pauli--Fierz operator in one step.
+
+[`COVARIANT_GRAVITY_COMPRESSION.md`](COVARIANT_GRAVITY_COMPRESSION.md) shows
+that the algebraic core is considerably simpler than its consistency audit.
+Lean constructs the actual unit-normalized Lorentz Pauli--Fierz tensor symbol
+as a linear map and applies the quartic two-channel reduction to it directly.
+The two doubled equations become the single covariant equation
+`S_Q E_PF(h)=T`, component by component. Its temporal components contain the
+lapse/shift constraints and its TT spatial components contain the waves, so
+one operation covers both. The operator outputs are uniquely `T/S_Q` and
+`lambda4*T/S_Q` modulo the usual gauge kernel, and the Ward identity preserves
+source conservation. The remaining identification is that the partner is the
+dual or hidden prepotential of the same graviton rather than a second
+independent spin-two field.
 
 [`THREE_D_INFORMATION_PACKING.md`](THREE_D_INFORMATION_PACKING.md) records a
 new geometric route prompted by the interpretation of a spatial present as an

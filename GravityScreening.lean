@@ -43,6 +43,7 @@ import GravityScreening.ErasureSymplectic
 import GravityScreening.TTPrepotentialAction
 import GravityScreening.TTConstraintSourceClosure
 import GravityScreening.SourcedTTHamiltonianAction
+import GravityScreening.CovariantGravityCompression
 import GravityScreening.ThreeDPackingWitness
 import GravityScreening.TetrahedralCoverage
 import GravityScreening.MorphicPackingThreshold

@@ -127,9 +127,8 @@ is solved, exactly where a Newton coupling must appear.
 ## The remaining field-theory seam
 
 This is still a fixed-mode Hamiltonian assembly.  Its four electric and four
-magnetic constraint values are abstract coordinates.  The next step is to
-replace them with Barnich and Troessaert's explicit local differential
-expressions
+magnetic constraint values are abstract coordinates.  The explicit local
+differential expressions are
 
 \[
 \mathcal H_{am}=2\epsilon_{ab}\Delta\partial^nH^b_{mn},
@@ -137,11 +136,13 @@ expressions
 \mathcal H_{a\perp}=\Delta^2 C_a,
 \]
 
-and prove that the same constant quartic frame acts on the complete fields
-`(H^a_{mn},A^a_m,C^a,n^a_m,n^a)` while preserving the kinetic symplectic form
-and the ordinary source ray.  That would lift the present mode-level placement
-identity to their local sourced action.  A nonlinear generally covariant
-completion would remain after the local linear theorem.
+`COVARIANT_GRAVITY_COMPRESSION.md` now bypasses a component-by-component lift:
+it applies the quartic block directly to the complete Lorentz Pauli--Fierz
+operator and proves the screened equation for every tensor component at once.
+What remains is to identify the partner globally with Barnich and
+Troessaert's constrained dual prepotential, rather than an independent
+spin-two field, and then establish the nonlinear generally covariant
+completion.
 
 ## Kernel receipts
 
