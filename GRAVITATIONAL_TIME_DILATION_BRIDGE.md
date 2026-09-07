@@ -12,12 +12,20 @@ closes. Strictly speaking, the normalized phase rotates on the **unit circle**;
 the **unit disk** is the arithmetic boundary that distinguishes settling,
 marginal rotation, and escape.
 
-This gives three different operations:
+There is also a second quartic unit-circle motion: the Perron/KMS modular
+phase `Q^(-is)=exp(-is log Q)`. Its frequency is `log Q`, not the conjugate-root
+angle `theta_Q`. The ratio of those two frequencies is transcendental, so no
+algebraic portal coefficient converts one into the other. See
+[`TWO_Q_CLOCKS_AUDIT.md`](TWO_Q_CLOCKS_AUDIT.md).
 
-1. **Clock carrier:** the norm-preserving quartic phase rotation.
+This gives four different operations:
+
+1. **Projective clock carrier:** the norm-preserving conjugate-root rotation.
 2. **Clock readout:** coupling the phase to the cubic record-forming sector or
    to an observer, so that a phase becomes an event.
-3. **Gravity:** the joint `pQ` geometry supplies the baseline scale, while the
+3. **Horizon modular clock:** the phase with frequency `log Q`, whose Rindler
+   energy and temperature have the invariant ratio `log Q`.
+4. **Gravity:** the joint `pQ` geometry supplies the baseline scale, while the
    resolved quartic defect supplies the proposed screening response.
 
 The existing covariance theorem proves that the finite information channel
@@ -38,7 +46,7 @@ In the controlled-unitary clock model its observable interaction angle has
 the form
 
 \[
-\Theta=\kappa_{pQ},g\,\tau,
+\Theta=\kappa_{pQ}g\,\tau,
 \]
 
 where `g` is the chosen local generator scale and `tau` is proper duration.
@@ -94,7 +102,8 @@ The roles are now:
 
 \[
 \begin{array}{rcl}
-\text{quartic phase} &\longrightarrow& \text{unitary modular clock},\\
+\theta_Q &\longrightarrow& \text{projective conjugate clock},\\
+\log Q &\longrightarrow& \text{horizon modular clock},\\
 p\text{-}Q\text{ portal} &\longrightarrow& \text{clock readout and records},\\
 pQ\text{ ruler} &\longrightarrow& \text{unscreened gravitational scale},\\
 Q\text{ defect }S_Q &\longrightarrow& \text{effective gravitational response},\\
@@ -117,6 +126,17 @@ M_{\mathrm{Pl},\mathrm{eff}}^2
 That is a `pQ`-anchored gravity theory with a `Q`-resolved response. Calling
 the entire gravity mechanism purely quartic would omit its scale-setting half.
 
+For the modular clock, the standard Rindler conversion is especially sharp:
+
+\[
+E_Q(a)=T_U(a)\log Q,
+\qquad
+e^{-E_Q/T_U}=Q^{-1}.
+\]
+
+This exact conditional chain is developed in
+[`RINDLER_QUARTIC_CLOCK.md`](RINDLER_QUARTIC_CLOCK.md).
+
 ## The proposed clock-to-geometry equation
 
 Let `s` denote the dimensionless arithmetic or modular parameter and let
@@ -137,14 +157,21 @@ where:
 - `alpha^g` is geometric time evolution;
 - `L_g(x)` is the lapse-like conversion determined by the spacetime metric.
 
-The equation should preserve the distinguished quartic spectral line. A
+This equation directly concerns the `log Q` modular clock. It should preserve
+that distinguished quartic spectral line. A
 Connes cocycle may reparametrize its local rate, but it must not mix the line
 with other frequencies. This is the precise mathematical place for
 gravitational time dilation in PDT.
 
+If the `theta_Q` projective clock is also to represent geometric proper time,
+a second intertwining statement is required. The transcendence result proves
+that its conversion cannot be supplied by a fixed algebraic expression in
+`p,Q`.
+
 If this intertwiner exists, four pieces fit without conflation:
 
-1. the quartic arithmetic fixes the ordered phase orbit;
+1. the quartic arithmetic fixes both ordered phase orbits without identifying
+   their rates;
 2. the portal and cubic record sector individuate observations;
 3. the lapse determines observer-dependent proper durations;
 4. the fixed-cut information/canonical-energy matching determines the
@@ -188,9 +215,10 @@ boost normalization cancels and cannot select Newton's constant.
 - **Standard physics input:** proper time is metric-dependent; local horizon
   thermodynamics uses boost energy and Unruh temperature; modular flow can act
   as a state-dependent time flow.
-- **Open PDT identification:** the `pQ` modular parameter is geometric
-  boost time with a metric-determined lapse, and its fixed-cut BKM metric is
-  the canonical-energy metric of the same normalized perturbation.
+- **Open PDT identification:** the `pQ` modular parameter is geometric boost
+  time with a metric-determined lapse, its fixed-cut BKM metric is the
+  canonical-energy metric of the same normalized perturbation, and the
+  physical role of the distinct `theta_Q` projective clock is fixed.
 
 ## References
 

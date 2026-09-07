@@ -131,6 +131,16 @@ normalization cancels between heat and temperature, so time dilation connects
 the clock to geometry without independently fixing `G`. Gravity remains
 `pQ`-anchored through its unscreened scale and `Q`-resolved through `S_Q`.
 
+[`RINDLER_QUARTIC_CLOCK.md`](RINDLER_QUARTIC_CLOCK.md) derives the exact local
+Rindler reading of the Perron/KMS clock. Conditional on the physical horizon
+embedding, its energy satisfies `E_Q/T_U=log Q`, its Boltzmann weight is
+`1/Q`, its response defect is `lambda4`, and normalized completion gives
+`S_Q`. [`TWO_Q_CLOCKS_AUDIT.md`](TWO_Q_CLOCKS_AUDIT.md) then prevents a new
+conflation: the conjugate-root projective frequency `theta_Q` and the modular
+frequency `log Q` have a transcendental ratio. No algebraic portal coefficient
+can identify them by a constant linear rescaling. Their separate physical
+roles, or their geometric state-dependent conversion, remain to be fixed.
+
 [`BIVECTOR_RATE_AUDIT.md`](BIVECTOR_RATE_AUDIT.md) records a selective but
 non-exact consequence: `-log(S_Q)/log(Q)` differs from `1/6` by only
 `8.50e-6`, equivalently `S_Q^6 Q - 1 = -1.01759e-5`.  Six is the dimension of

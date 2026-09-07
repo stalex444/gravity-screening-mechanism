@@ -49,6 +49,12 @@ operator has eigenvalue `1/Q` on the corresponding GNS mode.  These are two
 descriptions of the same frequency, but they should not be conflated in a
 formal statement.
 
+This modular frequency is `log Q`. It is distinct from the projective
+conjugate-root frequency `theta_Q`. The covariance theorem applies to either
+phase action once supplied, but it does not identify their rates. Their
+transcendental separation is proved in
+[`TWO_Q_CLOCKS_AUDIT.md`](TWO_Q_CLOCKS_AUDIT.md).
+
 ## Information contraction at the same time
 
 For the normalized erasure channel, relative entropy obeys
@@ -80,8 +86,8 @@ are distinct commuting maps. `Q` fixes the modular spectral line and the
 quartic defect fixes how much information the observer retains; covariance
 shows that the second operation does not disturb the first.
 
-In lay terms, the unit-circle clock keeps the same pitch while the exterior
-signal becomes less distinguishable. Information has not been destroyed: the
+In lay terms, the modular unit-circle clock keeps the same pitch while the
+exterior signal becomes less distinguishable. Information has not been destroyed: the
 explicit Stinespring dilation places the complementary weight `lambda4^2` and
 the corresponding state in the hidden output. The arrow seen by the exterior
 observer comes from repeated loss of accessible distinctions, even though the
