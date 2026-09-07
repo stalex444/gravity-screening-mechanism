@@ -108,8 +108,10 @@ The capstone theorem
 1. The complete visible-plus-hidden fixed-mode TT prepotential action is
    unchanged.
 2. The visible action is exactly `S_Q` times the original action.
-3. The standard Pauli--Fierz Ward and self-adjointness relations propagate
-   that wave coefficient uniquely through the full five-term linear operator.
+3. The actual Lorentz-signature Ward identity and formal self-adjointness
+   propagate that wave coefficient uniquely through the full five-term linear
+   operator.  This is universal: every candidate operator with those
+   properties receives the Pauli--Fierz coefficient pattern at scale `S_Q`.
 4. All four sourced constraint responses are uniquely `J_i/S_Q`, with zero
    magnetic source equations, and the reduced phase space still has two
    graviton configuration degrees of freedom.
@@ -134,12 +136,13 @@ linearized construction that has been encoded.
 One physical seam remains.  The four constraint labels are a faithful model
 of the lapse and shift family, but the doubled constitutive block has not yet
 been obtained by varying one local, sourced, covariant gravitational action.
-The Pauli--Fierz divergence and self-adjointness relations are also explicit
-hypotheses of the coefficient-uniqueness step.  The next decisive calculation
-is therefore to build that single local quadratic action, perform its
-3+1 split, and recover both the TT prepotential action and the four sourced
-constraint equations from the same variation.  Nonlinear closure on curved
-backgrounds comes after that linear action-level test.
+The coefficient theorem now derives its relations from the Lorentz Ward and
+self-adjointness properties themselves; it does not assume the component
+relations separately.  The next decisive calculation is therefore to build
+that single local quadratic action, perform its 3+1 split, and recover both the
+TT prepotential action and the four sourced constraint equations from the same
+variation.  Nonlinear closure on curved backgrounds comes after that linear
+action-level test.
 
 The prepotential action used upstream is the duality-symmetric linearized
 gravity action of Barnich and Troessaert, [*Manifest spin 2 duality with electric
@@ -161,6 +164,7 @@ The principal declarations are:
 - `quarticConstraintResponse_closure`
 - `quarticFullConstraintResponse_closure`
 - `quarticFullConstraint_solution_unique`
+- `quarticLorentzPauliFierzNormalization_unique`
 - `quarticConstrainedSourcedTT_capstone`
 
 The printed axiom audit contains only the standard Mathlib foundations

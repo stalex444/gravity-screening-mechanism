@@ -1,6 +1,6 @@
 import GravityScreening.TTPrepotentialAction
 import GravityScreening.ElectricSourceFrame
-import GravityScreening.PauliFierzUniqueness
+import GravityScreening.LorentzPauliFierzSymbol
 import GravityScreening.TTHorizonCode
 
 /-!
@@ -17,9 +17,8 @@ to choose.  It then joins four previously separate statements:
 * the physical TT metric is unchanged exactly at the inverse Newton response.
 
 The propagation of the wave coefficient through the complete Pauli--Fierz
-operator uses the standard divergence and formal self-adjointness relations as
-explicit hypotheses.  The theorem therefore records exactly where the usual
-linearized spin-two input enters.
+operator uses the Lorentz-signature Ward identity and formal self-adjointness.
+These operator properties are retained explicitly in the uniqueness statement.
 -/
 
 namespace GravityScreening
@@ -204,6 +203,27 @@ theorem quarticFullConstraint_solution_unique
     exact (electricSource_constraint_solution_unique
       (lambda4 q) (electric i) (magnetic i) (source i) hs0).2 hi
 
+/-- The actual Lorentz-signature Ward identity and formal self-adjointness
+force every admissible five-term, local, two-derivative massless spin-two
+symbol with quartic wave coefficient to have the full quartic Pauli--Fierz
+coefficient pattern. -/
+theorem quarticLorentzPauliFierzNormalization_unique
+    (q : ℝ) (hq : 1 < q) :
+    ∀ b c d e : ℝ,
+      HasLorentzSpinTwoWardIdentity
+          (screening (lambda4 q)) b c d e →
+        IsLorentzSpinTwoSymbolSelfAdjoint
+          (screening (lambda4 q)) b c d e →
+        b = -2 * ((2 * q - 1) / q ^ 2) ∧
+          c = (2 * q - 1) / q ^ 2 ∧
+          d = (2 * q - 1) / q ^ 2 ∧
+          e = -((2 * q - 1) / q ^ 2) := by
+  intro b c d e hward hself
+  have hq0 : q ≠ 0 := by linarith
+  have hfull := quartic_lorentzSymbolProperties_force_fullNormalization
+    q (screening (lambda4 q)) b c d e hq0 rfl hward hself
+  exact ⟨hfull.2.1, hfull.2.2.1, hfull.2.2.2.1, hfull.2.2.2.2⟩
+
 /-- Linearized constrained-source capstone.  The quartic dilation preserves
 the full visible-hidden TT action, scales the exterior TT action by the exact
 quartic coefficient, fixes the complete Pauli--Fierz coefficient pattern
@@ -212,14 +232,10 @@ constraints, leaves two graviton configuration degrees of freedom, and gives
 the inverse Newton response as the exact condition for an unchanged physical
 TT metric. -/
 theorem quarticConstrainedSourcedTT_capstone
-    (q k kappa0 kappaQ G0 GQ b c d e : ℝ)
+    (q k kappa0 kappaQ G0 GQ : ℝ)
     (H Hdot : TTPrepotentialMode)
     (source : PauliFierzConstraintLabel → ℝ) (x : TTCoordinates)
     (hq : 1 < q)
-    (hdivergenceWave : screening (lambda4 q) + b / 2 = 0)
-    (hdivergenceDouble : b / 2 + d = 0)
-    (hdivergenceTrace : c + e = 0)
-    (hselfAdjoint : c = d)
     (hkappa0 : 0 ≤ kappa0) (hkappaQ : 0 ≤ kappaQ)
     (hkappa0_sq : kappa0 ^ 2 = 32 * Real.pi * G0)
     (hkappaQ_sq : kappaQ ^ 2 = 32 * Real.pi * GQ)
@@ -233,10 +249,15 @@ theorem quarticConstrainedSourcedTT_capstone
           (dilateTTPrepotentialMode (screening (lambda4 q)) Hdot) =
         ((2 * q - 1) / q ^ 2) *
           ttPrepotentialLagrangian k H Hdot)) ∧
-    (b = -2 * ((2 * q - 1) / q ^ 2) ∧
-      c = (2 * q - 1) / q ^ 2 ∧
-      d = (2 * q - 1) / q ^ 2 ∧
-      e = -((2 * q - 1) / q ^ 2)) ∧
+    (∀ b c d e : ℝ,
+      HasLorentzSpinTwoWardIdentity
+          (screening (lambda4 q)) b c d e →
+        IsLorentzSpinTwoSymbolSelfAdjoint
+          (screening (lambda4 q)) b c d e →
+        b = -2 * ((2 * q - 1) / q ^ 2) ∧
+          c = (2 * q - 1) / q ^ 2 ∧
+          d = (2 * q - 1) / q ^ 2 ∧
+          e = -((2 * q - 1) / q ^ 2)) ∧
     (∀ i,
       electricConstraintResponse (lambda4 q)
           (quarticFullConstraintResponse q source i 0)
@@ -251,15 +272,10 @@ theorem quarticConstrainedSourcedTT_capstone
           (ttHorizonCodeExteriorDecode (screening (lambda4 q)) x) =
         physicalTTTensor kappa0 x ↔
       GQ = G0 / ((2 * q - 1) / q ^ 2)) := by
-  have hq0 : q ≠ 0 := by linarith
   constructor
   · exact quarticDilatedTTPrepotential_global_and_exterior q k H Hdot hq
   constructor
-  · have hfull :=
-      quartic_waveNormalization_forces_fullPauliFierzNormalization
-        q (screening (lambda4 q)) b c d e hq0 rfl
-          hdivergenceWave hdivergenceDouble hdivergenceTrace hselfAdjoint
-    exact ⟨hfull.2.1, hfull.2.2.1, hfull.2.2.2.1, hfull.2.2.2.2⟩
+  · exact quarticLorentzPauliFierzNormalization_unique q hq
   constructor
   · exact quarticFullConstraintResponse_closure q source hq
   constructor
@@ -278,6 +294,7 @@ theorem quarticConstrainedSourcedTT_capstone
 #print axioms GravityScreening.quarticConstraintResponse_closure
 #print axioms GravityScreening.quarticFullConstraintResponse_closure
 #print axioms GravityScreening.quarticFullConstraint_solution_unique
+#print axioms GravityScreening.quarticLorentzPauliFierzNormalization_unique
 #print axioms GravityScreening.quarticConstrainedSourcedTT_capstone
 
 end GravityScreening
