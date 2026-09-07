@@ -170,6 +170,19 @@ Hodge pair, with weights `1-lambda4` and `1+lambda4` and determinant `S_Q`.
 This reduces the physical open step to deriving that traceless chiral
 completion in the sourced horizon kinetic operator.
 
+[`SPIN2_BOOTSTRAP_BRIDGE.md`](SPIN2_BOOTSTRAP_BRIDGE.md) shows why a successful
+quadratic identification would largely finish the dynamical construction.
+Four-dimensional linearized Einstein gravity already has a two-prepotential
+duality formulation, and consistent local self-coupling of a massless
+spin-two field supplies the Einstein nonlinearities. PDT would contribute the
+fixed normalization `M_P,Q^2=S_Q M_P,0^2`; the remaining theory-specific seam
+is to prove that the Q Hodge pair is the physical prepotential pair and is
+compatible with its constraints. Standard duality-symmetric source theory
+identifies ordinary stress-energy as the electric source and the second source
+as NUT charge. This fixes the decisive test: the Q block must give its inverse
+response in the ordinary `(T,0)` sector without generating an independent
+magnetic charge.
+
 [`BIVECTOR_RATE_AUDIT.md`](BIVECTOR_RATE_AUDIT.md) records a selective but
 non-exact consequence: `-log(S_Q)/log(Q)` differs from `1/6` by only
 `8.50e-6`, equivalently `S_Q^6 Q - 1 = -1.01759e-5`.  Six is the dimension of
