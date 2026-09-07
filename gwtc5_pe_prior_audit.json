@@ -1,0 +1,93 @@
+{
+  "checks": {
+    "all_prior_values_finite": true,
+    "all_prior_values_positive": true,
+    "catalog_wide_validation_complete": false,
+    "maximum_component_mass_density_relative_spread": 2.005582836180966e-15
+  },
+  "event_count": 6,
+  "events": [
+    {
+      "component_mass_density_relative_spread": 1.9664851160166522e-15,
+      "event": "GW151012_095443",
+      "posterior_samples": 137933,
+      "prior_max": 2.6326819075638705e-08,
+      "prior_method": "chirp_mass,mass_ratio Jacobian plus PowerLaw distance",
+      "prior_min": 5.2534903715061255e-11,
+      "run": "O1",
+      "selected_group": "C01:IMRPhenomXPHM",
+      "source_md5": "a203b8dc36c049c62ae4ddf6a4a397cd"
+    },
+    {
+      "component_mass_density_relative_spread": 1.71178081653873e-15,
+      "event": "GW170823_131358",
+      "posterior_samples": 136399,
+      "prior_max": 8.150881816750043e-09,
+      "prior_method": "chirp_mass,mass_ratio Jacobian plus PowerLaw distance",
+      "prior_min": 3.905014151103164e-11,
+      "run": "O2",
+      "selected_group": "C01:IMRPhenomXPHM",
+      "source_md5": "9780d34748f383bc4bb8abd90e74e191"
+    },
+    {
+      "component_mass_density_relative_spread": null,
+      "event": "GW190425_081805",
+      "posterior_samples": 17782,
+      "prior_max": 131286.85085423916,
+      "prior_method": "official catalog marker: uniform detector-frame component masses and dL^2",
+      "prior_min": 1118.2676501810258,
+      "run": "O3a",
+      "selected_group": "C01:IMRPhenomPv2_NRTidal:HighSpin",
+      "source_md5": "f8faf5b65534804b1dc4c9bc63efde36"
+    },
+    {
+      "component_mass_density_relative_spread": 1.5371062952502871e-15,
+      "event": "GW191215_223052",
+      "posterior_samples": 20000,
+      "prior_max": 3.1601134004260896e-08,
+      "prior_method": "chirp_mass,mass_ratio Jacobian plus PowerLaw distance",
+      "prior_min": 2.676393505485307e-10,
+      "run": "O3b",
+      "selected_group": "C01:IMRPhenomXPHM",
+      "source_md5": "1c51e01557000ca091fd213a58bc4e2d"
+    },
+    {
+      "component_mass_density_relative_spread": 1.963962636661318e-15,
+      "event": "GW231231_154016",
+      "posterior_samples": 13960,
+      "prior_max": 1.6210658789699677e-07,
+      "prior_method": "chirp_mass,mass_ratio Jacobian plus UniformSourceFrame distance",
+      "prior_min": 1.1220393426116337e-09,
+      "run": "O4a",
+      "selected_group": "C00:IMRPhenomXPHM-SpinTaylor",
+      "source_md5": "657e53215c12711f1b1931c7221259ee"
+    },
+    {
+      "component_mass_density_relative_spread": 2.005582836180966e-15,
+      "event": "GW240420_175625",
+      "posterior_samples": 11908,
+      "prior_max": 2.7797298290128676e-08,
+      "prior_method": "chirp_mass,mass_ratio Jacobian plus UniformSourceFrame distance",
+      "prior_min": 7.117242684781604e-10,
+      "run": "O4b",
+      "selected_group": "C00:IMRPhenomXPHM-SpinTaylor",
+      "source_md5": "71b7b05b95633b48e555056367f59f6e"
+    }
+  ],
+  "posterior_samples_total": 337982,
+  "run_coverage": [
+    "O1",
+    "O2",
+    "O3a",
+    "O3b",
+    "O4a",
+    "O4b"
+  ],
+  "schema_version": 1,
+  "scientific_stack": {
+    "astropy": "7.2.0",
+    "bilby": "2.6.0",
+    "numpy": "2.3.5"
+  },
+  "scope": "one checksum-locked real PE file from every GWTC-5 observing subset"
+}

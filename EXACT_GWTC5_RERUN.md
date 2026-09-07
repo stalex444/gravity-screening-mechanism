@@ -149,11 +149,16 @@ python3.12 -m venv gwtc5-prior-env
   gwtc5-data/events/GW240420_175625.npz
 ```
 
-Real-file tests passed for four cases: an O3b event with a `PowerLaw(alpha=2)`
-distance prior, O4a and O4b events with `UniformSourceFrame` distance priors,
-and the marked high-spin BNS exception. All reconstructed values were finite
-and positive. In the two O4 checks, the relative spread of the transformed
-component-mass density was below \(2.1\times10^{-15}\).
+Real-file tests passed for six cases, one from every observing subset in the
+catalog: O1, O2, and O3b events with `PowerLaw(alpha=2)` distance priors; O4a
+and O4b events with `UniformSourceFrame` distance priors; and the marked O3a
+high-spin BNS exception. All 337,982 reconstructed values were finite and
+positive. In every chirp-mass/mass-ratio case, the relative spread of the
+transformed component-mass density was at most \(2.01\times10^{-15}\),
+confirming the analytic Jacobian cancellation numerically across the release
+formats. The checksum, waveform group, sample count, method, density range,
+and software versions for these checks are recorded in
+`gwtc5_pe_prior_audit.json`.
 
 ## Selection-function reconstruction
 
@@ -211,11 +216,12 @@ event identity, waveform-group selection, file integrity, local storage, both
 importance-sampling priors, and a fixed selection rule. Two items still have to
 be closed before an evidence number is defensible:
 
-1. **Catalog-wide prior validation.** The evaluator has passed representative
-   O3b, O4a, O4b, and catalog-exception files. It must still run successfully
-   across all 235 checksum-locked events. The full joint `log_prior` column is
-   retained for diagnostics but is not substituted for the required marginal
-   density.
+1. **Catalog-wide prior validation.** The evaluator has passed one real file
+   from each of O1, O2, O3a, O3b, O4a, and O4b, including every prior family
+   presently identified in the lock. It must still run successfully across all
+   235 checksum-locked events to detect event-specific metadata anomalies. The
+   full joint `log_prior` column is retained for diagnostics but is not
+   substituted for the required marginal density.
 2. **Pipeline validation and compute.** Before evaluating PDT, the reconstructed
    inputs must reproduce the released narrow- and wide-prior `cM` analyses
    within their sampling errors. This check also adjudicates the documented

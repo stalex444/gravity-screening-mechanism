@@ -191,9 +191,11 @@ configured likelihood inputs. The exact rerun is now packaged rather than
 merely described. The checksum lock identifies all 235 official event files
 (89,295,221,112 source bytes), and the sequential extractor verifies and
 compacts one HDF5 file at a time. A second pinned script reconstructs the
-marginal PE-prior density and has passed O3b, O4a, O4b, and catalog-exception
-files. The official 1.142 GB cumulative injection file has also been checksum
-verified and compacted with the selection fixed at semianalytic SNR above 10 or
+marginal PE-prior density and has passed a checksum-locked real event from
+each of O1, O2, O3a, O3b, O4a, and O4b (337,982 posterior samples total). The
+machine-readable coverage record is `gwtc5_pe_prior_audit.json`. The official
+1.142 GB cumulative injection file has also been checksum verified and
+compacted with the selection fixed at semianalytic SNR above 10 or
 real-search FAR below 0.25/year: 1,478,693 injections pass, with no overlap
 between the two channels. The pinned inputs, formulas, commands, and real-file
 integration tests are recorded in
