@@ -31,4 +31,5 @@ import GravityScreening.ClockForcesConstitutive
 import GravityScreening.ClockToGravityChain
 import GravityScreening.ClockGravityFactorization
 import GravityScreening.InformationToGravityChain
+import GravityScreening.HorizonShearBridge
 import GravityScreening.PhiRulerFold

@@ -110,6 +110,22 @@ essential ambiguity: at fixed `G`, the same contraction can be absorbed into
 the perturbation amplitude.  Flux or area normalization must therefore fix
 the geometric mode before the coupling conclusion follows.
 
+[`HORIZON_SHEAR_BRIDGE.md`](HORIZON_SHEAR_BRIDGE.md) places that ambiguity on
+the two physical graviton polarizations. Their transverse-traceless tensor
+norm is exactly `2*(plus^2+cross^2)`, so scaling both amplitudes by
+`sqrt(S_Q)` gives the same local shear energy as scaling `1/G` by `S_Q`.
+This is an exact degeneracy: shear-squared alone cannot choose between a
+smaller disturbance and a screened coupling. Once an external source, area
+displacement, or global isometry fixes the same nonzero shear at both
+endpoints, the Lean theorem forces `G_Q=G_0/S_Q`. The remaining physical
+target is therefore a same-mode normalization theorem in the sharp observer
+horizon construction. The same file then carries that wave-sector
+normalization through the Pauli--Fierz Ward identities to every lapse and
+shift constraint term and composes it with the complete sourced operator
+reduction. This proves that one successful information/shear identification
+would fix both radiative and static linear gravity without a second placement
+assumption.
+
 [`CUT_VS_COUPLING_AUDIT.md`](CUT_VS_COUPLING_AUDIT.md) now proves a crucial
 separation. Between successive horizon cuts in one theory, the crossed-product
 constraint holds `G` fixed and converts an `S_Q` reduction of modular energy
