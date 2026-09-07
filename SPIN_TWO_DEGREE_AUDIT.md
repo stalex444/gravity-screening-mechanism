@@ -77,9 +77,16 @@ physical graviton.  If every action realizing the symmetric `lambda4` block
 retains two independent Pauli--Fierz modes, this route is excluded as a model
 of ordinary gravity.
 
+The abstract first-order source construction has now passed this test: its
+stationary Euler equations are exactly the screened pair while its variables
+are canonical position and momentum.  See `FIRST_ORDER_ONE_GRAVITON_BRIDGE.md`.
+The remaining issue is the explicit gravitational prepotential and PDT
+identification, rather than the internal degree count.
+
 ## Kernel artifact and primary references
 
 - `GravityScreening/SpinTwoDegreeAudit.lean`
+- `GravityScreening/FirstOrderSourceAction.lean`
 - Marc Henneaux and Claudio Teitelboim, *Duality in linearized gravity*:
   <https://arxiv.org/abs/gr-qc/0408101>.
 - Glenn Barnich and Cedric Troessaert, *Manifest spin 2 duality with electric

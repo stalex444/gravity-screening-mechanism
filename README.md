@@ -256,6 +256,16 @@ first-order twisted-self-duality constraint.  The exact channel and source
 decompositions are kernel checked in
 `GravityScreening/SpinTwoDegreeAudit.lean`.
 
+[`FIRST_ORDER_ONE_GRAVITON_BRIDGE.md`](FIRST_ORDER_ONE_GRAVITON_BRIDGE.md)
+then implements the viable branch of that fork.  It adds the ordinary source
+to the first-order symplectic action and proves that its stationary position
+and momentum equations are exactly the two screened equations.  The two
+variables are one canonical pair in this formulation, so the internal
+screening mechanism does not itself require a second graviton.  The remaining
+step is its explicit gravitational-prepotential instantiation and PDT
+identification.  The action identities are kernel checked in
+`GravityScreening/FirstOrderSourceAction.lean`.
+
 [`BIVECTOR_RATE_AUDIT.md`](BIVECTOR_RATE_AUDIT.md) records a selective but
 non-exact consequence: `-log(S_Q)/log(Q)` differs from `1/6` by only
 `8.50e-6`, equivalently `S_Q^6 Q - 1 = -1.01759e-5`.  Six is the dimension of

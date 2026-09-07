@@ -69,8 +69,11 @@ The channel audit adds a binding caveat.  The symmetric second-order action
 diagonalizes into two positive Pauli--Fierz channels, and the ordinary source
 couples to both.  Without a first-order twisted-self-duality constraint it is
 a two-graviton model, not yet a doubled-potential formulation of one graviton.
-Any physical-gravity submission must either construct that constraint and
-verify the degree count or state the extra massless mode explicitly.
+The abstract first-order source action resolves the internal degree-count
+problem by treating the two entries as one canonical position-momentum pair;
+its stationary variations reproduce the screened equations exactly.  A
+physical-gravity submission must still instantiate that action in the full
+gravitational prepotentials and verify their constraints and polarizations.
 
 The standard five-coefficient Pauli--Fierz uniqueness calculation is also
 kernel checked.  The new four-dimensional symbol module derives the three
