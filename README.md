@@ -141,6 +141,14 @@ frequency `log Q` have a transcendental ratio. No algebraic portal coefficient
 can identify them by a constant linear rescaling. Their separate physical
 roles, or their geometric state-dependent conversion, remain to be fixed.
 
+[`KILLING_REDSHIFTED_QUARTIC_CLOCK.md`](KILLING_REDSHIFTED_QUARTIC_CLOCK.md)
+makes the gravitational time-dilation statement explicit. For a stationary
+near-horizon lapse `N`, both the local quartic energy and temperature scale as
+`1/N`, while one modular unit takes proper duration `2*pi*N/kappa_H`.
+Consequently `E_Q/T=log Q`, the weight `1/Q`, and the screening factor `S_Q`
+are observer independent. This is an exact scalar realization of thermal time
+as a gravitationally redshifted clock, conditional on the modular embedding.
+
 [`BIVECTOR_RATE_AUDIT.md`](BIVECTOR_RATE_AUDIT.md) records a selective but
 non-exact consequence: `-log(S_Q)/log(Q)` differs from `1/6` by only
 `8.50e-6`, equivalently `S_Q^6 Q - 1 = -1.01759e-5`.  Six is the dimension of
