@@ -299,6 +299,15 @@ this precise sense time and gravity use the same Q event differently: the
 first supplies the contraction, while the second splits it into coupling
 scale and canonical shape.
 
+[`INFORMATION_TO_GRAVITY_CHAIN.md`](INFORMATION_TO_GRAVITY_CHAIN.md) supplies
+an independent route that bypasses the constitutive matrix.  The proved
+quartic erasure channel contracts the Fisher bilinear by `S_Q`; if the
+microscopic and effective metrics are identified with canonical energies of
+the same independently normalized gravitational mode, Lean forces
+`G_Q=G_0/S_Q`.  The physical frontier on this route is the extension of the
+published AdS-Rindler Fisher/canonical-energy dictionary to the local PDT
+observer horizon with its mode normalization fixed.
+
 [`BIVECTOR_RATE_AUDIT.md`](BIVECTOR_RATE_AUDIT.md) records a selective but
 non-exact consequence: `-log(S_Q)/log(Q)` differs from `1/6` by only
 `8.50e-6`, equivalently `S_Q^6 Q - 1 = -1.01759e-5`.  Six is the dimension of

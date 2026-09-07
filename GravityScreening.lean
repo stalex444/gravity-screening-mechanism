@@ -30,4 +30,5 @@ import GravityScreening.TransverseTracelessCount
 import GravityScreening.ClockForcesConstitutive
 import GravityScreening.ClockToGravityChain
 import GravityScreening.ClockGravityFactorization
+import GravityScreening.InformationToGravityChain
 import GravityScreening.PhiRulerFold
