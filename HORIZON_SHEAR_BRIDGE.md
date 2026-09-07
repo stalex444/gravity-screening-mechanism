@@ -58,6 +58,39 @@ two-dimensional horizon cut, so it has the same two-coordinate quadratic
 form. Identifying these coordinates with the local horizon shear is the
 standard geometric placement, rather than an arithmetic theorem.
 
+## Physical versus canonical normalization
+
+Faulkner and Speranza make the relevant normalization explicit. They expand
+the physical metric as
+
+\[
+g_{ab}=g^0_{ab}+\varkappa h_{ab},
+\qquad
+\varkappa^2=32\pi G,
+\]
+
+so that `h` has a canonical quadratic kinetic term. On the horizon their
+physical shear and canonically normalized traceless perturbation obey
+
+\[
+\sigma_{ab}=\frac{\varkappa}{2}\dot\rho_{ab},
+\qquad
+t^{(g)}_{vv}=\dot\rho^{ab}\dot\rho_{ab}.
+\]
+
+Eliminating the canonical coordinate gives
+
+\[
+t^{(g)}_{vv}=\frac{\sigma^{ab}\sigma_{ab}}{8\pi G}.
+\]
+
+This fixes the proportionality hidden in the scalar model below. For the same
+physical nonzero shear, the canonical graviton energy really does scale as
+`1/G`. `GravityScreening/HorizonShearNormalization.lean` checks the complete
+algebra including the factor `8*pi`, proves that the conversion is invertible,
+and proves that an `S_Q` contraction at fixed physical shear is equivalent to
+`G_Q=G_0/S_Q`.
+
 ## Exact quartic contraction
 
 Let
@@ -199,6 +232,12 @@ or if the sharp-horizon limit changes the mode normalization.
 * `quarticHorizonShear_forces_newtonResponse`;
 * `quarticHorizonShear_forces_fullPauliFierzNormalization`;
 * `quarticHorizonShear_closes_completeLinearResponse`.
+
+`GravityScreening/HorizonShearNormalization.lean` proves:
+
+* `physicalShearNormSq_eq_eight_pi_G`;
+* `canonicalEnergyFromPhysicalShear_recovers`;
+* `quarticCanonicalEnergy_samePhysicalShear_iff_newtonResponse`.
 
 All declarations compile without `sorry`.
 

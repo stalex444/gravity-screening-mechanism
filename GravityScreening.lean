@@ -32,4 +32,9 @@ import GravityScreening.ClockToGravityChain
 import GravityScreening.ClockGravityFactorization
 import GravityScreening.InformationToGravityChain
 import GravityScreening.HorizonShearBridge
+import GravityScreening.HorizonShearNormalization
+import GravityScreening.ThreeDPackingWitness
+import GravityScreening.TetrahedralCoverage
+import GravityScreening.MorphicPackingThreshold
+import GravityScreening.TetrahedralInformationFrame
 import GravityScreening.PhiRulerFold

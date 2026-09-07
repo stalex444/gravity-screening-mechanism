@@ -20,6 +20,46 @@ The PDT gravity paper already supplies the value of Jacobson's undetermined
 entropy-area density.  The purpose here is narrower: derive the microscopic
 origin of the quartic factor already present in that value.
 
+[`THREE_D_INFORMATION_PACKING.md`](THREE_D_INFORMATION_PACKING.md) records a
+new geometric route prompted by the interpretation of a spatial present as an
+information-packing problem. Bandt--Meyer Proposition 7 constructs an actual
+three-dimensional Meyer set at the plastic inflation factor `rho`, using a
+balanced noncoplanar tetrahedral digit set. Their Theorem 1 excludes the
+non-Pisot `Q<2` from every nontrivial uniformly discrete finite-digit
+self-similar construction of the same kind. Lean verifies an explicit regular
+tetrahedral witness for the three-dimensional theorem. This proves a sharp
+settled/non-settling packing contrast; identifying the Q obstruction with
+four-dimensional temporal updating remains a physical conjecture.
+[`PACKING_CONTRAST_REPORT.md`](PACKING_CONTRAST_REPORT.md) tests the nested
+finite approximants through depth 8 using exact algebraic-basis coordinates.
+The two morphic/Pisot controls `phi` and `rho` show finite separation plateaus,
+while the `Q` separation falls to `0.0277636849455` and is forced
+asymptotically to zero by the published theorem. The `phi` control is required
+by the registered only-two-morphic-numbers theorem and shows that separation
+alone detects the Pisot boundary rather than uniquely selecting spatial
+dimension. The report also distinguishes the exact four-step memory of
+`Q^4=Q+1` from metric settling and compares the new spatial test with the
+earlier public `PDT-pisot-test-suite`.
+
+The key refinement is that the three-dimensional proof splits packing into
+coverage and separation. The balanced tetrahedron has the sufficient coverage
+threshold `theta<4/3`. Lean proves `phi>4/3` but `rho,Q<4/3`. Together with the
+registered theorem that `phi` and `rho` are the only morphic numbers, `rho` is
+the unique morphic scale passing this 3D gateway. Pisot arithmetic then
+separates the two scales below it: `rho` covers and settles, while `Q` covers
+but necessarily crowds. This is a mathematical selector inside the stated
+construction; its identification with physical space and time remains a
+physical claim.
+
+[`TETRAHEDRAL_INFORMATION_FRAME.md`](TETRAHEDRAL_INFORMATION_FRAME.md) gives
+the information-geometric parallel. The same four normalized vectors are the
+standard tetrahedral qubit SIC measurement. Lean proves their tight-frame
+factor `4/3`, normalized four-weight sum, and exact reconstruction of all
+three real coordinates. This makes the `4 -> 3` map precise: four balanced
+outcomes contain three independent coordinates after normalization. Equating
+those outcomes with Q-driven histories is the remaining physical
+identification.
+
 [`PQ_TRANSFORM_CHAIN.md`](PQ_TRANSFORM_CHAIN.md) now joins the gravity paper's
 original `pQ`-resolution argument to the later Hodge flip-product, modular
 defect, and information-erasure results.  The combined chain derives the
@@ -125,6 +165,14 @@ shift constraint term and composes it with the complete sourced operator
 reduction. This proves that one successful information/shear identification
 would fix both radiative and static linear gravity without a second placement
 assumption.
+
+[`GravityScreening/HorizonShearNormalization.lean`](GravityScreening/HorizonShearNormalization.lean)
+then inserts the perturbative gravity normalization used by Faulkner and
+Speranza: `kappa^2=32*pi*G` and
+`sigma=(kappa/2)*dot(rho)`. It follows exactly that the canonically normalized
+graviton shear energy is `sigma^2/(8*pi*G)`. This supplies the missing physical
+meaning of “same mode”: at fixed physical horizon shear, an `S_Q` contraction
+of canonical energy is equivalent to `G_Q=G_0/S_Q`.
 
 [`CUT_VS_COUPLING_AUDIT.md`](CUT_VS_COUPLING_AUDIT.md) now proves a crucial
 separation. Between successive horizon cuts in one theory, the crossed-product
