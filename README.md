@@ -161,6 +161,15 @@ shift: replacing `log Q` by `log Q+delta` multiplies the phase by
 `exp(-i*delta*t)` and the trace weight by `exp(-delta)`; exact preservation of
 the quartic defect forces `delta=0`.
 
+[`CLOCK_HODGE_BRIDGE.md`](CLOCK_HODGE_BRIDGE.md) carries this into the
+gravitational charge sector. The dual action translates the linear horizon
+area charge, so its repeated defect cannot multiplicatively screen linear
+area; it does scale the exponential area information weight by `S_Q`. The
+same core eigenweight `1/Q` has a unique mean-preserving completion on one
+Hodge pair, with weights `1-lambda4` and `1+lambda4` and determinant `S_Q`.
+This reduces the physical open step to deriving that traceless chiral
+completion in the sourced horizon kinetic operator.
+
 [`BIVECTOR_RATE_AUDIT.md`](BIVECTOR_RATE_AUDIT.md) records a selective but
 non-exact consequence: `-log(S_Q)/log(Q)` differs from `1/6` by only
 `8.50e-6`, equivalently `S_Q^6 Q - 1 = -1.01759e-5`.  Six is the dimension of
