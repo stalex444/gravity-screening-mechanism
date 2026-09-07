@@ -2,14 +2,11 @@
   "challenge_module": "Challenge",
   "solution_module": "Solution",
   "theorem_names": [
+    "StandardSirenRigidity.quarticStructuralTT_cosmologicalTransport_capstone",
+    "StandardSirenRigidity.continuousQuarticScaleResponse_unique",
     "StandardSirenRigidity.structuralTT_globalFlux_standardSirenDistance",
-    "StandardSirenRigidity.quarticStructuralTT_standardSirenRatio_bounds",
-    "StandardSirenRigidity.quarticStandardSirenResponse_algebraicSignature",
-    "StandardSirenRigidity.quarticExteriorAmplitude_algebraicSignature",
     "StandardSirenRigidity.quarticStandardSirenResponse_minpoly_natDegree",
-    "StandardSirenRigidity.quarticExteriorAmplitude_minpoly_natDegree",
-    "StandardSirenRigidity.quarticExteriorAmplitude_relativeDegree",
-    "StandardSirenRigidity.quarticUniversalResponse_cancels_from_standardSiren"
+    "StandardSirenRigidity.quarticExteriorAmplitude_relativeDegree"
   ],
   "definition_names": [],
   "permitted_axioms": [

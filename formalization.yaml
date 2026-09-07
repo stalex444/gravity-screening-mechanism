@@ -2,20 +2,20 @@
 version: v0.4
 
 project:
-  name: Structural rigidity of a conservative two-polarization standard-siren response
+  name: From quartic TT rigidity to a unique cosmological standard-siren response
   description: >-
-    Eight compared statements classify the leading standard-siren response of
-    an arbitrary real two-by-two transverse-traceless polarization block.
-    Rotation covariance, self-adjointness, a prescribed quadratic weight, and
-    the passive branch force the block to be sqrt(s) times the identity. A
-    norm-preserving visible-hidden dilation then proves that complete source
-    flux and exterior strain determine the distance response 1/sqrt(s), while
-    any response common to chirp and strain cancels exactly. For q>1 satisfying
-    q^4=q+1, the quartic specialization fixes the response without an adjustable
-    parameter, proves 1.016<d_inferred/d_true<1.017, gives exact degree-eight
-    polynomial identities, proves that both observable factors have minimal
-    degree eight, and identifies the amplitude field as a quadratic extension
-    of the quartic field.
+    Five compared statements connect a finite response classification to a
+    unique cosmological transport law. Rotation covariance, self-adjointness,
+    a prescribed quadratic weight, and the passive branch force every
+    admissible real transverse-traceless response block to equal sqrt(s) times
+    the identity. Exact visible-hidden conservation then fixes the finite
+    standard-siren response. For q>1 satisfying q^4=q+1, continuity,
+    positivity, multiplicative path composition, and that one-step value
+    uniquely force the full redshift power law. The capstone proves the matrix
+    equality, finite-to-cosmological matching, fixed propagation signs, and
+    exact one-step meeting with the inverse local Newton response. The selected
+    arithmetic results prove that the observable has degree eight and that its
+    field is quadratic over the recovered quartic field.
   authors:
     - Stephanie Alexander
   license: MIT
@@ -35,6 +35,20 @@ classification:
     - "83D05"
 
 sources:
+  - title: Cosmological quartic transport
+    authors:
+      - Stephanie Alexander
+    type: research note
+    location: COSMOLOGICAL_QUARTIC_TRANSPORT.md
+    relationship: formalizes
+    author_endorsement: participated
+    note: >-
+      States the continuous positive multiplicative-response classification,
+      the quartic one-step premise, the resulting redshift law, the exact
+      effective-Newton meeting, and the reproducible GWTC-5.0 posterior check.
+      It expressly labels the identification of a factor-q cosmological scale
+      change with one physical response step as an unvalidated proposal and
+      makes no literature-priority claim.
   - title: Structural rigidity of a conservative two-polarization response
     authors:
       - Stephanie Alexander
@@ -62,10 +76,12 @@ sources:
     author_endorsement: not-contacted
     note: >-
       Source for the gravitational-wave luminosity-distance observable,
-      response-ratio framework, and conserved-propagation context. The present
-      finite theorem adapts that observable to an abstract two-polarization
-      visible-hidden response. It does not formalize the paper's cosmological
-      propagation equation, redshift dependence, or model forecasts.
+      response-ratio framework, conserved-propagation context, and the relation
+      between the squared distance ratio and an effective gravitational
+      coupling in the stated class of theories. The present development adapts
+      that observable to a classified visible-hidden response and a constant
+      multiplicative propagation law; it does not claim that the source paper
+      contains the quartic assignment.
   - title: The gravitational-wave luminosity distance in modified gravity theories
     authors:
       - Enis Belgacem
@@ -80,8 +96,25 @@ sources:
     note: >-
       Establishes gravitational-wave luminosity distance as an observable that
       can differ from electromagnetic luminosity distance under modified
-      propagation. The present submission supplies a conditional finite
-      response classification, not that paper's propagation law.
+      propagation. The present submission uses that established observable and
+      supplies its own conditional quartic response classification.
+  - title: GWTC-5.0 Constraints on the Cosmic Expansion Rate and Modified Gravitational-wave Propagation
+    authors:
+      - LIGO Scientific Collaboration
+      - Virgo Collaboration
+      - KAGRA Collaboration
+    type: article
+    location: https://arxiv.org/abs/2605.27227
+    relationship: background
+    author_endorsement: not-contacted
+    note: >-
+      Source for the alpha_M luminosity-distance convention, the effective-G
+      relation in the stated Horndeski class, and the current c_M posterior.
+      The repository's checksum-pinned script locates the fixed quartic local
+      slope in the collaboration's released narrow-H0 posterior. Because the
+      collaboration fits alpha_M(z)=c_M/E(z)^2 rather than a constant, this is
+      reported only as a local-slope compatibility check and not as a direct
+      likelihood evaluation of the quartic curve.
   - title: Positive functions on C*-algebras
     authors:
       - W. Forrest Stinespring
@@ -119,18 +152,17 @@ related_formalizations:
 
 status:
   scope: >-
-    The compared declarations prove a finite real two-polarization response
-    theorem, exact visible-hidden expectation accounting, cancellation of a
-    common leading source response, and quartic algebraic and field-degree
-    consequences. The
-    general theorem quantifies over the response matrix, finite state,
-    diagonal observable, and nonzero common response. The quartic result assumes
-    q^4=q+1 and q>1, and the exact response interval follows without a fitted
-    parameter. The proof does not establish that physical gravitational waves
-    use the proposed visible-hidden observer placement, derive a cosmological
-    redshift law, identify q with a measured gravitational coupling, derive
-    Newton's constant, or formalize Jacobson's thermodynamic argument. Those
-    application claims are outside this submission.
+    The compared declarations prove the general two-polarization matrix
+    classification and finite conserved-source distance theorem, the unique
+    continuous positive multiplicative extension of a quartic one-step value,
+    and a capstone joining these results to a redshift power law with fixed
+    propagation signs and an exact one-step effective-Newton equality. They
+    also prove exact degree-eight and relative-degree results for the finite
+    observable. The theorem derives the cosmological curve conditional on path
+    composition and F(q)=R_q. It does not establish that physical gravitational
+    waves use the proposed visible-hidden observer placement or that a factor-q
+    scale change physically realizes one response step. It does not derive
+    Newton's constant or formalize Jacobson's thermodynamic argument.
   sorry_count: 0
   sorry_in_definitions: 0
   axioms:
@@ -138,6 +170,23 @@ status:
     - Classical.choice
     - Quot.sound
   main_results:
+    - declaration: StandardSirenRigidity.quarticStructuralTT_cosmologicalTransport_capstone
+      file: Solution.lean
+      sorry_count: 0
+      axioms: [propext, Classical.choice, Quot.sound]
+      comparator_config: comparator.json
+      literature_dependencies:
+        - statement: Standard siren distance compares source evolution with strain amplitude.
+          source: Modified gravitational-wave propagation and standard sirens
+        - statement: A constant alpha_M gives a GW-to-EM luminosity-distance ratio (1+z)^(alpha_M/2).
+          source: GWTC-5.0 Constraints on the Cosmic Expansion Rate and Modified Gravitational-wave Propagation
+        - statement: The squared GW-to-EM distance ratio equals an effective gravitational-coupling ratio in the stated modified-gravity class.
+          source: GWTC-5.0 Constraints on the Cosmic Expansion Rate and Modified Gravitational-wave Propagation
+    - declaration: StandardSirenRigidity.continuousQuarticScaleResponse_unique
+      file: Solution.lean
+      sorry_count: 0
+      axioms: [propext, Classical.choice, Quot.sound]
+      comparator_config: comparator.json
     - declaration: StandardSirenRigidity.structuralTT_globalFlux_standardSirenDistance
       file: Solution.lean
       sorry_count: 0
@@ -146,37 +195,12 @@ status:
       literature_dependencies:
         - statement: Standard siren distance compares source evolution with strain amplitude.
           source: Modified gravitational-wave propagation and standard sirens
-    - declaration: StandardSirenRigidity.quarticStructuralTT_standardSirenRatio_bounds
-      file: Solution.lean
-      sorry_count: 0
-      axioms: [propext, Classical.choice, Quot.sound]
-      comparator_config: comparator.json
-    - declaration: StandardSirenRigidity.quarticStandardSirenResponse_algebraicSignature
-      file: Solution.lean
-      sorry_count: 0
-      axioms: [propext, Classical.choice, Quot.sound]
-      comparator_config: comparator.json
-    - declaration: StandardSirenRigidity.quarticExteriorAmplitude_algebraicSignature
-      file: Solution.lean
-      sorry_count: 0
-      axioms: [propext, Classical.choice, Quot.sound]
-      comparator_config: comparator.json
     - declaration: StandardSirenRigidity.quarticStandardSirenResponse_minpoly_natDegree
       file: Solution.lean
       sorry_count: 0
       axioms: [propext, Classical.choice, Quot.sound]
       comparator_config: comparator.json
-    - declaration: StandardSirenRigidity.quarticExteriorAmplitude_minpoly_natDegree
-      file: Solution.lean
-      sorry_count: 0
-      axioms: [propext, Classical.choice, Quot.sound]
-      comparator_config: comparator.json
     - declaration: StandardSirenRigidity.quarticExteriorAmplitude_relativeDegree
-      file: Solution.lean
-      sorry_count: 0
-      axioms: [propext, Classical.choice, Quot.sound]
-      comparator_config: comparator.json
-    - declaration: StandardSirenRigidity.quarticUniversalResponse_cancels_from_standardSiren
       file: Solution.lean
       sorry_count: 0
       axioms: [propext, Classical.choice, Quot.sound]
@@ -201,13 +225,14 @@ automation:
         hardware: local machine
       prompting_notes: >-
         Stephanie Alexander directed the gravity-screening program and asked
-        for a strengthened response to a Palomar research-interest review.
-        Development shifted the comparison surface from routine Lorentz
-        coefficient extraction to a classification theorem for arbitrary TT
-        response matrices, its global-conservation consequence, an explicit
-        falsifiable observer-placement dichotomy, and exact quartic algebraic
-        signatures. She selected Q as the quartic specialization and controlled
-        the publication decision.
+        for a substantive response to two Palomar reviews. The selected matrix
+        theorem was strengthened to state its advertised classification
+        explicitly. Development then added the cosmological transport law, a
+        general continuous-multiplicative functional-equation proof showing
+        the curve is unique, the local-to-cosmological capstone, and a
+        reproducible comparison with the released GWTC-5.0 posterior. She
+        selected Q as the quartic specialization and controlled the publication
+        decision.
   spend_usd: not tracked
   notes: >-
     Stephanie Alexander supplied the research direction, the quartic PDT
@@ -217,31 +242,50 @@ automation:
 
 fidelity:
   divergences: >-
-    The formalization is a finite algebraic abstraction of the standard-siren
-    response-ratio idea in the cited gravitational-wave literature. It does not
-    reproduce a cosmological propagation equation. Its visible-hidden dilation,
-    matrix symmetry hypotheses, and quartic Q specialization are stated in full
-    on the Challenge surface and are additional premises specific to this
-    development. Both the biased exterior-readout branch and the exact
-    common-response cancellation branch are included.
+    The formalization adapts the standard-siren response-ratio idea and the
+    constant-alpha_M form of the cited cosmological propagation equation. Its
+    visible-hidden dilation, matrix symmetry hypotheses, quartic Q
+    specialization, and identification F(q)=R_q are stated in full on the
+    Challenge surface and are additional premises specific to this
+    development. The GWTC-5.0 c_M comparison is numerical evidence in the
+    accompanying script and is not asserted as a Lean theorem or as a direct
+    likelihood evaluation of the fixed quartic curve.
 
 review:
   status: self-assessed
   reviewers: []
   notes: >-
-    A prior selected result group in this repository mechanically verified but
-    was withdrawn after an automated research-interest and provenance review.
-    This replacement changes the principal theorem surface rather than merely
-    revising exposition: it quantifies over an arbitrary TT response matrix and
-    finite source realization, proves a necessary structural response, includes
-    a competing exact cancellation branch, and derives parameter-free quartic
-    interval and polynomial consequences. No originality classification is
-    claimed. Internal proof and scope audits are not independent peer review or
-    Palomar approval.
+    Two prior selected result groups mechanically verified but did not clear
+    Palomar's research-interest review. The last review also identified that
+    the selected general theorem omitted the advertised matrix equality. This
+    replacement repairs that statement mismatch and changes the mathematical
+    result: it proves uniqueness of the entire continuous positive
+    multiplicative response from one quartic step, then joins that theorem to
+    the arbitrary-matrix and conserved-source classification in a single
+    capstone. No originality classification is claimed. Internal proof and
+    scope audits are not independent peer review or Palomar approval.
 
 alignment:
   namespace: StandardSirenRigidity
   statements:
+    - source: Structural-to-cosmological quartic capstone
+      lean: StandardSirenRigidity.quarticStructuralTT_cosmologicalTransport_capstone
+      module: Solution
+      status: proved
+      note: >-
+        The selected conclusion explicitly contains M=sqrt(S_q)I, identifies
+        the finite conserved-source distance with one quartic transport step,
+        proves the full power law and fixed signs, and proves that its squared
+        one-step response is q^2/(2q-1).
+    - source: Unique continuous multiplicative quartic response
+      lean: StandardSirenRigidity.continuousQuarticScaleResponse_unique
+      module: Solution
+      status: proved
+      note: >-
+        Every continuous strictly positive response satisfying F(ab)=F(a)F(b)
+        and F(q)=R_q equals the displayed quartic power law on every positive
+        scale-factor ratio. This quantifies over the response function rather
+        than defining it to have the desired curve.
     - source: General response classification and conserved observer placement
       lean: StandardSirenRigidity.structuralTT_globalFlux_standardSirenDistance
       module: Solution
@@ -249,29 +293,8 @@ alignment:
       note: >-
         For arbitrary s, response matrix, finite state, diagonal observable,
         and nonzero common response, the stated symmetries and conservation
-        hypotheses force d_inferred=d_true/sqrt(s).
-    - source: Quartic parameter-free response interval
-      lean: StandardSirenRigidity.quarticStructuralTT_standardSirenRatio_bounds
-      module: Solution
-      status: proved
-      note: >-
-        The q^4=q+1 specialization forces the dimensionless distance ratio
-        strictly between 1.016 and 1.017 for every admissible response matrix
-        and source realization.
-    - source: Quartic distance algebraic signature
-      lean: StandardSirenRigidity.quarticStandardSirenResponse_algebraicSignature
-      module: Solution
-      status: proved
-      note: >-
-        Eliminating q proves the exact degree-eight integer polynomial identity
-        for the distance response.
-    - source: Quartic amplitude algebraic signature
-      lean: StandardSirenRigidity.quarticExteriorAmplitude_algebraicSignature
-      module: Solution
-      status: proved
-      note: >-
-        Eliminating q proves the exact monic degree-eight integer polynomial
-        identity for the exterior amplitude.
+        hypotheses force both M=sqrt(s)I and
+        d_inferred=d_true/sqrt(s) in the same compared theorem.
     - source: Quartic distance minimal degree
       lean: StandardSirenRigidity.quarticStandardSirenResponse_minpoly_natDegree
       module: Solution
@@ -279,13 +302,6 @@ alignment:
       note: >-
         The reciprocal distance response has minimal-polynomial degree exactly
         eight, so its displayed equation cannot collapse to lower degree.
-    - source: Quartic amplitude minimal degree
-      lean: StandardSirenRigidity.quarticExteriorAmplitude_minpoly_natDegree
-      module: Solution
-      status: proved
-      note: >-
-        A mod-five Rabin/Frobenius certificate, a monic lift through the
-        integers, and Gauss's lemma prove exact degree eight over the rationals.
     - source: Quartic-to-amplitude field tower
       lean: StandardSirenRigidity.quarticExteriorAmplitude_relativeDegree
       module: Solution
@@ -294,13 +310,6 @@ alignment:
         The quartic generator is recovered as a rational function of the
         amplitude, and the resulting amplitude field has relative degree two
         over the embedded quartic field.
-    - source: Competing common-response branch
-      lean: StandardSirenRigidity.quarticUniversalResponse_cancels_from_standardSiren
-      module: Solution
-      status: proved
-      note: >-
-        If the same nonzero inverse-screening response multiplies chirp and
-        strain, the inferred standard-siren distance is exactly unchanged.
 
 acknowledgements: >-
   Lean and Mathlib contributors; the authors of the cited standard-siren and

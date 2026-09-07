@@ -719,25 +719,29 @@ theorem structuralTT_globalFlux_standardSirenDistance {n : ℕ}
     (hresponse : response ≠ 0)
     (hflux : finiteDiagonalExpectation k psi ≠ 0)
     (hdistance : luminosityDistance ≠ 0) :
-    inferredStandardSirenDistance chirpShape strainShape
-        (leadingChirpRate chirpShape response
-          (exteriorDataExpectation k (erasureDilation s psi) +
-            hiddenDataExpectation k (erasureDilation s psi)))
-        (leadingMetricStrain strainShape (response * M 0 0)
-          (finiteDiagonalExpectation k psi) luminosityDistance) =
-      luminosityDistance / Real.sqrt s := by
+    M = (Real.sqrt s) • (1 : Matrix (Fin 2) (Fin 2) ℝ) ∧
+      inferredStandardSirenDistance chirpShape strainShape
+          (leadingChirpRate chirpShape response
+            (exteriorDataExpectation k (erasureDilation s psi) +
+              hiddenDataExpectation k (erasureDilation s psi)))
+          (leadingMetricStrain strainShape (response * M 0 0)
+            (finiteDiagonalExpectation k psi) luminosityDistance) =
+        luminosityDistance / Real.sqrt s := by
   have hM := ttResponse_unique_of_symmetry_weight
     M s hs0.le hcomm hself hweight hpassive
+  change M = (Real.sqrt s) • (1 : Matrix (Fin 2) (Fin 2) ℝ) at hM
   have hM00 : M 0 0 = Real.sqrt s := by
     rw [hM]
-    simp [ttExteriorBlock]
+    simp
   have hsqrt : Real.sqrt s ≠ 0 := ne_of_gt (Real.sqrt_pos.2 hs0)
-  rw [erasureDilation_total_expectation s k psi hs0.le hs1, hM00]
-  rw [standardSirenDistance_eq_responseRatio chirpShape strainShape
-    response (response * Real.sqrt s) (finiteDiagonalExpectation k psi)
-    luminosityDistance hchirpShape hstrainShape
-    (mul_ne_zero hresponse hsqrt) hflux hdistance]
-  field_simp [hresponse, hsqrt]
+  constructor
+  · exact hM
+  · rw [erasureDilation_total_expectation s k psi hs0.le hs1, hM00]
+    rw [standardSirenDistance_eq_responseRatio chirpShape strainShape
+      response (response * Real.sqrt s) (finiteDiagonalExpectation k psi)
+      luminosityDistance hchirpShape hstrainShape
+      (mul_ne_zero hresponse hsqrt) hflux hdistance]
+    field_simp [hresponse, hsqrt]
 
 
 /-- Structural standard-siren rigidity. An arbitrary passive self-adjoint TT

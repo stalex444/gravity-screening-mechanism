@@ -47,6 +47,7 @@ import GravityScreening.CovariantGravityCompression
 import GravityScreening.PalomarCapstone
 import GravityScreening.GravitationalWaveObservables
 import GravityScreening.QuarticResponseIrreducibility
+import GravityScreening.CosmologicalQuarticTransport
 import GravityScreening.ThreeDPackingWitness
 import GravityScreening.TetrahedralCoverage
 import GravityScreening.MorphicPackingThreshold

@@ -1,9 +1,11 @@
 # Structural rigidity of a quartic standard-siren response
 
-This repository contains a Lean 4 proof of a conditional standard-siren
-classification theorem. It asks what an observer can infer when a conserved
-two-output system has one visible transverse-traceless polarization channel
-and one hidden channel.
+This repository contains a Lean 4 proof that carries a conditional quartic
+standard-siren response from a local transverse-traceless classification to a
+unique cosmological transport law. It asks what an observer can infer when a
+conserved two-output system has one visible polarization channel and one
+hidden channel, and what redshift curve is forced if the same response
+composes over cosmological scale changes.
 
 The principal theorem begins with an arbitrary real two-by-two response matrix
 `M` on the plus/cross polarization plane and an arbitrary retained quadratic
@@ -100,6 +102,45 @@ layers: degree four for the quartic generator, degree eight after adjoining
 the independent amplitude square root, and degree twelve for the combined
 cubic-quartic substrate.
 
+## Unique cosmological continuation
+
+The finite response cannot be applied as the same constant at every source
+distance because a propagation effect must approach one at zero path length.
+The scale-step proposal instead assigns one response (R_Q) to a
+multiplicative scale-factor change by (Q). It gives
+
+```text
+N_Q(z) = log(1+z) / log(Q),
+R_Q(z) = R_Q ^ N_Q(z) = (1+z)^beta_Q,
+beta_Q = log(R_Q) / log(Q).
+```
+
+Lean proves that this curve is unique under four conditions: continuity,
+strict positivity, multiplication under successive scale changes, and the
+one-step value `F(Q) = R_Q`. Thus the power law is not selected from a fitting
+family after choosing the exponent. The composition law and the finite
+quartic step fix the exponent and the entire curve.
+
+Numerically,
+
+```text
+beta_Q  = 0.08333758478067765...
+delta_Q = -0.08333758478067765...
+alpha_M = 0.16667516956135530...
+```
+
+In the modified-gravity class where the squared GW/EM distance ratio equals
+the effective gravitational-coupling ratio, Lean proves
+
+```text
+G_eff(z) / G_eff(0) = (1+z)^(2 beta_Q),
+G_eff(Q-1) / G_eff(0) = Q^2 / (2Q-1).
+```
+
+The final equality is the exact inverse-screening factor already obtained in
+the local response calculation. The complete derivation and its physical
+scope are in [COSMOLOGICAL_QUARTIC_TRANSPORT.md](COSMOLOGICAL_QUARTIC_TRANSPORT.md).
+
 ## A falsifiable two-branch result
 
 The physical premise is stated rather than hidden. The biased result applies
@@ -126,30 +167,39 @@ electromagnetic luminosity distance are established in:
   [Modified gravitational-wave propagation and standard sirens](https://arxiv.org/abs/1805.08731).
 
 This submission adapts the response-ratio observable to a finite conservative
-two-polarization theorem. It does not formalize cosmological propagation or
-claim that the cited papers contain the Q specialization.
+two-polarization theorem and formalizes the unique positive continuous
+multiplicative continuation of its one-step response. It does not claim that
+the cited papers contain the Q specialization.
+
+The observational comparison uses the LIGO--Virgo--KAGRA collaboration's
+[GWTC-5.0 modified-propagation analysis](https://arxiv.org/abs/2605.27227)
+and its [official data release](https://zenodo.org/records/20378418). The fixed
+PDT local slope lies at the 62.10th percentile of the released narrow-prior
+`c_M` posterior. This establishes present compatibility, not a preference
+over general relativity. The released analysis fits a decaying `c_M/E(z)^2`
+curve, so a direct likelihood test of the constant-exponent PDT curve remains
+future work.
 
 ## Palomar comparison surface
 
-The eight selected results are:
+The five selected results are:
 
-1. `StandardSirenRigidity.structuralTT_globalFlux_standardSirenDistance`;
-2. `StandardSirenRigidity.quarticStructuralTT_standardSirenRatio_bounds`;
-3. `StandardSirenRigidity.quarticStandardSirenResponse_algebraicSignature`;
-4. `StandardSirenRigidity.quarticStandardSirenResponse_minpoly_natDegree`;
-5. `StandardSirenRigidity.quarticExteriorAmplitude_algebraicSignature`;
-6. `StandardSirenRigidity.quarticExteriorAmplitude_minpoly_natDegree`;
-7. `StandardSirenRigidity.quarticExteriorAmplitude_relativeDegree`; and
-8. `StandardSirenRigidity.quarticUniversalResponse_cancels_from_standardSiren`.
+1. `StandardSirenRigidity.quarticStructuralTT_cosmologicalTransport_capstone`;
+2. `StandardSirenRigidity.continuousQuarticScaleResponse_unique`;
+3. `StandardSirenRigidity.structuralTT_globalFlux_standardSirenDistance`;
+4. `StandardSirenRigidity.quarticStandardSirenResponse_minpoly_natDegree`; and
+5. `StandardSirenRigidity.quarticExteriorAmplitude_relativeDegree`.
 
 `Challenge.lean` imports only Mathlib and contains their full statements with
 intentional proof holes. `Solution.lean` imports the proved development and
 transports the source declarations across definitionally identical comparison
 definitions. `GravityScreening/QuarticResponseIrreducibility.lean` contains the
 mod-five certificate, rational lift, generator-recovery identity, and field
-extension proofs. `comparator.json` fixes the declaration order and permitted
-axioms. `formalization.yaml` records scope, provenance, literature relations,
-and exact statement alignment.
+extension proofs. `GravityScreening/CosmologicalQuarticTransport.lean` contains
+the multiplicative-response rigidity theorem, redshift specialization, and
+local-to-cosmological capstone. `comparator.json` fixes the declaration order
+and permitted axioms. `formalization.yaml` records scope, provenance,
+literature relations, and exact statement alignment.
 
 The earlier Lorentz spin-two classification and source-reduction declarations
 remain in the repository as proof infrastructure. They are not selected again
@@ -158,9 +208,10 @@ as the principal Palomar result group.
 ## Exact scope
 
 The Lean proof establishes the mathematical implication from its displayed
-hypotheses. It does not prove that Nature selects the proposed observer
-placement, derive a redshift-dependent propagation law, identify Q with a
-measured gravitational coupling, derive Newton's constant, or formalize
+hypotheses, including the redshift law forced by continuous positive path
+composition and the one-step value. It does not prove that Nature selects the
+proposed observer placement or that a factor-(Q) scale change physically
+realizes one response step. It does not derive Newton's constant or formalize
 Jacobson's thermodynamic argument.
 
 ## Reproduce
@@ -173,6 +224,7 @@ lake exe cache get
 lake build
 lake env lean Challenge.lean
 lake env lean Solution.lean
+python3 gwtc5_pdt_curve_check.py /path/to/icarogw_fullpop_spectral_cm_narrow.json
 ```
 
 The solution declarations depend only on `propext`, `Classical.choice`, and

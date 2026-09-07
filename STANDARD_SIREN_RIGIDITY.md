@@ -185,38 +185,36 @@ than merely retune it.
 The next submission should be a new result group centered on the following
 declarations:
 
-1. `structuralTT_globalFlux_standardSirenDistance` — the general rigidity
-   theorem;
-2. `quarticStructuralTT_standardSirenRatio_bounds` — the parameter-free PDT
-   specialization and interval;
-3. `quarticStandardSirenResponse_algebraicSignature` — the exact polynomial
-   fingerprint of the observable;
-4. `quarticStandardSirenResponse_minpoly_natDegree` — exact response degree;
-5. `quarticExteriorAmplitude_algebraicSignature` — the monic algebraic
-   fingerprint of the exterior amplitude;
-6. `quarticExteriorAmplitude_minpoly_natDegree` — irreducibility and exact
-   amplitude degree;
-7. `quarticExteriorAmplitude_relativeDegree` — the quadratic extension of
-   the recovered quartic field; and
-8. `quarticUniversalResponse_cancels_from_standardSiren` — the competing
-   common-response branch.
+1. `quarticStructuralTT_cosmologicalTransport_capstone` — the complete chain
+   from arbitrary response-matrix classification through the finite distance
+   response to the redshift law, its fixed signs, and the one-step
+   effective-Newton meeting;
+2. `continuousQuarticScaleResponse_unique` — uniqueness of the full curve
+   among all continuous positive path-composing responses with the same
+   quartic one-step value;
+3. `structuralTT_globalFlux_standardSirenDistance` — the general matrix and
+   conserved-source rigidity theorem, now explicitly returning both the
+   matrix equality and distance equality;
+4. `quarticStandardSirenResponse_minpoly_natDegree` — exact degree eight of
+   the finite observable; and
+5. `quarticExteriorAmplitude_relativeDegree` — the quadratic extension of
+   the recovered quartic field.
 
-This group answers one research question: structural assumptions determine
-whether a conservative hidden channel is invisible to a standard siren or
-produces one fixed bias, and the quartic PDT specialization converts that
-classification into an exact algebraic prediction whose field degree and
-quartic ancestry are both certified.
+This group answers one research question: structural assumptions fix the local
+TT response, while continuity and path composition fix its unique
+cosmological continuation. The quartic specialization supplies the one-step
+value, observable field degree, and an exact coupling-response meeting.
 
 The older Lorentz coefficient extraction and two-channel elimination remain
 dependencies and background.  Making them the headline again would not
 answer Palomar's objection that the selected results were routine identities.
 
-## Strongest next extension
+## Cosmological extension completed
 
-The remaining step most likely to move the result from a finite structural
-note to a gravitational-wave research result is to formalize the cosmological
-transport law.  One should derive the redshift-dependent amplitude equation,
-prove the corresponding luminosity-distance ratio, and show exactly where the
-quartic exterior weight enters.  That would connect the finite channel
-rigidity theorem to the established modified-propagation framework while
-preserving the two explicit experimental branches above.
+The finite theorem has now been extended to cosmological transport in
+`GravityScreening/CosmologicalQuarticTransport.lean`. The extension proves
+zero-path normalization, one-step recovery, redshift composition, the unique
+continuous positive power law, fixed propagation-friction and Planck-mass-run
+signs, and the one-step equality with the inverse local screening response.
+The full calculation, GWTC-5.0 posterior check, and precise remaining physical
+premise are documented in `COSMOLOGICAL_QUARTIC_TRANSPORT.md`.

@@ -1,7 +1,7 @@
 import Mathlib
 
 /-!
-# Structural rigidity of a conservative two-polarization response
+# From quartic TT rigidity to a unique cosmological response
 
 This challenge classifies the leading standard-siren response of an arbitrary
 real two-by-two transverse-traceless polarization block. Rotation covariance,
@@ -14,6 +14,13 @@ For the positive real solution of `q^4 = q + 1`, PDT supplies
 `s = 1 - (1 - 1/q)^2 = (2q-1)/q^2`. This yields a parameter-free interval
 `1.016 < d_inferred/d_true < 1.017` and exact degree-eight polynomial
 identities for both the exterior amplitude and the distance response.
+
+The cosmological extension assumes a response is continuous, strictly
+positive, and multiplicative under successive scale-factor changes. Its value
+after one factor-q change is the finite quartic response. A functional-equation
+rigidity theorem then proves that the entire redshift curve is uniquely the
+corresponding power law. The capstone joins that uniqueness result to the
+arbitrary-matrix classification and its effective-Newton square.
 
 The theorem is conditional on the explicitly stated observer placement: the
 chirp counts complete visible-plus-hidden flux while strain reads the exterior
@@ -87,8 +94,48 @@ noncomputable def inferredStandardSirenDistance
     (chirpShape strainShape chirpRate strain : ℝ) : ℝ :=
   strainShape * chirpRate / (chirpShape * strain)
 
-/-- General rigidity theorem: the complete hypotheses force the unique
-leading distance response `1 / sqrt(s)`. -/
+/-- Positive one-step quartic distance response. -/
+noncomputable def quarticStepResponse (q : ℝ) : ℝ :=
+  1 / Real.sqrt (screening (lambda4 q))
+
+/-- Number of q-multiplicative scale steps to redshift z. -/
+noncomputable def quarticScaleStepCount (q z : ℝ) : ℝ :=
+  Real.log (1 + z) / Real.log q
+
+/-- Accumulated response under multiplicative q-scale composition. -/
+noncomputable def quarticCosmologicalResponse (q z : ℝ) : ℝ :=
+  Real.rpow (quarticStepResponse q) (quarticScaleStepCount q z)
+
+/-- Effective-Newton ratio in the modified-propagation class. -/
+noncomputable def effectiveNewtonRatioFromQuarticTransport (q z : ℝ) : ℝ :=
+  quarticCosmologicalResponse q z ^ 2
+
+/-- Redshift power-law exponent fixed by the quartic step. -/
+noncomputable def quarticTransportExponent (q : ℝ) : ℝ :=
+  Real.log (quarticStepResponse q) / Real.log q
+
+/-- Constant propagation-friction correction. -/
+noncomputable def quarticPropagationFriction (q : ℝ) : ℝ :=
+  -quarticTransportExponent q
+
+/-- Constant Planck-mass running in the standard alpha_M convention. -/
+noncomputable def quarticPlanckMassRun (q : ℝ) : ℝ :=
+  2 * quarticTransportExponent q
+
+/-- Positivity, continuity, path composition, and the quartic one-step value
+uniquely force the full redshift response. -/
+theorem continuousQuarticScaleResponse_unique
+    (F : ℝ → ℝ) (q z : ℝ)
+    (hF : Continuous F)
+    (hpos : ∀ a : ℝ, 0 < a → 0 < F a)
+    (hmul : ∀ a b : ℝ, 0 < a → 0 < b → F (a * b) = F a * F b)
+    (hq : 1 < q) (hstep : F q = quarticStepResponse q)
+    (hz : 0 < 1 + z) :
+    F (1 + z) = quarticCosmologicalResponse q z := by
+  sorry
+
+/-- General rigidity theorem: the complete hypotheses force both the advertised
+matrix classification and the unique leading distance response. -/
 theorem structuralTT_globalFlux_standardSirenDistance {n : ℕ}
     (M : Matrix (Fin 2) (Fin 2) ℝ)
     (s response : ℝ) (k : Fin n → ℝ) (psi : Fin n → ℂ)
@@ -105,13 +152,56 @@ theorem structuralTT_globalFlux_standardSirenDistance {n : ℕ}
     (hresponse : response ≠ 0)
     (hflux : finiteDiagonalExpectation k psi ≠ 0)
     (hdistance : luminosityDistance ≠ 0) :
-    inferredStandardSirenDistance chirpShape strainShape
-        (leadingChirpRate chirpShape response
-          (exteriorDataExpectation k (erasureDilation s psi) +
-            hiddenDataExpectation k (erasureDilation s psi)))
-        (leadingMetricStrain strainShape (response * M 0 0)
-          (finiteDiagonalExpectation k psi) luminosityDistance) =
-      luminosityDistance / Real.sqrt s := by
+    M = (Real.sqrt s) • (1 : Matrix (Fin 2) (Fin 2) ℝ) ∧
+      inferredStandardSirenDistance chirpShape strainShape
+          (leadingChirpRate chirpShape response
+            (exteriorDataExpectation k (erasureDilation s psi) +
+              hiddenDataExpectation k (erasureDilation s psi)))
+          (leadingMetricStrain strainShape (response * M 0 0)
+            (finiteDiagonalExpectation k psi) luminosityDistance) =
+        luminosityDistance / Real.sqrt s := by
+  sorry
+
+/-- Structural-to-cosmological capstone: the arbitrary TT block is classified,
+the finite conserved-source response equals one quartic propagation step, the
+full redshift law is fixed, and its effective-Newton square meets the inverse
+local screening response. -/
+theorem quarticStructuralTT_cosmologicalTransport_capstone {n : ℕ}
+    (M : Matrix (Fin 2) (Fin 2) ℝ)
+    (q : ℝ) (k : Fin n → ℝ) (psi : Fin n → ℂ)
+    (chirpShape strainShape luminosityDistance : ℝ)
+    (hq4 : q ^ 4 = q + 1) (hq1 : 1 < q)
+    (hcomm :
+      M * ttPolarizationQuarterTurn = ttPolarizationQuarterTurn * M)
+    (hself : M.transpose = M)
+    (hweight :
+      M.transpose * M =
+        screening (lambda4 q) • (1 : Matrix (Fin 2) (Fin 2) ℝ))
+    (hpassive : 0 ≤ M 0 0)
+    (hchirpShape : chirpShape ≠ 0)
+    (hstrainShape : strainShape ≠ 0)
+    (hflux : finiteDiagonalExpectation k psi ≠ 0)
+    (hdistance : luminosityDistance ≠ 0) :
+    M = (Real.sqrt (screening (lambda4 q))) •
+          (1 : Matrix (Fin 2) (Fin 2) ℝ) ∧
+      inferredStandardSirenDistance chirpShape strainShape
+          (leadingChirpRate chirpShape
+            (quarticQuadrupoleCommonResponse q)
+            (exteriorDataExpectation k (quarticErasureDilation q psi) +
+              hiddenDataExpectation k (quarticErasureDilation q psi)))
+          (leadingMetricStrain strainShape
+            (quarticQuadrupoleCommonResponse q * M 0 0)
+            (finiteDiagonalExpectation k psi) luminosityDistance) =
+        luminosityDistance * quarticCosmologicalResponse q (q - 1) ∧
+      (∀ z : ℝ, 0 < 1 + z →
+        quarticCosmologicalResponse q z =
+            Real.rpow (1 + z) (quarticPlanckMassRun q / 2) ∧
+          effectiveNewtonRatioFromQuarticTransport q z =
+            Real.rpow (1 + z) (quarticPlanckMassRun q)) ∧
+      quarticPropagationFriction q < 0 ∧
+      0 < quarticPlanckMassRun q ∧
+      effectiveNewtonRatioFromQuarticTransport q (q - 1) =
+        q ^ 2 / (2 * q - 1) := by
   sorry
 
 /-- The quartic root fixes the structurally forced distance response to a
