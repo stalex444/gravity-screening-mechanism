@@ -74,6 +74,52 @@ S_Q=1-\lambda_4^2.
 Thus the gravity coefficient cannot come from treating the Perron residue as
 an ordinary event frequency. This rules out a tempting but incorrect route.
 
+## The exact `3 + 1` information split
+
+The cone of four positive outcome weights makes the dimensional content
+explicit. Write an unnormalized measure as
+
+\[
+w_i=m p_i,
+\qquad
+\sum_i p_i=1,
+\]
+
+where `m` is total accessible mass and the four normalized probabilities
+`p_i` contain three independent coordinates. A general tangent splits as
+
+\[
+\delta w_i=(\delta m)p_i+m\,\delta p_i,
+\qquad
+\sum_i\delta p_i=0.
+\]
+
+Lean proves the exact Fisher-metric decomposition
+
+\[
+\boxed{
+g_w(\delta w,\delta w')
+=\frac{\delta m\,\delta m'}{m}
++m\,g_p(\delta p,\delta p').}
+\]
+
+The radial mass direction is orthogonal to all normalized-shape directions.
+This is a literal `3 + 1` information geometry:
+
+- the normalized four-outcome simplex has three tangent dimensions;
+- total mass adds one orthogonal radial dimension;
+- the tetrahedral map reconstructs the three normalized coordinates;
+- scalar branch amplitudes act radially and leave those three coordinates
+  unchanged after conditioning.
+
+The theorem holds for every finite outcome model and is separately
+specialized in Lean to the quartic Perron distribution. What is special to PDT
+is that the quartic inverse-step and modular constructions select the exact
+radial scalar `lambda4`. Identifying the three shape coordinates with physical
+space and the radial accessibility coordinate with physical or causal time is
+still a physical identification, but the required `3 + 1` decomposition is no
+longer an analogy: it is an exact property of the information metric.
+
 ## The amplitude route
 
 If the same scalar is an operator amplitude on a Hilbert vector, Born's rule
@@ -179,6 +225,7 @@ with the physical causal-horizon channel remains a PDT physical postulate.
 ## Artifacts
 
 - `GravityScreening/PerronTetrahedralBridge.lean`
+- `GravityScreening/TetrahedralFisherCone.lean`
 - `GravityScreening/TetrahedralInformationFrame.lean`
 - `GravityScreening/ModularAmplitude.lean`
 - [`MODULAR_GNS_AMPLITUDE.md`](MODULAR_GNS_AMPLITUDE.md)

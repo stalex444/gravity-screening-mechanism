@@ -69,7 +69,12 @@ fork: a classical reading leaves complement `1/Q`, whereas a Hilbert amplitude
 has hidden Born weight `lambda4^2` and visible complement `S_Q`. The existing
 modular-GNS construction supplies the amplitude interpretation. This places
 gravity screening in the total accessible information weight while preserving
-the conditional shape of each retained 3D record.
+the conditional shape of each retained 3D record. The associated Fisher-cone
+theorem then proves an exact `3 + 1` split: four positive weights decompose
+orthogonally into three normalized shape directions and one total-mass
+direction. This is a precise information-geometric candidate for the PDT
+three-dimensional/four-dimensional divide; its spacetime interpretation
+remains a physical identification.
 
 [`PQ_TRANSFORM_CHAIN.md`](PQ_TRANSFORM_CHAIN.md) now joins the gravity paper's
 original `pQ`-resolution argument to the later Hodge flip-product, modular

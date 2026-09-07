@@ -38,4 +38,5 @@ import GravityScreening.TetrahedralCoverage
 import GravityScreening.MorphicPackingThreshold
 import GravityScreening.TetrahedralInformationFrame
 import GravityScreening.PerronTetrahedralBridge
+import GravityScreening.TetrahedralFisherCone
 import GravityScreening.PhiRulerFold

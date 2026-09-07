@@ -112,6 +112,14 @@ modular-GNS construction supplies that amplitude reading; treating the Perron
 residue as a classical frequency instead gives the different complement
 `1/Q`.
 
+The Fisher metric makes the dimensional split exact. Four positive weights
+form a four-dimensional cone; fixing their sum gives the three-dimensional
+probability simplex. Lean proves that the total-mass direction is orthogonal
+to the three normalized-shape directions. The Q residual acts along the former
+while conditioning preserves the latter. This supplies a mathematical `3+1`
+information decomposition, though its identification with physical spacetime
+still requires a physical argument.
+
 The horizon calculation elsewhere in this repository converts physical
 two-component shear into canonical gravitational energy and proves that a
 quartic contraction by `S_Q` is equivalent to the screened Newton response.
@@ -124,6 +132,7 @@ complement with horizon information density. See
 
 * `GravityScreening/TetrahedralInformationFrame.lean`
 * `GravityScreening/PerronTetrahedralBridge.lean`
+* `GravityScreening/TetrahedralFisherCone.lean`
 * M. Tavakoli et al., *Self-testing nonprojective quantum measurements in
   prepare-and-measure experiments*, Eq. 13 and the qubit SIC discussion,
   <https://pmc.ncbi.nlm.nih.gov/articles/PMC7164945/>.
