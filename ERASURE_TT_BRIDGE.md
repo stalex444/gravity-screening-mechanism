@@ -117,25 +117,33 @@ The Lean specialization does not establish that a physical horizon presents
 the graviton polarization as the two-state data carried by the Q erasure
 channel.  That statement is now the central physical seam.
 
-A field-theoretic derivation should construct an encoding
+A norm-preserving mathematical encoding is now constructed in
+`TT_HORIZON_CODE.md`:
 
 \[
 E:\mathcal H_{\rm TT}\longrightarrow\mathcal H_{Q,{\rm data}}
 \]
 
-with three properties:
+It includes the tensor-normalization factor `sqrt(2)`, is injective, and
+intertwines transverse rotations.  Lean also proves that the quartic erasure
+dilation intertwines this encoding with the exterior TT attenuation.  Thus
+the first two requirements below are now exact mathematical facts:
 
 1. `E` preserves the canonical graviton norm fixed by the horizon shear
    action;
-2. `E` intertwines transverse rotations and modular evolution;
-3. restriction of the physical horizon evolution to `E(H_TT)` is the quartic
+2. `E` intertwines transverse rotations;
+3. the encoded mode carries the modular evolution used by the erasure
+   channel;
+4. restriction of the physical horizon evolution to `E(H_TT)` is the quartic
    erasure dilation already proved here.
 
-If such an encoding is derived from the local first-order prepotential action
-or the sharp horizon algebra, the linear physical identification is complete:
-the new capstone then supplies the Newton response, while the existing
-Pauli--Fierz uniqueness and source-frame theorems propagate it to the static
-electric sector.
+Items 1 and 2 are proved.  Modular covariance is proved for the erasure
+channel itself, while identifying that modular action with the graviton
+horizon mode belongs to item 3.  If items 3 and 4 are derived from the local
+first-order prepotential action or the sharp horizon algebra, the linear
+physical identification is complete.  The new capstone then supplies the
+Newton response, while the existing Pauli--Fierz uniqueness and source-frame
+theorems propagate it to the static electric sector.
 
 A failure of norm preservation, an extra state-dependent attenuation, a
 polarization-dependent exterior weight, or a modular-frequency shift would
@@ -147,4 +155,5 @@ refute this minimal identification.
 - `GravityScreening/ErasureDilation.lean`
 - `GravityScreening/TTResponseUniqueness.lean`
 - `GravityScreening/TTHorizonSplitter.lean`
+- `GravityScreening/TTHorizonCode.lean`
 - `GravityScreening/HorizonShearNormalization.lean`

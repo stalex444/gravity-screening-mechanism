@@ -69,6 +69,15 @@ and obtains `G_Q=G_0/S_Q` when the same nonzero physical metric is matched.
 The remaining physical seam is to derive that the horizon Q channel carries
 the canonically normalized TT graviton as its two-state data subspace.
 
+[`TT_HORIZON_CODE.md`](TT_HORIZON_CODE.md) fixes the normalization of that
+encoding.  Multiplication by `sqrt(2)` maps the plus/cross vector isometrically
+into the two-state complex code because the TT tensor norm is
+`2*(plus^2+cross^2)`.  Lean proves injectivity, rotation intertwining, exact
+intertwining with the exterior Stinespring port, and contraction of the full
+tensor norm by `S_Q`.  Encoding, evolving, and decoding then gives the same
+Newton capstone.  The remaining field-theory statement is that the physical
+Q horizon evolution restricts to this code as the quartic dilation.
+
 [`THREE_D_INFORMATION_PACKING.md`](THREE_D_INFORMATION_PACKING.md) records a
 new geometric route prompted by the interpretation of a spatial present as an
 information-packing problem. Bandt--Meyer Proposition 7 constructs an actual
