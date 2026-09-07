@@ -130,12 +130,21 @@ identification:
 If that identification is accepted or derived from the Q horizon channel,
 the screened field equation and reciprocal Newton response follow exactly.
 
-The remaining serious task is to demonstrate that the partner is the dual
-prepotential or hidden branch of the same graviton, carrying no independent
-spin-two particle.  Barnich and Troessaert's eight-constraint formulation is
-the natural local framework for that demonstration.  Afterward, the nonlinear
-self-coupling step must recover the Einstein equations with the same overall
-coefficient.
+The reduced TT construction has already closed the degree count: the two
+prepotentials form one canonical position--momentum pair with a
+four-dimensional phase space, hence exactly two configuration degrees of
+freedom.  They are the ordinary plus and cross graviton helicities.  Thus an
+extra graviton is not required by the screening algebra.
+
+The remaining local field-theory task is narrower.  One must identify the
+partner in the covariant Pauli--Fierz equation with that canonical dual
+prepotential throughout the constrained action, rather than merely in the
+reduced TT realization.  Barnich and Troessaert's eight-constraint formulation
+is the natural framework for this final identification.  Once the reduction
+has produced one ordinary massless spin-two field, the standard universal
+self-coupling bootstrap supplies the Einstein nonlinearities with the same
+overall coefficient; the free duality doubling need not survive as a
+nonlinear symmetry.
 
 ## Kernel receipts
 
@@ -146,6 +155,9 @@ coefficient.
 - `quarticCovariantPauliFierz_outputs_unique`
 - `quarticCovariantPauliFierz_sourceConserved`
 - `covariant_and_hamiltonian_reductions_same_coefficient`
+- `ttCanonicalPhaseSpace_finrank`
+- `ttCanonical_configuration_degree_count`
+- `normalized_firstOrder_stationary_iff_doubled`
 
 All printed theorem audits contain only the standard Mathlib foundations.
 The PDT canon was not modified.

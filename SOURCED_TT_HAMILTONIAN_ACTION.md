@@ -139,10 +139,13 @@ differential expressions are
 `COVARIANT_GRAVITY_COMPRESSION.md` now bypasses a component-by-component lift:
 it applies the quartic block directly to the complete Lorentz Pauli--Fierz
 operator and proves the screened equation for every tensor component at once.
-What remains is to identify the partner globally with Barnich and
-Troessaert's constrained dual prepotential, rather than an independent
-spin-two field, and then establish the nonlinear generally covariant
-completion.
+The existing first-order TT construction already proves that the two
+prepotentials form one four-dimensional canonical phase space with exactly
+two configuration degrees of freedom.  What remains is the narrower local
+identification of the partner in the covariant equation with that constrained
+dual prepotential throughout the unreduced action.  Once this produces the
+ordinary massless spin-two field, the standard universal self-coupling
+bootstrap carries its overall coefficient into the Einstein nonlinearities.
 
 ## Kernel receipts
 
