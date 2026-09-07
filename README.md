@@ -271,6 +271,14 @@ tensor has two polarization coordinates and that its canonical phase space
 has dimension four.  Thus the first-order Q deformation retains the standard
 two configuration-space graviton degrees of freedom.
 
+[`CLOCK_FORCES_CONSTITUTIVE.md`](CLOCK_FORCES_CONSTITUTIVE.md) removes the
+mixing coefficient from the remaining internal matrix freedom.  Channel
+exchange symmetry, unit mean diagonal normalization, and the retained clock
+weight `1/Q` on the even channel uniquely force
+`[[1,-lambda4],[-lambda4,1]]`, hence determinant `S_Q`.  The matrix uniqueness
+and exact quartic determinant are kernel checked in
+`GravityScreening/ClockForcesConstitutive.lean`.
+
 [`BIVECTOR_RATE_AUDIT.md`](BIVECTOR_RATE_AUDIT.md) records a selective but
 non-exact consequence: `-log(S_Q)/log(Q)` differs from `1/6` by only
 `8.50e-6`, equivalently `S_Q^6 Q - 1 = -1.01759e-5`.  Six is the dimension of

@@ -60,6 +60,12 @@ the external source `(T,0)` purely electric and produces the physical response
 The second entry is an internal constitutive response.  The external magnetic
 or NUT source remains exactly zero.
 
+Before that frame is chosen, the constitutive metric itself is also forced
+within the clock/Hodge hypotheses.  Exchange symmetry, unit mean diagonal
+normalization, and even-channel weight `1/Q` uniquely give
+`[[1,-lambda4],[-lambda4,1]]`.  Thus `lambda4` is not a free matrix entry once
+the retained clock weight is identified with the even Hodge channel.
+
 ## 5. Uniqueness of the massless spin-two operator
 
 The standard parity-even, local, two-derivative operator on a symmetric
@@ -103,5 +109,6 @@ the present mathematical completion into a PDT gravitational derivation.
 - `GravityScreening/LorentzPauliFierzSymbol.lean`
 - `GravityScreening/DoubledSpinTwoOperator.lean`
 - `GravityScreening/DoubledSpinTwoAction.lean`
+- `GravityScreening/ClockForcesConstitutive.lean`
 - public exclusion computation:
   <https://github.com/stalex444/dimensional-origin-Newton/blob/main/expanded_exclusion_test.py>
