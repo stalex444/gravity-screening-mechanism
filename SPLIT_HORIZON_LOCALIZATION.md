@@ -133,11 +133,15 @@ crossed-product gravitational algebras and recover it from monotonicity of
 relative entropy.  They also identify half-sided modular inclusions and
 conditional expectations as the structures controlling successive cuts.
 
-That supplies the physical home PDT needed.  Standard theory says that
-distinguishability cannot grow as the accessible horizon algebra shrinks.  PDT
-proposes the exact contraction eigenvalue on its distinguished quartic mode.
-The gravity coefficient is then the local spectral rate of the same
-coarse-graining responsible for the generalized second law:
+That supplies a physical home for the temporal part of the PDT proposal.
+Standard theory says that distinguishability cannot grow as the accessible
+horizon algebra shrinks. PDT proposes the exact contraction eigenvalue on its
+distinguished quartic mode. At fixed `G`, the horizon constraint converts this
+cut-to-cut contraction into a compensating area change. It does not by itself
+renormalize the gravity coefficient.
+
+The possible gravity relation instead belongs to a fixed-cut comparison
+between microscopic and effective canonical-energy metrics:
 
 \[
 \eta_Q=S_Q\eta_0,
@@ -145,8 +149,9 @@ coarse-graining responsible for the generalized second law:
 G_Q=G_0/S_Q.
 \]
 
-This is a quantitative addition to the operator-algebraic gravity framework,
-not a replacement for it.
+provided the same normalized geometric mode is compared on both sides. The
+two roles and their exact constraint are separated in
+[`CUT_VS_COUPLING_AUDIT.md`](CUT_VS_COUPLING_AUDIT.md).
 
 ## 5. A clean success criterion
 
@@ -159,6 +164,9 @@ quartic tangent mode `X_Q` such that:
    channel and has a controlled sharp-horizon limit;
 3. the two-dimensional BKM information-area form of that channel supplies the
    microscopic density in the crossed-product area term.
+4. a separate fixed-cut matching map identifies that BKM form with canonical
+   energy for the same independently normalized geometric mode, and this map
+   commutes with the cut-to-cut evolution.
 
 It fails in this form if no net-compatible placement of the clock and channel
 exists, if the sharp-horizon limit removes the erasure flag, or if the area

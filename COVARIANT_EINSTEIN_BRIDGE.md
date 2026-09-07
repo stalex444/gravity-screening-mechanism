@@ -137,6 +137,12 @@ The remaining premise is therefore precise:
 > The dimensionless coefficient multiplying the cubic induced-gravity term is
 > the normalized quadratic invariant of the quartic time response.
 
+The word "time" here refers to the internal normalized response direction,
+not directly to elapsed proper time. The quartic phase clock is a projective
+unit-circle rotation; the spacetime lapse must separately convert its modular
+parameter into the proper time of a geometric observer. See
+[`GRAVITATIONAL_TIME_DILATION_BRIDGE.md`](GRAVITATIONAL_TIME_DILATION_BRIDGE.md).
+
 There is also a normalization caveat.  If `v` or the baseline Planck scale is
 chosen from the measured value of `G`, `Theta_Q` can be absorbed into that
 choice and has no predictive content.  The correction is evidential only when
@@ -168,6 +174,11 @@ additional identification
 
 with `M_Pl,0` obtained from the unscreened `rho Q` construction rather than
 from the measured value of `G`.
+
+This also makes the cross-sector content explicit: the scale-setting half of
+gravity uses both `rho` and `Q`, while the response correction resolves the
+quartic factor. The completed coefficient is therefore `rho Q`-anchored and
+`Q`-screened rather than a pure-`Q` construction.
 
 ## Decisive next test
 

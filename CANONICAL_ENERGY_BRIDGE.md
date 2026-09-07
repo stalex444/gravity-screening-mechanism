@@ -114,6 +114,26 @@ Under this hypothesis, the inverse Newton response follows exactly.  The
 hypothesis is narrower than declaring information to be area: it specifies the
 mode, its normalization, and the bilinear form that must intertwine.
 
+## Constraint from horizon-cut evolution
+
+The crossed-product horizon identity adds an important qualification. At
+successive cuts within one theory, the common asymptotic charge and fixed `G`
+give
+
+\[
+\frac{1}{G}\frac{A_1-A_0}{4}=-(K_1-K_0).
+\]
+
+Consequently a cut-to-cut contraction `K_1=S_Q K_0` is balanced by a change in
+area at fixed coupling. It cannot be counted as an independent derivation of
+`G_Q=G_0/S_Q`. The canonical-energy argument must instead be a fixed-cut
+comparison between microscopic and effective descriptions of the same
+normalized perturbation. The asymptotic charge cannot fix this comparison by
+itself because it already contains `1/G`.
+
+The exact algebra and the resulting two-axis construction are in
+[`CUT_VS_COUPLING_AUDIT.md`](CUT_VS_COUPLING_AUDIT.md).
+
 ## Relation to the two-dimensional area route
 
 The two bridges are complementary:
@@ -131,8 +151,9 @@ That agreement would be much stronger than a numerical match.
 
 ## Decisive construction
 
-The next operator-algebraic target is a horizon-cut channel `C_Q` and a map
-from its tangent space to normalized geometric perturbations such that
+The next operator-algebraic target is a fixed-cut microscopic-to-effective
+channel `C_Q` and a map from its tangent space to normalized geometric
+perturbations such that
 
 \[
 g_{\rm BKM}(C_{Q*}X,C_{Q*}Y)
@@ -149,7 +170,8 @@ g_{\rm BKM}(X,Y)
 hold with the same physical flux or area normalization on both sides.  The
 first equation is already proved for the finite channel.  The second is the
 known holographic dictionary in a restricted setting and the required local
-horizon extension here.
+horizon extension here. This horizontal matching must also commute with the
+vertical, fixed-`G` evolution between horizon cuts.
 
 This route fails if the channel changes the normalized geometric mode, if the
 matter part of canonical energy absorbs the contraction, or if the
@@ -163,4 +185,3 @@ crossed-product sharp-horizon limit does not preserve the BKM bilinear.
   <https://arxiv.org/abs/1505.04753>.
 - T. Faulkner and A. J. Speranza, *Gravitational algebras and the generalized
   second law*, <https://arxiv.org/abs/2405.00847>.
-

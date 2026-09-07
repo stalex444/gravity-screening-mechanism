@@ -8,4 +8,7 @@ import GravityScreening.JacobsonPlacement
 import GravityScreening.ConservedFlux
 import GravityScreening.InformationArea
 import GravityScreening.CanonicalEnergy
+import GravityScreening.HorizonConstraint
+import GravityScreening.HorizonCommutingSquare
+import GravityScreening.TimeDilation
 import GravityScreening.PhiRulerFold

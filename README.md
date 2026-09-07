@@ -110,6 +110,27 @@ essential ambiguity: at fixed `G`, the same contraction can be absorbed into
 the perturbation amplitude.  Flux or area normalization must therefore fix
 the geometric mode before the coupling conclusion follows.
 
+[`CUT_VS_COUPLING_AUDIT.md`](CUT_VS_COUPLING_AUDIT.md) now proves a crucial
+separation. Between successive horizon cuts in one theory, the crossed-product
+constraint holds `G` fixed and converts an `S_Q` reduction of modular energy
+into the complementary area change `lambda4^2`. At a single cut, uniformly
+scaling modular energy and `1/G` while holding the asymptotic charge fixed
+violates the constraint unless that charge vanishes. The observer-horizon
+part is therefore a cut-to-cut evolution, while gravity screening requires a
+distinct microscopic-to-effective comparison of the same normalized
+geometric mode.
+The same quartic coefficient may govern both axes, but one axis cannot be used
+as a proof of the other.
+
+[`GRAVITATIONAL_TIME_DILATION_BRIDGE.md`](GRAVITATIONAL_TIME_DILATION_BRIDGE.md)
+adds the clock-to-geometry map. The normalized quartic phase is the unitary
+clock carrier; the `p`-`Q` portal couples it to records; the spacetime lapse
+converts its modular parameter into observer-dependent proper time. The phase
+is invariant under this redshift reparametrization. Jacobson's boost
+normalization cancels between heat and temperature, so time dilation connects
+the clock to geometry without independently fixing `G`. Gravity remains
+`pQ`-anchored through its unscreened scale and `Q`-resolved through `S_Q`.
+
 [`BIVECTOR_RATE_AUDIT.md`](BIVECTOR_RATE_AUDIT.md) records a selective but
 non-exact consequence: `-log(S_Q)/log(Q)` differs from `1/6` by only
 `8.50e-6`, equivalently `S_Q^6 Q - 1 = -1.01759e-5`.  Six is the dimension of

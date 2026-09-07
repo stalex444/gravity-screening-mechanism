@@ -74,16 +74,16 @@ the two exact conclusions hold simultaneously:
 \text{accessible distinguishability multiplied by }S_Q.}
 \]
 
-This is the cleanest mathematical form so far of the proposed relation
-between time and gravity.  The clock rate and the screening strength are not
-two unrelated additions.  They are two properties of one channel: `Q` fixes
-the modular step, while the defect of that step fixes how much information is
-retained.
+This is the cleanest mathematical compatibility result so far for the proposed
+relation between time and gravity. The clock carrier and the screening channel
+are distinct commuting maps. `Q` fixes the modular spectral line and the
+quartic defect fixes how much information the observer retains; covariance
+shows that the second operation does not disturb the first.
 
-In lay terms, the tick keeps the same pitch while the exterior signal becomes
-less distinguishable.  Information has not been destroyed: the explicit
-Stinespring dilation places the complementary weight `lambda4^2` and the
-corresponding state in the hidden output.  The arrow seen by the exterior
+In lay terms, the unit-circle clock keeps the same pitch while the exterior
+signal becomes less distinguishable. Information has not been destroyed: the
+explicit Stinespring dilation places the complementary weight `lambda4^2` and
+the corresponding state in the hidden output. The arrow seen by the exterior
 observer comes from repeated loss of accessible distinctions, even though the
 combined evolution remains norm preserving.
 
@@ -105,8 +105,8 @@ in a type-I stretched-horizon collar.
 ## What remains physical rather than algebraic
 
 The remaining task is no longer to guess whether screening must alter the
-clock frequency.  It is to construct a horizon-cut map with three linked
-properties:
+clock frequency. It is to construct the phase, readout, and geometry maps with
+four linked properties:
 
 1. the observer crossed product supplies the `log Q` clock line;
 2. a split-factor collar realizes the covariant quartic erasure channel on
@@ -114,6 +114,8 @@ properties:
 3. Jacobson's local area-density term reads the unconditioned retained weight
    `S_Q`, rather than a renormalized conditional state in which the factor
    cancels.
+4. the geometric lapse converts the modular parameter to observer proper time
+   without mixing the quartic spectral line.
 
 The first property is standard crossed-product structure plus the PDT choice
 of the `log Q` step.  The second is now algebraically consistent and exact in
@@ -121,6 +123,9 @@ the finite collar, but its net-compatible limiting construction is open.  The
 third is the decisive physical identification.  Proving it would turn the
 quartic information channel into a microscopic derivation of the screening
 factor in the gravitational response.
+
+The proper-time part is developed in
+[`GRAVITATIONAL_TIME_DILATION_BRIDGE.md`](GRAVITATIONAL_TIME_DILATION_BRIDGE.md).
 
 ## Kernel artifact
 
@@ -133,4 +138,3 @@ factor in the gravitational response.
 
 The declarations contain no `sorry`; Lean reports only Mathlib's standard
 foundational axioms (`propext`, `Classical.choice`, and `Quot.sound`).
-
