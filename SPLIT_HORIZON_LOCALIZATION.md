@@ -157,8 +157,8 @@ quartic tangent mode `X_Q` such that:
 1. `X_Q` lies on the crossed-product `log Q` clock line;
 2. `C` restricts in the split collar to the proved covariant quartic erasure
    channel and has a controlled sharp-horizon limit;
-3. the area-density term in the crossed-product generalized entropy reads the
-   unconditioned exterior channel.
+3. the two-dimensional BKM information-area form of that channel supplies the
+   microscopic density in the crossed-product area term.
 
 It fails in this form if no net-compatible placement of the clock and channel
 exists, if the sharp-horizon limit removes the erasure flag, or if the area

@@ -6,4 +6,5 @@ import GravityScreening.ErasureDilation
 import GravityScreening.ErasureCovariance
 import GravityScreening.JacobsonPlacement
 import GravityScreening.ConservedFlux
+import GravityScreening.InformationArea
 import GravityScreening.PhiRulerFold

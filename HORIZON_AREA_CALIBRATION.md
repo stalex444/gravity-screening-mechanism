@@ -209,3 +209,11 @@ unscaled globally counted observable is compatible with an `S_Q`-screened
 exterior branch.  Identifying that global observable with Jacobson's heat flux
 and the retained branch with horizon cell density is the remaining physical
 step.
+
+`INFORMATION_AREA_BRIDGE.md` now derives the required coframe power from the
+channel's information geometry.  Uniform Fisher/BKM contraction
+`g -> S_Q g` makes the information-area form of a two-dimensional horizon cut
+scale by `S_Q`, and its coframe by `sqrt(S_Q)`.  The former assumption that the
+defect complement acts on both inverse-length directions is therefore replaced
+by the narrower identification of Jacobson's microscopic cell density with
+the two-dimensional BKM information-volume density.

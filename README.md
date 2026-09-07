@@ -91,6 +91,16 @@ while its exterior contribution is screened, so this placement is internally
 consistent.  Deriving the retained branch as the physical horizon cell
 density remains the open identification.
 
+[`INFORMATION_AREA_BRIDGE.md`](INFORMATION_AREA_BRIDGE.md) substantially
+narrows that identification.  The erasure channel scales the full Fisher/BKM
+metric by `S_Q`; on the two-dimensional state surface of a four-dimensional
+causal-horizon cut, its information-area form therefore scales by exactly
+`S_Q`.  The complementary coframe amplitude `sqrt(S_Q)` follows as the square
+root of this metric response.  Identifying that information-area measure with
+the microscopic density in Jacobson's area law would complete the screening
+mechanism; that physical identification and its sharp-horizon construction
+remain open.
+
 [`BIVECTOR_RATE_AUDIT.md`](BIVECTOR_RATE_AUDIT.md) records a selective but
 non-exact consequence: `-log(S_Q)/log(Q)` differs from `1/6` by only
 `8.50e-6`, equivalently `S_Q^6 Q - 1 = -1.01759e-5`.  Six is the dimension of
@@ -506,6 +516,10 @@ minimal mechanism.
 - [`GravityScreening/ConservedFlux.lean`](GravityScreening/ConservedFlux.lean)
   proves that the exterior and hidden expectations of any finite diagonal
   observable have weights `s` and `1-s`, while their global sum is conserved.
+- [`GravityScreening/InformationArea.lean`](GravityScreening/InformationArea.lean)
+  proves that the full two-dimensional Fisher metric, its determinant, and its
+  positive area element scale by `s`, `s^2`, and `s`, respectively, with the
+  exact quartic specialization.
 - [`verify.py`](verify.py) reproduces the exact quartic arithmetic using only
   the Python standard library.
 - [`phi_ruler_fold.py`](phi_ruler_fold.py) reproduces the positive-embedding

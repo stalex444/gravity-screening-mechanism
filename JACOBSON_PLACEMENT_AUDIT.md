@@ -106,11 +106,12 @@ the quartic channel preserves the globally normalized horizon flux
 ```
 
 The first line now has a finite kernel-checked model.  The second line remains
-the physical area-density identification.  The existing two-dimensional
-horizon calculation shows that if the inverse-length frame amplitude is the
-unitary complement `sqrt(S_Q)`, then its cell density is necessarily `S_Q`.
-What is still missing is a dynamical reason that the physical horizon coframe
-is acted on by that complement.
+the physical area-density identification.  `INFORMATION_AREA_BRIDGE.md` now
+derives its power without separately assuming a coframe response: the erasure
+channel scales the full Fisher/BKM metric by `S_Q`, so the information-area
+form on a two-dimensional horizon state surface also scales by `S_Q`.  What is
+still missing is the identification of that information-area measure with the
+microscopic density entering the physical horizon area law.
 
 ## 4. The next theorem has become very small
 
@@ -126,9 +127,10 @@ V_Q^*K_{\rm flux}^{\rm global}V_Q=K_{\rm flux},
 \]
 
 The first equation is already modeled for every finite diagonal observable.
-The second follows algebraically from `E_A'=sqrt(S_Q)E_A`; deriving that
-coframe action from the curvature or observer constraint is now the sole
-model-specific step.
+The second follows from the proved Fisher-metric response if the physical
+horizon coframe is the coframe of that information geometry.  Establishing
+this information-area identification in the curvature or observer constraint
+is now the sole model-specific step.
 
 A candidate fails if it scales both the physical heat flux and the entropy
 density by `S_Q`, if it acts only on normalized matter entropy, or if its
@@ -160,4 +162,3 @@ foundational axioms.
   <https://arxiv.org/abs/gr-qc/9504004>.
 - T. Faulkner and A. J. Speranza, *Gravitational algebras and the generalized
   second law*, <https://arxiv.org/abs/2405.00847>.
-
