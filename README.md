@@ -190,8 +190,10 @@ because the GWTC-5 Zenodo package publishes posterior results rather than the
 configured likelihood inputs. The exact rerun is now packaged rather than
 merely described. The checksum lock identifies all 235 official event files
 (89,295,221,112 source bytes), and the sequential extractor verifies and
-compacts one HDF5 file at a time. The pinned inputs, commands, completed real-file integration test, and the two
-remaining likelihood-configuration seams are recorded in
+compacts one HDF5 file at a time. A second pinned script reconstructs the
+marginal PE-prior density and has passed O3b, O4a, O4b, and catalog-exception
+files. The pinned inputs, commands, real-file integration tests, and remaining
+selection-threshold seam are recorded in
 [EXACT_GWTC5_RERUN.md](EXACT_GWTC5_RERUN.md).
 
 The Hubble benchmark supplies a possible joint test. With
@@ -250,6 +252,10 @@ python3 gwtc5_fixed_slope_evidence.py \
   /path/to/icarogw_fullpop_spectral_cm_narrow.json \
   /path/to/icarogw_fullpop_spectral_cm_wide.json
 python3 prepare_gwtc5_inputs.py --dry-run
+python3.12 -m venv gwtc5-prior-env
+./gwtc5-prior-env/bin/pip install -r gwtc5_prior_requirements.txt
+./gwtc5-prior-env/bin/python evaluate_gwtc5_pe_prior.py \
+  gwtc5-data/events/GW240420_175625.npz
 ```
 
 The solution declarations depend only on `propext`, `Classical.choice`, and

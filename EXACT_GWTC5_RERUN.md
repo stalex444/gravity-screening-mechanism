@@ -114,24 +114,65 @@ storage strategy; it does not estimate the eventual sampler runtime.
 
 The generated data directories and partial downloads are ignored by Git.
 
+## PE-prior reconstruction
+
+`evaluate_gwtc5_pe_prior.py` turns each compact event into an ICAROGW-ready
+posterior by evaluating the marginal PE density in
+`(mass_1, mass_2, luminosity_distance)`. Its scientific stack is pinned in
+`gwtc5_prior_requirements.txt` to the versions recorded by the released run.
+
+For the usual Bilby events, the PE sampled chirp mass
+\(\mathcal M\) and mass ratio \(q\). The density in component masses is
+
+\[
+\pi(m_1,m_2)=\pi(\mathcal M)\pi(q)
+\left|\frac{\partial(\mathcal M,q)}{\partial(m_1,m_2)}\right|,
+\qquad
+\left|\frac{\partial(\mathcal M,q)}{\partial(m_1,m_2)}\right|
+=\frac{\mathcal M}{m_1^2}.
+\]
+
+Bilby's `UniformInComponentsChirpMass` and
+`UniformInComponentsMassRatio` factors cancel this Jacobian to a constant
+component-mass density. The distance factor is then evaluated from each
+file's own analytic prior description. For the seven events explicitly marked
+`m1d_m2d_uniform_dL_square_PE_priors` in the official catalog, the evaluator
+uses the equivalent density \(D_L^2\), up to an event-wise positive constant
+that cancels from a fixed-catalog evidence difference.
+
+Create the pinned environment and evaluate one compact event:
+
+```bash
+python3.12 -m venv gwtc5-prior-env
+./gwtc5-prior-env/bin/pip install -r gwtc5_prior_requirements.txt
+./gwtc5-prior-env/bin/python evaluate_gwtc5_pe_prior.py \
+  gwtc5-data/events/GW240420_175625.npz
+```
+
+Real-file tests passed for four cases: an O3b event with a `PowerLaw(alpha=2)`
+distance prior, O4a and O4b events with `UniformSourceFrame` distance priors,
+and the marked high-spin BNS exception. All reconstructed values were finite
+and positive. In the two O4 checks, the relative spread of the transformed
+component-mass density was below \(2.1\times10^{-15}\).
+
 ## The remaining reproducibility seams
 
-The lock and extractor solve event identity, waveform-group selection, file
-integrity, and local storage. Three items still have to be closed before an
-evidence number is defensible:
 
-1. **PE prior density.** ICAROGW needs the marginal density
-   \(\pi_{\rm PE}(m_1^{\rm det},m_2^{\rm det},D_L^{\rm GW})\) at every retained
-   sample. The HDF5 files preserve event-specific Bilby prior descriptions,
-   including component-mass Jacobians and source-frame-volume distance priors.
-   The extractor deliberately records these descriptions and labels the
-   numerical density `not_evaluated`; the full joint `log_prior` column cannot
-   silently substitute for the required marginal density.
+The lock, extractor, and prior evaluator solve event identity, waveform-group
+selection, file integrity, local storage, and the marginal-prior formula. Three
+items still have to be closed before an evidence number is defensible:
+
+1. **Catalog-wide prior validation.** The evaluator has passed representative
+   O3b, O4a, O4b, and catalog-exception files. It must still run successfully
+   across all 235 checksum-locked events. The full joint `log_prior` column is
+   retained for diagnostics but is not substituted for the required marginal
+   density.
 2. **Selection configuration.** [The cumulative O1--O4b injection release](https://zenodo.org/records/19500052)
-   supplies real-search and mixed semianalytic/real files in equivalent polar-
-   and Cartesian-spin coordinates. The published cosmology result does not
-   serialize the configured likelihood, so the precise injection variant and
-   the run-by-run FAR/SNR cuts must be recovered and then checksum-pinned.
+   establishes that the combined file must use semianalytic O1/O2 injections
+   and real O3/O4 injections; its polar and Cartesian versions are documented
+   as equivalent. The catalog threshold fixes the real-search cut at FAR below
+   0.25/year. The exact O1/O2 semianalytic SNR threshold used in the released
+   cosmology run is not serialized and must still be recovered.
 3. **Pipeline validation and compute.** Before evaluating PDT, the reconstructed
    inputs must reproduce the released narrow- and wide-prior `cM` analyses
    within their sampling errors. Their metadata report 1,440,240 likelihood
@@ -139,13 +180,15 @@ evidence number is defensible:
    and 755,792 seconds for the wide run, each with 16 workers. This is a compute
    job rather than a short laptop check.
 
-These are explicit missing inputs, not adjustable parts of the PDT curve.
+These are explicit validation and configuration tasks, not adjustable parts of
+the PDT curve.
 
 ## Evidence protocol
 
 1. Pin Python 3.12, Bilby 2.6.0, and ICAROGW 2.0.3 at commit
    `c473f3b2f50e11a88a46cc1625933af1f1249d39`.
-2. Close the PE-prior and injection-configuration seams above.
+2. Complete catalog-wide prior validation and close the remaining injection
+   threshold seam above.
 3. Reproduce the released narrow- and wide-prior `cM` evidence values before
    testing another propagation law.
 4. Replace `cM_mod_wrap` with `eps0_mod_wrap`.

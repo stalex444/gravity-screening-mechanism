@@ -3138,7 +3138,7 @@
   ],
   "cumulative_injection_record": {
     "record_id": 19500052,
-    "selection_status": "The polar and Cartesian files are documented as equivalent. The exact mixture variant and IFAR/SNR cuts used in the released cosmology run are not serialized in its result metadata and must be recovered before evidence evaluation.",
+    "selection_status": "For the 235-event IFAR>4 yr catalog, use a mixture-semi_o1_o2-real_o3_o4a_o4b file. The release documents polar and Cartesian versions as equivalent. The real-search cut is FAR<0.25/year. The exact O1/O2 semianalytic SNR threshold used by the released cosmology run is not serialized and must be recovered.",
     "candidates": [
       {
         "record_id": 19500052,
