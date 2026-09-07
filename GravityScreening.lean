@@ -26,4 +26,5 @@ import GravityScreening.DoubledSpinTwoOperator
 import GravityScreening.DoubledSpinTwoAction
 import GravityScreening.SpinTwoDegreeAudit
 import GravityScreening.FirstOrderSourceAction
+import GravityScreening.TransverseTracelessCount
 import GravityScreening.PhiRulerFold

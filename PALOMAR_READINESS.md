@@ -72,8 +72,11 @@ a two-graviton model, not yet a doubled-potential formulation of one graviton.
 The abstract first-order source action resolves the internal degree-count
 problem by treating the two entries as one canonical position-momentum pair;
 its stationary variations reproduce the screened equations exactly.  A
-physical-gravity submission must still instantiate that action in the full
-gravitational prepotentials and verify their constraints and polarizations.
+separate fixed-momentum theorem proves that the symmetric transverse-traceless
+subspace is exactly two-dimensional and its canonical phase space exactly
+four-dimensional.  A physical-gravity submission must still instantiate the
+action in the full gravitational prepotentials and verify the local constraint
+complex.
 
 The standard five-coefficient Pauli--Fierz uniqueness calculation is also
 kernel checked.  The new four-dimensional symbol module derives the three

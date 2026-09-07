@@ -265,6 +265,11 @@ screening mechanism does not itself require a second graviton.  The remaining
 step is its explicit gravitational-prepotential instantiation and PDT
 identification.  The action identities are kernel checked in
 `GravityScreening/FirstOrderSourceAction.lean`.
+`GravityScreening/TransverseTracelessCount.lean` additionally proves, by an
+explicit linear equivalence, that the reduced symmetric transverse-traceless
+tensor has two polarization coordinates and that its canonical phase space
+has dimension four.  Thus the first-order Q deformation retains the standard
+two configuration-space graviton degrees of freedom.
 
 [`BIVECTOR_RATE_AUDIT.md`](BIVECTOR_RATE_AUDIT.md) records a selective but
 non-exact consequence: `-log(S_Q)/log(Q)` differs from `1/6` by only

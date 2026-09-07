@@ -60,6 +60,24 @@ degree of freedom.  The determinant-one shape controls the internal duality
 relation, while the common factor `d` controls the response to an independently
 normalized source.
 
+## Explicit spin-two polarization count
+
+For a nonzero spatial momentum chosen along the third axis, Lean now defines
+the subspace of symmetric spatial tensors that are transverse and traceless.
+It proves that every such tensor has the unique form
+
+```text
+[[plus,  cross, 0],
+ [cross, -plus, 0],
+ [0,          0, 0]].
+```
+
+This gives an explicit linear equivalence with `R^2`.  Consequently the
+canonical position-momentum pair has phase-space dimension four and hence two
+configuration degrees of freedom.  These are the ordinary plus and cross
+graviton polarizations.  The quartic constitutive transformation is
+invertible, so it changes neither dimension nor polarization count.
+
 ## What is now proved and what is not
 
 The exact action variation and its equality with the doubled screening
@@ -84,6 +102,7 @@ step as a physical correspondence.
 
 - `GravityScreening/FirstOrderSourceAction.lean`
 - `GravityScreening/SymplecticReduction.lean`
+- `GravityScreening/TransverseTracelessCount.lean`
 - Marc Henneaux and Claudio Teitelboim, *Duality in linearized gravity*:
   <https://arxiv.org/abs/gr-qc/0408101>.
 - Glenn Barnich and Cedric Troessaert, *Manifest spin 2 duality with electric
