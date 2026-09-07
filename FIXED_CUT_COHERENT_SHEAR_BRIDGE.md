@@ -203,5 +203,7 @@ The route fails if the physical Q interaction:
 
 The next physical calculation is therefore concrete: derive the one-particle
 scattering or matching map for the two horizon graviton polarizations from the
-PDT two-scalar/metric action and test whether its exterior block is
-`sqrt(S_Q) I_2`.
+Q-modified duality-symmetric spin-two action, or from an enlarged local
+horizon interaction, and test whether its exterior block is `sqrt(S_Q) I_2`.
+The deposited two-scalar action cannot supply this at quadratic order: its
+selected axis vacuum makes the scalar fluctuation operator block diagonal.
