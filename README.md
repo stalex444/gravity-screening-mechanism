@@ -70,6 +70,13 @@ while tracing out the exterior system places the same input state in the
 hidden branch with weight `lambda4^2`.  This proves global information
 conservation and local causal loss in one model.
 
+[`SPLIT_HORIZON_LOCALIZATION.md`](SPLIT_HORIZON_LOCALIZATION.md) gives the
+relativistic placement.  The split property hosts the finite channel in a
+stretched-horizon type-I collar; the observer crossed product supplies the
+sharp-horizon limit.  The remaining theorem is reduced to one distinguished
+quartic mode whose modular eigenvalue is `1/Q` and whose BKM information norm
+contracts by exactly `S_Q` under the horizon-cut coarse-graining.
+
 [`BIVECTOR_RATE_AUDIT.md`](BIVECTOR_RATE_AUDIT.md) records a selective but
 non-exact consequence: `-log(S_Q)/log(Q)` differs from `1/6` by only
 `8.50e-6`, equivalently `S_Q^6 Q - 1 = -1.01759e-5`.  Six is the dimension of
