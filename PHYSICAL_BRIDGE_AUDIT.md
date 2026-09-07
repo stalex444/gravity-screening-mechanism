@@ -198,17 +198,22 @@ Running the construction backward reveals four sharp failure modes.
    `lambda4` is treated directly as a probability, the complement is
    `1-lambda4`, also wrong. The square requires Hilbert norm.
 3. **Bare scalar instrument.** The pair `lambda4 I,d I` factorizes and carries
-   no information about the input state. It fixes weights but supplies no
-   Q-to-geometry dynamics.
+   no information about the input state. It therefore cannot serve as a
+   state-dependent measurement record. It can nevertheless thin an
+   unconditioned horizon-cell count by the weight `d^2`; this works for
+   Jacobson's area density only if the physical count is made per original
+   area without post-selection and renormalization.
 4. **Wrong horizon determinant.** A nontrivial operator-valued completion is
    allowed, but its positive isotropic horizon projection must have determinant
    `1-lambda4^2`; otherwise it does not produce the observed universal factor.
 
 The proposed mechanism is therefore falsifiable. A derivation from the actual
 joint Q-geometry dynamics must preserve the quartic residue weight while
-acting nontrivially on the state, and its horizon area-density response must
-have the required determinant. Producing `1/Q`, a trivial state-independent model
-only, or a different area determinant rejects this mechanism.
+its horizon area-density response has the required determinant. A
+state-independent scalar model is sufficient only for an unconditioned cell
+density; a normalized conditional-state reading requires nontrivial relative
+action. Producing `1/Q`, post-selection that cancels the factor, or a different
+area determinant rejects this mechanism.
 
 ## Honest status
 

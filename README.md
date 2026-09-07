@@ -20,8 +20,10 @@ origin of the quartic factor already present in that value.
 
 The strongest current formulation treats `S_Q` as a post-condensation matching
 coefficient of the infrared Einstein term.  This placement survives canonical
-field normalization.  Its information-geometric reading is the partial Fisher
-information left after the quartic clock coordinate is eliminated.  See
+field normalization. Two information readings are now sharply separated: an
+unconditioned horizon branch scales the extensive entropy density directly,
+while a partial-Fisher interpretation would require a coupled history measure
+that has not yet been constructed. See
 [`POST_CONDENSATION_MATCHING.md`](POST_CONDENSATION_MATCHING.md) and
 [`INFORMATION_GEOMETRIC_MATCHING.md`](INFORMATION_GEOMETRIC_MATCHING.md).
 The canonical-candidate calculation is in
@@ -33,6 +35,14 @@ distinct, but both have norm `-1`; moreover the golden-polynomial defect of
 `rho*Q` is itself a norm-`-1` unit.  This makes `rho*Q` a precise
 higher-dimensional lift of the golden unit while keeping the quartic response
 `lambda4` as a separate operation on that ruler.
+
+[`SUBNORMALIZED_HORIZON_BRANCH.md`](SUBNORMALIZED_HORIZON_BRANCH.md) isolates
+the next physical decision.  A scalar defect branch cannot encode the input
+state in its flag, but its unconditioned Born weight does scale an extensive
+horizon-cell density and every entropy first-law variation by exactly `S_Q`.
+Renormalizing the branch removes the factor.  The mechanism therefore turns on
+whether Jacobson's local area law counts retained cells per original area or a
+post-selected conditional state.
 
 ## The useful result
 
@@ -409,6 +419,9 @@ minimal mechanism.
   the algebraic core.
 - [`GravityScreening/PhiRulerFold.lean`](GravityScreening/PhiRulerFold.lean)
   kernel-checks the exact golden-defect unit identity.
+- [`GravityScreening/HorizonBranch.lean`](GravityScreening/HorizonBranch.lean)
+  kernel-checks the subnormalized first-law scaling and the renormalization
+  control.
 - [`verify.py`](verify.py) reproduces the exact quartic arithmetic using only
   the Python standard library.
 - [`phi_ruler_fold.py`](phi_ruler_fold.py) reproduces the positive-embedding

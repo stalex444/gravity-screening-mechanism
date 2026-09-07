@@ -109,9 +109,10 @@ This is already kernel-checked by `relativeSchur_eq_screening_iff`.  The sign
 of the correlation does not affect screening; causal orientation would have to
 fix it separately.
 
-## What must now be built
+## What the Fisher route would still require
 
-The next candidate cannot be the quartic distribution alone, a global
+If screening is to be derived as partial Fisher information, the next
+candidate cannot be the quartic distribution alone, a global
 normalization, or the uncoupled pQ tensor product.  It must contain an
 interaction observable fixed independently by PDT:
 
@@ -135,6 +136,13 @@ constraint, a modular conditional expectation, or an observer/horizon
 coarse-graining.  The filed two-scalar action supplies no tree-level candidate
 at `(v,0)`, because its mixed fluctuation term vanishes there.  A loop-induced
 or history-level interaction remains possible and is now the exact target.
+
+There is now a separate horizon-density route that does not require this
+coupled Fisher family. A subnormalized complementary Kraus branch scales every
+entropy first-law variation by its Born weight `1-lambda4^2`, even though its
+normalized conditional state is unchanged. That route succeeds only if
+Jacobson's entropy density counts retained cells per original horizon area.
+See `SUBNORMALIZED_HORIZON_BRANCH.md`.
 
 ## Reproducibility
 

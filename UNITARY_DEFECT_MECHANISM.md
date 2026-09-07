@@ -166,9 +166,11 @@ V_Q\psi
 
 Both branch probabilities are independent of the input state. The construction
 therefore fixes a norm split but does not, by itself, transfer information to
-the branch flag. A genuine information-geometric channel needs distinct
-state-dependent branch operators, even if symmetry keeps their overall
-weights equal to `lambda4^2` and `1-lambda4^2`.
+the branch flag. That excludes reading the flag as a state-dependent
+measurement record. It does not exclude a state-independent thinning of an
+extensive horizon-cell density: the unconditioned complementary branch carries
+weight `1-lambda4^2`, while renormalizing that branch removes the factor. See
+`SUBNORMALIZED_HORIZON_BRANCH.md`.
 
 ## Exact match to the gravity formula
 
@@ -241,8 +243,9 @@ Physical premises still requiring derivation:
    channel relevant to gravity;
 2. the positive defect amplitude acts on the inverse-length horizon
    resolution;
-3. any information-transfer completion has nontrivial relative branch action
-   while preserving the universal defect weight;
+3. the physical area law counts the unconditioned complementary branch per
+   original area; if it instead counts a normalized conditional state, a
+   nontrivial relative branch action is required;
 4. the channel acts at the normalization scale used by the gravity formula.
 
 The current two-scalar action does not establish these premises. Its tree-level
@@ -267,13 +270,13 @@ complement after that observable has been selected.
 
 ## Decisive next derivation
 
-The next calculation should formulate the Q-to-geometry transition as a local
-horizon area-density response. The most economical target is an isotropic map
-on the two inverse-length tangent-resolution directions with amplitude
-`sqrt(1-lambda4^2)`, which makes the cell-density response exactly
-`1-lambda4^2`. A quantum-channel realization must additionally make the two
-branches act differently on the state; the bare scalar Kraus pair is too
-trivial to carry information. See `HORIZON_AREA_CALIBRATION.md`.
+The next calculation should decide how the local horizon area law treats the
+Q-to-geometry instrument. If it counts the unconditioned expected number of
+retained cells per original area, the scalar defect branch already gives
+`1-lambda4^2` and no state-dependent flag is needed. If it conditions on the
+retained branch and renormalizes, the factor cancels and a nontrivial
+operator-valued channel is required. See `SUBNORMALIZED_HORIZON_BRANCH.md`
+and `HORIZON_AREA_CALIBRATION.md`.
 
 It fails if the geometric response produces `1/Q`, a scale-dependent
 coefficient, anisotropy without a horizon-symmetry reason, or additional
