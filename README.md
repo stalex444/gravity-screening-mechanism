@@ -183,6 +183,14 @@ as NUT charge. This fixes the decisive test: the Q block must give its inverse
 response in the ordinary `(T,0)` sector without generating an independent
 magnetic charge.
 
+[`SPIN2_CONSTRAINT_PLACEMENT.md`](SPIN2_CONSTRAINT_PLACEMENT.md) isolates the
+last placement requirement. A static mass enters linearized gravity through
+the lapse and momentum constraints, so changing only the transverse
+prepotential Hamiltonian is insufficient to change Newton's law. The reduced
+Q parent action must yield `S_Q` times the complete sourced Pauli--Fierz
+action, including lapse and shift. If it does, the spin-two bootstrap carries
+the same coefficient into nonlinear Einstein gravity.
+
 [`BIVECTOR_RATE_AUDIT.md`](BIVECTOR_RATE_AUDIT.md) records a selective but
 non-exact consequence: `-log(S_Q)/log(Q)` differs from `1/6` by only
 `8.50e-6`, equivalently `S_Q^6 Q - 1 = -1.01759e-5`.  Six is the dimension of

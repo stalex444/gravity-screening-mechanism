@@ -263,6 +263,12 @@ That calculation is the shortest remaining proof target. It tests the one
 physical joining premise directly and hands any successful result to the
 known Einstein bootstrap.
 
+[`SPIN2_CONSTRAINT_PLACEMENT.md`](SPIN2_CONSTRAINT_PLACEMENT.md) sharpens this
+further. Static mass enters Pauli--Fierz theory through the lapse constraint,
+so a deformation of the transverse prepotential Hamiltonian alone does not
+derive a new Newton constant. The Q reduction must multiply the complete
+sourced Pauli--Fierz normalization, including lapse and shift constraints.
+
 ## Verification and sources
 
 The exact coefficient and finite-mode source response are kernel checked in
