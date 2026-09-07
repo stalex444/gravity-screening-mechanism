@@ -126,6 +126,17 @@ two-polarization count, and the exact equivalence
 constraint block and the TT action together by varying one local sourced
 covariant action.
 
+[`SOURCED_TT_HAMILTONIAN_ACTION.md`](SOURCED_TT_HAMILTONIAN_ACTION.md) closes
+the intermediate one-action placement test at fixed momentum. The action has
+the retained TT prepotential term and all eight electric/magnetic lapse/shift
+multiplier terms. Lean proves their exact variations. After eliminating only
+the zero-source partner equation, while leaving the electric constraints off
+shell, the action becomes
+`S_Q*L_TT + sum_i u_i*(S_Q*E_i-J_i)`. Thus the same coefficient is present in
+propagation and in every unsolved ordinary-source constraint. The remaining
+linear step is to replace the abstract constraint values with the explicit
+local differential constraints of the complete Barnich--Troessaert fields.
+
 [`THREE_D_INFORMATION_PACKING.md`](THREE_D_INFORMATION_PACKING.md) records a
 new geometric route prompted by the interpretation of a spatial present as an
 information-packing problem. Bandt--Meyer Proposition 7 constructs an actual

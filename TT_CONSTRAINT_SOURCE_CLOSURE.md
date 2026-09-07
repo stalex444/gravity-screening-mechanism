@@ -135,14 +135,17 @@ linearized construction that has been encoded.
 
 One physical seam remains.  The four constraint labels are a faithful model
 of the lapse and shift family, but the doubled constitutive block has not yet
-been obtained by varying one local, sourced, covariant gravitational action.
+been lifted to the explicit local spatial differential constraints of one
+sourced covariant gravitational action.
 The coefficient theorem now derives its relations from the Lorentz Ward and
 self-adjointness properties themselves; it does not assume the component
 relations separately.  The next decisive calculation is therefore to build
 that single local quadratic action, perform its 3+1 split, and recover both the
-TT prepotential action and the four sourced constraint equations from the same
-variation.  Nonlinear closure on curved backgrounds comes after that linear
-action-level test.
+TT prepotential action and the four local sourced constraint equations from
+the same variation.  `SOURCED_TT_HAMILTONIAN_ACTION.md` now closes the
+intermediate fixed-mode action test and proves the common coefficient off
+shell in the electric constraints.  Nonlinear closure on curved backgrounds
+comes after the local linear action-level test.
 
 The prepotential action used upstream is the duality-symmetric linearized
 gravity action of Barnich and Troessaert, [*Manifest spin 2 duality with electric
