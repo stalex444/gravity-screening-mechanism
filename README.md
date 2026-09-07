@@ -191,6 +191,28 @@ Q parent action must yield `S_Q` times the complete sourced Pauli--Fierz
 action, including lapse and shift. If it does, the spin-two bootstrap carries
 the same coefficient into nonlinear Einstein gravity.
 
+[`EFFECTIVE_GRAVITY_CLOSURE.md`](EFFECTIVE_GRAVITY_CLOSURE.md) states the
+strongest result at its honest level. If the complete spin-two normalization
+is identified with the normalized orientation-even quadratic response of the
+Q direction, its value is uniquely forced to `S_Q`; the source response is
+`1/S_Q`, positivity is automatic for `Q>1`, and the standard massless
+spin-two bootstrap supplies Einstein gravity. This is a closed zero-parameter
+effective theory. Deriving its one constitutive identification from a
+microscopic sourced Q action remains the explanatory frontier.
+
+[`SYMPLECTIC_OPERATOR_REDUCTION.md`](SYMPLECTIC_OPERATOR_REDUCTION.md) removes
+the one-mode restriction from the first-order calculation.  For an arbitrary
+real field space and symmetric bilinear spatial operator, eliminating the
+canonical dual partner and pairing the two orientations gives exactly
+`S_Q=1-lambda4^2` times the complete orientation-even propagating quadratic
+form.  The only unclosed spin-two placement question is now the lapse/shift
+source-constraint sector.
+
+[`PALOMAR_READINESS.md`](PALOMAR_READINESS.md) records why the effective
+closure alone is not yet the strongest registry submission, identifies the
+current operator-level theorem group, and states the sourced-constraint
+theorem that would make the package compelling.
+
 [`BIVECTOR_RATE_AUDIT.md`](BIVECTOR_RATE_AUDIT.md) records a selective but
 non-exact consequence: `-log(S_Q)/log(Q)` differs from `1/6` by only
 `8.50e-6`, equivalently `S_Q^6 Q - 1 = -1.01759e-5`.  Six is the dimension of

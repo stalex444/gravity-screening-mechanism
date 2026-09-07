@@ -15,4 +15,6 @@ import GravityScreening.RindlerClock
 import GravityScreening.KillingRedshift
 import GravityScreening.CoreClockDuality
 import GravityScreening.ClockHodgeBridge
+import GravityScreening.EffectiveGravityClosure
+import GravityScreening.SymplecticReduction
 import GravityScreening.PhiRulerFold
