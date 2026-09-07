@@ -59,6 +59,16 @@ force `sqrt(S_Q) I_2`.  A capstone theorem then obtains
 is to show that the physical Q-to-graviton interaction satisfies those
 hypotheses.
 
+[`ERASURE_TT_BRIDGE.md`](ERASURE_TT_BRIDGE.md) now joins the information and
+graviton constructions directly.  The finite Stinespring dilation was already
+proved for arbitrary internal data dimension.  Specializing its data space to
+the two plus/cross labels gives the exterior amplitude `sqrt(S_Q) I_2`
+exactly, and Lean proves covariance under every linear change of those data
+coordinates.  The composed capstone starts from the erasure dilation itself
+and obtains `G_Q=G_0/S_Q` when the same nonzero physical metric is matched.
+The remaining physical seam is to derive that the horizon Q channel carries
+the canonically normalized TT graviton as its two-state data subspace.
+
 [`THREE_D_INFORMATION_PACKING.md`](THREE_D_INFORMATION_PACKING.md) records a
 new geometric route prompted by the interpretation of a spatial present as an
 information-packing problem. Bandt--Meyer Proposition 7 constructs an actual
