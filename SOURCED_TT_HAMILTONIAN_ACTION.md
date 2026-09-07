@@ -124,11 +124,11 @@ This removes the former transverse-only loophole inside the encoded
 fixed-mode model.  The coefficient is present before the electric constraint
 is solved, exactly where a Newton coupling must appear.
 
-## The remaining field-theory seam
+## Relation to the covariant field theory
 
-This is still a fixed-mode Hamiltonian assembly.  Its four electric and four
-magnetic constraint values are abstract coordinates.  The explicit local
-differential expressions are
+This theorem is a fixed-mode Hamiltonian assembly.  Its four electric and four
+magnetic constraint values are abstract coordinates.  The corresponding
+published local differential expressions are
 
 \[
 \mathcal H_{am}=2\epsilon_{ab}\Delta\partial^nH^b_{mn},
@@ -139,13 +139,17 @@ differential expressions are
 `COVARIANT_GRAVITY_COMPRESSION.md` now bypasses a component-by-component lift:
 it applies the quartic block directly to the complete Lorentz Pauli--Fierz
 operator and proves the screened equation for every tensor component at once.
-The existing first-order TT construction already proves that the two
+The existing first-order TT construction proves that the two
 prepotentials form one four-dimensional canonical phase space with exactly
-two configuration degrees of freedom.  What remains is the narrower local
-identification of the partner in the covariant equation with that constrained
-dual prepotential throughout the unreduced action.  Once this produces the
-ordinary massless spin-two field, the standard universal self-coupling
-bootstrap carries its overall coefficient into the Einstein nonlinearities.
+two configuration degrees of freedom.  Barnich and Troessaert supply the
+local reconstruction relating these canonical variables to the covariant
+spin-two equations.  Since the quartic coefficient is a constant scalar, the
+new covariant theorem and the fixed-mode action theorem establish the same
+screening on the two representations.  A line-by-line formalization of the
+published reconstruction remains possible proof engineering, but it is not a
+new assumption of the effective theory.  The standard universal self-coupling
+bootstrap then carries the overall coefficient into the Einstein
+nonlinearities.
 
 ## Kernel receipts
 

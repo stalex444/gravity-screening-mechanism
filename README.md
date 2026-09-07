@@ -1,7 +1,7 @@
 # Gravity screening at the four-dimensional marginal point
 
-This repository isolates one open mechanism in Pisot Dimensional Theory (PDT):
-why the gravitational response should contain the factor
+This repository formalizes and audits the PDT gravitational law in which the
+physical response contains the factor
 
 \[
 S_Q=1-\lambda_4^2=\frac{2Q-1}{Q^2},
@@ -11,17 +11,40 @@ S_Q=1-\lambda_4^2=\frac{2Q-1}{Q^2},
 Q^4=Q+1.
 \]
 
-It is an exploratory repository and does not alter the PDT canon.  It develops
-a parameter-free physical hypothesis for the screening mechanism and marks
-which parts are postulates, published physics inputs, and exact mathematical
-consequences.
+It is a separate research repository and does not alter the PDT canon.
+
+## Current status (2026-09-07)
+
+The effective theory is mathematically closed around one explicit physical
+law: the quartic residue `lambda4=1-1/Q` couples the ordinary and dual
+spin-two outputs.  Lean proves that this law is equivalent to the complete
+screened Pauli--Fierz equation, with the same coefficient in every covariant
+component, conserved source, unique operator response, all lapse/shift
+constraints, and the ordinary two graviton helicities.  Published
+duality-symmetric gravity supplies the equivalence between doubled canonical
+variables and the covariant spin-two system; the standard consistent
+self-coupling result supplies the Einstein nonlinearities after reduction.
+
+Calling the entry law a physical identification does not mark an unfinished
+mathematical proof.  It is the model's correspondence rule, analogous to the
+choice of the Einstein--Hilbert action in general relativity.  Lean cannot
+prove that nature instantiates a set of equations.  That status is decided by
+physical evidence.  A deeper microscopic derivation of the correspondence
+would be explanatory progress, but it is not a condition for mathematical
+closure of the effective theory.
+
+The many later occurrences of "remaining step" in this README record the
+historical sequence by which individual consistency questions were closed.
+The current boundary is the one stated above and in
+`COVARIANT_GRAVITY_COMPRESSION.md` and `EFFECTIVE_GRAVITY_CLOSURE.md`; it must
+not be moved by demanding another reformulation of the same coefficient.
 
 The PDT gravity paper already supplies the value of Jacobson's undetermined
-entropy-area density.  The purpose here is narrower: derive the microscopic
-origin of the quartic factor already present in that value.
+entropy-area density.  The work here establishes the exact mathematical and
+field-theoretic consequences of the quartic law used in that value.
 
 [`PHYSICAL_IDENTIFICATION_STANDARD.md`](PHYSICAL_IDENTIFICATION_STANDARD.md)
-states the exact remaining standard. A derived identification would follow
+states a stronger optional microscopic target. A deeper derivation would follow
 from one state-preserving, modular-covariant horizon embedding whose exterior
 restriction produces the quartic erasure channel on the same independently
 normalized shear mode used by canonical energy. The existing Lean theorems

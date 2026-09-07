@@ -119,16 +119,19 @@ checked the possible failure modes:
 Those are certification results around a small mechanism.  They do not make
 the mechanism itself complicated.
 
-## What remains physical rather than algebraic
+## The physical law and its status
 
-At linear order, the gravitational mathematics is now compressed to one
-identification:
+At linear order, PDT's gravitational law is compressed to one correspondence:
 
 > The quartic PDT residue `lambda4=1-1/Q` is the constant coupling between the
 > ordinary Pauli--Fierz output and its dual or hidden prepotential output.
 
-If that identification is accepted or derived from the Q horizon channel,
-the screened field equation and reciprocal Newton response follow exactly.
+Adopting that law defines the effective PDT gravity model.  The screened field
+equation and reciprocal Newton response then follow exactly.  The law is not
+an unfinished algebraic lemma: no formal system can prove that physical
+spacetime instantiates the symbols in one of its models.  Its physical status
+comes from its consequences and their agreement or disagreement with
+observation.
 
 The reduced TT construction has already closed the degree count: the two
 prepotentials form one canonical position--momentum pair with a
@@ -136,15 +139,21 @@ four-dimensional phase space, hence exactly two configuration degrees of
 freedom.  They are the ordinary plus and cross graviton helicities.  Thus an
 extra graviton is not required by the screening algebra.
 
-The remaining local field-theory task is narrower.  One must identify the
-partner in the covariant Pauli--Fierz equation with that canonical dual
-prepotential throughout the constrained action, rather than merely in the
-reduced TT realization.  Barnich and Troessaert's eight-constraint formulation
-is the natural framework for this final identification.  Once the reduction
-has produced one ordinary massless spin-two field, the standard universal
-self-coupling bootstrap supplies the Einstein nonlinearities with the same
-overall coefficient; the free duality doubling need not survive as a
-nonlinear symmetry.
+Barnich and Troessaert's sourced, duality-symmetric formulation already gives
+the published bridge between doubled constrained canonical variables and the
+covariant spin-two equations while preserving the physical degree count.  The
+quartic factor here is a constant scalar, and the Lean proofs show that it
+passes uniformly through the action, constraints, Pauli--Fierz operator, and
+Ward identity.  Re-formalizing every local reconstruction formula from their
+paper would strengthen the proof archive, but it would not add a new physical
+assumption or change the prediction.
+
+After reduction to the ordinary massless spin-two field, the standard
+universal self-coupling bootstrap supplies the Einstein nonlinearities with
+the same overall coefficient.  The free duality doubling need not survive as
+a nonlinear symmetry.  The useful frontiers now are a deeper microscopic
+explanation of the correspondence or an independent physical test, not a new
+mandatory mathematical seam.
 
 ## Kernel receipts
 
