@@ -1,0 +1,77 @@
+{
+  "delta_log_likelihood_pdt_minus_gr": 0.07214261619906281,
+  "events": [
+    {
+      "event": "GW151012_095443",
+      "posterior_samples": 137933,
+      "run": "O1",
+      "selected_group": "C01:IMRPhenomXPHM",
+      "source_md5": "a203b8dc36c049c62ae4ddf6a4a397cd"
+    },
+    {
+      "event": "GW170823_131358",
+      "posterior_samples": 136399,
+      "run": "O2",
+      "selected_group": "C01:IMRPhenomXPHM",
+      "source_md5": "9780d34748f383bc4bb8abd90e74e191"
+    }
+  ],
+  "hypotheses": {
+    "GR": {
+      "effective_injections": 47259.59950084031,
+      "effective_pe_max": 2769.545383915637,
+      "effective_pe_min": 2651.950153854542,
+      "eps0": 0.0,
+      "likelihood_variance": 0.0003345061717230452,
+      "log_likelihood": 11.711584453969447,
+      "runtime_seconds": 0.6860600410000188
+    },
+    "PDT": {
+      "effective_injections": 43447.91935884489,
+      "effective_pe_max": 2758.7994146056726,
+      "effective_pe_min": 2630.5243693362704,
+      "eps0": 0.08333758478067765,
+      "likelihood_variance": 0.00034640930457298483,
+      "log_likelihood": 11.78372707016851,
+      "runtime_seconds": 0.642138374998467
+    }
+  },
+  "icarogw_commit_detected": "c473f3b2f50e11a88a46cc1625933af1f1249d39",
+  "icarogw_commit_expected": "c473f3b2f50e11a88a46cc1625933af1f1249d39",
+  "injections": {
+    "filename": "gwtc5_cumulative_icarogw.pinned.npz",
+    "selected_rows": 1478693,
+    "source_md5": "1498cc813a770e6b5da86c8fbf2b3126",
+    "total_generated": 1568035640.0
+  },
+  "reason": "selected events and fixed nuisance medians; no nuisance marginalization",
+  "reference_result": {
+    "filename": "icarogw_fullpop_spectral_cm_narrow.json",
+    "label": "label",
+    "nuisance_rule": "component-wise posterior medians; diagnostic only",
+    "published_log_evidence": -2577.8529888343437,
+    "published_log_evidence_error": 0.1583576840813912
+  },
+  "schema_version": 1,
+  "settings": {
+    "event_count": 2,
+    "neff_injections": 8,
+    "neff_pe": 20,
+    "nparallel": 4096,
+    "seed": 260907,
+    "zmax": 20.0
+  },
+  "status": "diagnostic_only_not_model_evidence",
+  "versions": {
+    "astropy": "7.2.0",
+    "bilby": "2.6.0",
+    "h5py": "3.16.0",
+    "icarogw": "not-installed-as-distribution",
+    "ligo.skymap": "2.4.0",
+    "mhealpy": "0.3.6",
+    "nessai": "0.15.2",
+    "nessai-bilby": "0.1.0.post0",
+    "numpy": "2.3.5",
+    "scipy": "1.17.1"
+  }
+}

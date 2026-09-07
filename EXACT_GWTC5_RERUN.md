@@ -209,12 +209,63 @@ runs under the system and pinned NumPy/HDF5 stacks produced identical arrays.
   --output gwtc5-data/gwtc5_cumulative_icarogw.npz
 ```
 
+## Native ICAROGW integration diagnostic
+
+`gwtc5_likelihood_smoke.py` exercises the released ICAROGW likelihood itself,
+rather than a surrogate calculation. It loads compact event posteriors and the
+prepared cumulative injections, constructs ICAROGW's FullPop spectral model
+with `eps0_astropycosmology`, and evaluates the same samples at the two fixed
+points `eps0 = 0` (GR) and `eps0 = beta_Q` (PDT). The script refuses an
+unexpected ICAROGW source commit or core dependency version by default.
+
+The completed diagnostic used the checksum-locked O1 event GW151012_095443,
+the O2 event GW170823_131358, and all 1,478,693 selected cumulative
+injections. Population and background-cosmology nuisance parameters were
+fixed to their component-wise medians from the official narrow-prior `cM`
+posterior. With 4,096 samples per event, `neffPE = 20`, `neffINJ = 4 Nobs`,
+and `zmax = 20`, it obtained:
+
+| Fixed point | log likelihood | Effective injections | Minimum effective PE samples | Likelihood variance |
+|---|---:|---:|---:|---:|
+| GR, `eps0 = 0` | 11.711584454 | 47,259.60 | 2,651.95 | 0.0003345 |
+| PDT, `eps0 = beta_Q` | 11.783727070 | 43,447.92 | 2,630.52 | 0.0003464 |
+
+The diagnostic difference is
+
+\[
+\log L_{\rm PDT}-\log L_{\rm GR}=+0.0721426162.
+\]
+
+That small value is a statistical tie. It is **not** a Bayes factor or evidence
+for PDT: it uses only two of 235 events and fixes all nuisance parameters
+rather than marginalizing them. Its significance is operational. The native
+quartic propagation model, event transformations, and model-dependent
+selection correction now run together on official data while satisfying the
+released likelihood's effective-sample and variance checks. The exact inputs,
+versions, settings, and outputs are recorded in
+`gwtc5_likelihood_smoke_audit.json`.
+
+Reproduce the diagnostic after preparing its two event files and cumulative
+injection file:
+
+```bash
+python3.12 -m venv gwtc5-icarogw-env
+./gwtc5-icarogw-env/bin/pip install -r gwtc5_icarogw_requirements.txt
+./gwtc5-icarogw-env/bin/python gwtc5_likelihood_smoke.py \
+  --event-dir gwtc5-data/events \
+  --injections gwtc5-data/gwtc5_cumulative_icarogw.npz \
+  --reference-result /path/to/icarogw_fullpop_spectral_cm_narrow.json \
+  --events GW151012_095443 GW170823_131358 \
+  --output gwtc5_likelihood_smoke_audit.json
+```
+
 ## The remaining reproducibility seams
 
-The lock, event extractor, PE-prior evaluator, and injection preparer solve
-event identity, waveform-group selection, file integrity, local storage, both
-importance-sampling priors, and a fixed selection rule. Two items still have to
-be closed before an evidence number is defensible:
+The lock, event extractor, PE-prior evaluator, injection preparer, and native
+likelihood diagnostic solve event identity, waveform-group selection, file
+integrity, local storage, both importance-sampling priors, a fixed selection
+rule, and basic ICAROGW integration. Two items still have to be closed before
+an evidence number is defensible:
 
 1. **Catalog-wide prior validation.** The evaluator has passed one real file
    from each of O1, O2, O3a, O3b, O4a, and O4b, including every prior family

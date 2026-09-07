@@ -197,8 +197,15 @@ machine-readable coverage record is `gwtc5_pe_prior_audit.json`. The official
 1.142 GB cumulative injection file has also been checksum verified and
 compacted with the selection fixed at semianalytic SNR above 10 or
 real-search FAR below 0.25/year: 1,478,693 injections pass, with no overlap
-between the two channels. The pinned inputs, formulas, commands, and real-file
-integration tests are recorded in
+between the two channels. A native ICAROGW integration diagnostic now runs
+the complete event-plus-selection likelihood at both fixed propagation points.
+Using two early-run events and all selected injections, every numerical
+stability check passed and the diagnostic log-likelihood difference was
+`+0.0721` for PDT relative to GR, a statistical tie at this scale. This is a
+pipeline check, not model evidence: the publishable comparison still requires
+all 235 events and nuisance-parameter marginalization. The pinned inputs,
+formulas, commands, machine-readable audit, and real-file integration tests
+are recorded in
 [EXACT_GWTC5_RERUN.md](EXACT_GWTC5_RERUN.md).
 
 The Hubble benchmark supplies a possible joint test. With
@@ -264,6 +271,14 @@ python3.12 -m venv gwtc5-prior-env
 ./gwtc5-prior-env/bin/python prepare_gwtc5_injections.py \
   /path/to/mixture-semi_o1_o2-real_o3_o4a_o4b-polar_spins_20260410130052UTC-clipped.hdf \
   --output gwtc5-data/gwtc5_cumulative_icarogw.npz
+python3.12 -m venv gwtc5-icarogw-env
+./gwtc5-icarogw-env/bin/pip install -r gwtc5_icarogw_requirements.txt
+./gwtc5-icarogw-env/bin/python gwtc5_likelihood_smoke.py \
+  --event-dir gwtc5-data/events \
+  --injections gwtc5-data/gwtc5_cumulative_icarogw.npz \
+  --reference-result /path/to/icarogw_fullpop_spectral_cm_narrow.json \
+  --events GW151012_095443 GW170823_131358 \
+  --output gwtc5_likelihood_smoke_audit.json
 ```
 
 The solution declarations depend only on `propext`, `Classical.choice`, and
