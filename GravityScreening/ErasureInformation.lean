@@ -114,6 +114,56 @@ theorem quarticErasureFisher_eq {n : ℕ}
   rw [erasureFisher_eq _ p delta hS hp]
   rw [quartic_screening_identity q hq0]
 
+/-! ## The exact `pQ`/screening/modular chain
+
+The root-weighted Hodge transform and the quartic-residue response are
+distinct operators.  The theorem below packages their exact consequences
+together with the modular defect and erasure contraction without identifying
+those operators with one another.
+-/
+
+/-- The Perron inverse-step and modular eigenvalue both fix `lambda4 q`; the
+Hodge-pair response and information-erasure channel then expose the same exact
+scalar `(2q-1)/q^2`. -/
+theorem quarticTransformChain
+    {V : Type*} [AddCommGroup V] [Module ℂ V]
+    {n : ℕ} (Delta : Module.End ℂ V) (xi : V)
+    (q : ℝ) (p r : Fin n → ℝ)
+    (hEigen : Delta xi = ((1 / q : ℝ) : ℂ) • xi)
+    (hq4 : q ^ 4 = q + 1) (hq1 : 1 < q)
+    (hS : screening (lambda4 q) ≠ 0)
+    (hr : ∀ i, r i ≠ 0) :
+    quarticBiResidualCoefficient q = lambda4 q ∧
+      (1 - Delta) xi = (lambda4 q : ℂ) • xi ∧
+      Matrix.det (chiralAreaResponse (lambda4 q)) =
+        (((2 * q - 1) / q ^ 2 : ℝ) : ℂ) ∧
+      erasureRelativeEntropy (screening (lambda4 q)) p r =
+        ((2 * q - 1) / q ^ 2) * diagonalRelativeEntropy p r := by
+  have hq0 : q ≠ 0 := by linarith
+  exact ⟨quarticBiResidualCoefficient_eq_lambda4 q hq4 hq1,
+    modularEigenvector_defect Delta xi q hEigen,
+    quartic_chiralAreaResponse_det q hq0,
+    quarticErasureRelativeEntropy_eq q p r hq0 hS hr⟩
+
+/-! ## The six-bivector rate candidate
+
+In four dimensions `dim(Λ²) = 6`.  The candidate comparison
+`screening(lambda4 q)^6 ≈ 1/q` is not exact.  The theorem below reduces its
+exact residual to the cubic coordinate shown; numerical size and density
+controls are deliberately kept in the reproducible audit script.
+-/
+
+/-- Exact algebraic residual of the proposed six-bivector product. -/
+theorem quarticSixBivector_residual
+    (q : ℝ) (hq4 : q ^ 4 = q + 1) (hq0 : q ≠ 0) :
+    screening (lambda4 q) ^ 6 * q - 1 =
+      (-97 + 142 * q + 33 * q ^ 2 - 69 * q ^ 3) / q ^ 12 := by
+  rw [quartic_screening_identity q hq0]
+  have hroot : q ^ 4 - q - 1 = 0 := by linarith
+  field_simp [hq0]
+  linear_combination
+    (-97 + 238 * q - 193 * q ^ 2 + 64 * q ^ 3 - q ^ 4 - q ^ 5 - q ^ 8) * hroot
+
 #print axioms GravityScreening.relativeEntropyContribution_self
 #print axioms GravityScreening.erasureRelativeEntropy_eq
 #print axioms GravityScreening.erasureFisher_eq
@@ -121,5 +171,7 @@ theorem quarticErasureFisher_eq {n : ℕ}
 #print axioms GravityScreening.iteratedRetention_strict_decrease
 #print axioms GravityScreening.quarticErasureRelativeEntropy_eq
 #print axioms GravityScreening.quarticErasureFisher_eq
+#print axioms GravityScreening.quarticTransformChain
+#print axioms GravityScreening.quarticSixBivector_residual
 
 end GravityScreening

@@ -20,6 +20,13 @@ The PDT gravity paper already supplies the value of Jacobson's undetermined
 entropy-area density.  The purpose here is narrower: derive the microscopic
 origin of the quartic factor already present in that value.
 
+[`PQ_TRANSFORM_CHAIN.md`](PQ_TRANSFORM_CHAIN.md) now joins the gravity paper's
+original `pQ`-resolution argument to the later Hodge flip-product, modular
+defect, and information-erasure results.  The combined chain derives the
+screening form without using the measured gravity residual.  It also preserves
+the exact distinction between the root-weighted `p/Q` operator and the
+`lambda4` response operator.
+
 The strongest current formulation treats `S_Q` as a post-condensation matching
 coefficient of the infrared Einstein term.  This placement survives canonical
 field normalization. Two information readings are now sharply separated: an
@@ -55,6 +62,13 @@ relative entropy and its BKM/Fisher information metric by exactly `S_Q`.
 Repeated steps give a monotone local arrow of time while global dilation
 preserves information, linking the same quartic factor to causal time and
 Jacobson's entropy density.
+
+[`BIVECTOR_RATE_AUDIT.md`](BIVECTOR_RATE_AUDIT.md) records a selective but
+non-exact consequence: `-log(S_Q)/log(Q)` differs from `1/6` by only
+`8.50e-6`, equivalently `S_Q^6 Q - 1 = -1.01759e-5`.  Six is the dimension of
+four-dimensional bivectors.  Exponent and degree-family controls strongly
+select the quartic/six pair, but exact algebra proves that the equality is not
+an identity, so it remains an exploratory structural correspondence.
 
 ## The useful result
 
@@ -446,7 +460,9 @@ minimal mechanism.
   norm, and the resulting conditional first-law factor.
 - [`GravityScreening/ErasureInformation.lean`](GravityScreening/ErasureInformation.lean)
   kernel-checks the exact contraction of diagonal relative entropy and Fisher
-  information by the quartic erasure factor.
+  information by the quartic erasure factor, packages the exact modular/Hodge/
+  information transform chain, and checks the exact algebraic residual of the
+  six-bivector rate candidate.
 - [`verify.py`](verify.py) reproduces the exact quartic arithmetic using only
   the Python standard library.
 - [`phi_ruler_fold.py`](phi_ruler_fold.py) reproduces the positive-embedding
@@ -460,6 +476,7 @@ minimal mechanism.
 python3 verify.py
 python3 condensate_chain.py
 python3 phi_ruler_fold.py
+python3 bivector_rate_audit.py
 lake exe cache get
 lake build
 ```
