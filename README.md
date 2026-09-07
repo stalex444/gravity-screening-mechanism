@@ -39,6 +39,16 @@ both directions to `G_Q = G_0 / S_Q`. The remaining physical premise is now
 precise: the Q splitter acts on the canonically normalized transverse-
 traceless horizon graviton mode.
 
+[`TT_HORIZON_SPLITTER.md`](TT_HORIZON_SPLITTER.md) now makes that proposed
+action explicit on the complete physical graviton polarization space.  The
+block is `sqrt(S_Q) I_2` on plus and cross.  Lean proves that it preserves the
+transverse-traceless subspace, contracts its full quadratic shear norm by
+`S_Q`, and describes the same nonzero physical metric tensor if and only if
+`G_Q=G_0/S_Q`.  Together with the separately proved electric-source frame and
+Pauli--Fierz normalization uniqueness, this connects the radiative and static
+linear responses.  The remaining physical step is to derive this block from
+the local Q-modified spin-two or horizon interaction.
+
 [`THREE_D_INFORMATION_PACKING.md`](THREE_D_INFORMATION_PACKING.md) records a
 new geometric route prompted by the interpretation of a spatial present as an
 information-packing problem. Bandt--Meyer Proposition 7 constructs an actual
