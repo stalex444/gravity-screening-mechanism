@@ -279,6 +279,16 @@ weight `1/Q` on the even channel uniquely force
 and exact quartic determinant are kernel checked in
 `GravityScreening/ClockForcesConstitutive.lean`.
 
+[`CLOCK_TO_GRAVITY_CHAIN.md`](CLOCK_TO_GRAVITY_CHAIN.md) now removes `1/Q` as
+an independently assumed matrix weight.  Its single physical premise says
+that the gravitational even channel realizes the already derived Q-clock
+translation on the exponential area weight.  Lean then derives `1/Q`, forces
+the whole constitutive matrix, identifies the same `lambda4` with the quartic
+renewal frequency and normalized Perron residue, and reduces an arbitrary
+complete sourced linear operator to `S_Q E(h)=T`.  The sole remaining
+identification is therefore the carrier: the gravitational prepotential even
+channel must be the physical realization of the Q-clock action.
+
 [`BIVECTOR_RATE_AUDIT.md`](BIVECTOR_RATE_AUDIT.md) records a selective but
 non-exact consequence: `-log(S_Q)/log(Q)` differs from `1/6` by only
 `8.50e-6`, equivalently `S_Q^6 Q - 1 = -1.01759e-5`.  Six is the dimension of
