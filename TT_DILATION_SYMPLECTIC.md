@@ -146,6 +146,12 @@ Passing that test would promote the present kinematic isometry into a
 linearized physical mechanism. A failure of the symplectic pullback or source
 intertwining would precisely locate the remaining obstruction.
 
+`TT_PREPOTENTIAL_ACTION.md` now completes the fixed-momentum TT part of that
+test. It proves that the actual canonical and Hamiltonian terms are preserved
+globally and split with weights `S_Q` and `lambda4^2` between the two branches.
+The remaining part of the target is the constrained source block and the
+physical derivation of the embedding from the horizon theory.
+
 ## Proof artifacts and primary references
 
 - `GravityScreening/ErasureSymplectic.lean`

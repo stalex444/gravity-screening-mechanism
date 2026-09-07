@@ -99,6 +99,19 @@ canonical one-particle evolution. Identifying this code symplectic form with
 the constrained gravitational prepotential form remains the field-theory
 step.
 
+[`TT_PREPOTENTIAL_ACTION.md`](TT_PREPOTENTIAL_ACTION.md) now performs the
+time-dependent action test itself. On the exact fixed-momentum TT reduction
+of the Barnich--Troessaert prepotential action, Lean proves that the complete
+quartic dilation preserves both the canonical `-2*Delta*O` term and the
+`Delta^2` Hamiltonian. The exterior Lagrangian is exactly `S_Q` times the
+original, while the hidden Lagrangian is `lambda4^2` times the original and
+the two sum to the unchanged global action. Because kinetic and Hamiltonian
+terms scale together, the vacuum wave equation and light cone remain intact;
+an independently normalized matter source sees the inverse `1/S_Q` response.
+The remaining physical step is to force this dilation from the local Q
+horizon theory and extend the intertwiner through the constraint/source
+block.
+
 [`THREE_D_INFORMATION_PACKING.md`](THREE_D_INFORMATION_PACKING.md) records a
 new geometric route prompted by the interpretation of a spatial present as an
 information-packing problem. Bandt--Meyer Proposition 7 constructs an actual
