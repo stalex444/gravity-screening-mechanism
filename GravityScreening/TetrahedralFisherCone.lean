@@ -119,11 +119,39 @@ theorem quarticPerron_fisherCone_pair_decomposition
     (normalizedQuarticPerron_ne_zero q hq1)
     (normalizedQuarticPerron_sum q hmass) hdp hep
 
+/-- The same quartic Born mass is positive in the Hermitian reading and
+subtracted in both the local intrinsic trace and the global quartic trace
+response.  This packages the information-to-Lorentzian sign flip without
+identifying either form with physical spacetime. -/
+theorem quarticPerron_information_trace_bridge
+    (q : ℝ) (hq : q ^ 4 = q + 1) (hq1 : 1 < q) :
+    let hiddenMass := ∑ i, scalarOutcomeBranch (lambda4 q)
+      (normalizedQuarticPerron q) i
+    hiddenMass = lambda4 q ^ 2 ∧
+      normalizedHermitianTrace (affineComplexResponse (lambda4 q)) =
+        1 + hiddenMass ∧
+      normalizedIntrinsicTrace (affineComplexResponse (lambda4 q)) =
+        1 - hiddenMass ∧
+      quarticTracePair (quarticTraceResponse (lambda4 q))
+          (quarticTraceResponse (lambda4 q)) = 1 - hiddenMass := by
+  dsimp
+  have hsplit := quarticPerron_BornBranch_split q hq hq1
+  constructor
+  · exact hsplit.1
+  constructor
+  · rw [normalizedHermitianTrace_affine, hsplit.1]
+  constructor
+  · rw [normalizedIntrinsicTrace_affine, hsplit.1]
+    rfl
+  · rw [quarticTraceResponse_sq, hsplit.1]
+    rfl
+
 #print axioms GravityScreening.fisherCone_pair_decomposition
 #print axioms GravityScreening.fisherCone_norm_decomposition
 #print axioms GravityScreening.fisherCone_radial_shape_orthogonal
 #print axioms GravityScreening.scalarAmplitude_is_purely_radial
 #print axioms GravityScreening.normalizedQuarticPerron_ne_zero
 #print axioms GravityScreening.quarticPerron_fisherCone_pair_decomposition
+#print axioms GravityScreening.quarticPerron_information_trace_bridge
 
 end GravityScreening

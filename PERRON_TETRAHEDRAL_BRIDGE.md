@@ -120,6 +120,50 @@ space and the radial accessibility coordinate with physical or causal time is
 still a physical identification, but the required `3 + 1` decomposition is no
 longer an analogy: it is an exact property of the information metric.
 
+## The sign change into Lorentzian geometry
+
+The positive Fisher cone and the quartic trace form are different metrics; the
+new theorem does not identify them. Their relation is nevertheless exact on
+the selected scalar. Let the hidden Born mass be
+
+\[
+h_Q=\lambda_4^2.
+\]
+
+The conjugation-twisted, Hilbert-space reading of the quartic complex place
+adds that positive mass,
+
+\[
+\langle 1+i\lambda_4,1+i\lambda_4\rangle_{\rm Born}=1+h_Q,
+\]
+
+while the untwisted trace form assigns the same direction the timelike sign,
+
+\[
+g_{\rm trace}(1+i\lambda_4,1+i\lambda_4)=1-h_Q=S_Q.
+\]
+
+The full quartic power-basis response
+
+\[
+e_0+\lambda_4 e_t,
+\qquad
+g(e_0,e_0)=1,
+\quad g(e_t,e_t)=-1,
+\quad g(e_0,e_t)=0,
+\]
+
+has the same norm `1-h_Q`. Lean now packages all four equalities in one
+theorem: Perron branch mass, positive Hermitian norm, local intrinsic trace,
+and global quartic trace response.
+
+This is the most economical current join between quantum information and
+gravity. Quantum normalization makes the quartic defect a positive Born mass;
+the quartic trace geometry reads that same magnitude along its negative axis,
+turning the positive loss into the Lorentzian subtraction required by the
+Einstein coefficient. The still-open physical statement is that nature uses
+this exact form change for the local causal-horizon response.
+
 ## The amplitude route
 
 If the same scalar is an operator amplitude on a Hilbert vector, Born's rule
@@ -216,7 +260,9 @@ physical consequence that tests this identification.
 
 The Perron normalization, renewal weight, residual eigenvalue, classical
 complement, conditional tetrahedral invariance, Born branch split, and
-conditional Born-record invariance are kernel-checked with no `sorry`.
+conditional Born-record invariance are kernel-checked with no `sorry`. The
+Fisher-cone `3 + 1` decomposition, radial-shape orthogonality, and combined
+Born/trace equalities are also kernel-checked.
 
 The modular eigenvector-to-amplitude step is kernel-checked conditional on the
 standard GNS modular eigenvector equation. Identifying that microscopic mode

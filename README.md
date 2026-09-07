@@ -74,7 +74,11 @@ theorem then proves an exact `3 + 1` split: four positive weights decompose
 orthogonally into three normalized shape directions and one total-mass
 direction. This is a precise information-geometric candidate for the PDT
 three-dimensional/four-dimensional divide; its spacetime interpretation
-remains a physical identification.
+remains a physical identification. A combined Lean theorem also proves that
+the hidden radial Born mass is `lambda4^2`, that the positive Hermitian reading
+adds it, and that both the local and global quartic trace forms subtract that
+same mass to give `S_Q`. This makes the Born-to-Lorentzian sign change exact;
+the physical horizon identification remains the open link.
 
 [`PQ_TRANSFORM_CHAIN.md`](PQ_TRANSFORM_CHAIN.md) now joins the gravity paper's
 original `pQ`-resolution argument to the later Hodge flip-product, modular
