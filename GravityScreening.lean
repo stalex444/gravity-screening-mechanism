@@ -19,4 +19,5 @@ import GravityScreening.EffectiveGravityClosure
 import GravityScreening.SymplecticReduction
 import GravityScreening.SourcedConstraint
 import GravityScreening.ElectricSourceFrame
+import GravityScreening.PauliFierzUniqueness
 import GravityScreening.PhiRulerFold

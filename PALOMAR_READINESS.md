@@ -57,6 +57,15 @@ action.  The current theorem proves the internal algebra that such an
 instantiation would use; it does not claim that the published action already
 contains the PDT block.
 
+The standard five-coefficient Pauli--Fierz uniqueness calculation is also
+kernel checked.  For the local two-derivative symmetric-tensor ansatz, the
+three divergence relations and formal self-adjointness force every term to
+share one overall coefficient.  Conditional on the Q block being the
+propagating part of such a gauge-invariant action, its `S_Q` coefficient must
+therefore extend to the lapse and shift sector.  This closes the abstract
+normalization-placement question while leaving the explicit local-action
+identification open.
+
 ## A viable intermediate submission
 
 An intermediate entry can now compare the abstract symplectic-reduction and
@@ -70,6 +79,7 @@ That package would need:
 
 - a small independent `Challenge.lean` importing only Mathlib;
 - roughly eight to twelve nonredundant statements led by the operator theorem;
+- the Pauli--Fierz coefficient-uniqueness and source-frame closure statements;
 - precise relationship notes to duality-symmetric spin-two literature;
 - a scope statement separating the proved internal constraint algebra from
   its unproved instantiation in the full derivative action;

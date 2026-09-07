@@ -221,6 +221,14 @@ block reduces all four lapse-and-shift constraint labels uniformly.  The
 remaining task is to instantiate this internal frame in the full local
 derivative variables of the published doubled spin-two action.
 
+[`SPIN_TWO_NORMALIZATION.md`](SPIN_TWO_NORMALIZATION.md) closes the abstract
+normalization-placement question for the standard flat massless spin-two
+operator.  Its three divergence relations plus formal self-adjointness leave
+only one coefficient, so a quartic normalization fixed in the propagating
+wave term necessarily multiplies the lapse and shift constraint terms as
+well.  The corresponding coefficient theorem and quartic specialization are
+kernel checked in `GravityScreening/PauliFierzUniqueness.lean`.
+
 [`BIVECTOR_RATE_AUDIT.md`](BIVECTOR_RATE_AUDIT.md) records a selective but
 non-exact consequence: `-log(S_Q)/log(Q)` differs from `1/6` by only
 `8.50e-6`, equivalently `S_Q^6 Q - 1 = -1.01759e-5`.  Six is the dimension of
