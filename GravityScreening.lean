@@ -4,4 +4,6 @@ import GravityScreening.ModularAmplitude
 import GravityScreening.ErasureInformation
 import GravityScreening.ErasureDilation
 import GravityScreening.ErasureCovariance
+import GravityScreening.JacobsonPlacement
+import GravityScreening.ConservedFlux
 import GravityScreening.PhiRulerFold

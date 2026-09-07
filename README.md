@@ -81,6 +81,16 @@ while its relative entropy and BKM/Fisher information contract by exactly
 followed by the physical coupling of the unconditioned retained weight to
 Jacobson's area density.
 
+[`JACOBSON_PLACEMENT_AUDIT.md`](JACOBSON_PLACEMENT_AUDIT.md) now gives that
+coupling a sharp pass/fail test.  If `S_Q` scales both heat flux and entropy
+density it cancels out of the Clausius relation; if it scales heat alone it
+changes `G` in the wrong direction.  The deposited inverse response requires
+an unscaled physical flux and an `S_Q` entropy-per-area density.  The explicit
+dilation proves that a globally counted diagonal observable is conserved even
+while its exterior contribution is screened, so this placement is internally
+consistent.  Deriving the retained branch as the physical horizon cell
+density remains the open identification.
+
 [`BIVECTOR_RATE_AUDIT.md`](BIVECTOR_RATE_AUDIT.md) records a selective but
 non-exact consequence: `-log(S_Q)/log(Q)` differs from `1/6` by only
 `8.50e-6`, equivalently `S_Q^6 Q - 1 = -1.01759e-5`.  Six is the dimension of
@@ -489,6 +499,13 @@ minimal mechanism.
   proves that the erasure tangent commutes with every diagonal phase action,
   preserves phase eigenmodes, and combines that covariance with the exact
   quartic relative-entropy contraction.
+- [`GravityScreening/JacobsonPlacement.lean`](GravityScreening/JacobsonPlacement.lean)
+  proves the heat-versus-entropy placement ledger, the common-scaling
+  cancellation, and the uniqueness of unit heat normalization for the target
+  inverse response.
+- [`GravityScreening/ConservedFlux.lean`](GravityScreening/ConservedFlux.lean)
+  proves that the exterior and hidden expectations of any finite diagonal
+  observable have weights `s` and `1-s`, while their global sum is conserved.
 - [`verify.py`](verify.py) reproduces the exact quartic arithmetic using only
   the Python standard library.
 - [`phi_ruler_fold.py`](phi_ruler_fold.py) reproduces the positive-embedding

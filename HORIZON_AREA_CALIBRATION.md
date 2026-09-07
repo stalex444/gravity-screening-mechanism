@@ -200,3 +200,12 @@ This is now the smallest concrete dynamical target. Any calculation yielding
 `det(E_Q)=1`, `1-1/Q^2`, a scale-dependent function, anisotropic eigenvalues
 without a horizon-symmetry reason, or additional unfixed parameters rejects
 this minimal area-calibration route.
+
+`JACOBSON_PLACEMENT_AUDIT.md` adds a complementary constraint: the physical
+heat flux must retain its ordinary normalization.  Scaling both flux and cell
+density by `S_Q` cancels the proposed correction; scaling the flux alone gives
+the wrong direction.  The finite Stinespring model now proves that an
+unscaled globally counted observable is compatible with an `S_Q`-screened
+exterior branch.  Identifying that global observable with Jacobson's heat flux
+and the retained branch with horizon cell density is the remaining physical
+step.
