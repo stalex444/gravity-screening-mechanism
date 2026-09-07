@@ -88,6 +88,17 @@ both helicity norms by the same `S_Q`, so it introduces no dispersion change
 or birefringence. The remaining step is to derive the Q-to-prepotential
 intertwiner from a time-dependent local action.
 
+[`TT_DILATION_SYMPLECTIC.md`](TT_DILATION_SYMPLECTIC.md) supplies the next
+kinematic part of that intertwiner. Lean strengthens the dilation's norm
+receipt to preservation of every Hermitian pairing and of the underlying real
+symplectic form. The exterior branch carries `S_Q` of the phase-space pairing,
+the hidden branch carries exactly `lambda4^2`, and their sum is unchanged.
+The full dilation also intertwines the self-adjoint generalized TT curl on
+both branches. This proves that exterior screening is compatible with global
+canonical one-particle evolution. Identifying this code symplectic form with
+the constrained gravitational prepotential form remains the field-theory
+step.
+
 [`THREE_D_INFORMATION_PACKING.md`](THREE_D_INFORMATION_PACKING.md) records a
 new geometric route prompted by the interpretation of a spatial present as an
 information-packing problem. Bandt--Meyer Proposition 7 constructs an actual

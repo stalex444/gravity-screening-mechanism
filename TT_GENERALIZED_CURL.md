@@ -124,13 +124,14 @@ kinetic operator. It does not derive the physical statement that the Q
 horizon channel acts on the graviton prepotential. It also does not extend
 the free duality symmetry to nonlinear general relativity.
 
-The next exact target is the time-dependent prepotential action. One must
-construct an intertwiner that carries both the symplectic kinetic term and
-the Hamiltonian from the doubled graviton mode into the quartic horizon
-dilation. Its exterior restriction must be `sqrt(S_Q) I_2`, while the full
-visible-plus-hidden map preserves the symplectic data. This will decide
-whether the already proved commutation theorem is merely compatible with the
-physics or is forced by a local action.
+`TT_DILATION_SYMPLECTIC.md` completes the corresponding one-particle
+kinematic test: the full visible-plus-hidden map preserves the Hilbert
+symplectic form and intertwines this generalized curl on both branches. The
+next exact target is the time-dependent prepotential action. One must
+construct a physical map that pulls the constrained gravitational symplectic
+form back to the proved code form and intertwines the full generator and
+source frame. This will decide whether the present compatibility is forced by
+a local gravitational action.
 
 The minimal mechanism has a clean falsifier. A derived Q interaction with a
 momentum-dependent form factor, unequal `+k` and `-k` weights, or a surviving
