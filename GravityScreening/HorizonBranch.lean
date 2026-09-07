@@ -56,9 +56,87 @@ theorem scalarBranch_renormalizes {n : ℕ} (delta : Fin n → ℝ) (d : ℝ)
   funext i
   simp [scalarBranchPerturbation, hd]
 
+/-! ## Normalized erasure completion
+
+The retained block may be completed by a state-independent erasure flag.  The
+total output is normalized, and the fixed binary contribution cancels from
+entropy differences.  We prove the diagonal finite-state identity directly.
+-/
+
+/-- Shannon entropy of a finite positive diagonal density. -/
+noncomputable def diagonalEntropy {n : ℕ} (p : Fin n → ℝ) : ℝ :=
+  ∑ i, entropyContribution 1 (p i)
+
+/-- Entropy of the block-diagonal erasure output: a retained block of total
+weight `s` and an erasure flag of weight `1-s`. -/
+noncomputable def erasureEntropy {n : ℕ} (s : ℝ) (p : Fin n → ℝ) : ℝ :=
+  entropyContribution 1 (1 - s) +
+    ∑ i, entropyContribution 1 (s * p i)
+
+/-- Scaling one positive diagonal weight separates into its internal entropy
+and the state-independent branch contribution. -/
+theorem entropyContribution_scale (s x : ℝ) (hs : s ≠ 0) (hx : x ≠ 0) :
+    entropyContribution 1 (s * x) =
+      s * entropyContribution 1 x - s * x * Real.log s := by
+  unfold entropyContribution
+  rw [Real.log_mul hs hx]
+  ring
+
+/-- Two equally normalized inputs have erasure-output entropy difference
+exactly `s` times their input entropy difference.  The erasure flag and binary
+mixing entropy cancel because the channel weight is fixed. -/
+theorem erasureEntropy_difference {n : ℕ} (s : ℝ) (p r : Fin n → ℝ)
+    (hs : s ≠ 0) (hp : ∀ i, p i ≠ 0) (hr : ∀ i, r i ≠ 0)
+    (hnorm : ∑ i, p i = ∑ i, r i) :
+    erasureEntropy s p - erasureEntropy s r =
+      s * (diagonalEntropy p - diagonalEntropy r) := by
+  unfold erasureEntropy diagonalEntropy
+  have hp_sum :
+      (∑ i, entropyContribution 1 (s * p i)) =
+        ∑ i, (s * entropyContribution 1 (p i) - s * p i * Real.log s) := by
+    apply Finset.sum_congr rfl
+    intro i hi
+    exact entropyContribution_scale s (p i) hs (hp i)
+  have hr_sum :
+      (∑ i, entropyContribution 1 (s * r i)) =
+        ∑ i, (s * entropyContribution 1 (r i) - s * r i * Real.log s) := by
+    apply Finset.sum_congr rfl
+    intro i hi
+    exact entropyContribution_scale s (r i) hs (hr i)
+  rw [hp_sum, hr_sum]
+  simp_rw [Finset.sum_sub_distrib, ← Finset.mul_sum]
+  have hbranch :
+      (∑ i, s * p i * Real.log s) = ∑ i, s * r i * Real.log s := by
+    calc
+      (∑ i, s * p i * Real.log s) =
+          (s * Real.log s) * ∑ i, p i := by
+            rw [Finset.mul_sum]
+            apply Finset.sum_congr rfl
+            intro i hi
+            ring
+      _ = (s * Real.log s) * ∑ i, r i := by rw [hnorm]
+      _ = ∑ i, s * r i * Real.log s := by
+            rw [Finset.mul_sum]
+            apply Finset.sum_congr rfl
+            intro i hi
+            ring
+  rw [hbranch]
+  ring
+
+/-- A retained block of weight `s` plus an erasure flag of weight `1-s` has
+unit total mass whenever the input does. -/
+theorem erasure_mass_normalized {n : ℕ} (s : ℝ) (p : Fin n → ℝ)
+    (hnorm : ∑ i, p i = 1) :
+    (1 - s) + ∑ i, s * p i = 1 := by
+  rw [← Finset.mul_sum, hnorm]
+  ring
+
 #print axioms GravityScreening.scalarBranch_firstLaw
 #print axioms GravityScreening.defectBranch_firstLaw
 #print axioms GravityScreening.quarticDefectBranch_firstLaw
 #print axioms GravityScreening.scalarBranch_renormalizes
+#print axioms GravityScreening.entropyContribution_scale
+#print axioms GravityScreening.erasureEntropy_difference
+#print axioms GravityScreening.erasure_mass_normalized
 
 end GravityScreening

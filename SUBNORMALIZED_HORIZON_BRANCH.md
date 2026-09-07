@@ -116,6 +116,64 @@ whether its geometric area law uses the subnormalized branch or a normalized
 conditional state.  Jacobson's local Rindler horizon is the correct arena for
 that decision.
 
+## Normalized erasure completion
+
+There is a stronger version that does not leave the observer's total state
+subnormalized.  Complete the retained branch by a distinguishable erasure
+state:
+
+\[
+\mathcal E_Q(\rho)
+=S_Q\rho\oplus\lambda_4^2|e\rangle\!\langle e|.
+\]
+
+Its trace is one because `S_Q+lambda4^2=1`.  Since the two blocks have
+orthogonal support, its entropy is
+
+\[
+H(\mathcal E_Q(\rho))
+=h_2(S_Q)+S_QH(\rho),
+\]
+
+where `h_2` is the binary entropy of the fixed branch weights.  For any two
+equally normalized nearby states, the binary term cancels:
+
+\[
+H(\mathcal E_Q(\rho_1))-H(\mathcal E_Q(\rho_0))
+=S_Q[H(\rho_1)-H(\rho_0)].
+\]
+
+Thus
+
+\[
+\delta H_{\rm out}=S_Q\delta H_{\rm in}
+\]
+
+without post-selection and without leaving the total observer state
+unnormalized.  The diagonal finite-state form of this identity and the unit
+mass of the erasure output are kernel-checked in
+`GravityScreening/HorizonBranch.lean`.
+
+A Stinespring realization makes the causal reading explicit.  Schematically,
+
+\[
+V|\psi\rangle
+=d_Q|\psi\rangle_{\rm obs}|G\rangle_{\rm env}
++\lambda_4|e\rangle_{\rm obs}|\psi\rangle_{\rm hidden}.
+\]
+
+The retained branch leaves the state with the observer.  The other branch
+places the state in the hidden system and leaves an erasure flag outside.  The
+environment therefore carries precisely the information that the causal
+observer cannot recover.
+
+This construction narrows the physical gap again.  One no longer has to argue
+that Jacobson uses a subnormalized entropy.  The required premise is that the
+quartic inverse-step defect is realized as the erasure probability of the
+local horizon channel.  The founding Q operator fixes the amplitude, and its
+unitary defect fixes the transmitted weight; the causal-horizon identification
+is the remaining physics.
+
 ## References
 
 - T. Jacobson, *Thermodynamics of Spacetime: The Einstein Equation of State*,
