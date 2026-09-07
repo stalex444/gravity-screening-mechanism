@@ -187,8 +187,12 @@ recorded in the GWTC-5 result files. Its `eps0_astropycosmology` class uses
 curve identically. A full test therefore requires no new cosmology code. It
 does require rerunning the hierarchical event and injection likelihood,
 because the GWTC-5 Zenodo package publishes posterior results rather than the
-configured likelihood inputs. The pinned model correspondence and validation
-sequence are recorded in [EXACT_GWTC5_RERUN.md](EXACT_GWTC5_RERUN.md).
+configured likelihood inputs. The exact rerun is now packaged rather than
+merely described. The checksum lock identifies all 235 official event files
+(89,295,221,112 source bytes), and the sequential extractor verifies and
+compacts one HDF5 file at a time. The pinned inputs, commands, completed real-file integration test, and the two
+remaining likelihood-configuration seams are recorded in
+[EXACT_GWTC5_RERUN.md](EXACT_GWTC5_RERUN.md).
 
 The Hubble benchmark supplies a possible joint test. With
 `chi = Q/rho = 0.9215124457...`, an early-universe value `H0 = 67.4` maps to
@@ -245,6 +249,7 @@ python3 gwtc5_pdt_curve_check.py /path/to/icarogw_fullpop_spectral_cm_narrow.jso
 python3 gwtc5_fixed_slope_evidence.py \
   /path/to/icarogw_fullpop_spectral_cm_narrow.json \
   /path/to/icarogw_fullpop_spectral_cm_wide.json
+python3 prepare_gwtc5_inputs.py --dry-run
 ```
 
 The solution declarations depend only on `propext`, `Classical.choice`, and
