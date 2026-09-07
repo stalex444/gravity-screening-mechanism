@@ -20,6 +20,14 @@ The PDT gravity paper already supplies the value of Jacobson's undetermined
 entropy-area density.  The purpose here is narrower: derive the microscopic
 origin of the quartic factor already present in that value.
 
+[`PHYSICAL_IDENTIFICATION_STANDARD.md`](PHYSICAL_IDENTIFICATION_STANDARD.md)
+states the exact remaining standard. A derived identification would follow
+from one state-preserving, modular-covariant horizon embedding whose exterior
+restriction produces the quartic erasure channel on the same independently
+normalized shear mode used by canonical energy. The existing Lean theorems
+then force `G_Q = G_0 / S_Q`, conserve the global flux, and propagate the
+coefficient to the full linear gravitational response.
+
 [`THREE_D_INFORMATION_PACKING.md`](THREE_D_INFORMATION_PACKING.md) records a
 new geometric route prompted by the interpretation of a spatial present as an
 information-packing problem. Bandt--Meyer Proposition 7 constructs an actual
