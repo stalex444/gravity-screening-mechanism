@@ -101,6 +101,15 @@ the microscopic density in Jacobson's area law would complete the screening
 mechanism; that physical identification and its sharp-horizon construction
 remain open.
 
+[`CANONICAL_ENERGY_BRIDGE.md`](CANONICAL_ENERGY_BRIDGE.md) gives an independent
+gravity route.  In the established AdS-Rindler dictionary, quantum Fisher
+information equals gravitational canonical energy.  Applying that dictionary
+to the same normalized quartic horizon mode makes the `S_Q` Fisher contraction
+scale `1/G` and therefore forces `G_Q=G_0/S_Q`.  The audit also proves the
+essential ambiguity: at fixed `G`, the same contraction can be absorbed into
+the perturbation amplitude.  Flux or area normalization must therefore fix
+the geometric mode before the coupling conclusion follows.
+
 [`BIVECTOR_RATE_AUDIT.md`](BIVECTOR_RATE_AUDIT.md) records a selective but
 non-exact consequence: `-log(S_Q)/log(Q)` differs from `1/6` by only
 `8.50e-6`, equivalently `S_Q^6 Q - 1 = -1.01759e-5`.  Six is the dimension of
@@ -520,6 +529,9 @@ minimal mechanism.
   proves that the full two-dimensional Fisher metric, its determinant, and its
   positive area element scale by `s`, `s^2`, and `s`, respectively, with the
   exact quartic specialization.
+- [`GravityScreening/CanonicalEnergy.lean`](GravityScreening/CanonicalEnergy.lean)
+  proves the coupling-versus-amplitude alternatives for a canonical-energy
+  bilinear and the exact conditional quartic inverse-coupling response.
 - [`verify.py`](verify.py) reproduces the exact quartic arithmetic using only
   the Python standard library.
 - [`phi_ruler_fold.py`](phi_ruler_fold.py) reproduces the positive-embedding

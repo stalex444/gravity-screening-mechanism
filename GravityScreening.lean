@@ -7,4 +7,5 @@ import GravityScreening.ErasureCovariance
 import GravityScreening.JacobsonPlacement
 import GravityScreening.ConservedFlux
 import GravityScreening.InformationArea
+import GravityScreening.CanonicalEnergy
 import GravityScreening.PhiRulerFold

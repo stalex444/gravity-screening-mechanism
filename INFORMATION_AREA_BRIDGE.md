@@ -129,6 +129,15 @@ physical identification:
 That sentence is the remaining physics posit.  The mathematics on both sides
 of it is now exact.
 
+`CANONICAL_ENERGY_BRIDGE.md` offers a second, potentially firmer
+interpretation.  In the established AdS-Rindler information/gravity
+dictionary, the Fisher metric is gravitational canonical energy.  For the
+same independently normalized geometric perturbation, its `S_Q` contraction
+scales the inverse Newton coefficient directly.  This avoids treating
+information volume as a literal cell count, but requires extending the
+canonical-energy dictionary to the observer-horizon construction and fixing
+the perturbation normalization.
+
 ## Falsifiers and limitations
 
 This bridge fails if the physical horizon cell family is not two-dimensional,
@@ -155,4 +164,3 @@ built.
 
 All declarations contain no `sorry` and use only Mathlib's standard
 foundational axioms.
-

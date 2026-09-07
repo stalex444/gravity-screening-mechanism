@@ -153,6 +153,14 @@ horizon coframe determinant is not exactly `S_Q`.
 - their sum equals the input expectation;
 - the exact quartic specialization.
 
+`CANONICAL_ENERGY_BRIDGE.md` records a second gravity dictionary.  Quantum
+Fisher information is known to equal gravitational canonical energy in the
+AdS-Rindler setting.  If the quartic channel compares the same independently
+normalized geometric mode, its `S_Q` Fisher contraction therefore scales
+`1/G` and gives the target inverse response directly.  If the mode amplitude
+is allowed to change, that conclusion is not unique; the new Lean theorem
+records this normalization ambiguity explicitly.
+
 All declarations contain no `sorry` and use only Mathlib's standard
 foundational axioms.
 
