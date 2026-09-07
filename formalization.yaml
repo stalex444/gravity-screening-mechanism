@@ -1,0 +1,246 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: v0.4
+
+project:
+  name: Lorentz spin-two rigidity and quartic source reduction
+  description: >-
+    Ten compared statements classify the standard parity-even, local,
+    two-derivative five-term symbol on symmetric rank-two fields in
+    four-dimensional Minkowski space and analyze a doubled sourced system.
+    The Lorentz Ward identity and formal self-adjointness force the
+    Pauli--Fierz coefficient pattern up to one scale. A source-free partner
+    channel can then be eliminated componentwise without inverting the gauge
+    operator: the full sourced output acquires the uniform coefficient
+    1-l^2, both channel equations are invariant under arbitrary gauge-kernel
+    shifts, and the Ward identity forces conservation of the source. Under
+    the specialization l=1-1/q, the entire normalization is
+    (2q-1)/q^2. This supplies a compact exact result for researchers in
+    linearized gravity, constrained field theory, and formalized mathematical
+    physics. The motivating PDT application takes q to be the positive root
+    of q^4=q+1 and identifies the partner coupling with a gravitational
+    screening response; it then fills the entropy-area coefficient in
+    Jacobson's thermodynamic route to the Einstein equation. That physical
+    correspondence is disclosed as an application and is not built into the
+    compared theorem hypotheses.
+  authors:
+    - Stephanie Alexander
+  license: MIT
+  responsible_maintainers:
+    - Stephanie Alexander
+
+classification:
+  arxiv:
+    - math-ph
+    - gr-qc
+  msc2020:
+    - "83C05"
+    - "83C25"
+    - "83C35"
+
+sources:
+  - title: Lorentz spin-two rigidity and quartic source reduction
+    authors:
+      - Stephanie Alexander
+    type: original-proof
+    relationship: other
+    note: >-
+      This repository is the source of the combined classification and
+      no-inverse source-reduction theorem. The Pauli--Fierz pattern and the
+      general literature on spin-two duality are established background; no
+      priority claim for those subjects and no exhaustive first-formalization
+      claim are made.
+  - title: On relativistic wave equations for particles of arbitrary spin in an electromagnetic field
+    authors:
+      - Markus Fierz
+      - Wolfgang Pauli
+    id: DOI:10.1098/rspa.1939.0140
+    type: article
+    location: https://doi.org/10.1098/rspa.1939.0140
+    relationship: background
+    note: >-
+      Classical source for the relativistic spin-two framework. The present
+      entry works with an explicit massless five-term Fourier symbol and
+      proves its coefficient classification directly.
+  - title: Manifest spin 2 duality with electric and magnetic sources
+    authors:
+      - Glenn Barnich
+      - Cedric Troessaert
+    id: arXiv:0812.0552v2
+    type: article
+    location: https://arxiv.org/abs/0812.0552v2
+    relationship: background
+    note: >-
+      Published duality-symmetric formulation of spin-two fields on Minkowski
+      space with external electric and magnetic sources. It motivates the
+      doubled-channel question. The paper's prepotential construction and
+      surface charges are not formalized here.
+  - title: Thermodynamics of Spacetime - The Einstein Equation of State
+    authors:
+      - Ted Jacobson
+    id: arXiv:gr-qc/9504004v2
+    type: article
+    location: https://arxiv.org/abs/gr-qc/9504004v2
+    relationship: background
+    note: >-
+      Derives the Einstein equation from local horizon thermodynamics given
+      entropy proportional to area. The PDT application supplies a candidate
+      value for the proportionality coefficient through its value of G.
+      Jacobson's thermodynamic derivation and the physical identification are
+      cited, not formalized, and G and the entropy density are not counted as
+      independent numerical results.
+  - title: Self-Interaction and Gauge Invariance
+    authors:
+      - Stanley Deser
+    id: arXiv:gr-qc/0411023v3
+    type: article
+    location: https://arxiv.org/abs/gr-qc/0411023v3
+    relationship: background
+    note: >-
+      Gives the consistency bootstrap from a linear massless spin-two gauge
+      field to Einstein nonlinearities. The present entry stops at the exact
+      linear symbol and source reduction; the nonlinear bootstrap is not
+      formalized.
+
+related_formalizations:
+  - id: PALOMAR-2026-09-01-000005
+    relationship: builds-on
+    note: >-
+      Registered compositum and algebraic-unit results for the distinguished
+      cubic/quartic pair used in the PDT motivation. The current theorem is
+      stated for arbitrary nonzero real q and has no build-time dependency on
+      that repository.
+  - id: PALOMAR-2026-09-02-000014
+    relationship: builds-on
+    note: >-
+      Registered trace-form results for the golden-family number fields,
+      including the quartic Lorentzian signature used in the broader PDT
+      geometric interpretation. The present Challenge uses the ordinary
+      diagonal Minkowski metric explicitly.
+  - id: PALOMAR-2026-09-03-000004
+    relationship: other
+    note: >-
+      Registered radial-harmonic classification formalizing the separate
+      three-spatial-dimensional marginality result used in the gravity
+      program. It is contextual and is not re-submitted here.
+
+status:
+  scope: >-
+    The ten compared declarations cover an explicit flat-Minkowski Fourier
+    symbol, Ward-identity and self-adjointness coefficient rigidity, a
+    pointwise two-channel source reduction, additivity, invariance under
+    kernel shifts, and source conservation. The quartic statement assumes the
+    wave coefficient equals 1-(1-1/q)^2 and proves its rational form and all
+    Pauli--Fierz coefficients. It does not prove that physical spacetime
+    selects q, construct a nonlinear spacetime, reproduce the Barnich--
+    Troessaert prepotential map, formalize Deser's bootstrap, formalize
+    Jacobson's thermodynamic argument, or verify an experimental value of G.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - propext
+    - Classical.choice
+    - Quot.sound
+
+automation:
+  methods:
+    - method: agent
+      models:
+        - OpenAI GPT-family; exact model revision not recorded
+      framework: Codex
+      tool_setup: >-
+        Human-directed theorem selection, Lean compiler iteration, source and
+        scope review, and Palomar packaging. The proof development was checked
+        with Lean 4.31.0 and Mathlib commit
+        fabf563a7c95a166b8d7b6efca11c8b4dc9d911f. Challenge imports only
+        Mathlib. Axiom printing is included in Solution.
+      cost:
+        wall_time: Sessions through 2026-09-07; cumulative elapsed effort not tracked
+        spend_usd: not tracked
+        hardware: local machine
+      prompting_notes: >-
+        The author directed the gravity-screening program, identified the
+        quartic coupling and its Jacobson application, and requested a
+        submission for registry feedback. Proof development was repeatedly
+        narrowed to a Lorentz-covariant, gauge-compatible theorem surface.
+        The final package distinguishes kernel-checked mathematics from the
+        physical correspondence and avoids counting G and Jacobson's entropy
+        coefficient twice.
+  spend_usd: not tracked
+  notes: >-
+    Stephanie Alexander supplied the research direction and publication
+    decisions. Coding agents developed proofs and packaging under her
+    direction. Kernel verification is not independent human peer review.
+
+fidelity:
+  divergences: >-
+    The formalization proves a self-contained linear classification and
+    elimination theorem inspired by, rather than claimed to be a line-by-line
+    formalization of, the cited physics papers. All application-level premises
+    absent from the theorem statements are named in the scope field.
+
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    Internal proof and scope audits do not constitute independent peer review
+    or Palomar approval. The package is being prepared specifically so that
+    the registry can assess both exact statement alignment and plausible
+    research interest.
+
+alignment:
+  namespace: LorentzSpinTwoScreening
+  statements:
+    - source: Lorentz five-term divergence calculation
+      lean: LorentzSpinTwoScreening.lorentzPauliFierzSymbolDivergence_decomposition
+      module: Solution
+      status: proved
+      note: The divergence separates into exactly the three Ward coefficients.
+    - source: Lorentz Ward rigidity
+      lean: LorentzSpinTwoScreening.lorentzSpinTwoWardIdentity_forces_relations
+      module: Solution
+      status: proved
+      note: Explicit symmetric polarizations force all three divergence relations.
+    - source: Formal self-adjointness rigidity
+      lean: LorentzSpinTwoScreening.lorentzSpinTwoSelfAdjoint_forces_traceRelation
+      module: Solution
+      status: proved
+      note: The mutually adjoint trace/divergence coefficients coincide.
+    - source: Pauli--Fierz classification
+      lean: LorentzSpinTwoScreening.lorentzPauliFierzSymbol_operatorProperties_unique
+      module: Solution
+      status: proved
+      note: Ward identity plus self-adjointness leaves one overall scale.
+    - source: Quartic normalization
+      lean: LorentzSpinTwoScreening.quartic_lorentzSymbolProperties_force_fullNormalization
+      module: Solution
+      status: proved
+      note: The assumed quartic wave scale fixes all five coefficients.
+    - source: Two-channel elimination
+      lean: LorentzSpinTwoScreening.lorentzDoubledSpinTwo_sourceReduction
+      module: Solution
+      status: proved
+      note: Source-free partner elimination yields the coefficient 1-l^2 pointwise.
+    - source: Combined rigidity and reduction
+      lean: LorentzSpinTwoScreening.quarticLorentzSpinTwo_rigidity_and_sourceReduction
+      module: Solution
+      status: proved
+      note: Capstone combining the unique quartic Pauli--Fierz pattern with full source reduction.
+    - source: Operator additivity
+      lean: LorentzSpinTwoScreening.lorentzPauliFierzSymbol_add
+      module: Solution
+      status: proved
+      note: The five-term symbol is additive in its tensor argument.
+    - source: Gauge-kernel invariance
+      lean: LorentzSpinTwoScreening.lorentzDoubledSpinTwo_gaugeInvariant
+      module: Solution
+      status: proved
+      note: Kernel shifts of both fields leave both mixed equations unchanged.
+    - source: Source conservation
+      lean: LorentzSpinTwoScreening.lorentzScreenedSource_conserved
+      module: Solution
+      status: proved
+      note: A Ward-compatible screened output has a conserved source.
+
+acknowledgements: >-
+  Lean and Mathlib contributors; the authors of the cited mathematical physics
+  sources; and the maintainers of the Palomar Registry.

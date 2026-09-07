@@ -44,6 +44,7 @@ import GravityScreening.TTPrepotentialAction
 import GravityScreening.TTConstraintSourceClosure
 import GravityScreening.SourcedTTHamiltonianAction
 import GravityScreening.CovariantGravityCompression
+import GravityScreening.PalomarCapstone
 import GravityScreening.ThreeDPackingWitness
 import GravityScreening.TetrahedralCoverage
 import GravityScreening.MorphicPackingThreshold
