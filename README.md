@@ -279,10 +279,11 @@ weight `1/Q` on the even channel uniquely force
 and exact quartic determinant are kernel checked in
 `GravityScreening/ClockForcesConstitutive.lean`.
 
-[`CLOCK_TO_GRAVITY_CHAIN.md`](CLOCK_TO_GRAVITY_CHAIN.md) now removes `1/Q` as
-an independently assumed matrix weight.  Its single physical premise says
-that the gravitational even channel realizes the already derived Q-clock
-translation on the exponential area weight.  Lean then derives `1/Q`, forces
+[`CLOCK_TO_GRAVITY_CHAIN.md`](CLOCK_TO_GRAVITY_CHAIN.md) expresses `1/Q` as
+the action of the already derived Q-clock translation on the gravitational
+even channel.  Lean proves that this action statement is equivalent to the
+even-weight premise, preventing it from being counted as an additional
+derivation.  From that single carrier premise it forces
 the whole constitutive matrix, identifies the same `lambda4` with the quartic
 renewal frequency and normalized Perron residue, and reduces an arbitrary
 complete sourced linear operator to `S_Q E(h)=T`.  The sole remaining

@@ -41,6 +41,38 @@ theorem clockAction_implies_evenCoreWeight
   rw [areaBoltzmannWeight_dualTranslation_log q 0 hq] at hzero
   simpa [areaBoltzmannWeight] using hzero
 
+/-- Calibration theorem: because the exponential weight never vanishes and
+the matrix action is linear, realizing the clock translation on every equal
+input is exactly equivalent to assigning the even channel the weight `1/q`.
+The clock-action language therefore exposes the physical premise dynamically;
+it does not weaken that premise mathematically. -/
+theorem clockAction_iff_evenCoreWeight
+    (M : Matrix (Fin 2) (Fin 2) ℝ) (q : ℝ) (hq : 0 < q) :
+    ClockActsOnEvenChannel M q ↔ HasEvenCoreWeight M q := by
+  constructor
+  · exact clockAction_implies_evenCoreWeight M q hq
+  · intro hcore x
+    unfold HasEvenCoreWeight at hcore
+    have hcore0 := congrFun hcore (0 : Fin 2)
+    have hcore1 := congrFun hcore (1 : Fin 2)
+    rw [areaBoltzmannWeight_dualTranslation_log q x hq]
+    ext i
+    fin_cases i
+    · simp [one_div, Matrix.mulVec, dotProduct, Fin.sum_univ_succ]
+        at hcore0 ⊢
+      calc
+        M 0 0 * areaBoltzmannWeight x +
+            M 0 1 * areaBoltzmannWeight x =
+          (M 0 0 + M 0 1) * areaBoltzmannWeight x := by ring
+        _ = q⁻¹ * areaBoltzmannWeight x := by rw [hcore0]
+    · simp [one_div, Matrix.mulVec, dotProduct, Fin.sum_univ_succ]
+        at hcore1 ⊢
+      calc
+        M 1 0 * areaBoltzmannWeight x +
+            M 1 1 * areaBoltzmannWeight x =
+          (M 1 0 + M 1 1) * areaBoltzmannWeight x := by ring
+        _ = q⁻¹ * areaBoltzmannWeight x := by rw [hcore1]
+
 /-- For a positive quartic root, the clock action, channel exchange symmetry,
 and unit mean normalization force the complete constitutive block.  The same
 coefficient is independently the renewal frequency and the normalized
@@ -107,6 +139,7 @@ theorem quarticClock_forces_screened_sourceEquation
 end SourcedOperator
 
 #print axioms GravityScreening.clockAction_implies_evenCoreWeight
+#print axioms GravityScreening.clockAction_iff_evenCoreWeight
 #print axioms GravityScreening.quarticClock_forces_constitutive_chain
 #print axioms GravityScreening.quarticClock_forces_screened_sourceEquation
 

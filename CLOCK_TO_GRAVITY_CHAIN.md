@@ -15,8 +15,12 @@ by `log Q`.  Acting on `exp(x)`, it has the exact eigenweight
   \exp(x-\log Q)=\frac1Q\exp(x).
 \]
 
-The new Lean theorem does not assume `1/Q` as an independent constitutive
-coefficient.  It derives that weight from the clock action.  If the two
+The new Lean theorem expresses `1/Q` through the clock action rather than as
+an unrelated constitutive coefficient.  A calibration theorem also proves
+that, for this linear exponential eigenmode, the clock-action premise is
+mathematically equivalent to assigning the even channel the weight `1/Q`.
+This is a physically clearer formulation of the carrier premise, not a proof
+of the carrier identification.  If the two
 gravitational channels are also exchange symmetric and their diagonal mean is
 normalized to one, elementary matrix uniqueness then forces
 
@@ -63,8 +67,10 @@ mathematics.
 
 The one remaining physical identification is the premise quoted above: that
 the gravitational dual-prepotential even channel is the carrier of the
-quartic clock action.  The proof no longer assumes `lambda4`, the response
-matrix, or `S_Q` independently.  Establishing that carrier identification
+quartic clock action.  The proof no longer assumes `lambda4`, the full response
+matrix, or `S_Q` independently, but its calibration theorem shows that the
+clock action and the even weight are equivalent descriptions of the same
+physical input.  Establishing that carrier identification
 from a microscopic PDT curvature action would convert this conditional chain
 into a derivation of the screening mechanism.
 
