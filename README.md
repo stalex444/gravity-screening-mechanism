@@ -73,9 +73,13 @@ conservation and local causal loss in one model.
 [`SPLIT_HORIZON_LOCALIZATION.md`](SPLIT_HORIZON_LOCALIZATION.md) gives the
 relativistic placement.  The split property hosts the finite channel in a
 stretched-horizon type-I collar; the observer crossed product supplies the
-sharp-horizon limit.  The remaining theorem is reduced to one distinguished
-quartic mode whose modular eigenvalue is `1/Q` and whose BKM information norm
-contracts by exactly `S_Q` under the horizon-cut coarse-graining.
+sharp-horizon setting.  [`MODULAR_COVARIANT_ERASURE.md`](MODULAR_COVARIANT_ERASURE.md)
+then proves that the finite tangent channel commutes with every diagonal
+modular phase action.  A quartic input mode therefore keeps its spectral label
+while its relative entropy and BKM/Fisher information contract by exactly
+`S_Q`.  What remains is its net-compatible placement and sharp-horizon limit,
+followed by the physical coupling of the unconditioned retained weight to
+Jacobson's area density.
 
 [`BIVECTOR_RATE_AUDIT.md`](BIVECTOR_RATE_AUDIT.md) records a selective but
 non-exact consequence: `-log(S_Q)/log(Q)` differs from `1/6` by only
@@ -481,6 +485,10 @@ minimal mechanism.
   constructs the finite Stinespring map, proves global norm preservation, and
   computes both the exterior and hidden reduced-state blocks at the exact
   quartic weights.
+- [`GravityScreening/ErasureCovariance.lean`](GravityScreening/ErasureCovariance.lean)
+  proves that the erasure tangent commutes with every diagonal phase action,
+  preserves phase eigenmodes, and combines that covariance with the exact
+  quartic relative-entropy contraction.
 - [`verify.py`](verify.py) reproduces the exact quartic arithmetic using only
   the Python standard library.
 - [`phi_ruler_fold.py`](phi_ruler_fold.py) reproduces the positive-embedding
@@ -509,6 +517,12 @@ covariant because its nonzero bounded modular eigenspaces vanish. The
 continuous core supplies an exact trace-ray realization of the quartic defect
 and its self-complement. It does not convert that scalar into a physical
 entropy variation: global trace rescaling cancels after state normalization.
+In a finite type-I split collar, the explicit erasure dilation now proves
+global information conservation, exact exterior contraction, and covariance
+of every diagonal spectral line. Thus the channel itself need not change the
+clock frequency when it screens distinguishability. Its net-compatible
+placement in the observer crossed product and its coupling to physical area
+density remain open.
 Jacobson's correction pattern remains exact conditional algebra if an
 independent mechanism scales the physical entropy-per-area coefficient. The
 standing F373 affine Hodge operator now supplies the strongest candidate: its

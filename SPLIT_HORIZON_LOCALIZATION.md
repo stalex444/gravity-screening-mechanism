@@ -16,8 +16,10 @@ The appropriate construction has two stages:
    defined by a semifinite trace.
 
 This does not yet prove that the resulting channel is the physical PDT
-horizon channel.  It removes a localization mismatch and reduces the remaining
-claim to one spectral condition on the quartic mode.
+horizon channel.  It removes a localization mismatch.  The finite-channel
+spectral condition is now separately proved in
+`MODULAR_COVARIANT_ERASURE.md`; the remaining claim is the net-compatible
+placement of that covariant channel and its coupling to horizon area density.
 
 ## 1. The stretched-horizon placement
 
@@ -72,7 +74,7 @@ The finite dilation should be read as a cell-level model inside this observer
 extension.  The sharp-horizon limit must retain its action on the distinguished
 quartic modular line, rather than retain a literal finite tensor factor.
 
-## 3. The exact remaining spectral condition
+## 3. The exact spectral condition and its finite solution
 
 Let `C` denote the coarse-graining from an earlier horizon cut or stretched
 collar to the algebra accessible at a later cut.  General relative-entropy
@@ -100,9 +102,9 @@ g_{\rm BKM}(C_*X_Q,C_*X_Q)
 =S_Qg_{\rm BKM}(X_Q,X_Q).
 \]
 
-The same mode must carry modular frequency `log Q`, or modular eigenvalue
-`1/Q` for one normalized step.  The entire relativistic localization problem
-is therefore reduced to finding a single mode satisfying both conditions:
+The same mode must carry modular frequency `log Q`, or modular-operator
+eigenvalue `1/Q` for one normalized step.  The desired mode satisfies both
+conditions:
 
 \[
 \Delta X_Q=Q^{-1}X_Q,
@@ -111,10 +113,18 @@ is therefore reduced to finding a single mode satisfying both conditions:
      {g_{\rm BKM}(X_Q,X_Q)}=S_Q.
 \]
 
-The finite model proves that these two equations are mutually compatible and
-that the second follows from the quartic erasure dilation.  The remaining task
-is to produce this mode and coarse-graining inside the observer crossed
-product associated with a horizon cut.
+The finite model now proves more than numerical compatibility.  The tangent
+erasure map commutes exactly with every diagonal phase action.  Hence any
+input mode with modular-automorphism phase `Q^{-it}` leaves the channel with
+the same phase, while its relative entropy and BKM information contract by
+`S_Q`.  The channel changes distinguishability without changing spectral
+pitch.
+
+This closes the spectral-mixing question inside the type-I split collar.  The
+remaining task is to place the input clock line and this covariant
+coarse-graining in a net-compatible observer crossed product and control the
+sharp-horizon limit.  It does not create a forbidden bounded eigenoperator in
+the original free wedge algebra.
 
 ## 4. Relation to the generalized second law
 
@@ -144,15 +154,16 @@ The next construction succeeds if there is a horizon-cut observer algebra,
 a completely positive restriction or conditional-expectation map `C`, and a
 quartic tangent mode `X_Q` such that:
 
-1. `X_Q` lies on the `log Q` modular spectral line;
-2. `C` acts on its state family as the quartic erasure channel;
-3. the BKM norm ratio is exactly `S_Q`;
-4. the area-density term in the crossed-product generalized entropy reads the
+1. `X_Q` lies on the crossed-product `log Q` clock line;
+2. `C` restricts in the split collar to the proved covariant quartic erasure
+   channel and has a controlled sharp-horizon limit;
+3. the area-density term in the crossed-product generalized entropy reads the
    unconditioned exterior channel.
 
-It fails in this form if modular covariance mixes the quartic line with other
-frequencies, if the sharp-horizon limit removes the erasure flag, or if the
-area term renormalizes the contraction away.
+It fails in this form if no net-compatible placement of the clock and channel
+exists, if the sharp-horizon limit removes the erasure flag, or if the area
+term renormalizes the contraction away.  Frequency mixing by the finite
+erasure map itself is now excluded by theorem.
 
 ## References
 
@@ -166,4 +177,3 @@ area term renormalizes the contraction away.
   <https://arxiv.org/abs/2112.12828>.
 - A. C. Wall, *A proof of the generalized second law for rapidly changing
   fields and arbitrary horizon slices*, <https://arxiv.org/abs/1105.3445>.
-
