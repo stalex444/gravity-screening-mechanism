@@ -60,6 +60,17 @@ outcomes contain three independent coordinates after normalization. Equating
 those outcomes with Q-driven histories is the remaining physical
 identification.
 
+[`PERRON_TETRAHEDRAL_BRIDGE.md`](PERRON_TETRAHEDRAL_BRIDGE.md) performs the
+decisive follow-up. The quartic Perron residual scales all four probabilities
+by `lambda4`, so conditioning erases the factor and leaves the tetrahedral
+three-coordinate record exactly unchanged. Thus normalized Fisher geometry
+cannot produce the gravity factor on this line. Lean then proves the sharp
+fork: a classical reading leaves complement `1/Q`, whereas a Hilbert amplitude
+has hidden Born weight `lambda4^2` and visible complement `S_Q`. The existing
+modular-GNS construction supplies the amplitude interpretation. This places
+gravity screening in the total accessible information weight while preserving
+the conditional shape of each retained 3D record.
+
 [`PQ_TRANSFORM_CHAIN.md`](PQ_TRANSFORM_CHAIN.md) now joins the gravity paper's
 original `pQ`-resolution argument to the later Hodge flip-product, modular
 defect, and information-erasure results.  The combined chain derives the

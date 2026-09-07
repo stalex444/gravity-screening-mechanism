@@ -56,6 +56,11 @@ corresponding normalization of the state vector. -/
 noncomputable def tetraOutcomeWeight (x : PackingPoint3) (k : Fin 4) : ℝ :=
   (1 + packingDot3 (tetraDigitFamily k) x) / 4
 
+/-- Reconstruct the three real coordinates carried by four normalized
+outcome weights. -/
+def tetraRecord (weight : Fin 4 → ℝ) : PackingPoint3 :=
+  fun j => ∑ k, weight k * tetraDigitFamily k j
+
 /-- The balanced frame makes the four affine outcome weights sum to one. -/
 theorem tetraOutcomeWeight_sum (x : PackingPoint3) :
     ∑ k, tetraOutcomeWeight x k = 1 := by
@@ -76,11 +81,26 @@ theorem tetraOutcomeWeight_reconstruct (x : PackingPoint3) (j : Fin 3) :
       Matrix.cons_val] <;>
     ring
 
+/-- Conversely, every four-weight vector of total mass one is recovered from
+its three-coordinate tetrahedral record. -/
+theorem tetraRecord_outcomeWeight
+    (weight : Fin 4 → ℝ) (hsum : ∑ k, weight k = 1) (j : Fin 4) :
+    tetraOutcomeWeight (tetraRecord weight) j = weight j := by
+  simp only [Fin.sum_univ_four] at hsum
+  fin_cases j <;>
+    simp [tetraOutcomeWeight, tetraRecord, packingDot3, tetraDigitFamily,
+      tetraDigitA, tetraDigitB, tetraDigitC, tetraDigitD,
+      Fin.sum_univ_succ, Matrix.cons_val',
+      Matrix.cons_val_zero, Matrix.cons_val_fin_one, Matrix.cons_val_one,
+      Matrix.cons_val] <;>
+    linarith
+
 #print axioms GravityScreening.tetraDigitFamily_normSq
 #print axioms GravityScreening.tetraDigitFamily_pairing
 #print axioms GravityScreening.tetraFrame_energy
 #print axioms GravityScreening.tetraNormalizedFrame_energy
 #print axioms GravityScreening.tetraOutcomeWeight_sum
 #print axioms GravityScreening.tetraOutcomeWeight_reconstruct
+#print axioms GravityScreening.tetraRecord_outcomeWeight
 
 end GravityScreening

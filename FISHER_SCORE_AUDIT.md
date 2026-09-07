@@ -2,7 +2,7 @@
 
 ## Verdict
 
-The information-geometric formula is exact, but none of the three canonical
+The information-geometric formula is exact, but none of the four canonical
 uncoupled constructions produces the required Fisher overlap.  The missing
 object is specifically a coupled cubic-quartic history measure.
 
@@ -83,6 +83,33 @@ This applies directly to the presently constructed tensor-product pQ KMS
 state.  Its quartic factor retains the exact causal defect `lambda4`, while the
 product construction supplies no cubic-quartic score covariance.
 
+## Test 4: the tetrahedral quartic Perron distribution
+
+Normalize the positive quartic Perron vector to four probabilities,
+
+```text
+p_Q = (1,Q^3,Q^2,Q)/(1+Q+Q^2+Q^3).
+```
+
+The renewal probability is exactly `lambda4`. The inverse-step residual also
+acts on the whole vector by the common scalar `lambda4`. After conditioning on
+that residual branch, however, the scalar cancels:
+
+```text
+(lambda4 p_Q)/sum(lambda4 p_Q) = p_Q.
+```
+
+The tetrahedral three-coordinate record is therefore unchanged. Its
+normalized Fisher geometry has no direction in which to register the common
+scale. Interpreting the scale as classical mass would leave complement `1/Q`,
+which Lean proves differs from `S_Q` for every `Q>1`.
+
+This test separates two geometries. The probability simplex records shape;
+the cone of unnormalized positive measures also records total accessible
+mass. A Hilbert amplitude `lambda4` produces mass `lambda4^2`, so the desired
+complement arises only on the amplitude cone. The independent modular-GNS
+construction supplies that Hilbert-space reading.
+
 ## Reverse conclusion
 
 For a general positive two-coordinate Fisher matrix
@@ -113,7 +140,8 @@ fix it separately.
 
 If screening is to be derived as partial Fisher information, the next
 candidate cannot be the quartic distribution alone, a global
-normalization, or the uncoupled pQ tensor product.  It must contain an
+normalization, the uncoupled pQ tensor product, or the normalized tetrahedral
+Perron record.  It must contain an
 interaction observable fixed independently by PDT:
 
 ```text
@@ -142,7 +170,8 @@ coupled Fisher family. A subnormalized complementary Kraus branch scales every
 entropy first-law variation by its Born weight `1-lambda4^2`, even though its
 normalized conditional state is unchanged. That route succeeds only if
 Jacobson's entropy density counts retained cells per original horizon area.
-See `SUBNORMALIZED_HORIZON_BRANCH.md`.
+The tetrahedral audit independently reaches the same condition. See
+`SUBNORMALIZED_HORIZON_BRANCH.md` and `PERRON_TETRAHEDRAL_BRIDGE.md`.
 
 ## Reproducibility
 
