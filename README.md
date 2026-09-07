@@ -248,6 +248,14 @@ kernel checked in `GravityScreening/DoubledSpinTwoOperator.lean`.
 variation formulas and a completed-square positivity theorem for the quartic
 mixing on the positive physical polarization space.
 
+[`SPIN_TWO_DEGREE_AUDIT.md`](SPIN_TWO_DEGREE_AUDIT.md) diagonalizes that
+action into its even and odd channels.  It records the resulting physical
+fork: as an unconstrained second-order action it contains two massless
+spin-two channels, while a one-graviton Hodge-dual reading still needs the
+first-order twisted-self-duality constraint.  The exact channel and source
+decompositions are kernel checked in
+`GravityScreening/SpinTwoDegreeAudit.lean`.
+
 [`BIVECTOR_RATE_AUDIT.md`](BIVECTOR_RATE_AUDIT.md) records a selective but
 non-exact consequence: `-log(S_Q)/log(Q)` differs from `1/6` by only
 `8.50e-6`, equivalently `S_Q^6 Q - 1 = -1.01759e-5`.  Six is the dimension of

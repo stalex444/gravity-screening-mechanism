@@ -65,6 +65,13 @@ block.  The physical step still open is to derive, rather than identify, its
 partner spin-two field and `lambda4` coupling from the PDT Q clock/information
 degree of freedom.
 
+The channel audit adds a binding caveat.  The symmetric second-order action
+diagonalizes into two positive Pauli--Fierz channels, and the ordinary source
+couples to both.  Without a first-order twisted-self-duality constraint it is
+a two-graviton model, not yet a doubled-potential formulation of one graviton.
+Any physical-gravity submission must either construct that constraint and
+verify the degree count or state the extra massless mode explicitly.
+
 The standard five-coefficient Pauli--Fierz uniqueness calculation is also
 kernel checked.  The new four-dimensional symbol module derives the three
 coefficient relations from the Ward identity using explicit symmetric test
