@@ -78,6 +78,16 @@ tensor norm by `S_Q`.  Encoding, evolving, and decoding then gives the same
 Newton capstone.  The remaining field-theory statement is that the physical
 Q horizon evolution restricts to this code as the quartic dilation.
 
+[`TT_GENERALIZED_CURL.md`](TT_GENERALIZED_CURL.md) now tests that response
+against the actual derivative operator in the duality-symmetric linearized
+graviton action. On a fixed-momentum TT mode, Lean derives the generalized
+curl as `i*k*J` on plus/cross coordinates, proves `O^2=-Delta`, and diagonalizes
+it on the two circular polarizations with eigenvalues `+k` and `-k`. The
+quartic block `sqrt(S_Q) I_2` commutes with this operator exactly and multiplies
+both helicity norms by the same `S_Q`, so it introduces no dispersion change
+or birefringence. The remaining step is to derive the Q-to-prepotential
+intertwiner from a time-dependent local action.
+
 [`THREE_D_INFORMATION_PACKING.md`](THREE_D_INFORMATION_PACKING.md) records a
 new geometric route prompted by the interpretation of a spatial present as an
 information-packing problem. Bandt--Meyer Proposition 7 constructs an actual
