@@ -129,6 +129,56 @@ This distinction resolves a normalization ambiguity in the earlier core
 discussion. The dimensionless phase is fixed; proper duration still comes
 from the observer's acceleration or gravitational lapse.
 
+## Redshift and intrinsic renormalization are different operations
+
+This dual formulation separates two effects that can otherwise look alike.
+
+A gravitational lapse changes how the observer-time label `t` is related to
+proper time while leaving the dual displacement fixed at `s=log Q`. It changes
+the local rate but preserves both the accumulated geometric phase and the
+trace weight.
+
+A relative modular cocycle can instead shift the intrinsic displacement:
+
+\[
+s_Q\longmapsto s_Q+\delta=\log Q+\delta.
+\]
+
+Then both sides change in a linked way:
+
+\[
+\theta_{\log Q+\delta}(\lambda_t)
+=Q^{-it}e^{-i\delta t}\lambda_t,
+\]
+
+and
+
+\[
+\operatorname{Tr}(\theta_{\log Q+\delta}(X))
+=\frac{e^{-\delta}}{Q}\operatorname{Tr}(X).
+\]
+
+The normalized trace defect is therefore
+
+\[
+1-\frac{e^{-\delta}}{Q}.
+\]
+
+The kernel-checked reverse theorem gives
+
+\[
+\boxed{
+1-\frac{e^{-\delta}}{Q}=\lambda_4
+\quad\Longleftrightarrow\quad
+\delta=0.}
+\]
+
+Thus ordinary gravitational time dilation is compatible with the exact PDT
+coefficient, while an intrinsic modular frequency shift is not. The physical
+cocycle may change the observer's parametrization or reference frame, but its
+action on the distinguished quartic displacement must be neutral if the exact
+screening formula is to survive.
+
 ## Gravitational time dilation
 
 For a stationary near-horizon observer,
@@ -186,9 +236,13 @@ rescaling alone is already known to cancel from normalized entropy variation.
 
 - `coreDualCharacter_log_eq_quarticPhase`;
 - `coreDualCharacter_norm` and `coreDualCharacter_add`;
+- `coreDualCharacter_add_displacement`;
 - `quartic_core_clock_trace_pair`;
 - `quartic_core_clock_defect_pair`;
 - `quartic_core_clock_screening_pair`;
+- `shiftedQuarticCharacter_factor`;
+- `coreTraceScale_shift_log`;
+- `coreTraceDefect_shift_eq_lambda4_iff`;
 - `localQuarticModularPhase_eq_energyPhase`;
 - `localModularParameter_unitDuration`;
 - `localQuarticModularPhase_unitDuration`;

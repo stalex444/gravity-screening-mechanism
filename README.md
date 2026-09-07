@@ -156,6 +156,10 @@ displacement `s=log Q` acts on the clock unitary `lambda_t` with character
 the complement of its repeated self-defect is `S_Q`. This evades the free-wedge
 point-spectrum obstruction because the clock unitary belongs to the observer
 extension, while keeping the remaining area/kinetic coupling explicit.
+The same result separates harmless lapse redshift from an intrinsic modular
+shift: replacing `log Q` by `log Q+delta` multiplies the phase by
+`exp(-i*delta*t)` and the trace weight by `exp(-delta)`; exact preservation of
+the quartic defect forces `delta=0`.
 
 [`BIVECTOR_RATE_AUDIT.md`](BIVECTOR_RATE_AUDIT.md) records a selective but
 non-exact consequence: `-log(S_Q)/log(Q)` differs from `1/6` by only

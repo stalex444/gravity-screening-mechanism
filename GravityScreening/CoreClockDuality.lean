@@ -48,6 +48,16 @@ theorem coreDualCharacter_add (s t u : ℝ) :
   push_cast
   ring
 
+/-- The character is also additive in the dual displacement. -/
+theorem coreDualCharacter_add_displacement (s u t : ℝ) :
+    coreDualCharacter (s + u) t =
+      coreDualCharacter s t * coreDualCharacter u t := by
+  unfold coreDualCharacter
+  rw [← Complex.exp_add]
+  congr 2
+  push_cast
+  ring
+
 /-- At the quartic displacement, the character and the core trace carry the
 phase `exp(-i*t*log q)` and weight `1/q` simultaneously. -/
 theorem quartic_core_clock_trace_pair
@@ -76,6 +86,42 @@ theorem quartic_core_clock_screening_pair
         screening (lambda4 q) := by
   exact ⟨coreDualCharacter_log_eq_quarticPhase q t,
     coreSelfDefect_survivor q mass hq hmass⟩
+
+/-! ## Redshift versus an intrinsic modular shift -/
+
+/-- Shifting the dual displacement from `log q` to `log q + delta` multiplies
+the quartic character by the extra phase at `delta`. -/
+theorem shiftedQuarticCharacter_factor (q δ t : ℝ) :
+    coreDualCharacter (Real.log q + δ) t =
+      quarticModularPhase q t * coreDualCharacter δ t := by
+  rw [coreDualCharacter_add_displacement]
+  rw [coreDualCharacter_log_eq_quarticPhase]
+
+/-- The same intrinsic displacement shift multiplies the quartic core-trace
+weight by `exp (-delta)`. -/
+theorem coreTraceScale_shift_log
+    (q δ mass : ℝ) (hq : 0 < q) :
+    coreTraceScale (Real.log q + δ) mass =
+      Real.exp (-δ) * (mass / q) := by
+  unfold coreTraceScale
+  have hneg : -(Real.log q + δ) = -Real.log q + -δ := by ring
+  rw [hneg, Real.exp_add, Real.exp_neg, Real.exp_log hq]
+  field_simp [ne_of_gt hq]
+
+/-- Unlike lapse reparametrization, an intrinsic shift of the core dual
+displacement preserves the quartic trace defect exactly only when it is zero. -/
+theorem coreTraceDefect_shift_eq_lambda4_iff
+    (q δ mass : ℝ) (hq : 0 < q) (hmass : mass ≠ 0) :
+    (mass - coreTraceScale (Real.log q + δ) mass) / mass =
+        lambda4 q ↔
+      δ = 0 := by
+  have hnormalized :
+      (mass - coreTraceScale (Real.log q + δ) mass) / mass =
+        detailedBalanceDefect 1 (Real.log q + δ) := by
+    unfold coreTraceScale detailedBalanceDefect
+    field_simp
+  rw [hnormalized]
+  exact quartic_response_shift_eq_iff q δ hq
 
 /-- Dimensionless modular time accumulated during a local proper-time
 interval in the stationary near-horizon model. -/
@@ -162,9 +208,13 @@ theorem localQuarticModularPhase_properDuration
 #print axioms GravityScreening.coreDualCharacter_log_eq_quarticPhase
 #print axioms GravityScreening.coreDualCharacter_norm
 #print axioms GravityScreening.coreDualCharacter_add
+#print axioms GravityScreening.coreDualCharacter_add_displacement
 #print axioms GravityScreening.quartic_core_clock_trace_pair
 #print axioms GravityScreening.quartic_core_clock_defect_pair
 #print axioms GravityScreening.quartic_core_clock_screening_pair
+#print axioms GravityScreening.shiftedQuarticCharacter_factor
+#print axioms GravityScreening.coreTraceScale_shift_log
+#print axioms GravityScreening.coreTraceDefect_shift_eq_lambda4_iff
 #print axioms GravityScreening.localQuarticModularPhase_eq_energyPhase
 #print axioms GravityScreening.localModularParameter_unitDuration
 #print axioms GravityScreening.localQuarticModularPhase_unitDuration
