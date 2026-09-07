@@ -289,6 +289,16 @@ complete sourced linear operator to `S_Q E(h)=T`.  The sole remaining
 identification is therefore the carrier: the gravitational prepotential even
 channel must be the physical realization of the Q-clock action.
 
+[`CLOCK_GRAVITY_FACTORIZATION.md`](CLOCK_GRAVITY_FACTORIZATION.md) records the
+reverse audit of that identification.  A modular clock step by `log Q` is not
+itself the gravitational canonical squeeze: their eigenvalue ratios are
+respectively `Q^2` and `2Q-1`, and Lean proves these differ for `Q>1`.  Instead,
+the clock retention factors exactly into the common gravity action scale
+`sqrt(S_Q)` times one eigenvalue of a reciprocal determinant-one squeeze.  In
+this precise sense time and gravity use the same Q event differently: the
+first supplies the contraction, while the second splits it into coupling
+scale and canonical shape.
+
 [`BIVECTOR_RATE_AUDIT.md`](BIVECTOR_RATE_AUDIT.md) records a selective but
 non-exact consequence: `-log(S_Q)/log(Q)` differs from `1/6` by only
 `8.50e-6`, equivalently `S_Q^6 Q - 1 = -1.01759e-5`.  Six is the dimension of
