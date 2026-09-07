@@ -149,6 +149,14 @@ Consequently `E_Q/T=log Q`, the weight `1/Q`, and the screening factor `S_Q`
 are observer independent. This is an exact scalar realization of thermal time
 as a gravitationally redshifted clock, conditional on the modular embedding.
 
+[`CORE_CLOCK_DUALITY.md`](CORE_CLOCK_DUALITY.md) then joins the clock and
+screening sides inside one observer crossed-product action. The dual
+displacement `s=log Q` acts on the clock unitary `lambda_t` with character
+`Q^(-it)` and scales the canonical trace by `1/Q`. Its defect is `lambda4` and
+the complement of its repeated self-defect is `S_Q`. This evades the free-wedge
+point-spectrum obstruction because the clock unitary belongs to the observer
+extension, while keeping the remaining area/kinetic coupling explicit.
+
 [`BIVECTOR_RATE_AUDIT.md`](BIVECTOR_RATE_AUDIT.md) records a selective but
 non-exact consequence: `-log(S_Q)/log(Q)` differs from `1/6` by only
 `8.50e-6`, equivalently `S_Q^6 Q - 1 = -1.01759e-5`.  Six is the dimension of

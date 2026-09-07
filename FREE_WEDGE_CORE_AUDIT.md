@@ -202,6 +202,20 @@ constructions:
 The core supplies a fourth realization, now attached directly to the standard
 operator algebra used to make gravitational entropy finite.
 
+There is a sharper duality statement. If `lambda_t` denotes the crossed-product
+unitary implementing modular time and `theta_s` the dual action, then, in the
+sign convention used here,
+
+```text
+theta_s(lambda_t) = exp(-i*s*t) lambda_t.
+```
+
+At `s=log Q`, the same dual automorphism that scales the trace by `1/Q` acts on
+the clock unitary with the character `Q^(-it)`. The phase and the trace weight
+are therefore paired aspects of one crossed-product action. The variables `s`
+and `t` are conjugate and must not be identified. See
+`CORE_CLOCK_DUALITY.md`.
+
 ## 5. The square becomes literal self-action
 
 Let `T_Q` denote the action induced by `theta_(log Q)` on the one-dimensional
