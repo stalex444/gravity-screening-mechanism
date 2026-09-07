@@ -2,144 +2,185 @@
 version: v0.4
 
 project:
-  name: Lorentz spin-two rigidity and quartic source reduction
+  name: Structural rigidity of a conservative two-polarization standard-siren response
   description: >-
-    Ten compared statements classify the standard parity-even, local,
-    two-derivative five-term symbol on symmetric rank-two fields in
-    four-dimensional Minkowski space and analyze a doubled sourced system.
-    The Lorentz Ward identity and formal self-adjointness force the
-    Pauli--Fierz coefficient pattern up to one scale. A source-free partner
-    channel can then be eliminated componentwise without inverting the gauge
-    operator: the full sourced output acquires the uniform coefficient
-    1-l^2, both channel equations are invariant under arbitrary gauge-kernel
-    shifts, and the Ward identity forces conservation of the source. Under
-    the specialization l=1-1/q, the entire normalization is
-    (2q-1)/q^2. This supplies a compact exact result for researchers in
-    linearized gravity, constrained field theory, and formalized mathematical
-    physics. The motivating PDT application takes q to be the positive root
-    of q^4=q+1 and identifies the partner coupling with a gravitational
-    screening response; it then fills the entropy-area coefficient in
-    Jacobson's thermodynamic route to the Einstein equation. That physical
-    correspondence is disclosed as an application and is not built into the
-    compared theorem hypotheses.
+    Eight compared statements classify the leading standard-siren response of
+    an arbitrary real two-by-two transverse-traceless polarization block.
+    Rotation covariance, self-adjointness, a prescribed quadratic weight, and
+    the passive branch force the block to be sqrt(s) times the identity. A
+    norm-preserving visible-hidden dilation then proves that complete source
+    flux and exterior strain determine the distance response 1/sqrt(s), while
+    any response common to chirp and strain cancels exactly. For q>1 satisfying
+    q^4=q+1, the quartic specialization fixes the response without an adjustable
+    parameter, proves 1.016<d_inferred/d_true<1.017, gives exact degree-eight
+    polynomial identities, proves that both observable factors have minimal
+    degree eight, and identifies the amplitude field as a quadratic extension
+    of the quartic field.
   authors:
     - Stephanie Alexander
   license: MIT
   responsible_maintainers:
     - Stephanie Alexander
 
+repository:
+  role: substantive-development
+
 classification:
   arxiv:
     - math-ph
     - gr-qc
   msc2020:
-    - "83C05"
-    - "83C25"
     - "83C35"
+    - "83C40"
+    - "83D05"
 
 sources:
-  - title: Lorentz spin-two rigidity and quartic source reduction
+  - title: Structural rigidity of a conservative two-polarization response
     authors:
       - Stephanie Alexander
-    type: original-proof
-    relationship: other
+    type: research note
+    location: STANDARD_SIREN_RIGIDITY.md
+    relationship: formalizes
+    author_endorsement: participated
     note: >-
-      This repository is the source of the combined classification and
-      no-inverse source-reduction theorem. The Pauli--Fierz pattern and the
-      general literature on spin-two duality are established background; no
-      priority claim for those subjects and no exhaustive first-formalization
-      claim are made.
-  - title: On relativistic wave equations for particles of arbitrary spin in an electromagnetic field
+      The local note states the exact conditional classification problem,
+      the two observer-placement branches, and the quartic specialization
+      proved by the compared declarations. This entry records a source-to-code
+      relationship and makes no first-presentation or literature-priority
+      claim. The physical placement selecting complete flux for chirp and the
+      exterior block for strain is explicitly an unvalidated PDT proposal.
+  - title: Modified gravitational-wave propagation and standard sirens
     authors:
-      - Markus Fierz
-      - Wolfgang Pauli
-    id: DOI:10.1098/rspa.1939.0140
+      - Enis Belgacem
+      - Yves Dirian
+      - Stefano Foffa
+      - Michele Maggiore
+    id: DOI:10.1103/PhysRevD.98.023510
     type: article
-    location: https://doi.org/10.1098/rspa.1939.0140
-    relationship: background
+    location: https://arxiv.org/abs/1805.08731
+    relationship: adapts
+    author_endorsement: not-contacted
     note: >-
-      Classical source for the relativistic spin-two framework. The present
-      entry works with an explicit massless five-term Fourier symbol and
-      proves its coefficient classification directly.
-  - title: Manifest spin 2 duality with electric and magnetic sources
+      Source for the gravitational-wave luminosity-distance observable,
+      response-ratio framework, and conserved-propagation context. The present
+      finite theorem adapts that observable to an abstract two-polarization
+      visible-hidden response. It does not formalize the paper's cosmological
+      propagation equation, redshift dependence, or model forecasts.
+  - title: The gravitational-wave luminosity distance in modified gravity theories
     authors:
-      - Glenn Barnich
-      - Cedric Troessaert
-    id: arXiv:0812.0552v2
+      - Enis Belgacem
+      - Yves Dirian
+      - Stefano Foffa
+      - Michele Maggiore
+    id: DOI:10.1103/PhysRevD.97.104066
     type: article
-    location: https://arxiv.org/abs/0812.0552v2
+    location: https://arxiv.org/abs/1712.08108
     relationship: background
+    author_endorsement: not-contacted
     note: >-
-      Published duality-symmetric formulation of spin-two fields on Minkowski
-      space with external electric and magnetic sources. It motivates the
-      doubled-channel question. The paper's prepotential construction and
-      surface charges are not formalized here.
-  - title: Thermodynamics of Spacetime - The Einstein Equation of State
+      Establishes gravitational-wave luminosity distance as an observable that
+      can differ from electromagnetic luminosity distance under modified
+      propagation. The present submission supplies a conditional finite
+      response classification, not that paper's propagation law.
+  - title: Positive functions on C*-algebras
     authors:
-      - Ted Jacobson
-    id: arXiv:gr-qc/9504004v2
+      - W. Forrest Stinespring
+    id: DOI:10.2307/2032342
     type: article
-    location: https://arxiv.org/abs/gr-qc/9504004v2
+    location: https://doi.org/10.2307/2032342
     relationship: background
+    author_endorsement: n/a
     note: >-
-      Derives the Einstein equation from local horizon thermodynamics given
-      entropy proportional to area. The PDT application supplies a candidate
-      value for the proportionality coefficient through its value of G.
-      Jacobson's thermodynamic derivation and the physical identification are
-      cited, not formalized, and G and the entropy density are not counted as
-      independent numerical results.
-  - title: Self-Interaction and Gauge Invariance
-    authors:
-      - Stanley Deser
-    id: arXiv:gr-qc/0411023v3
-    type: article
-    location: https://arxiv.org/abs/gr-qc/0411023v3
-    relationship: background
-    note: >-
-      Gives the consistency bootstrap from a linear massless spin-two gauge
-      field to Einstein nonlinearities. The present entry stops at the exact
-      linear symbol and source reduction; the nonlinear bootstrap is not
-      formalized.
+      Historical source for dilation terminology. The submitted construction
+      is an explicit finite norm-preserving two-output map and does not rely on
+      the general Stinespring representation theorem as an unproved premise.
 
 related_formalizations:
   - id: PALOMAR-2026-09-01-000005
     relationship: builds-on
     note: >-
       Registered compositum and algebraic-unit results for the distinguished
-      cubic/quartic pair used in the PDT motivation. The current theorem is
-      stated for arbitrary nonzero real q and has no build-time dependency on
-      that repository.
+      cubic/quartic pair, including the degree-twelve joint field generated by
+      rho*Q. The current observable field has degree eight and is a different
+      object. Its corollaries use only the displayed real equation q^4=q+1 and
+      inequality q>1, so there is no build-time dependency on that repository.
   - id: PALOMAR-2026-09-02-000014
-    relationship: builds-on
-    note: >-
-      Registered trace-form results for the golden-family number fields,
-      including the quartic Lorentzian signature used in the broader PDT
-      geometric interpretation. The present Challenge uses the ordinary
-      diagonal Minkowski metric explicitly.
-  - id: PALOMAR-2026-09-03-000004
     relationship: other
     note: >-
-      Registered radial-harmonic classification formalizing the separate
-      three-spatial-dimensional marginality result used in the gravity
-      program. It is contextual and is not re-submitted here.
+      Registered trace-form results for the golden-family number fields. They
+      provide broader PDT context but are not hypotheses of the submitted
+      standard-siren theorems.
+  - id: https://github.com/stalex444/gravity-screening-mechanism/tree/4251201772603bd937d65c52ec892030cc9f272a
+    relationship: builds-on
+    note: >-
+      Earlier pinned Lorentz spin-two coefficient and two-channel source
+      reduction package. Its declarations remain proof dependencies inside the
+      substantive repository but are not selected again as principal results.
 
 status:
   scope: >-
-    The ten compared declarations cover an explicit flat-Minkowski Fourier
-    symbol, Ward-identity and self-adjointness coefficient rigidity, a
-    pointwise two-channel source reduction, additivity, invariance under
-    kernel shifts, and source conservation. The quartic statement assumes the
-    wave coefficient equals 1-(1-1/q)^2 and proves its rational form and all
-    Pauli--Fierz coefficients. It does not prove that physical spacetime
-    selects q, construct a nonlinear spacetime, reproduce the Barnich--
-    Troessaert prepotential map, formalize Deser's bootstrap, formalize
-    Jacobson's thermodynamic argument, or verify an experimental value of G.
+    The compared declarations prove a finite real two-polarization response
+    theorem, exact visible-hidden expectation accounting, cancellation of a
+    common leading source response, and quartic algebraic and field-degree
+    consequences. The
+    general theorem quantifies over the response matrix, finite state,
+    diagonal observable, and nonzero common response. The quartic result assumes
+    q^4=q+1 and q>1, and the exact response interval follows without a fitted
+    parameter. The proof does not establish that physical gravitational waves
+    use the proposed visible-hidden observer placement, derive a cosmological
+    redshift law, identify q with a measured gravitational coupling, derive
+    Newton's constant, or formalize Jacobson's thermodynamic argument. Those
+    application claims are outside this submission.
   sorry_count: 0
   sorry_in_definitions: 0
   axioms:
     - propext
     - Classical.choice
     - Quot.sound
+  main_results:
+    - declaration: StandardSirenRigidity.structuralTT_globalFlux_standardSirenDistance
+      file: Solution.lean
+      sorry_count: 0
+      axioms: [propext, Classical.choice, Quot.sound]
+      comparator_config: comparator.json
+      literature_dependencies:
+        - statement: Standard siren distance compares source evolution with strain amplitude.
+          source: Modified gravitational-wave propagation and standard sirens
+    - declaration: StandardSirenRigidity.quarticStructuralTT_standardSirenRatio_bounds
+      file: Solution.lean
+      sorry_count: 0
+      axioms: [propext, Classical.choice, Quot.sound]
+      comparator_config: comparator.json
+    - declaration: StandardSirenRigidity.quarticStandardSirenResponse_algebraicSignature
+      file: Solution.lean
+      sorry_count: 0
+      axioms: [propext, Classical.choice, Quot.sound]
+      comparator_config: comparator.json
+    - declaration: StandardSirenRigidity.quarticExteriorAmplitude_algebraicSignature
+      file: Solution.lean
+      sorry_count: 0
+      axioms: [propext, Classical.choice, Quot.sound]
+      comparator_config: comparator.json
+    - declaration: StandardSirenRigidity.quarticStandardSirenResponse_minpoly_natDegree
+      file: Solution.lean
+      sorry_count: 0
+      axioms: [propext, Classical.choice, Quot.sound]
+      comparator_config: comparator.json
+    - declaration: StandardSirenRigidity.quarticExteriorAmplitude_minpoly_natDegree
+      file: Solution.lean
+      sorry_count: 0
+      axioms: [propext, Classical.choice, Quot.sound]
+      comparator_config: comparator.json
+    - declaration: StandardSirenRigidity.quarticExteriorAmplitude_relativeDegree
+      file: Solution.lean
+      sorry_count: 0
+      axioms: [propext, Classical.choice, Quot.sound]
+      comparator_config: comparator.json
+    - declaration: StandardSirenRigidity.quarticUniversalResponse_cancels_from_standardSiren
+      file: Solution.lean
+      sorry_count: 0
+      axioms: [propext, Classical.choice, Quot.sound]
+      comparator_config: comparator.json
 
 automation:
   methods:
@@ -148,99 +189,119 @@ automation:
         - OpenAI GPT-family; exact model revision not recorded
       framework: Codex
       tool_setup: >-
-        Human-directed theorem selection, Lean compiler iteration, source and
-        scope review, and Palomar packaging. The proof development was checked
-        with Lean 4.31.0 and Mathlib commit
+        Human-directed theorem selection, Lean compiler iteration, literature
+        and scope review, and Palomar packaging. The proof development was
+        checked with Lean 4.31.0 and Mathlib commit
         fabf563a7c95a166b8d7b6efca11c8b4dc9d911f. Challenge imports only
-        Mathlib. Axiom printing is included in Solution.
+        Mathlib. Solution transports the independently compiled source
+        declarations across definitionally equal comparison definitions.
       cost:
         wall_time: Sessions through 2026-09-07; cumulative elapsed effort not tracked
         spend_usd: not tracked
         hardware: local machine
       prompting_notes: >-
-        The author directed the gravity-screening program, identified the
-        quartic coupling and its Jacobson application, and requested a
-        submission for registry feedback. Proof development was repeatedly
-        narrowed to a Lorentz-covariant, gauge-compatible theorem surface.
-        The final package distinguishes kernel-checked mathematics from the
-        physical correspondence and avoids counting G and Jacobson's entropy
-        coefficient twice.
+        Stephanie Alexander directed the gravity-screening program and asked
+        for a strengthened response to a Palomar research-interest review.
+        Development shifted the comparison surface from routine Lorentz
+        coefficient extraction to a classification theorem for arbitrary TT
+        response matrices, its global-conservation consequence, an explicit
+        falsifiable observer-placement dichotomy, and exact quartic algebraic
+        signatures. She selected Q as the quartic specialization and controlled
+        the publication decision.
   spend_usd: not tracked
   notes: >-
-    Stephanie Alexander supplied the research direction and publication
-    decisions. Coding agents developed proofs and packaging under her
-    direction. Kernel verification is not independent human peer review.
+    Stephanie Alexander supplied the research direction, the quartic PDT
+    specialization, and publication decisions. Coding agents developed proofs
+    and packaging under her direction. Kernel verification is not independent
+    human peer review and does not validate the physical observer placement.
 
 fidelity:
   divergences: >-
-    The formalization proves a self-contained linear classification and
-    elimination theorem inspired by, rather than claimed to be a line-by-line
-    formalization of, the cited physics papers. All application-level premises
-    absent from the theorem statements are named in the scope field.
+    The formalization is a finite algebraic abstraction of the standard-siren
+    response-ratio idea in the cited gravitational-wave literature. It does not
+    reproduce a cosmological propagation equation. Its visible-hidden dilation,
+    matrix symmetry hypotheses, and quartic Q specialization are stated in full
+    on the Challenge surface and are additional premises specific to this
+    development. Both the biased exterior-readout branch and the exact
+    common-response cancellation branch are included.
 
 review:
   status: self-assessed
   reviewers: []
   notes: >-
-    Internal proof and scope audits do not constitute independent peer review
-    or Palomar approval. The package is being prepared specifically so that
-    the registry can assess both exact statement alignment and plausible
-    research interest.
+    A prior selected result group in this repository mechanically verified but
+    was withdrawn after an automated research-interest and provenance review.
+    This replacement changes the principal theorem surface rather than merely
+    revising exposition: it quantifies over an arbitrary TT response matrix and
+    finite source realization, proves a necessary structural response, includes
+    a competing exact cancellation branch, and derives parameter-free quartic
+    interval and polynomial consequences. No originality classification is
+    claimed. Internal proof and scope audits are not independent peer review or
+    Palomar approval.
 
 alignment:
-  namespace: LorentzSpinTwoScreening
+  namespace: StandardSirenRigidity
   statements:
-    - source: Lorentz five-term divergence calculation
-      lean: LorentzSpinTwoScreening.lorentzPauliFierzSymbolDivergence_decomposition
+    - source: General response classification and conserved observer placement
+      lean: StandardSirenRigidity.structuralTT_globalFlux_standardSirenDistance
       module: Solution
       status: proved
-      note: The divergence separates into exactly the three Ward coefficients.
-    - source: Lorentz Ward rigidity
-      lean: LorentzSpinTwoScreening.lorentzSpinTwoWardIdentity_forces_relations
+      note: >-
+        For arbitrary s, response matrix, finite state, diagonal observable,
+        and nonzero common response, the stated symmetries and conservation
+        hypotheses force d_inferred=d_true/sqrt(s).
+    - source: Quartic parameter-free response interval
+      lean: StandardSirenRigidity.quarticStructuralTT_standardSirenRatio_bounds
       module: Solution
       status: proved
-      note: Explicit symmetric polarizations force all three divergence relations.
-    - source: Formal self-adjointness rigidity
-      lean: LorentzSpinTwoScreening.lorentzSpinTwoSelfAdjoint_forces_traceRelation
+      note: >-
+        The q^4=q+1 specialization forces the dimensionless distance ratio
+        strictly between 1.016 and 1.017 for every admissible response matrix
+        and source realization.
+    - source: Quartic distance algebraic signature
+      lean: StandardSirenRigidity.quarticStandardSirenResponse_algebraicSignature
       module: Solution
       status: proved
-      note: The mutually adjoint trace/divergence coefficients coincide.
-    - source: Pauli--Fierz classification
-      lean: LorentzSpinTwoScreening.lorentzPauliFierzSymbol_operatorProperties_unique
+      note: >-
+        Eliminating q proves the exact degree-eight integer polynomial identity
+        for the distance response.
+    - source: Quartic amplitude algebraic signature
+      lean: StandardSirenRigidity.quarticExteriorAmplitude_algebraicSignature
       module: Solution
       status: proved
-      note: Ward identity plus self-adjointness leaves one overall scale.
-    - source: Quartic normalization
-      lean: LorentzSpinTwoScreening.quartic_lorentzSymbolProperties_force_fullNormalization
+      note: >-
+        Eliminating q proves the exact monic degree-eight integer polynomial
+        identity for the exterior amplitude.
+    - source: Quartic distance minimal degree
+      lean: StandardSirenRigidity.quarticStandardSirenResponse_minpoly_natDegree
       module: Solution
       status: proved
-      note: The assumed quartic wave scale fixes all five coefficients.
-    - source: Two-channel elimination
-      lean: LorentzSpinTwoScreening.lorentzDoubledSpinTwo_sourceReduction
+      note: >-
+        The reciprocal distance response has minimal-polynomial degree exactly
+        eight, so its displayed equation cannot collapse to lower degree.
+    - source: Quartic amplitude minimal degree
+      lean: StandardSirenRigidity.quarticExteriorAmplitude_minpoly_natDegree
       module: Solution
       status: proved
-      note: Source-free partner elimination yields the coefficient 1-l^2 pointwise.
-    - source: Combined rigidity and reduction
-      lean: LorentzSpinTwoScreening.quarticLorentzSpinTwo_rigidity_and_sourceReduction
+      note: >-
+        A mod-five Rabin/Frobenius certificate, a monic lift through the
+        integers, and Gauss's lemma prove exact degree eight over the rationals.
+    - source: Quartic-to-amplitude field tower
+      lean: StandardSirenRigidity.quarticExteriorAmplitude_relativeDegree
       module: Solution
       status: proved
-      note: Capstone combining the unique quartic Pauli--Fierz pattern with full source reduction.
-    - source: Operator additivity
-      lean: LorentzSpinTwoScreening.lorentzPauliFierzSymbol_add
+      note: >-
+        The quartic generator is recovered as a rational function of the
+        amplitude, and the resulting amplitude field has relative degree two
+        over the embedded quartic field.
+    - source: Competing common-response branch
+      lean: StandardSirenRigidity.quarticUniversalResponse_cancels_from_standardSiren
       module: Solution
       status: proved
-      note: The five-term symbol is additive in its tensor argument.
-    - source: Gauge-kernel invariance
-      lean: LorentzSpinTwoScreening.lorentzDoubledSpinTwo_gaugeInvariant
-      module: Solution
-      status: proved
-      note: Kernel shifts of both fields leave both mixed equations unchanged.
-    - source: Source conservation
-      lean: LorentzSpinTwoScreening.lorentzScreenedSource_conserved
-      module: Solution
-      status: proved
-      note: A Ward-compatible screened output has a conserved source.
+      note: >-
+        If the same nonzero inverse-screening response multiplies chirp and
+        strain, the inferred standard-siren distance is exactly unchanged.
 
 acknowledgements: >-
-  Lean and Mathlib contributors; the authors of the cited mathematical physics
-  sources; and the maintainers of the Palomar Registry.
+  Lean and Mathlib contributors; the authors of the cited standard-siren and
+  dilation literature; and the maintainers of the Palomar Registry.

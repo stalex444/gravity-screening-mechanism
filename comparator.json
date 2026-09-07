@@ -2,16 +2,14 @@
   "challenge_module": "Challenge",
   "solution_module": "Solution",
   "theorem_names": [
-    "LorentzSpinTwoScreening.lorentzPauliFierzSymbolDivergence_decomposition",
-    "LorentzSpinTwoScreening.lorentzSpinTwoWardIdentity_forces_relations",
-    "LorentzSpinTwoScreening.lorentzSpinTwoSelfAdjoint_forces_traceRelation",
-    "LorentzSpinTwoScreening.lorentzPauliFierzSymbol_operatorProperties_unique",
-    "LorentzSpinTwoScreening.quartic_lorentzSymbolProperties_force_fullNormalization",
-    "LorentzSpinTwoScreening.lorentzDoubledSpinTwo_sourceReduction",
-    "LorentzSpinTwoScreening.quarticLorentzSpinTwo_rigidity_and_sourceReduction",
-    "LorentzSpinTwoScreening.lorentzPauliFierzSymbol_add",
-    "LorentzSpinTwoScreening.lorentzDoubledSpinTwo_gaugeInvariant",
-    "LorentzSpinTwoScreening.lorentzScreenedSource_conserved"
+    "StandardSirenRigidity.structuralTT_globalFlux_standardSirenDistance",
+    "StandardSirenRigidity.quarticStructuralTT_standardSirenRatio_bounds",
+    "StandardSirenRigidity.quarticStandardSirenResponse_algebraicSignature",
+    "StandardSirenRigidity.quarticExteriorAmplitude_algebraicSignature",
+    "StandardSirenRigidity.quarticStandardSirenResponse_minpoly_natDegree",
+    "StandardSirenRigidity.quarticExteriorAmplitude_minpoly_natDegree",
+    "StandardSirenRigidity.quarticExteriorAmplitude_relativeDegree",
+    "StandardSirenRigidity.quarticUniversalResponse_cancels_from_standardSiren"
   ],
   "definition_names": [],
   "permitted_axioms": [

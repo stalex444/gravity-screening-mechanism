@@ -1,263 +1,231 @@
-import GravityScreening.PalomarCapstone
+import GravityScreening.QuarticResponseIrreducibility
 
 /-!
-# Solution: Lorentz spin-two rigidity and screened source reduction
+# Structural rigidity of a conservative two-polarization response
 
-The solution repeats the challenge definitions verbatim under the comparison
-namespace, then transports the independently proved source declarations across
-definitional equality. This keeps every compared statement structurally exact.
+This challenge classifies the leading standard-siren response of an arbitrary
+real two-by-two transverse-traceless polarization block. Rotation covariance,
+self-adjointness, a prescribed quadratic weight, and the passive branch remove
+all matrix freedom. Exact visible-hidden conservation then removes the source
+realization, and a common nonzero source response cancels. The distance bias is
+therefore forced to be `1 / sqrt(s)`.
+
+For the positive real solution of `q^4 = q + 1`, PDT supplies
+`s = 1 - (1 - 1/q)^2 = (2q-1)/q^2`. This yields a parameter-free interval
+`1.016 < d_inferred/d_true < 1.017` and exact degree-eight polynomial
+identities for both the exterior amplitude and the distance response.
+
+The theorem is conditional on the explicitly stated observer placement: the
+chirp counts complete visible-plus-hidden flux while strain reads the exterior
+TT block. A companion theorem proves that a response common to chirp and
+strain instead cancels exactly.
 -/
 
-namespace LorentzSpinTwoScreening
+namespace StandardSirenRigidity
 
 noncomputable section
 
-/-- Quartic-sector retention coefficient. -/
+open scoped BigOperators IntermediateField
+
+/-- Quartic-sector self-coupling. -/
 def lambda4 (q : ℝ) : ℝ := 1 - 1 / q
 
-/-- Surviving response after eliminating a linearly coupled partner. -/
+/-- Retained quadratic response. -/
 def screening (l : ℝ) : ℝ := 1 - l ^ 2
 
-abbrev FlatIndex := Fin 4
+/-- Quarter-turn on the plus/cross polarization plane. -/
+def ttPolarizationQuarterTurn : Matrix (Fin 2) (Fin 2) ℝ :=
+  !![0, -1;
+     1,  0]
 
-/-- Symmetry predicate for covariant rank-two tensors. -/
-def IsSymmetricFlatTensor (h : Matrix FlatIndex FlatIndex ℝ) : Prop :=
-  ∀ i j, h i j = h j i
+/-- Norm-preserving visible-hidden dilation at weight `s`. -/
+noncomputable def erasureDilation {n : ℕ} (s : ℝ) (psi : Fin n → ℂ) :
+    Option (Fin n) × Option (Fin n) → ℂ
+  | (some i, none) => (Real.sqrt s : ℂ) * psi i
+  | (none, some i) => (Real.sqrt (1 - s) : ℂ) * psi i
+  | _ => 0
 
-/-- Diagonal signs of the Minkowski metric. -/
-def minkowskiSign : FlatIndex → ℝ := ![-1, 1, 1, 1]
+/-- Quartic specialization of the visible-hidden dilation. -/
+noncomputable def quarticErasureDilation {n : ℕ}
+    (q : ℝ) (psi : Fin n → ℂ) :
+    Option (Fin n) × Option (Fin n) → ℂ :=
+  erasureDilation (screening (lambda4 q)) psi
 
-/-- Raised momentum components. -/
-def lorentzRaisedMomentum (k : FlatIndex → ℝ) (mu : FlatIndex) : ℝ :=
-  minkowskiSign mu * k mu
+/-- Expectation of a real diagonal observable in a finite pure state. -/
+noncomputable def finiteDiagonalExpectation {n : ℕ}
+    (k : Fin n → ℝ) (psi : Fin n → ℂ) : ℝ :=
+  ∑ i, k i * Complex.normSq (psi i)
 
-/-- Lorentzian momentum square. -/
-def lorentzMomentumSq (k : FlatIndex → ℝ) : ℝ :=
-  ∑ mu, lorentzRaisedMomentum k mu * k mu
+/-- Exterior contribution to the diagonal expectation. -/
+noncomputable def exteriorDataExpectation {n : ℕ}
+    (k : Fin n → ℝ)
+    (Psi : Option (Fin n) × Option (Fin n) → ℂ) : ℝ :=
+  ∑ i, k i * Complex.normSq (Psi (some i, none))
 
-/-- Lorentzian tensor trace. -/
-def lorentzTensorTrace (h : Matrix FlatIndex FlatIndex ℝ) : ℝ :=
-  ∑ mu, minkowskiSign mu * h mu mu
+/-- Hidden contribution to the diagonal expectation. -/
+noncomputable def hiddenDataExpectation {n : ℕ}
+    (k : Fin n → ℝ)
+    (Psi : Option (Fin n) × Option (Fin n) → ℂ) : ℝ :=
+  ∑ i, k i * Complex.normSq (Psi (none, some i))
 
-/-- Divergence on the first tensor index. -/
-def lorentzTensorDivergence
-    (k : FlatIndex → ℝ) (h : Matrix FlatIndex FlatIndex ℝ)
-    (nu : FlatIndex) : ℝ :=
-  ∑ rho, lorentzRaisedMomentum k rho * h rho nu
+/-- Leading chirp rate with shape, response, and source scale separated. -/
+def leadingChirpRate
+    (chirpShape response sourceScale : ℝ) : ℝ :=
+  chirpShape * response * sourceScale
 
-/-- Divergence on the second tensor index. -/
-def lorentzTensorReverseDivergence
-    (k : FlatIndex → ℝ) (h : Matrix FlatIndex FlatIndex ℝ)
-    (mu : FlatIndex) : ℝ :=
-  ∑ rho, lorentzRaisedMomentum k rho * h mu rho
+/-- Leading strain amplitude with inverse-distance scaling separated. -/
+noncomputable def leadingMetricStrain
+    (strainShape response sourceScale luminosityDistance : ℝ) : ℝ :=
+  strainShape * response * sourceScale / luminosityDistance
 
-/-- Lorentzian double divergence. -/
-def lorentzTensorDoubleDivergence
-    (k : FlatIndex → ℝ) (h : Matrix FlatIndex FlatIndex ℝ) : ℝ :=
-  ∑ mu, lorentzRaisedMomentum k mu *
-    lorentzTensorReverseDivergence k h mu
+/-- Common leading quadrupole response induced by inverse quartic screening. -/
+noncomputable def quarticQuadrupoleCommonResponse (q : ℝ) : ℝ :=
+  Real.rpow (q ^ 2 / (2 * q - 1)) ((5 : ℝ) / 3)
 
-/-- Covariant Minkowski metric components in the diagonal frame. -/
-def minkowskiMetric (mu nu : FlatIndex) : ℝ :=
-  if mu = nu then minkowskiSign mu else 0
+/-- Algebraic standard-siren distance estimator. -/
+noncomputable def inferredStandardSirenDistance
+    (chirpShape strainShape chirpRate strain : ℝ) : ℝ :=
+  strainShape * chirpRate / (chirpShape * strain)
 
-/-- Standard parity-even, local, two-derivative five-term Fourier symbol on a
-covariant rank-two field. -/
-def lorentzPauliFierzSymbol
-    (a b c d e : ℝ)
-    (k : FlatIndex → ℝ) (h : Matrix FlatIndex FlatIndex ℝ)
-    (mu nu : FlatIndex) : ℝ :=
-  a * lorentzMomentumSq k * h mu nu +
-    (b / 2) *
-      (k mu * lorentzTensorDivergence k h nu +
-        k nu * lorentzTensorReverseDivergence k h mu) +
-    c * k mu * k nu * lorentzTensorTrace h +
-    d * minkowskiMetric mu nu * lorentzTensorDoubleDivergence k h +
-    e * minkowskiMetric mu nu * lorentzMomentumSq k *
-      lorentzTensorTrace h
+/-- General rigidity theorem: the complete hypotheses force the unique
+leading distance response `1 / sqrt(s)`. -/
+theorem structuralTT_globalFlux_standardSirenDistance {n : ℕ}
+    (M : Matrix (Fin 2) (Fin 2) ℝ)
+    (s response : ℝ) (k : Fin n → ℝ) (psi : Fin n → ℂ)
+    (chirpShape strainShape luminosityDistance : ℝ)
+    (hs0 : 0 < s) (hs1 : s ≤ 1)
+    (hcomm :
+      M * ttPolarizationQuarterTurn = ttPolarizationQuarterTurn * M)
+    (hself : M.transpose = M)
+    (hweight :
+      M.transpose * M = s • (1 : Matrix (Fin 2) (Fin 2) ℝ))
+    (hpassive : 0 ≤ M 0 0)
+    (hchirpShape : chirpShape ≠ 0)
+    (hstrainShape : strainShape ≠ 0)
+    (hresponse : response ≠ 0)
+    (hflux : finiteDiagonalExpectation k psi ≠ 0)
+    (hdistance : luminosityDistance ≠ 0) :
+    inferredStandardSirenDistance chirpShape strainShape
+        (leadingChirpRate chirpShape response
+          (exteriorDataExpectation k (erasureDilation s psi) +
+            hiddenDataExpectation k (erasureDilation s psi)))
+        (leadingMetricStrain strainShape (response * M 0 0)
+          (finiteDiagonalExpectation k psi) luminosityDistance) =
+      luminosityDistance / Real.sqrt s := by
+  exact GravityScreening.structuralTT_globalFlux_standardSirenDistance
+    M s response k psi chirpShape strainShape luminosityDistance hs0 hs1
+    hcomm hself hweight hpassive hchirpShape hstrainShape hresponse hflux
+    hdistance
 
-/-- Raised-index divergence of the Lorentzian symbol. -/
-def lorentzPauliFierzSymbolDivergence
-    (a b c d e : ℝ)
-    (k : FlatIndex → ℝ) (h : Matrix FlatIndex FlatIndex ℝ)
-    (nu : FlatIndex) : ℝ :=
-  ∑ mu, lorentzRaisedMomentum k mu *
-    lorentzPauliFierzSymbol a b c d e k h mu nu
+/-- The quartic root fixes the structurally forced distance response to a
+rigorous interval between `1.016` and `1.017`. -/
+theorem quarticStructuralTT_standardSirenRatio_bounds {n : ℕ}
+    (M : Matrix (Fin 2) (Fin 2) ℝ)
+    (q : ℝ) (k : Fin n → ℝ) (psi : Fin n → ℂ)
+    (chirpShape strainShape luminosityDistance : ℝ)
+    (hq4 : q ^ 4 = q + 1) (hq1 : 1 < q)
+    (hcomm :
+      M * ttPolarizationQuarterTurn = ttPolarizationQuarterTurn * M)
+    (hself : M.transpose = M)
+    (hweight :
+      M.transpose * M =
+        screening (lambda4 q) • (1 : Matrix (Fin 2) (Fin 2) ℝ))
+    (hpassive : 0 ≤ M 0 0)
+    (hchirpShape : chirpShape ≠ 0)
+    (hstrainShape : strainShape ≠ 0)
+    (hflux : finiteDiagonalExpectation k psi ≠ 0)
+    (hdistance : luminosityDistance ≠ 0) :
+    (127 : ℝ) / 125 <
+        inferredStandardSirenDistance chirpShape strainShape
+            (leadingChirpRate chirpShape
+              (quarticQuadrupoleCommonResponse q)
+              (exteriorDataExpectation k (quarticErasureDilation q psi) +
+                hiddenDataExpectation k (quarticErasureDilation q psi)))
+            (leadingMetricStrain strainShape
+              (quarticQuadrupoleCommonResponse q * M 0 0)
+              (finiteDiagonalExpectation k psi) luminosityDistance) /
+          luminosityDistance ∧
+      inferredStandardSirenDistance chirpShape strainShape
+            (leadingChirpRate chirpShape
+              (quarticQuadrupoleCommonResponse q)
+              (exteriorDataExpectation k (quarticErasureDilation q psi) +
+                hiddenDataExpectation k (quarticErasureDilation q psi)))
+            (leadingMetricStrain strainShape
+              (quarticQuadrupoleCommonResponse q * M 0 0)
+              (finiteDiagonalExpectation k psi) luminosityDistance) /
+          luminosityDistance < (1017 : ℝ) / 1000 := by
+  exact GravityScreening.quarticStructuralTT_standardSirenRatio_bounds
+    M q k psi chirpShape strainShape luminosityDistance hq4 hq1 hcomm hself
+    hweight hpassive hchirpShape hstrainShape hflux hdistance
 
-/-- Ward identity on all momenta and symmetric tensor polarizations. -/
-def HasLorentzSpinTwoWardIdentity (a b c d e : ℝ) : Prop :=
-  ∀ (k : FlatIndex → ℝ) (h : Matrix FlatIndex FlatIndex ℝ),
-    IsSymmetricFlatTensor h →
-      ∀ nu, lorentzPauliFierzSymbolDivergence a b c d e k h nu = 0
+/-- Exact algebraic fingerprint of the quartic distance response. -/
+theorem quarticStandardSirenResponse_algebraicSignature
+    (q : ℝ) (hq4 : q ^ 4 = q + 1) (hq1 : 1 < q) :
+    let R := 1 / Real.sqrt ((2 * q - 1) / q ^ 2)
+    23 * R ^ 8 - 22 * R ^ 6 + 2 * R ^ 4 - 3 * R ^ 2 - 1 = 0 := by
+  exact GravityScreening.quarticStandardSirenResponse_algebraicSignature
+    q hq4 hq1
 
-/-- Lorentz contraction of a tensor with an output tensor. -/
-def lorentzSymbolPairing
-    (g output : Matrix FlatIndex FlatIndex ℝ) : ℝ :=
-  ∑ mu, ∑ nu,
-    minkowskiSign mu * minkowskiSign nu * g mu nu * output mu nu
+/-- Monic algebraic fingerprint of the quartic exterior amplitude. -/
+theorem quarticExteriorAmplitude_algebraicSignature
+    (q : ℝ) (hq4 : q ^ 4 = q + 1) (hq1 : 1 < q) :
+    let A := Real.sqrt ((2 * q - 1) / q ^ 2)
+    A ^ 8 + 3 * A ^ 6 - 2 * A ^ 4 + 22 * A ^ 2 - 23 = 0 := by
+  exact GravityScreening.quarticExteriorAmplitude_algebraicSignature
+    q hq4 hq1
 
-/-- Formal self-adjointness under the Lorentz tensor pairing. -/
-def IsLorentzSpinTwoSymbolSelfAdjoint (a b c d e : ℝ) : Prop :=
-  ∀ (k : FlatIndex → ℝ)
-      (g h : Matrix FlatIndex FlatIndex ℝ),
-    IsSymmetricFlatTensor g → IsSymmetricFlatTensor h →
-      lorentzSymbolPairing g (fun mu nu =>
-        lorentzPauliFierzSymbol a b c d e k h mu nu) =
-      lorentzSymbolPairing h (fun mu nu =>
-        lorentzPauliFierzSymbol a b c d e k g mu nu)
 
-theorem lorentzPauliFierzSymbolDivergence_decomposition
-    (a b c d e : ℝ)
-    (k : FlatIndex → ℝ) (h : Matrix FlatIndex FlatIndex ℝ)
-    (nu : FlatIndex) :
-    lorentzPauliFierzSymbolDivergence a b c d e k h nu =
-      (a + b / 2) * lorentzMomentumSq k *
-        lorentzTensorDivergence k h nu +
-      (b / 2 + d) * k nu * lorentzTensorDoubleDivergence k h +
-      (c + e) * k nu * lorentzMomentumSq k *
-        lorentzTensorTrace h := by
-  exact GravityScreening.lorentzPauliFierzSymbolDivergence_decomposition
-    a b c d e k h nu
+/-- The quartic exterior amplitude has minimal-polynomial degree exactly eight,
+so its displayed degree-eight equation does not collapse to lower degree. -/
+theorem quarticExteriorAmplitude_minpoly_natDegree
+    (q : ℝ) (hq4 : q ^ 4 = q + 1) (hq1 : 1 < q) :
+    let A := Real.sqrt ((2 * q - 1) / q ^ 2)
+    (minpoly ℚ A).natDegree = 8 := by
+  exact GravityScreening.quarticExteriorAmplitude_minpoly_natDegree q hq4 hq1
 
-theorem lorentzSpinTwoWardIdentity_forces_relations
-    (a b c d e : ℝ)
-    (hward : HasLorentzSpinTwoWardIdentity a b c d e) :
-    a + b / 2 = 0 ∧ b / 2 + d = 0 ∧ c + e = 0 := by
-  exact GravityScreening.lorentzSpinTwoWardIdentity_forces_relations
-    a b c d e hward
+/-- The field generated by the exterior amplitude is exactly quadratic over
+the quartic field generated by `q`. -/
+theorem quarticExteriorAmplitude_relativeDegree
+    (q : ℝ) (hq4 : q ^ 4 = q + 1) (hq1 : 1 < q) :
+    let A := Real.sqrt ((2 * q - 1) / q ^ 2)
+    (ℚ⟮q⟯ : IntermediateField ℚ ℝ).relfinrank ℚ⟮A⟯ = 2 := by
+  exact GravityScreening.quarticExteriorAmplitude_relativeDegree q hq4 hq1
 
-theorem lorentzSpinTwoSelfAdjoint_forces_traceRelation
-    (a b c d e : ℝ)
-    (hself : IsLorentzSpinTwoSymbolSelfAdjoint a b c d e) :
-    c = d := by
-  exact GravityScreening.lorentzSpinTwoSelfAdjoint_forces_traceRelation
-    a b c d e hself
+/-- The reciprocal standard-siren distance response also has
+minimal-polynomial degree exactly eight. -/
+theorem quarticStandardSirenResponse_minpoly_natDegree
+    (q : ℝ) (hq4 : q ^ 4 = q + 1) (hq1 : 1 < q) :
+    let R := 1 / Real.sqrt ((2 * q - 1) / q ^ 2)
+    (minpoly ℚ R).natDegree = 8 := by
+  exact GravityScreening.quarticStandardSirenResponse_minpoly_natDegree q hq4 hq1
 
-theorem lorentzPauliFierzSymbol_operatorProperties_unique
-    (a b c d e : ℝ)
-    (hward : HasLorentzSpinTwoWardIdentity a b c d e)
-    (hself : IsLorentzSpinTwoSymbolSelfAdjoint a b c d e) :
-    b = -2 * a ∧ c = a ∧ d = a ∧ e = -a := by
-  exact GravityScreening.lorentzPauliFierzSymbol_operatorProperties_unique
-    a b c d e hward hself
-
-theorem quartic_lorentzSymbolProperties_force_fullNormalization
-    (q a b c d e : ℝ) (hq : q ≠ 0)
-    (hwave : a = screening (lambda4 q))
-    (hward : HasLorentzSpinTwoWardIdentity a b c d e)
-    (hself : IsLorentzSpinTwoSymbolSelfAdjoint a b c d e) :
-    a = (2 * q - 1) / q ^ 2 ∧
-      b = -2 * ((2 * q - 1) / q ^ 2) ∧
-      c = (2 * q - 1) / q ^ 2 ∧
-      d = (2 * q - 1) / q ^ 2 ∧
-      e = -((2 * q - 1) / q ^ 2) := by
-  exact GravityScreening.quartic_lorentzSymbolProperties_force_fullNormalization
-    q a b c d e hq hwave hward hself
-
-theorem lorentzDoubledSpinTwo_sourceReduction
-    (l a b c d e : ℝ) (k : FlatIndex → ℝ)
-    (h partner source : Matrix FlatIndex FlatIndex ℝ) :
-    ((∀ mu nu,
-        lorentzPauliFierzSymbol a b c d e k h mu nu -
-            l * lorentzPauliFierzSymbol a b c d e k partner mu nu =
-          source mu nu) ∧
-      (∀ mu nu,
-        lorentzPauliFierzSymbol a b c d e k partner mu nu -
-            l * lorentzPauliFierzSymbol a b c d e k h mu nu = 0)) ↔
-    ((∀ mu nu,
-        screening l * lorentzPauliFierzSymbol a b c d e k h mu nu =
-          source mu nu) ∧
-      (∀ mu nu,
-        lorentzPauliFierzSymbol a b c d e k partner mu nu =
-          l * lorentzPauliFierzSymbol a b c d e k h mu nu)) := by
-  exact GravityScreening.lorentzDoubledSpinTwo_sourceReduction
-    l a b c d e k h partner source
-
-theorem quarticLorentzSpinTwo_rigidity_and_sourceReduction
-    (q a b c d e : ℝ) (k : FlatIndex → ℝ)
-    (h partner source : Matrix FlatIndex FlatIndex ℝ)
-    (hq : q ≠ 0)
-    (hwave : a = screening (lambda4 q))
-    (hward : HasLorentzSpinTwoWardIdentity a b c d e)
-    (hself : IsLorentzSpinTwoSymbolSelfAdjoint a b c d e) :
-    (a = (2 * q - 1) / q ^ 2 ∧
-      b = -2 * ((2 * q - 1) / q ^ 2) ∧
-      c = (2 * q - 1) / q ^ 2 ∧
-      d = (2 * q - 1) / q ^ 2 ∧
-      e = -((2 * q - 1) / q ^ 2)) ∧
-    (((∀ mu nu,
-        lorentzPauliFierzSymbol a b c d e k h mu nu -
-            lambda4 q *
-              lorentzPauliFierzSymbol a b c d e k partner mu nu =
-          source mu nu) ∧
-      (∀ mu nu,
-        lorentzPauliFierzSymbol a b c d e k partner mu nu -
-            lambda4 q *
-              lorentzPauliFierzSymbol a b c d e k h mu nu = 0)) ↔
-    ((∀ mu nu,
-        ((2 * q - 1) / q ^ 2) *
-            lorentzPauliFierzSymbol a b c d e k h mu nu =
-          source mu nu) ∧
-      (∀ mu nu,
-        lorentzPauliFierzSymbol a b c d e k partner mu nu =
-          lambda4 q *
-            lorentzPauliFierzSymbol a b c d e k h mu nu))) := by
-  exact GravityScreening.quarticLorentzSpinTwo_rigidity_and_sourceReduction
-    q a b c d e k h partner source hq hwave hward hself
-
-theorem lorentzPauliFierzSymbol_add
-    (a b c d e : ℝ) (k : FlatIndex → ℝ)
-    (h g : Matrix FlatIndex FlatIndex ℝ) (mu nu : FlatIndex) :
-    lorentzPauliFierzSymbol a b c d e k (h + g) mu nu =
-      lorentzPauliFierzSymbol a b c d e k h mu nu +
-        lorentzPauliFierzSymbol a b c d e k g mu nu := by
-  exact GravityScreening.lorentzPauliFierzSymbol_add
-    a b c d e k h g mu nu
-
-theorem lorentzDoubledSpinTwo_gaugeInvariant
-    (l a b c d e : ℝ) (k : FlatIndex → ℝ)
-    (h partner gaugeH gaugePartner : Matrix FlatIndex FlatIndex ℝ)
-    (hgaugeH : ∀ mu nu,
-      lorentzPauliFierzSymbol a b c d e k gaugeH mu nu = 0)
-    (hgaugePartner : ∀ mu nu,
-      lorentzPauliFierzSymbol a b c d e k gaugePartner mu nu = 0) :
-    (∀ mu nu,
-      lorentzPauliFierzSymbol a b c d e k (h + gaugeH) mu nu -
-          l * lorentzPauliFierzSymbol a b c d e k
-            (partner + gaugePartner) mu nu =
-        lorentzPauliFierzSymbol a b c d e k h mu nu -
-          l * lorentzPauliFierzSymbol a b c d e k partner mu nu) ∧
-    (∀ mu nu,
-      lorentzPauliFierzSymbol a b c d e k
-          (partner + gaugePartner) mu nu -
-          l * lorentzPauliFierzSymbol a b c d e k (h + gaugeH) mu nu =
-        lorentzPauliFierzSymbol a b c d e k partner mu nu -
-          l * lorentzPauliFierzSymbol a b c d e k h mu nu) := by
-  exact GravityScreening.lorentzDoubledSpinTwo_gaugeInvariant
-    l a b c d e k h partner gaugeH gaugePartner hgaugeH hgaugePartner
-
-theorem lorentzScreenedSource_conserved
-    (s a b c d e : ℝ) (k : FlatIndex → ℝ)
-    (h source : Matrix FlatIndex FlatIndex ℝ)
-    (hsymmetric : IsSymmetricFlatTensor h)
-    (hward : HasLorentzSpinTwoWardIdentity a b c d e)
-    (hsource : ∀ mu nu,
-      s * lorentzPauliFierzSymbol a b c d e k h mu nu = source mu nu) :
-    ∀ nu, (∑ mu, lorentzRaisedMomentum k mu * source mu nu) = 0 := by
-  exact GravityScreening.lorentzScreenedSource_conserved
-    s a b c d e k h source hsymmetric hward hsource
+/-- A response common to chirp and strain cancels exactly. -/
+theorem quarticUniversalResponse_cancels_from_standardSiren
+    (q chirpShape strainShape sourceScale luminosityDistance : ℝ)
+    (hq : 1 < q)
+    (hchirpShape : chirpShape ≠ 0)
+    (hstrainShape : strainShape ≠ 0)
+    (hsourceScale : sourceScale ≠ 0)
+    (hdistance : luminosityDistance ≠ 0) :
+    inferredStandardSirenDistance chirpShape strainShape
+        (leadingChirpRate chirpShape
+          (1 / ((2 * q - 1) / q ^ 2)) sourceScale)
+        (leadingMetricStrain strainShape
+          (1 / ((2 * q - 1) / q ^ 2)) sourceScale
+          luminosityDistance) = luminosityDistance := by
+  exact GravityScreening.quarticUniversalResponse_cancels_from_standardSiren
+    q chirpShape strainShape sourceScale luminosityDistance hq hchirpShape
+    hstrainShape hsourceScale hdistance
 
 end
 
-end LorentzSpinTwoScreening
+end StandardSirenRigidity
 
-#print axioms LorentzSpinTwoScreening.lorentzPauliFierzSymbolDivergence_decomposition
-#print axioms LorentzSpinTwoScreening.lorentzSpinTwoWardIdentity_forces_relations
-#print axioms LorentzSpinTwoScreening.lorentzSpinTwoSelfAdjoint_forces_traceRelation
-#print axioms LorentzSpinTwoScreening.lorentzPauliFierzSymbol_operatorProperties_unique
-#print axioms LorentzSpinTwoScreening.quartic_lorentzSymbolProperties_force_fullNormalization
-#print axioms LorentzSpinTwoScreening.lorentzDoubledSpinTwo_sourceReduction
-#print axioms LorentzSpinTwoScreening.quarticLorentzSpinTwo_rigidity_and_sourceReduction
-#print axioms LorentzSpinTwoScreening.lorentzPauliFierzSymbol_add
-#print axioms LorentzSpinTwoScreening.lorentzDoubledSpinTwo_gaugeInvariant
-#print axioms LorentzSpinTwoScreening.lorentzScreenedSource_conserved
+#print axioms StandardSirenRigidity.structuralTT_globalFlux_standardSirenDistance
+#print axioms StandardSirenRigidity.quarticStructuralTT_standardSirenRatio_bounds
+#print axioms StandardSirenRigidity.quarticStandardSirenResponse_algebraicSignature
+#print axioms StandardSirenRigidity.quarticExteriorAmplitude_algebraicSignature
+#print axioms StandardSirenRigidity.quarticExteriorAmplitude_minpoly_natDegree
+#print axioms StandardSirenRigidity.quarticExteriorAmplitude_relativeDegree
+#print axioms StandardSirenRigidity.quarticStandardSirenResponse_minpoly_natDegree
+#print axioms StandardSirenRigidity.quarticUniversalResponse_cancels_from_standardSiren
