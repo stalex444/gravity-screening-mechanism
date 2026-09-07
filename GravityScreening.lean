@@ -2,4 +2,5 @@ import GravityScreening.Basic
 import GravityScreening.HorizonBranch
 import GravityScreening.ModularAmplitude
 import GravityScreening.ErasureInformation
+import GravityScreening.ErasureDilation
 import GravityScreening.PhiRulerFold

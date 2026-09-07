@@ -189,11 +189,15 @@ mode as the normalized erasure channel above.  Once that identification is
 made, the coefficient, its square, its sign, its placement in information
 geometry, and the direction of the gravitational correction are all fixed.
 
-The remaining construction problem is concrete.  An observer-extended local
-horizon algebra must contain the quartic GNS mode, and restriction to the
-exterior algebra must be shown to induce this erasure channel.  That theorem
-would derive the physical postulate from a microscopic horizon model.  It is
-an upgrade path for the theory, rather than a missing choice of coefficient.
+The finite horizon-cell restriction has now been constructed explicitly in
+`OBSERVER_HORIZON_DILATION.md`: a norm-preserving map gives the exterior
+erasure channel and transfers the missing state to the hidden system.  The
+remaining construction is its relativistic localization.  An
+observer-extended local horizon algebra must contain the quartic GNS mode, the
+two output systems must be assigned to opposite sides of a causal horizon, and
+the map must intertwine the relevant modular evolution.  That theorem would
+derive the physical postulate inside a spacetime net.  It is an upgrade path
+for the theory, rather than a missing choice of coefficient.
 
 ## Verification status
 

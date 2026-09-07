@@ -140,10 +140,11 @@ D_n=S_Q^nD_0.
 \]
 
 Because `0<S_Q<1`, locally recoverable distinguishability decreases strictly
-whenever the initial states differ.  Globally the Stinespring dilation is
-unitary and no information is destroyed; the missing information accumulates
-in the inaccessible environment.  The time asymmetry belongs to the causal
-observer's nested accessible algebras.
+whenever the initial states differ.  The explicit finite Stinespring map in
+`OBSERVER_HORIZON_DILATION.md` proves that the total norm is preserved and that
+the hidden reduced state receives the missing input block with weight
+`lambda4^2`.  The time asymmetry belongs to the causal observer's nested
+accessible algebras.
 
 This supplies a concrete synthesis of the PDT time and gravity ideas:
 

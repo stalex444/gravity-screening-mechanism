@@ -63,6 +63,13 @@ Repeated steps give a monotone local arrow of time while global dilation
 preserves information, linking the same quartic factor to causal time and
 Jacobson's entropy density.
 
+[`OBSERVER_HORIZON_DILATION.md`](OBSERVER_HORIZON_DILATION.md) now constructs
+the channel explicitly for a finite horizon cell.  The map preserves global
+norm; tracing out the hidden system gives the exterior `S_Q` erasure channel,
+while tracing out the exterior system places the same input state in the
+hidden branch with weight `lambda4^2`.  This proves global information
+conservation and local causal loss in one model.
+
 [`BIVECTOR_RATE_AUDIT.md`](BIVECTOR_RATE_AUDIT.md) records a selective but
 non-exact consequence: `-log(S_Q)/log(Q)` differs from `1/6` by only
 `8.50e-6`, equivalently `S_Q^6 Q - 1 = -1.01759e-5`.  Six is the dimension of
@@ -463,6 +470,10 @@ minimal mechanism.
   information by the quartic erasure factor, packages the exact modular/Hodge/
   information transform chain, and checks the exact algebraic residual of the
   six-bivector rate candidate.
+- [`GravityScreening/ErasureDilation.lean`](GravityScreening/ErasureDilation.lean)
+  constructs the finite Stinespring map, proves global norm preservation, and
+  computes both the exterior and hidden reduced-state blocks at the exact
+  quartic weights.
 - [`verify.py`](verify.py) reproduces the exact quartic arithmetic using only
   the Python standard library.
 - [`phi_ruler_fold.py`](phi_ruler_fold.py) reproduces the positive-embedding
