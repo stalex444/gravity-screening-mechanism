@@ -3,37 +3,108 @@ import GravityScreening.PalomarCapstone
 /-!
 # Solution: Lorentz spin-two rigidity and screened source reduction
 
-The independent Challenge surface repeats the displayed definitions using only
-Mathlib. These transparent aliases expose the proved source declarations under
-the comparison namespace.
+The solution repeats the challenge definitions verbatim under the comparison
+namespace, then transports the independently proved source declarations across
+definitional equality. This keeps every compared statement structurally exact.
 -/
 
 namespace LorentzSpinTwoScreening
 
 noncomputable section
 
-abbrev lambda4 := GravityScreening.lambda4
-abbrev screening := GravityScreening.screening
-abbrev FlatIndex := GravityScreening.FlatIndex
-abbrev IsSymmetricFlatTensor := GravityScreening.IsSymmetricFlatTensor
-abbrev minkowskiSign := GravityScreening.minkowskiSign
-abbrev lorentzRaisedMomentum := GravityScreening.lorentzRaisedMomentum
-abbrev lorentzMomentumSq := GravityScreening.lorentzMomentumSq
-abbrev lorentzTensorTrace := GravityScreening.lorentzTensorTrace
-abbrev lorentzTensorDivergence := GravityScreening.lorentzTensorDivergence
-abbrev lorentzTensorReverseDivergence :=
-  GravityScreening.lorentzTensorReverseDivergence
-abbrev lorentzTensorDoubleDivergence :=
-  GravityScreening.lorentzTensorDoubleDivergence
-abbrev minkowskiMetric := GravityScreening.minkowskiMetric
-abbrev lorentzPauliFierzSymbol := GravityScreening.lorentzPauliFierzSymbol
-abbrev lorentzPauliFierzSymbolDivergence :=
-  GravityScreening.lorentzPauliFierzSymbolDivergence
-abbrev HasLorentzSpinTwoWardIdentity :=
-  GravityScreening.HasLorentzSpinTwoWardIdentity
-abbrev lorentzSymbolPairing := GravityScreening.lorentzSymbolPairing
-abbrev IsLorentzSpinTwoSymbolSelfAdjoint :=
-  GravityScreening.IsLorentzSpinTwoSymbolSelfAdjoint
+/-- Quartic-sector retention coefficient. -/
+def lambda4 (q : ℝ) : ℝ := 1 - 1 / q
+
+/-- Surviving response after eliminating a linearly coupled partner. -/
+def screening (l : ℝ) : ℝ := 1 - l ^ 2
+
+abbrev FlatIndex := Fin 4
+
+/-- Symmetry predicate for covariant rank-two tensors. -/
+def IsSymmetricFlatTensor (h : Matrix FlatIndex FlatIndex ℝ) : Prop :=
+  ∀ i j, h i j = h j i
+
+/-- Diagonal signs of the Minkowski metric. -/
+def minkowskiSign : FlatIndex → ℝ := ![-1, 1, 1, 1]
+
+/-- Raised momentum components. -/
+def lorentzRaisedMomentum (k : FlatIndex → ℝ) (mu : FlatIndex) : ℝ :=
+  minkowskiSign mu * k mu
+
+/-- Lorentzian momentum square. -/
+def lorentzMomentumSq (k : FlatIndex → ℝ) : ℝ :=
+  ∑ mu, lorentzRaisedMomentum k mu * k mu
+
+/-- Lorentzian tensor trace. -/
+def lorentzTensorTrace (h : Matrix FlatIndex FlatIndex ℝ) : ℝ :=
+  ∑ mu, minkowskiSign mu * h mu mu
+
+/-- Divergence on the first tensor index. -/
+def lorentzTensorDivergence
+    (k : FlatIndex → ℝ) (h : Matrix FlatIndex FlatIndex ℝ)
+    (nu : FlatIndex) : ℝ :=
+  ∑ rho, lorentzRaisedMomentum k rho * h rho nu
+
+/-- Divergence on the second tensor index. -/
+def lorentzTensorReverseDivergence
+    (k : FlatIndex → ℝ) (h : Matrix FlatIndex FlatIndex ℝ)
+    (mu : FlatIndex) : ℝ :=
+  ∑ rho, lorentzRaisedMomentum k rho * h mu rho
+
+/-- Lorentzian double divergence. -/
+def lorentzTensorDoubleDivergence
+    (k : FlatIndex → ℝ) (h : Matrix FlatIndex FlatIndex ℝ) : ℝ :=
+  ∑ mu, lorentzRaisedMomentum k mu *
+    lorentzTensorReverseDivergence k h mu
+
+/-- Covariant Minkowski metric components in the diagonal frame. -/
+def minkowskiMetric (mu nu : FlatIndex) : ℝ :=
+  if mu = nu then minkowskiSign mu else 0
+
+/-- Standard parity-even, local, two-derivative five-term Fourier symbol on a
+covariant rank-two field. -/
+def lorentzPauliFierzSymbol
+    (a b c d e : ℝ)
+    (k : FlatIndex → ℝ) (h : Matrix FlatIndex FlatIndex ℝ)
+    (mu nu : FlatIndex) : ℝ :=
+  a * lorentzMomentumSq k * h mu nu +
+    (b / 2) *
+      (k mu * lorentzTensorDivergence k h nu +
+        k nu * lorentzTensorReverseDivergence k h mu) +
+    c * k mu * k nu * lorentzTensorTrace h +
+    d * minkowskiMetric mu nu * lorentzTensorDoubleDivergence k h +
+    e * minkowskiMetric mu nu * lorentzMomentumSq k *
+      lorentzTensorTrace h
+
+/-- Raised-index divergence of the Lorentzian symbol. -/
+def lorentzPauliFierzSymbolDivergence
+    (a b c d e : ℝ)
+    (k : FlatIndex → ℝ) (h : Matrix FlatIndex FlatIndex ℝ)
+    (nu : FlatIndex) : ℝ :=
+  ∑ mu, lorentzRaisedMomentum k mu *
+    lorentzPauliFierzSymbol a b c d e k h mu nu
+
+/-- Ward identity on all momenta and symmetric tensor polarizations. -/
+def HasLorentzSpinTwoWardIdentity (a b c d e : ℝ) : Prop :=
+  ∀ (k : FlatIndex → ℝ) (h : Matrix FlatIndex FlatIndex ℝ),
+    IsSymmetricFlatTensor h →
+      ∀ nu, lorentzPauliFierzSymbolDivergence a b c d e k h nu = 0
+
+/-- Lorentz contraction of a tensor with an output tensor. -/
+def lorentzSymbolPairing
+    (g output : Matrix FlatIndex FlatIndex ℝ) : ℝ :=
+  ∑ mu, ∑ nu,
+    minkowskiSign mu * minkowskiSign nu * g mu nu * output mu nu
+
+/-- Formal self-adjointness under the Lorentz tensor pairing. -/
+def IsLorentzSpinTwoSymbolSelfAdjoint (a b c d e : ℝ) : Prop :=
+  ∀ (k : FlatIndex → ℝ)
+      (g h : Matrix FlatIndex FlatIndex ℝ),
+    IsSymmetricFlatTensor g → IsSymmetricFlatTensor h →
+      lorentzSymbolPairing g (fun mu nu =>
+        lorentzPauliFierzSymbol a b c d e k h mu nu) =
+      lorentzSymbolPairing h (fun mu nu =>
+        lorentzPauliFierzSymbol a b c d e k g mu nu)
 
 theorem lorentzPauliFierzSymbolDivergence_decomposition
     (a b c d e : ℝ)
