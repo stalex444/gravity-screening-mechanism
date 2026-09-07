@@ -37,6 +37,14 @@ G_Q=\frac{G_0}{S_Q}.
 The fourth statement is an if-and-only-if theorem, not just a proportionality
 argument.
 
+The matrix form itself is now characterized in
+`TT_RESPONSE_UNIQUENESS.md`.  A real TT response that is rotationally
+covariant, self-adjoint, has quadratic weight `S_Q`, and lies on the positive
+passive branch is proved to be uniquely `sqrt(S_Q) I_2`.  Thus the remaining
+physical premise is the identification of the Q information response with a
+TT graviton operator satisfying those properties, rather than an arbitrary
+choice of a two by two matrix.
+
 ## Why the square root appears
 
 `S_Q` is a quadratic information or energy weight.  A field amplitude must
@@ -107,10 +115,12 @@ polarizations; its canonically normalized horizon shear carries
 energy; and duality-symmetric linear gravity organizes ordinary and NUT
 sources as an electric/magnetic doublet.
 
-**Open physical identification.**  The Q residual has not yet been derived as
-the operator `sqrt(S_Q) I_2` on the physical graviton prepotential or horizon
-mode.  The Lean theorem proves exactly what follows if it is that operator; it
-does not make the identification true by definition.
+**Open physical identification.**  The Q residual has not yet been shown to
+act on the physical graviton prepotential or horizon mode with the
+rotationally covariant, self-adjoint response and quadratic weight assumed in
+the uniqueness theorem.  Those properties force the operator
+`sqrt(S_Q) I_2`; the Lean theorem does not identify the information channel
+with the graviton channel by definition.
 
 The next field-theory calculation is therefore sharply specified.  Insert a
 Q-dependent constitutive block into the published first-order,

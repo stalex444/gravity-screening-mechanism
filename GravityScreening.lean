@@ -35,6 +35,7 @@ import GravityScreening.HorizonShearBridge
 import GravityScreening.HorizonShearNormalization
 import GravityScreening.CoherentShearMatching
 import GravityScreening.TTHorizonSplitter
+import GravityScreening.TTResponseUniqueness
 import GravityScreening.ThreeDPackingWitness
 import GravityScreening.TetrahedralCoverage
 import GravityScreening.MorphicPackingThreshold

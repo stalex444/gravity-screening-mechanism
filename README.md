@@ -49,6 +49,16 @@ Pauli--Fierz normalization uniqueness, this connects the radiative and static
 linear responses.  The remaining physical step is to derive this block from
 the local Q-modified spin-two or horizon interaction.
 
+[`TT_RESPONSE_UNIQUENESS.md`](TT_RESPONSE_UNIQUENESS.md) removes the matrix
+ansatz from that result.  On the plus/cross plane, rotational covariance makes
+the response commute with the polarization quarter-turn; self-adjointness
+removes the possible chiral rotation.  Lean proves that these conditions,
+together with quadratic weight `S_Q` and the positive passive branch, uniquely
+force `sqrt(S_Q) I_2`.  A capstone theorem then obtains
+`G_Q=G_0/S_Q` from the symmetry and weight hypotheses directly.  What remains
+is to show that the physical Q-to-graviton interaction satisfies those
+hypotheses.
+
 [`THREE_D_INFORMATION_PACKING.md`](THREE_D_INFORMATION_PACKING.md) records a
 new geometric route prompted by the interpretation of a spatial present as an
 information-packing problem. Bandt--Meyer Proposition 7 constructs an actual
