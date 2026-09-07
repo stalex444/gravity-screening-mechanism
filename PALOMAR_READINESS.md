@@ -33,27 +33,34 @@ This is substantially stronger than a single constructed scalar identity.
 It establishes uniqueness, symplectic compatibility, basis-independent field
 reduction, and the exact quartic specialization.
 
-## The result that would make submission compelling
+## The sourced-constraint advance
 
-The clean completion is one theorem at the sourced constraint level:
+The abstract sourced-constraint part has now been proved.  Applying the same
+two-channel block to the four Pauli--Fierz lapse-and-shift constraint labels
+gives
 
 ```text
-Q-completed sourced parent action
-  --reduce ordinary T_a=(T,0) sector-->
-S_Q times the complete Pauli--Fierz action,
-including lapse and shift constraints,
-with no induced magnetic/NUT source.
+S_Q electric_constraint_i = source_i,
+magnetic_source_equation_i = 0
 ```
 
-That theorem would connect the formalization to a standard open mathematical-
-relativity problem surface: duality-symmetric spin-two fields with sources and
-constraint preservation.  It would support a focused Palomar entry even if
-all physical PDT interpretation were placed outside the compared statements.
+for all four labels.  A determinant-one lower-triangular Gram factor is
+symplectic, preserves the electric source ray `(T,0)` without generating a
+magnetic source component, and produces the full inverse response `1/S_Q`.
+It is unique among positive source-preserving factors in the stated class.
+
+This connects the formalization to a standard mathematical-relativity problem
+surface: duality-symmetric spin-two fields with sources and constraint
+preservation.  The remaining step is an explicit instantiation of the abstract
+block in the full local derivative variables of the Barnich--Troessaert
+action.  The current theorem proves the internal algebra that such an
+instantiation would use; it does not claim that the published action already
+contains the PDT block.
 
 ## A viable intermediate submission
 
-If the constraint theorem proves substantially harder, an intermediate entry
-could compare only the abstract symplectic-reduction theorem group.  It should
+An intermediate entry can now compare the abstract symplectic-reduction and
+source-preserving constraint theorem group.  It should
 be framed as a theorem about mean-preserving chiral completion and uniform
 reduction of doubled quadratic field theories, with PDT as one exact quartic
 specialization.  The comparison should not claim that Newton's constant has
@@ -64,8 +71,8 @@ That package would need:
 - a small independent `Challenge.lean` importing only Mathlib;
 - roughly eight to twelve nonredundant statements led by the operator theorem;
 - precise relationship notes to duality-symmetric spin-two literature;
-- a scope statement separating the propagating-sector theorem from sourced
-  gravitational constraints;
+- a scope statement separating the proved internal constraint algebra from
+  its unproved instantiation in the full derivative action;
 - an explicit falsifier: failure of uniform reduction, symplecticity,
   orientation cancellation, or zero-magnetic-source preservation;
 - valid MSC 2020 codes checked against the official list before submission.
@@ -73,4 +80,3 @@ That package would need:
 The likely classifications are in mathematical physics, symplectic geometry,
 and relativity.  Exact official codes should be validated during packaging
 rather than guessed in advance.
-

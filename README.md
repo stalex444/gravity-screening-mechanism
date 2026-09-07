@@ -213,6 +213,14 @@ closure alone is not yet the strongest registry submission, identifies the
 current operator-level theorem group, and states the sourced-constraint
 theorem that would make the package compelling.
 
+[`ELECTRIC_SOURCE_FRAME.md`](ELECTRIC_SOURCE_FRAME.md) gives the new
+source-level closure.  A unique positive lower-triangular symplectic Gram
+factor preserves the ordinary electric source ray, generates no magnetic
+source component, and yields the complete inverse response `1/S_Q`.  The same
+block reduces all four lapse-and-shift constraint labels uniformly.  The
+remaining task is to instantiate this internal frame in the full local
+derivative variables of the published doubled spin-two action.
+
 [`BIVECTOR_RATE_AUDIT.md`](BIVECTOR_RATE_AUDIT.md) records a selective but
 non-exact consequence: `-log(S_Q)/log(Q)` differs from `1/6` by only
 `8.50e-6`, equivalently `S_Q^6 Q - 1 = -1.01759e-5`.  Six is the dimension of

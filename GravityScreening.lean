@@ -17,4 +17,6 @@ import GravityScreening.CoreClockDuality
 import GravityScreening.ClockHodgeBridge
 import GravityScreening.EffectiveGravityClosure
 import GravityScreening.SymplecticReduction
+import GravityScreening.SourcedConstraint
+import GravityScreening.ElectricSourceFrame
 import GravityScreening.PhiRulerFold
