@@ -11,8 +11,10 @@ S_Q=1-\lambda_4^2=\frac{2Q-1}{Q^2},
 Q^4=Q+1.
 \]
 
-It is an exploratory repository. It does not alter the PDT canon and it does
-not claim that the physical screening mechanism has been derived.
+It is an exploratory repository and does not alter the PDT canon.  It develops
+a parameter-free physical hypothesis for the screening mechanism and marks
+which parts are postulates, published physics inputs, and exact mathematical
+consequences.
 
 The PDT gravity paper already supplies the value of Jacobson's undetermined
 entropy-area density.  The purpose here is narrower: derive the microscopic
@@ -43,6 +45,16 @@ horizon-cell density and every entropy first-law variation by exactly `S_Q`.
 Renormalizing the branch removes the factor.  The mechanism therefore turns on
 whether Jacobson's local area law counts retained cells per original area or a
 post-selected conditional state.
+
+[`MODULAR_GNS_AMPLITUDE.md`](MODULAR_GNS_AMPLITUDE.md) and
+[`ERASURE_INFORMATION_GEOMETRY.md`](ERASURE_INFORMATION_GEOMETRY.md) sharpen
+this into a physical postulate with exact consequences.  The quartic KMS mode
+has modular eigenvalue `1/Q`, so its one-step defect has Hilbert amplitude
+`lambda4`.  The corresponding normalized erasure channel contracts quantum
+relative entropy and its BKM/Fisher information metric by exactly `S_Q`.
+Repeated steps give a monotone local arrow of time while global dilation
+preserves information, linking the same quartic factor to causal time and
+Jacobson's entropy density.
 
 ## The useful result
 
@@ -124,7 +136,14 @@ algebra has a unique gauge-KMS equilibrium at inverse temperature `log Q`.
 KMS detailed balance makes the normalized difference between a process and its
 thermal reverse exactly `1-exp(-log Q) = lambda4`. Thus the residue is
 simultaneously the renewal frequency, the inverse-step transfer eigenvalue, and
-the canonical equilibrium causal-response defect. Type-III state-embedding
+the canonical equilibrium causal-response defect.  In the KMS GNS Hilbert
+space this statement upgrades further: a degree-one mode has modular
+eigenvalue `1/Q`, so `I-Delta_Q` has the genuine Hilbert amplitude `lambda4`
+on that spectral subspace.  Its squared norm and norm-preserving complement
+therefore give `lambda4^2` and `1-lambda4^2` without treating a classical
+frequency as an amplitude.  See
+[`MODULAR_GNS_AMPLITUDE.md`](MODULAR_GNS_AMPLITUDE.md).
+Type-III state-embedding
 theory guarantees an abstract wedge-vacuum embedding that preserves these
 response values. Full modular flows are also related up to a Connes unitary
 cocycle. What has not been constructed is a net-compatible embedding that
@@ -422,6 +441,12 @@ minimal mechanism.
 - [`GravityScreening/HorizonBranch.lean`](GravityScreening/HorizonBranch.lean)
   kernel-checks the subnormalized first-law scaling and the renormalization
   control.
+- [`GravityScreening/ModularAmplitude.lean`](GravityScreening/ModularAmplitude.lean)
+  kernel-checks the modular-eigenvector defect amplitude, its squared Hilbert
+  norm, and the resulting conditional first-law factor.
+- [`GravityScreening/ErasureInformation.lean`](GravityScreening/ErasureInformation.lean)
+  kernel-checks the exact contraction of diagonal relative entropy and Fisher
+  information by the quartic erasure factor.
 - [`verify.py`](verify.py) reproduces the exact quartic arithmetic using only
   the Python standard library.
 - [`phi_ruler_fold.py`](phi_ruler_fold.py) reproduces the positive-embedding

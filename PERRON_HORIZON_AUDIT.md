@@ -155,6 +155,38 @@ This produces a three-way identity from one matrix:
 =\lambda_4.}
 \]
 
+## The exact GNS amplitude theorem
+
+The KMS result also resolves the earlier probability-to-amplitude concern
+inside the quartic graph system.  In the GNS representation of the KMS state,
+standard modular theory gives
+
+\[
+\Delta_Q^{it}\pi(A)\Omega
+=\pi(\alpha_{-(\log Q)t}(A))\Omega
+=Q^{-it}\pi(A)\Omega
+\]
+
+for every nonzero degree-one gauge mode `A`.  Hence
+
+\[
+\Delta_Q\pi(A)\Omega=Q^{-1}\pi(A)\Omega,
+\qquad
+(I-\Delta_Q)\pi(A)\Omega=\lambda_4\pi(A)\Omega.
+\]
+
+Thus `lambda4` is the eigen-amplitude of a modular defect acting on a Hilbert
+vector, and its Born weight is `lambda4^2`.  The full modular operator may be
+unbounded, but its restriction to this analytic spectral subspace is the
+scalar contraction above.  This theorem is developed in
+`MODULAR_GNS_AMPLITUDE.md`, with its exact linear-algebra consequences checked
+in `GravityScreening/ModularAmplitude.lean`.
+
+What remains open is the physical selection of this graph-GNS defect as the
+erasure mode of a local horizon.  The free-wedge point-spectrum obstruction
+prevents a naive identification with a bounded free-field wedge observable;
+the required home is a microscopic horizon-cell or observer-extended algebra.
+
 ## The exact conditional horizon theorem
 
 Let `P_Q` project onto the Perron line and compress the residue to that line:
