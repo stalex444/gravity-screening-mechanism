@@ -177,8 +177,25 @@ and its [official data release](https://zenodo.org/records/20378418). The fixed
 PDT local slope lies at the 62.10th percentile of the released narrow-prior
 `c_M` posterior. This establishes present compatibility, not a preference
 over general relativity. The released analysis fits a decaying `c_M/E(z)^2`
-curve, so a direct likelihood test of the constant-exponent PDT curve remains
-future work.
+curve. A direct posterior-density comparison of the sharp local-slope values
+gives PDT-to-GR ratios of 0.932 (narrow `H0` prior) and 0.975 (wide `H0`
+prior): statistical ties, not evidence for either value.
+
+The exact PDT law is already a native model in the same ICAROGW 2.0.3 release
+recorded in the GWTC-5 result files. Its `eps0_astropycosmology` class uses
+`dL_GW = (1+z)^eps0 dL_EM`; setting `eps0 = beta_Q` gives the Lean-proved PDT
+curve identically. A full test therefore requires no new cosmology code. It
+does require rerunning the hierarchical event and injection likelihood,
+because the GWTC-5 Zenodo package publishes posterior results rather than the
+configured likelihood inputs. The pinned model correspondence and validation
+sequence are recorded in [EXACT_GWTC5_RERUN.md](EXACT_GWTC5_RERUN.md).
+
+The Hubble benchmark supplies a possible joint test. With
+`chi = Q/rho = 0.9215124457...`, an early-universe value `H0 = 67.4` maps to
+the fixed present value `H0 = 73.1406291...`. The released GW posterior is
+also statistically indifferent between the joint PDT proxy point and the
+corresponding GR benchmark points. This is cross-sector compatibility, not an
+independent confirmation or a derivation of the Hubble identification.
 
 ## Palomar comparison surface
 
@@ -225,6 +242,9 @@ lake build
 lake env lean Challenge.lean
 lake env lean Solution.lean
 python3 gwtc5_pdt_curve_check.py /path/to/icarogw_fullpop_spectral_cm_narrow.json
+python3 gwtc5_fixed_slope_evidence.py \
+  /path/to/icarogw_fullpop_spectral_cm_narrow.json \
+  /path/to/icarogw_fullpop_spectral_cm_wide.json
 ```
 
 The solution declarations depend only on `propext`, `Classical.choice`, and

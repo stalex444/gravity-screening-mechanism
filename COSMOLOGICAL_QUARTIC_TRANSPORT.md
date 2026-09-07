@@ -252,6 +252,41 @@ The released posterior therefore does not exclude the PDT value.  Nor does it
 favor PDT over GR: GWTC-5.0 reports no departure from GR, and its uncertainty
 is still broad.
 
+The posterior samples permit a sharper comparison than a percentile. Because
+the published `c_M` prior is uniform, the ratio of marginal posterior densities
+at the fixed PDT local slope and at the GR value is also the
+nuisance-marginalized likelihood ratio between those two sharp values *within
+the collaboration's `c_M/E(z)^2` model*. A checksum-locked Gaussian KDE gives:
+
+| GWTC-5 posterior | PDT/GR density ratio | Interpretation |
+|---|---:|---|
+| Narrow `H0` prior | 0.932 | statistical tie |
+| Wide `H0` prior | 0.975 | statistical tie |
+
+Across one-half to twice Scott's bandwidth the narrow result ranges from
+0.925 to 0.948 and the wide result from 0.960 to 0.976. The ratios are close
+enough to one that their slight preference for GR carries no substantive
+weight.
+
+There is also a fixed two-coordinate PDT benchmark if the separately recorded
+Hubble correspondence is included:
+
+\[
+\chi=\frac{Q}{\rho}=0.921512445671651\ldots,
+\qquad
+H_{0,\mathrm{present}}=\frac{67.4}{\chi}
+=73.1406291001\ldots,
+\]
+
+paired with \(c_M^{\rm local}=0.16667516956\ldots\). Two-dimensional KDE
+comparisons of this point with the same-\(H_0\) GR point, and with the
+\((67.4,0)\) benchmark, remain approximately one under both released priors.
+The existing GW data therefore neither create nor remove evidence for the
+Hubble correspondence. They show that the Hubble and propagation assignments
+can occupy the released joint posterior simultaneously. The identification of
+\(Q/\rho\) with the Hubble discrepancy remains a physical proposal rather than
+a consequence of the arithmetic alone.
+
 Because the fitted GWTC ansatz decays as dark energy becomes negligible while
 the PDT proposal keeps \(\alpha_M\) constant, this is a local-slope
 compatibility check rather than a likelihood evaluation of the exact PDT
@@ -259,10 +294,30 @@ curve.  The matched curves differ by only 0.036% at \(z=0.1\), 0.70% at
 \(z=0.5\), and 2.06% at \(z=1\).  A decisive test should insert the fixed PDT
 curve directly into the released hierarchical likelihood.
 
+Crucially, the required exact curve is already present in the same ICAROGW
+2.0.3 source version recorded in the released result. The class
+`eps0_astropycosmology` implements
+
+\[
+D_L^{\rm GW}=(1+z)^{\epsilon_0}D_L^{\rm EM}.
+\]
+
+Thus \(\epsilon_0=\beta_Q\) is exactly the PDT model, including its luminosity
+distance derivative used in event and selection weights. No new cosmology
+implementation is required. The public GWTC-5 cosmology deposit contains the
+posterior outputs but not the configured ICAROGW event and injection objects,
+so the exact likelihood still requires reconstructing the collaboration run
+from the public parameter-estimation and search-sensitivity releases. The
+first validation must reproduce the published `c_M` result before fixing
+`eps0` to \(\beta_Q\).
+
 The reproducible calculation is in `gwtc5_pdt_curve_check.py`.  It consumes
 the official file `icarogw_fullpop_spectral_cm_narrow.json` from the GWTC-5.0
 Zenodo record and verifies its MD5 checksum before reporting the posterior
-location and curve comparison.
+location and curve comparison. `gwtc5_fixed_slope_evidence.py` consumes both
+official narrow- and wide-`H0` files, verifies both checksums, reports KDE
+bandwidth sensitivity, performs a deterministic nonparametric bootstrap, and
+evaluates the Hubble-gravity joint benchmark.
 
 ## The near-degree-twelve exponent
 
