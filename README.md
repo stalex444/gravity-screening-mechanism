@@ -112,6 +112,20 @@ The remaining physical step is to force this dilation from the local Q
 horizon theory and extend the intertwiner through the constraint/source
 block.
 
+[`TT_CONSTRAINT_SOURCE_CLOSURE.md`](TT_CONSTRAINT_SOURCE_CLOSURE.md) carries
+that coefficient through the complete modeled linear constraint and source
+sector. The positive triangular-frame scales are now fixed rather than left
+as parameters: `d=sqrt(S_Q)` and `r=S_Q^(1/4)`. Lean proves that the resulting
+frame is symplectic, preserves an ordinary electric source ray, and gives the
+unique response `E_i=J_i/S_Q`, `B_i=lambda4*J_i/S_Q` for each of the four
+lapse/shift constraints. Thus the magnetic partner is induced while every
+independent magnetic source equation remains zero. A capstone joins this with
+the retained TT prepotential action, Pauli--Fierz coefficient uniqueness, the
+two-polarization count, and the exact equivalence
+`G_Q=G_0/S_Q`. The remaining linear field-theory seam is to derive the doubled
+constraint block and the TT action together by varying one local sourced
+covariant action.
+
 [`THREE_D_INFORMATION_PACKING.md`](THREE_D_INFORMATION_PACKING.md) records a
 new geometric route prompted by the interpretation of a spatial present as an
 information-packing problem. Bandt--Meyer Proposition 7 constructs an actual
