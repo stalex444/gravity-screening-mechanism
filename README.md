@@ -192,8 +192,11 @@ merely described. The checksum lock identifies all 235 official event files
 (89,295,221,112 source bytes), and the sequential extractor verifies and
 compacts one HDF5 file at a time. A second pinned script reconstructs the
 marginal PE-prior density and has passed O3b, O4a, O4b, and catalog-exception
-files. The pinned inputs, commands, real-file integration tests, and remaining
-selection-threshold seam are recorded in
+files. The official 1.142 GB cumulative injection file has also been checksum
+verified and compacted with the selection fixed at semianalytic SNR above 10 or
+real-search FAR below 0.25/year: 1,478,693 injections pass, with no overlap
+between the two channels. The pinned inputs, formulas, commands, and real-file
+integration tests are recorded in
 [EXACT_GWTC5_RERUN.md](EXACT_GWTC5_RERUN.md).
 
 The Hubble benchmark supplies a possible joint test. With
@@ -256,6 +259,9 @@ python3.12 -m venv gwtc5-prior-env
 ./gwtc5-prior-env/bin/pip install -r gwtc5_prior_requirements.txt
 ./gwtc5-prior-env/bin/python evaluate_gwtc5_pe_prior.py \
   gwtc5-data/events/GW240420_175625.npz
+./gwtc5-prior-env/bin/python prepare_gwtc5_injections.py \
+  /path/to/mixture-semi_o1_o2-real_o3_o4a_o4b-polar_spins_20260410130052UTC-clipped.hdf \
+  --output gwtc5-data/gwtc5_cumulative_icarogw.npz
 ```
 
 The solution declarations depend only on `propext`, `Classical.choice`, and

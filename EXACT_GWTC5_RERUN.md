@@ -155,30 +155,75 @@ and the marked high-spin BNS exception. All reconstructed values were finite
 and positive. In the two O4 checks, the relative spread of the transformed
 component-mass density was below \(2.1\times10^{-15}\).
 
+## Selection-function reconstruction
+
+`prepare_gwtc5_injections.py` verifies and compacts the official cumulative
+O1--O4b sensitivity file. The fiducial rule is fixed before evaluating either
+PDT or GR:
+
+```text
+O1/O2: semianalytic network SNR > 10
+O3/O4: minimum search FAR < 0.25/year
+found: O1/O2 OR O3/O4
+```
+
+The GWTC-5 paper fixes the event and real-injection threshold at FAR below
+0.25/year. The cumulative release documents 10 as the standard semianalytic
+O1/O2 SNR threshold; the same value is used in the established LVK
+semianalytic prescription. The archived GWTC-5 result does not serialize its
+SNR setting, so the required end-to-end check remains reproduction of the
+released `cM` evidence before evaluating PDT.
+
+The checksum-verified source contains 2,504,653 retained candidate injections. The machine-readable audit is committed as `gwtc5_injection_audit.json`.
+At the locked thresholds, 369,995 semianalytic and 1,108,698 real-search
+injections pass, for 1,478,693 total; the two channels have zero overlap. The
+source MD5 is `1498cc813a770e6b5da86c8fbf2b3126`.
+
+For the baseline FullPop analysis, the injected spin law and the population's
+implicit spin law both use uniform magnitudes and isotropic orientations. The
+script cancels those identical factors, transforms the remaining draw density
+from `(m1_source,m2_source,z)` to `(m1_detector,m2_detector,D_L)`, and absorbs
+the published run-mixture weight into ICAROGW's effective prior denominator:
+
+\[
+\log \pi_{\rm eff}=\log \pi_{\rm draw,mass,z}
+ -\log\!\left[(1+z)^2\frac{\mathrm dD_L}{\mathrm dz}\right]
+ -\log w_{\rm mixture}.
+\]
+
+This is algebraically the same importance-sampling sum as the cumulative
+release's documented formula. The released inclination log density also agrees
+with the isotropic law `log(sin(i)/2)` to $8.9\times 10^{-16}$ across all
+selected samples. A full pinned-stack run produced an 87,852,700-byte compact
+file; every one of its 1,478,693 priors was finite and positive, and independent
+runs under the system and pinned NumPy/HDF5 stacks produced identical arrays.
+
+```bash
+./gwtc5-prior-env/bin/python prepare_gwtc5_injections.py \
+  /path/to/mixture-semi_o1_o2-real_o3_o4a_o4b-polar_spins_20260410130052UTC-clipped.hdf \
+  --output gwtc5-data/gwtc5_cumulative_icarogw.npz
+```
+
 ## The remaining reproducibility seams
 
-
-The lock, extractor, and prior evaluator solve event identity, waveform-group
-selection, file integrity, local storage, and the marginal-prior formula. Three
-items still have to be closed before an evidence number is defensible:
+The lock, event extractor, PE-prior evaluator, and injection preparer solve
+event identity, waveform-group selection, file integrity, local storage, both
+importance-sampling priors, and a fixed selection rule. Two items still have to
+be closed before an evidence number is defensible:
 
 1. **Catalog-wide prior validation.** The evaluator has passed representative
    O3b, O4a, O4b, and catalog-exception files. It must still run successfully
    across all 235 checksum-locked events. The full joint `log_prior` column is
    retained for diagnostics but is not substituted for the required marginal
    density.
-2. **Selection configuration.** [The cumulative O1--O4b injection release](https://zenodo.org/records/19500052)
-   establishes that the combined file must use semianalytic O1/O2 injections
-   and real O3/O4 injections; its polar and Cartesian versions are documented
-   as equivalent. The catalog threshold fixes the real-search cut at FAR below
-   0.25/year. The exact O1/O2 semianalytic SNR threshold used in the released
-   cosmology run is not serialized and must still be recovered.
-3. **Pipeline validation and compute.** Before evaluating PDT, the reconstructed
+2. **Pipeline validation and compute.** Before evaluating PDT, the reconstructed
    inputs must reproduce the released narrow- and wide-prior `cM` analyses
-   within their sampling errors. Their metadata report 1,440,240 likelihood
-   evaluations and 461,454 seconds for the narrow run, and 1,895,817 evaluations
-   and 755,792 seconds for the wide run, each with 16 workers. This is a compute
-   job rather than a short laptop check.
+   within their sampling errors. This check also adjudicates the documented
+   SNR-10 reconstruction because the archived result did not serialize that
+   setting. The released metadata report 1,440,240 likelihood evaluations and
+   461,454 seconds for the narrow run, and 1,895,817 evaluations and 755,792
+   seconds for the wide run, each with 16 workers. This is a compute job rather
+   than a short laptop check.
 
 These are explicit validation and configuration tasks, not adjustable parts of
 the PDT curve.
@@ -187,8 +232,8 @@ the PDT curve.
 
 1. Pin Python 3.12, Bilby 2.6.0, and ICAROGW 2.0.3 at commit
    `c473f3b2f50e11a88a46cc1625933af1f1249d39`.
-2. Complete catalog-wide prior validation and close the remaining injection
-   threshold seam above.
+2. Complete catalog-wide prior validation and prepare the locked cumulative
+   injections above.
 3. Reproduce the released narrow- and wide-prior `cM` evidence values before
    testing another propagation law.
 4. Replace `cM_mod_wrap` with `eps0_mod_wrap`.
