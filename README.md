@@ -28,6 +28,17 @@ normalized shear mode used by canonical energy. The existing Lean theorems
 then force `G_Q = G_0 / S_Q`, conserve the global flux, and propagate the
 coefficient to the full linear gravitational response.
 
+[`FIXED_CUT_COHERENT_SHEAR_BRIDGE.md`](FIXED_CUT_COHERENT_SHEAR_BRIDGE.md)
+then supplies a shorter effective-theory route. The quartic dilation is the
+one-particle restriction of a passive bosonic splitter. Published coherent-
+state results identify its quadratic relative entropy with canonical boost
+energy, while the horizon graviton normalization writes physical shear as
+`(kappa/2)` times canonical shear. Lean proves that matching the attenuated
+canonical amplitude to the same physical metric geometry is equivalent in
+both directions to `G_Q = G_0 / S_Q`. The remaining physical premise is now
+precise: the Q splitter acts on the canonically normalized transverse-
+traceless horizon graviton mode.
+
 [`THREE_D_INFORMATION_PACKING.md`](THREE_D_INFORMATION_PACKING.md) records a
 new geometric route prompted by the interpretation of a spatial present as an
 information-packing problem. Bandt--Meyer Proposition 7 constructs an actual

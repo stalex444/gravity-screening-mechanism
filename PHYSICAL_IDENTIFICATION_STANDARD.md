@@ -66,8 +66,8 @@ also fixes the rate at which the Q mode is read by the horizon.
 
 ### 3. Derive the exterior channel by restriction
 
-Tracing out, restricting, or conditionally expecting onto the exterior algebra
-must produce the already-proved channel, including its exact amplitudes:
+Tracing out or restricting onto the exterior algebra must produce the
+already-proved channel, including its exact amplitudes:
 
 \[
 |\psi\rangle
@@ -183,20 +183,34 @@ on the same mode whose canonical energy defines the gravitational response.
 
 ## Immediate research target
 
-The most economical next target is a split-horizon model with a controlled
-sharp limit:
+There are two possible next targets. The shorter one is the fixed-cut
+coherent-shear construction developed in
+`FIXED_CUT_COHERENT_SHEAR_BRIDGE.md`. It uses the same physical metric
+perturbation as the matching invariant and avoids comparing different sharp
+horizon cuts.
+
+The more ambitious target is a split-horizon model with a controlled sharp
+limit:
 
 1. place the finite quartic dilation in a type-I split collar;
 2. choose the state and embedding by modular covariance;
-3. derive the exterior map from restriction or conditional expectation;
+3. derive the exterior map by state restriction in the collar;
 4. compute its BKM/relative-entropy Hessian;
 5. identify that Hessian with canonical energy for one fixed shear mode;
-6. take the collar to the horizon while preserving the factor \(S_Q\).
+6. take the collar to the horizon while preserving the factor \(S_Q\), using
+   an operator-valued weight if the sharp half-sided modular inclusion admits
+   one.
 
-This target is smaller than deriving all of quantum gravity.  It asks for one
+The fixed-cut target is smaller than deriving all of quantum gravity. It asks for one
 local observer sector, one channel, one normalized perturbation, and one
 response coefficient.  Success would turn the present conditional gravity
 chain into a physical derivation.
+
+An ordinary normal conditional expectation should not be assumed in the
+sharp-horizon limit. For half-sided modular horizon inclusions, the relevant
+candidate is an operator-valued weight, whose existence is not established in
+general. This open problem is discussed in section 6 of
+<https://arxiv.org/abs/2405.00847>.
 
 ## Literature anchors and scope
 
