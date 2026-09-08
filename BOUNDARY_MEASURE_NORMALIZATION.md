@@ -56,11 +56,49 @@ identification. The PDT correspondence must select and justify one of those
 three-dimensional spaces; it cannot identify `RP^3` with a null direction
 alone.
 
+The observer-frame part of that statement is now derived rather than assumed.
+In the diagonal Minkowski frame, Lean proves that every Lorentz matrix fixing
+the future unit rest observer has no remaining boost entries and is exactly
+the identity-on-time lift of a unique orthogonal `3 x 3` matrix. Conversely,
+every orthogonal spatial matrix has such a lift. Thus the full rest-observer
+stabilizer is equivalent to `O(3)`. Its determinant is necessarily `+1` or
+`-1`; imposing preservation of the apparatus orientation selects an actual
+member of Mathlib's `SO(3)`.
+
+This closes the group-classification step while keeping the physical step
+visible. A fixed observer leaves rotations unresolved, but Lorentz geometry
+alone does not say that a measured coupling must be integrated over those
+rotations. It also does not choose the scale of the invariant metric.
+
 Likewise, an abstract Haar measure on compact `SO(3)` may be normalized to
 any total mass. The value `pi^2` here is specifically the Riemannian volume
 inherited from the round unit `S^3` under its two-to-one antipodal quotient.
 This metric normalization is part of the correspondence that remains to be
 derived physically.
+
+The integration step is also explicit. For any finite left-invariant measure
+on the `SO(3)` observer-rotation group, Lean proves that integrating a scalar
+vertex over the group multiplies the vertex by the measure's total mass. If
+that mass is the round projective value, the 15-channel vertex becomes
+
+```text
+integral_SO(3) (rho Q)^(-15) dmu
+  = pi^2 (rho Q)^(-15)
+  = alpha.
+```
+
+Substitution into the exact electromagnetic-to-gravity factorization gives
+
+```text
+alpha_G
+  = integral_SO(3) (rho Q)^(-15) dmu
+      * pi^2 / ((rho Q)^209 S_Q).
+```
+
+Together with `224 = 15 + 209`, this reproduces the full formula. The theorem
+proves the mathematical content of the inclusive-integration rule. Its use as
+the operational definition of the physical zero-momentum coupling remains the
+one correspondence premise.
 
 Independently, Lean proves that the transverse-traceless graviton space at
 fixed nonzero momentum has exactly two real polarizations. On this
@@ -122,6 +160,16 @@ has diagonal value `pi^2`. All consequences of that premise are forced.
 - `projectiveBoundaryVolume_eq_pi_sq`
 - `projectivePolarFactor`
 - `projectivePolarVolume_eq_pi_sq`
+- `lorentzFixingRestObserver_timeRow`
+- `lorentzFixingRestObserver_spatialBlock_orthogonal`
+- `restFrameLift_preservesMinkowski_iff`
+- `lorentzFixingRestObserver_eq_restFrameLift`
+- `restObserverStabilizerEquivO3`
+- `lorentzFixingRestObserver_spatialDet_dichotomy`
+- `orientedLorentzRestFrame_spatialBlock_mem_SO3`
+- `integral_rotationScalar_eq_mass_mul`
+- `conformalChannelVertex_integral_eq_electromagneticCoupling`
+- `gravitationalCoupling_eq_integratedObserverVertex_link`
 - `screenedPlanckElectronRatio`
 - `gravitationalCoupling_eq_inverse_screenedPlanckRatio_sq`
 - `ttBoundaryVolumeResponse_unique_of_symmetry`

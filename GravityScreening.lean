@@ -22,6 +22,7 @@ import GravityScreening.ElectricSourceFrame
 import GravityScreening.PauliFierzUniqueness
 import GravityScreening.PauliFierzSymbol
 import GravityScreening.LorentzPauliFierzSymbol
+import GravityScreening.ObserverRotationGauge
 import GravityScreening.DoubledSpinTwoOperator
 import GravityScreening.DoubledSpinTwoAction
 import GravityScreening.ActionSplitterBridge
@@ -41,6 +42,7 @@ import GravityScreening.UnifiedCouplingGrammar
 import GravityScreening.RhoQModularCompletion
 import GravityScreening.RhoQBoostNormalization
 import GravityScreening.BoundaryMeasureNormalization
+import GravityScreening.ObserverGaugeIntegration
 import GravityScreening.SpinTwoDegreeAudit
 import GravityScreening.FirstOrderSourceAction
 import GravityScreening.TransverseTracelessCount

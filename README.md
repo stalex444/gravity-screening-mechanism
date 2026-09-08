@@ -197,6 +197,30 @@ exactly the same numerator. This determinant identity does not by itself
 explain why the gravitational response, rather than every two-polarization
 field, should integrate this frame-space measure; that physical placement
 remains to be derived.
+
+The observer stabilizer is no longer an informal premise. Lean proves an
+exact equivalence between Lorentz transformations fixing a future unit rest
+observer and `O(3)` spatial frames: fixing the observer removes every boost,
+and every orthogonal three-frame lifts back uniquely. The spatial determinant
+is `+1` or `-1`; an oriented apparatus selects `SO(3)`. What remains is the
+operational rule that integrates the physical response over this unresolved
+rotation space, together with the round metric and antipodal normalization
+that give it total volume `pi^2`.
+
+That integration rule is now formalized conditionally. For any finite
+left-invariant measure on the `SO(3)` observer-rotation group with total round
+mass `pi^2`, Lean proves
+
+```text
+integral_SO(3) (rho Q)^(-15) dmu = pi^2/(rho Q)^15,
+```
+
+which is exactly the deposited electromagnetic coupling. Substitution into
+the electromagnetic-to-gravity factorization yields the full `224 = 15+209`
+gravity response with its second `pi^2` factor. The surviving physical premise
+is that the operational zero-momentum coupling is this inclusive group
+integral with the round projective metric.
+
 Before the quotient, `(2*pi^2)^2 = 4*pi^4`, matching the associated
 area-quantum form. The remaining correspondence is the PDT identification of
 the round antipodal quotient with the relevant conformal or polarization-frame
