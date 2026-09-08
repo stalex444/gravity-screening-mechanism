@@ -1,10 +1,10 @@
 {
   "attribution": {
     "definition": "fixed-nuisance diagnostic only; event log-sum-weight terms plus the model-dependent selection term, with an identical Monte Carlo normalization draw for the common paired-mass model",
-    "distance_event_term_pearson_r": -0.902993094488914,
+    "distance_event_term_pearson_r": -0.8804950992171107,
     "event_terms": [
       {
-        "delta_log_event_term_pdt_minus_gr": -0.030455437127526963,
+        "delta_log_event_term_pdt_minus_gr": -0.030455437127525187,
         "event": "GW150914_095045",
         "median_luminosity_distance_mpc": 463.0273004376536,
         "run": "O1"
@@ -16,19 +16,19 @@
         "run": "O1"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.04623708150785788,
+        "delta_log_event_term_pdt_minus_gr": -0.046237081507859656,
         "event": "GW151226_033853",
         "median_luminosity_distance_mpc": 471.2247292125912,
         "run": "O1"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.05106412099918778,
+        "delta_log_event_term_pdt_minus_gr": -0.051064120999186,
         "event": "GW170104_101158",
         "median_luminosity_distance_mpc": 1126.1862689610603,
         "run": "O2"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.021303855964021068,
+        "delta_log_event_term_pdt_minus_gr": -0.021303855964017515,
         "event": "GW170608_020116",
         "median_luminosity_distance_mpc": 334.0212859866297,
         "run": "O2"
@@ -40,7 +40,7 @@
         "run": "O2"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.05717587078799724,
+        "delta_log_event_term_pdt_minus_gr": -0.057175870787995464,
         "event": "GW170809_082821",
         "median_luminosity_distance_mpc": 1116.945513317548,
         "run": "O2"
@@ -58,25 +58,25 @@
         "run": "O2"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.10175155418749426,
+        "delta_log_event_term_pdt_minus_gr": -0.10175155418749071,
         "event": "GW170823_131358",
         "median_luminosity_distance_mpc": 2115.453395494745,
         "run": "O2"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.06028434156936768,
+        "delta_log_event_term_pdt_minus_gr": -0.060284341569371236,
         "event": "GW190408_181802",
         "median_luminosity_distance_mpc": 1574.6829463802464,
         "run": "O3a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.03401441137789796,
+        "delta_log_event_term_pdt_minus_gr": -0.03401441137789618,
         "event": "GW190412_053044",
         "median_luminosity_distance_mpc": 699.5342450679238,
         "run": "O3a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.23125818108622553,
+        "delta_log_event_term_pdt_minus_gr": -0.23125818108622376,
         "event": "GW190413_134308",
         "median_luminosity_distance_mpc": 4607.0903498702855,
         "run": "O3a"
@@ -88,7 +88,7 @@
         "run": "O3a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.011117289426078258,
+        "delta_log_event_term_pdt_minus_gr": -0.011117289426074706,
         "event": "GW190425_081805",
         "median_luminosity_distance_mpc": 143.44818712678145,
         "run": "O3a"
@@ -100,37 +100,37 @@
         "run": "O3a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.08671492551705029,
+        "delta_log_event_term_pdt_minus_gr": -0.08671492551705207,
         "event": "GW190512_180714",
         "median_luminosity_distance_mpc": 1534.3960582776995,
         "run": "O3a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.08462917248657575,
+        "delta_log_event_term_pdt_minus_gr": -0.08462917248657753,
         "event": "GW190513_205428",
         "median_luminosity_distance_mpc": 2283.2604026402532,
         "run": "O3a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.09258086162170187,
+        "delta_log_event_term_pdt_minus_gr": -0.09258086162170542,
         "event": "GW190517_055101",
         "median_luminosity_distance_mpc": 1919.5893909569302,
         "run": "O3a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.1691493631701264,
+        "delta_log_event_term_pdt_minus_gr": -0.16914936317012552,
         "event": "GW190519_153544",
         "median_luminosity_distance_mpc": 3057.0433476693465,
         "run": "O3a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.20912994861518897,
+        "delta_log_event_term_pdt_minus_gr": -0.20912994861519063,
         "event": "GW190521_030229",
         "median_luminosity_distance_mpc": 4526.637277364765,
         "run": "O3a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.06737967313430104,
+        "delta_log_event_term_pdt_minus_gr": -0.06737967313429927,
         "event": "GW190521_074359",
         "median_luminosity_distance_mpc": 961.0488641235978,
         "run": "O3a"
@@ -142,55 +142,55 @@
         "run": "O3a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.1666425436065233,
+        "delta_log_event_term_pdt_minus_gr": -0.16664254360652153,
         "event": "GW190602_175927",
         "median_luminosity_distance_mpc": 3274.2085809991427,
         "run": "O3a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.2030613060191655,
+        "delta_log_event_term_pdt_minus_gr": -0.2030613060191624,
         "event": "GW190620_030421",
         "median_luminosity_distance_mpc": 3418.1831698634733,
         "run": "O3a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.04752569622839253,
+        "delta_log_event_term_pdt_minus_gr": -0.04752569622839076,
         "event": "GW190630_185205",
         "median_luminosity_distance_mpc": 908.0265438377,
         "run": "O3a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.14568133155332275,
+        "delta_log_event_term_pdt_minus_gr": -0.14568133155332097,
         "event": "GW190701_203306",
         "median_luminosity_distance_mpc": 2217.008139158801,
         "run": "O3a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.20673952423613784,
+        "delta_log_event_term_pdt_minus_gr": -0.2067395242361374,
         "event": "GW190706_222641",
         "median_luminosity_distance_mpc": 4420.406828420671,
         "run": "O3a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.07507558287223048,
+        "delta_log_event_term_pdt_minus_gr": -0.07507558287223404,
         "event": "GW190707_093326",
         "median_luminosity_distance_mpc": 841.8587027615642,
         "run": "O3a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.05675490763366042,
+        "delta_log_event_term_pdt_minus_gr": -0.05675490763365865,
         "event": "GW190708_232457",
         "median_luminosity_distance_mpc": 962.8643521361589,
         "run": "O3a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.07720034958881072,
+        "delta_log_event_term_pdt_minus_gr": -0.07720034958880717,
         "event": "GW190720_000836",
         "median_luminosity_distance_mpc": 774.5284278778465,
         "run": "O3a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.14421831102415616,
+        "delta_log_event_term_pdt_minus_gr": -0.14421831102415794,
         "event": "GW190727_060333",
         "median_luminosity_distance_mpc": 3235.4500554577417,
         "run": "O3a"
@@ -202,7 +202,7 @@
         "run": "O3a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.13454997454267925,
+        "delta_log_event_term_pdt_minus_gr": -0.1345499745426828,
         "event": "GW190803_022701",
         "median_luminosity_distance_mpc": 3572.7985844124755,
         "run": "O3a"
@@ -220,13 +220,13 @@
         "run": "O3a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.09558108103209051,
+        "delta_log_event_term_pdt_minus_gr": -0.09558108103209406,
         "event": "GW190828_065509",
         "median_luminosity_distance_mpc": 1646.2218603384827,
         "run": "O3a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.11589326449273862,
+        "delta_log_event_term_pdt_minus_gr": -0.11589326449273685,
         "event": "GW190910_112807",
         "median_luminosity_distance_mpc": 1877.9223124589682,
         "run": "O3a"
@@ -238,7 +238,7 @@
         "run": "O3a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.037980030864432024,
+        "delta_log_event_term_pdt_minus_gr": -0.03798003086442847,
         "event": "GW190924_021846",
         "median_luminosity_distance_mpc": 556.0756389435219,
         "run": "O3a"
@@ -250,7 +250,7 @@
         "run": "O3a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.20934255797725498,
+        "delta_log_event_term_pdt_minus_gr": -0.20934255797725676,
         "event": "GW190929_012149",
         "median_luminosity_distance_mpc": 3769.2235240484615,
         "run": "O3a"
@@ -268,19 +268,19 @@
         "run": "O3b"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.09911212314820572,
+        "delta_log_event_term_pdt_minus_gr": -0.09911212314820794,
         "event": "GW191109_010717",
         "median_luminosity_distance_mpc": 1318.013341356445,
         "run": "O3b"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.164374949210913,
+        "delta_log_event_term_pdt_minus_gr": -0.16437494921091123,
         "event": "GW191127_050227",
         "median_luminosity_distance_mpc": 4595.289632850264,
         "run": "O3b"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.020401809031746154,
+        "delta_log_event_term_pdt_minus_gr": -0.0204018090317426,
         "event": "GW191129_134029",
         "median_luminosity_distance_mpc": 802.6594666194977,
         "run": "O3b"
@@ -310,19 +310,19 @@
         "run": "O3b"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.2570755379969256,
+        "delta_log_event_term_pdt_minus_gr": -0.25707553799692384,
         "event": "GW191230_180458",
         "median_luminosity_distance_mpc": 4841.449243912913,
         "run": "O3b"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.06876361133164721,
+        "delta_log_event_term_pdt_minus_gr": -0.06876361133164899,
         "event": "GW200112_155838",
         "median_luminosity_distance_mpc": 1298.8880011782398,
         "run": "O3b"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.02001892912928227,
+        "delta_log_event_term_pdt_minus_gr": -0.020018929129284047,
         "event": "GW200115_042309",
         "median_luminosity_distance_mpc": 291.643611878413,
         "run": "O3b"
@@ -334,19 +334,19 @@
         "run": "O3b"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.054319150678225014,
+        "delta_log_event_term_pdt_minus_gr": -0.05431915067822146,
         "event": "GW200129_065458",
         "median_luminosity_distance_mpc": 973.2464704779591,
         "run": "O3b"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.01746915490033274,
+        "delta_log_event_term_pdt_minus_gr": -0.017469154900336292,
         "event": "GW200202_154313",
         "median_luminosity_distance_mpc": 422.09929859720006,
         "run": "O3b"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.1081476243685362,
+        "delta_log_event_term_pdt_minus_gr": -0.10814762436853442,
         "event": "GW200208_130117",
         "median_luminosity_distance_mpc": 2371.215921714367,
         "run": "O3b"
@@ -358,37 +358,37 @@
         "run": "O3b"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.13697017123411115,
+        "delta_log_event_term_pdt_minus_gr": -0.13697017123411293,
         "event": "GW200219_094415",
         "median_luminosity_distance_mpc": 3829.5976515335233,
         "run": "O3b"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.10241299609024068,
+        "delta_log_event_term_pdt_minus_gr": -0.10241299609024246,
         "event": "GW200224_222234",
         "median_luminosity_distance_mpc": 1771.509055827984,
         "run": "O3b"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.05829472954633452,
+        "delta_log_event_term_pdt_minus_gr": -0.058294729546332746,
         "event": "GW200225_060421",
         "median_luminosity_distance_mpc": 1156.7739714482636,
         "run": "O3b"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.07670497911222895,
+        "delta_log_event_term_pdt_minus_gr": -0.07670497911223251,
         "event": "GW200302_015811",
         "median_luminosity_distance_mpc": 1582.3794956633024,
         "run": "O3b"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.06264412369737471,
+        "delta_log_event_term_pdt_minus_gr": -0.06264412369737116,
         "event": "GW200311_115853",
         "median_luminosity_distance_mpc": 1202.7841577259378,
         "run": "O3b"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.11390583346551253,
+        "delta_log_event_term_pdt_minus_gr": -0.11390583346550898,
         "event": "GW200316_215756",
         "median_luminosity_distance_mpc": 1134.0517910789943,
         "run": "O3b"
@@ -400,55 +400,55 @@
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.22872209626584106,
+        "delta_log_event_term_pdt_minus_gr": -0.22872209626584084,
         "event": "GW230601_224134",
         "median_luminosity_distance_mpc": 3642.398460908386,
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.07473109023198186,
+        "delta_log_event_term_pdt_minus_gr": -0.07473109023198195,
         "event": "GW230605_065343",
         "median_luminosity_distance_mpc": 1058.9916629425575,
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.11510656474861491,
+        "delta_log_event_term_pdt_minus_gr": -0.11510656474861136,
         "event": "GW230606_004305",
         "median_luminosity_distance_mpc": 2743.135890325288,
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.2062379346608263,
+        "delta_log_event_term_pdt_minus_gr": -0.20623793466082452,
         "event": "GW230608_205047",
         "median_luminosity_distance_mpc": 3490.7609504540555,
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.12114712791044369,
+        "delta_log_event_term_pdt_minus_gr": -0.12114712791044191,
         "event": "GW230609_064958",
         "median_luminosity_distance_mpc": 3362.4591590613004,
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.075022823785305,
+        "delta_log_event_term_pdt_minus_gr": -0.07502282378530678,
         "event": "GW230624_113103",
         "median_luminosity_distance_mpc": 2013.6844457712298,
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.018644691869000418,
+        "delta_log_event_term_pdt_minus_gr": -0.01864469186899953,
         "event": "GW230627_015337",
         "median_luminosity_distance_mpc": 308.014412457699,
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.09288216286454798,
+        "delta_log_event_term_pdt_minus_gr": -0.0928821628645462,
         "event": "GW230628_231200",
         "median_luminosity_distance_mpc": 2289.7341156415478,
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.26772482145731225,
+        "delta_log_event_term_pdt_minus_gr": -0.267724821457314,
         "event": "GW230630_125806",
         "median_luminosity_distance_mpc": 5535.620672253735,
         "run": "O4a"
@@ -460,43 +460,43 @@
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.09338340857894112,
+        "delta_log_event_term_pdt_minus_gr": -0.09338340857893712,
         "event": "GW230702_185453",
         "median_luminosity_distance_mpc": 2481.9710046206474,
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.09188101588221764,
+        "delta_log_event_term_pdt_minus_gr": -0.09188101588221897,
         "event": "GW230704_021211",
         "median_luminosity_distance_mpc": 2712.532276027265,
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.1262361140325905,
+        "delta_log_event_term_pdt_minus_gr": -0.12623611403259005,
         "event": "GW230706_104333",
         "median_luminosity_distance_mpc": 1941.1318657407319,
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.25594168983142573,
+        "delta_log_event_term_pdt_minus_gr": -0.25594168983142795,
         "event": "GW230707_124047",
         "median_luminosity_distance_mpc": 4525.364964512155,
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.0937785178038979,
+        "delta_log_event_term_pdt_minus_gr": -0.09377851780389967,
         "event": "GW230708_053705",
         "median_luminosity_distance_mpc": 3307.1398914610954,
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.22794116382928054,
+        "delta_log_event_term_pdt_minus_gr": -0.2279411638292823,
         "event": "GW230708_230935",
         "median_luminosity_distance_mpc": 3482.326223945998,
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.21470822897997444,
+        "delta_log_event_term_pdt_minus_gr": -0.21470822897997266,
         "event": "GW230709_122727",
         "median_luminosity_distance_mpc": 4715.867713363765,
         "run": "O4a"
@@ -508,49 +508,49 @@
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.09787664999842915,
+        "delta_log_event_term_pdt_minus_gr": -0.09787664999842827,
         "event": "GW230723_101834",
         "median_luminosity_distance_mpc": 1609.9602868937952,
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.09795660765617553,
+        "delta_log_event_term_pdt_minus_gr": -0.0979566076561742,
         "event": "GW230726_002940",
         "median_luminosity_distance_mpc": 2067.582948537854,
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.09259712343130388,
+        "delta_log_event_term_pdt_minus_gr": -0.09259712343130744,
         "event": "GW230729_082317",
         "median_luminosity_distance_mpc": 1649.6943416547197,
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.038247185559652674,
+        "delta_log_event_term_pdt_minus_gr": -0.038247185559651786,
         "event": "GW230731_215307",
         "median_luminosity_distance_mpc": 1102.8488793366096,
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.10720325274456322,
+        "delta_log_event_term_pdt_minus_gr": -0.10720325274456144,
         "event": "GW230805_034249",
         "median_luminosity_distance_mpc": 3357.108436380685,
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.2925027963473177,
+        "delta_log_event_term_pdt_minus_gr": -0.29250279634731946,
         "event": "GW230806_204041",
         "median_luminosity_distance_mpc": 5471.8061571798125,
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.08827533445440672,
+        "delta_log_event_term_pdt_minus_gr": -0.08827533445440894,
         "event": "GW230811_032116",
         "median_luminosity_distance_mpc": 2108.3898418974104,
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.2757969573291701,
+        "delta_log_event_term_pdt_minus_gr": -0.27579695732917187,
         "event": "GW230814_061920",
         "median_luminosity_distance_mpc": 4140.915225779712,
         "run": "O4a"
@@ -562,7 +562,7 @@
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.2966922951982447,
+        "delta_log_event_term_pdt_minus_gr": -0.2966922951982429,
         "event": "GW230819_171910",
         "median_luminosity_distance_mpc": 4103.750227365604,
         "run": "O4a"
@@ -586,7 +586,7 @@
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.025509999919805182,
+        "delta_log_event_term_pdt_minus_gr": -0.025509999919804738,
         "event": "GW230904_051013",
         "median_luminosity_distance_mpc": 1042.196173060906,
         "run": "O4a"
@@ -604,19 +604,19 @@
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.058257366154036205,
+        "delta_log_event_term_pdt_minus_gr": -0.05825736615403576,
         "event": "GW230919_215712",
         "median_luminosity_distance_mpc": 1335.5172918240348,
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.09840209726751681,
+        "delta_log_event_term_pdt_minus_gr": -0.09840209726751503,
         "event": "GW230920_071124",
         "median_luminosity_distance_mpc": 2885.5581401074023,
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.09281610099082416,
+        "delta_log_event_term_pdt_minus_gr": -0.09281610099082016,
         "event": "GW230922_020344",
         "median_luminosity_distance_mpc": 1581.3082591291948,
         "run": "O4a"
@@ -628,13 +628,13 @@
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.081001637277895,
+        "delta_log_event_term_pdt_minus_gr": -0.08100163727789722,
         "event": "GW230924_124453",
         "median_luminosity_distance_mpc": 2395.4716909441568,
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.12124689049984028,
+        "delta_log_event_term_pdt_minus_gr": -0.1212468904998385,
         "event": "GW230927_043729",
         "median_luminosity_distance_mpc": 3189.0846383535036,
         "run": "O4a"
@@ -646,13 +646,13 @@
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.23702087890249723,
+        "delta_log_event_term_pdt_minus_gr": -0.23702087890249857,
         "event": "GW230928_215827",
         "median_luminosity_distance_mpc": 4624.11124733547,
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.13236000384056013,
+        "delta_log_event_term_pdt_minus_gr": -0.13236000384055835,
         "event": "GW230930_110730",
         "median_luminosity_distance_mpc": 4882.838436391241,
         "run": "O4a"
@@ -670,25 +670,25 @@
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.3037108437954983,
+        "delta_log_event_term_pdt_minus_gr": -0.3037108437954965,
         "event": "GW231005_021030",
         "median_luminosity_distance_mpc": 6345.2718265146805,
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.09683297586579798,
+        "delta_log_event_term_pdt_minus_gr": -0.09683297586579975,
         "event": "GW231005_091549",
         "median_luminosity_distance_mpc": 3713.373316893163,
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.14925839534694774,
+        "delta_log_event_term_pdt_minus_gr": -0.14925839534694818,
         "event": "GW231008_142521",
         "median_luminosity_distance_mpc": 3001.2365909015843,
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.09296609149786006,
+        "delta_log_event_term_pdt_minus_gr": -0.09296609149786361,
         "event": "GW231014_040532",
         "median_luminosity_distance_mpc": 2289.4306200743035,
         "run": "O4a"
@@ -700,13 +700,13 @@
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.18651542988979664,
+        "delta_log_event_term_pdt_minus_gr": -0.18651542988979652,
         "event": "GW231028_153006",
         "median_luminosity_distance_mpc": 4484.078767811524,
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.2109958088030217,
+        "delta_log_event_term_pdt_minus_gr": -0.21099580880302127,
         "event": "GW231029_111508",
         "median_luminosity_distance_mpc": 3082.7374626675337,
         "run": "O4a"
@@ -718,13 +718,13 @@
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.15629770393040232,
+        "delta_log_event_term_pdt_minus_gr": -0.15629770393040565,
         "event": "GW231104_133418",
         "median_luminosity_distance_mpc": 1469.0007034418231,
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.07130023189585799,
+        "delta_log_event_term_pdt_minus_gr": -0.07130023189585843,
         "event": "GW231108_125142",
         "median_luminosity_distance_mpc": 2058.3948588194153,
         "run": "O4a"
@@ -736,13 +736,13 @@
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.04750971540115101,
+        "delta_log_event_term_pdt_minus_gr": -0.047509715401147457,
         "event": "GW231113_200417",
         "median_luminosity_distance_mpc": 1160.3213525682181,
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.05877645902878825,
+        "delta_log_event_term_pdt_minus_gr": -0.05877645902879003,
         "event": "GW231114_043211",
         "median_luminosity_distance_mpc": 1364.6679825174645,
         "run": "O4a"
@@ -754,25 +754,25 @@
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.18995932951939665,
+        "delta_log_event_term_pdt_minus_gr": -0.18995932951939487,
         "event": "GW231118_071402",
         "median_luminosity_distance_mpc": 4301.9919952799855,
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.08993891794296394,
+        "delta_log_event_term_pdt_minus_gr": -0.08993891794296616,
         "event": "GW231118_090602",
         "median_luminosity_distance_mpc": 1371.5108883856751,
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.27694843928087565,
+        "delta_log_event_term_pdt_minus_gr": -0.27694843928087387,
         "event": "GW231119_075248",
         "median_luminosity_distance_mpc": 6689.463143592233,
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.1974125449675146,
+        "delta_log_event_term_pdt_minus_gr": -0.19741254496751637,
         "event": "GW231127_165300",
         "median_luminosity_distance_mpc": 4454.946280862256,
         "run": "O4a"
@@ -784,19 +784,19 @@
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.12549720932093678,
+        "delta_log_event_term_pdt_minus_gr": -0.125497209320935,
         "event": "GW231206_233134",
         "median_luminosity_distance_mpc": 3310.4964083474893,
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.08145752416505125,
+        "delta_log_event_term_pdt_minus_gr": -0.08145752416504948,
         "event": "GW231206_233901",
         "median_luminosity_distance_mpc": 1495.2422586357006,
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.14009036027459665,
+        "delta_log_event_term_pdt_minus_gr": -0.14009036027459842,
         "event": "GW231213_111417",
         "median_luminosity_distance_mpc": 4046.287282804201,
         "run": "O4a"
@@ -808,124 +808,350 @@
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.06759427804957241,
+        "delta_log_event_term_pdt_minus_gr": -0.06759427804957596,
         "event": "GW231223_202619",
         "median_luminosity_distance_mpc": 888.5403083230311,
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.015864671180513046,
+        "delta_log_event_term_pdt_minus_gr": -0.015864671180510825,
         "event": "GW231224_024321",
         "median_luminosity_distance_mpc": 944.2539471414638,
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.07876796220043625,
+        "delta_log_event_term_pdt_minus_gr": -0.07876796220043403,
         "event": "GW231226_101520",
         "median_luminosity_distance_mpc": 1187.337406944203,
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.05024459149848326,
+        "delta_log_event_term_pdt_minus_gr": -0.05024459149848459,
         "event": "GW231231_154016",
         "median_luminosity_distance_mpc": 1067.4217228506473,
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.12270563395708756,
+        "delta_log_event_term_pdt_minus_gr": -0.12270563395708933,
         "event": "GW240104_164932",
         "median_luminosity_distance_mpc": 1926.9791386982533,
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.3039396187479113,
+        "delta_log_event_term_pdt_minus_gr": -0.30393961874790953,
         "event": "GW240107_013215",
         "median_luminosity_distance_mpc": 5875.7325329749765,
         "run": "O4a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.06390830830908678,
+        "delta_log_event_term_pdt_minus_gr": -0.06390830830908634,
         "event": "GW240109_050431",
         "median_luminosity_distance_mpc": 1495.323364966012,
         "run": "O4a"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.03423045437316752,
+        "event": "GW240413_022019",
+        "median_luminosity_distance_mpc": 571.9658536474074,
+        "run": "O4b"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.08239680380154368,
+        "event": "GW240414_054515",
+        "median_luminosity_distance_mpc": 1525.4837741479232,
+        "run": "O4b"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.08727004309199016,
+        "event": "GW240420_175625",
+        "median_luminosity_distance_mpc": 2031.0870452586028,
+        "run": "O4b"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.25951609830581246,
+        "event": "GW240426_031451",
+        "median_luminosity_distance_mpc": 4000.28803911404,
+        "run": "O4b"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.044075779489347156,
+        "event": "GW240428_225440",
+        "median_luminosity_distance_mpc": 840.647605529873,
+        "run": "O4b"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.1700950787473836,
+        "event": "GW240501_033534",
+        "median_luminosity_distance_mpc": 4695.761323416528,
+        "run": "O4b"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.11596365626851224,
+        "event": "GW240505_133552",
+        "median_luminosity_distance_mpc": 4693.063597022441,
+        "run": "O4b"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.07553975101215826,
+        "event": "GW240507_041632",
+        "median_luminosity_distance_mpc": 1454.4575818529527,
+        "run": "O4b"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.1171472793653674,
+        "event": "GW240511_031507",
+        "median_luminosity_distance_mpc": 1990.6183108406444,
+        "run": "O4b"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.11493852394432835,
+        "event": "GW240512_024139",
+        "median_luminosity_distance_mpc": 1166.3759249164343,
+        "run": "O4b"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.07516252024082348,
+        "event": "GW240513_183302",
+        "median_luminosity_distance_mpc": 2246.8049336719278,
+        "run": "O4b"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.17012049166997123,
+        "event": "GW240514_121713",
+        "median_luminosity_distance_mpc": 2590.1099165717233,
+        "run": "O4b"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.11262690053588997,
+        "event": "GW240515_005301",
+        "median_luminosity_distance_mpc": 3830.583792167333,
+        "run": "O4b"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.16731653227754473,
+        "event": "GW240519_012815",
+        "median_luminosity_distance_mpc": 1742.8229859299583,
+        "run": "O4b"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.09095434903279731,
+        "event": "GW240520_213616",
+        "median_luminosity_distance_mpc": 1402.039509329965,
+        "run": "O4b"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.1932705428943411,
+        "event": "GW240526_093944",
+        "median_luminosity_distance_mpc": 1939.1538639688365,
+        "run": "O4b"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.31931320248215656,
+        "event": "GW240527_183429",
+        "median_luminosity_distance_mpc": 6438.322892630863,
+        "run": "O4b"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.07276083444220305,
+        "event": "GW240527_230910",
+        "median_luminosity_distance_mpc": 1193.0179724453965,
+        "run": "O4b"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.11113840166254674,
+        "event": "GW240530_012417",
+        "median_luminosity_distance_mpc": 1006.5452952154951,
+        "run": "O4b"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.11662768380488586,
+        "event": "GW240531_075248",
+        "median_luminosity_distance_mpc": 4137.153536039764,
+        "run": "O4b"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.2584496805771206,
+        "event": "GW240601_061200",
+        "median_luminosity_distance_mpc": 5086.185382882741,
+        "run": "O4b"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.04500160422677624,
+        "event": "GW240601_231004",
+        "median_luminosity_distance_mpc": 1272.581993425624,
+        "run": "O4b"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.07548339234122992,
+        "event": "GW240615_113620",
+        "median_luminosity_distance_mpc": 1564.763478917045,
+        "run": "O4b"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.09645926769228508,
+        "event": "GW240615_160735",
+        "median_luminosity_distance_mpc": 3971.2309069381,
+        "run": "O4b"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.352265894165642,
+        "event": "GW240618_071627",
+        "median_luminosity_distance_mpc": 5479.306190965877,
+        "run": "O4b"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.06830671438007174,
+        "event": "GW240621_195059",
+        "median_luminosity_distance_mpc": 1207.9929708546229,
+        "run": "O4b"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.20788188463025392,
+        "event": "GW240621_200935",
+        "median_luminosity_distance_mpc": 4788.4343433442245,
+        "run": "O4b"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.25053144898838475,
+        "event": "GW240621_214041",
+        "median_luminosity_distance_mpc": 6778.69878873355,
+        "run": "O4b"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.08887133260879132,
+        "event": "GW240622_004008",
+        "median_luminosity_distance_mpc": 1471.802665051584,
+        "run": "O4b"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.06824868588427035,
+        "event": "GW240627_131622",
+        "median_luminosity_distance_mpc": 1352.8540275441046,
+        "run": "O4b"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.06199773703163203,
+        "event": "GW240629_145256",
+        "median_luminosity_distance_mpc": 1275.0710260873361,
+        "run": "O4b"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.09169646934417086,
+        "event": "GW240630_101703",
+        "median_luminosity_distance_mpc": 3195.874437926349,
+        "run": "O4b"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.08785779860096854,
+        "event": "GW240703_191355",
+        "median_luminosity_distance_mpc": 1881.6524009043883,
+        "run": "O4b"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.2244611642365757,
+        "event": "GW240705_053215",
+        "median_luminosity_distance_mpc": 3733.500351054102,
+        "run": "O4b"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.10540502002534602,
+        "event": "GW240716_034900",
+        "median_luminosity_distance_mpc": 1861.7482449663373,
+        "run": "O4b"
       }
     ],
-    "negative_event_terms": 141,
+    "negative_event_terms": 176,
     "positive_event_terms": 0,
-    "reconstructed_delta": -0.6569939442251069,
+    "reconstructed_delta": -1.2540216733759486,
     "run_summary": {
       "O1": {
         "events": 3,
-        "maximum_event_term": -0.030455437127526963,
+        "maximum_event_term": -0.030455437127525187,
         "mean_event_distance_mpc": 663.5051781849828,
         "mean_event_term": -0.0444141711946191,
         "median_event_distance_mpc": 471.2247292125912,
         "minimum_event_term": -0.05654999494847246,
-        "net_per_event": 0.07033883717753588,
-        "net_with_proportional_selection_share": 0.21101651153260764,
-        "selection_share": 0.34425902511646495,
+        "net_per_event": 0.0703388371775359,
+        "net_with_proportional_selection_share": 0.2110165115326077,
+        "selection_share": 0.344259025116465,
         "sum_event_terms": -0.1332425135838573
       },
       "O2": {
         "events": 7,
-        "maximum_event_term": -0.021303855964021068,
+        "maximum_event_term": -0.021303855964017515,
         "mean_event_distance_mpc": 1335.0021939484682,
-        "mean_event_term": -0.07125711462441105,
+        "mean_event_term": -0.07125711462440952,
         "median_event_distance_mpc": 1126.1862689610603,
         "minimum_event_term": -0.16962560907293067,
-        "net_per_event": 0.04349589374774393,
-        "net_with_proportional_selection_share": 0.30447125623420757,
-        "selection_share": 0.8032710586050849,
-        "sum_event_terms": -0.4987998023708773
+        "net_per_event": 0.04349589374774548,
+        "net_with_proportional_selection_share": 0.30447125623421833,
+        "selection_share": 0.803271058605085,
+        "sum_event_terms": -0.49879980237086663
       },
       "O3a": {
         "events": 33,
-        "maximum_event_term": -0.011117289426078258,
+        "maximum_event_term": -0.011117289426074706,
         "mean_event_distance_mpc": 2045.4765236177493,
-        "mean_event_term": -0.1055522310924094,
+        "mean_event_term": -0.10555223109240931,
         "median_event_distance_mpc": 1877.9223124589682,
-        "minimum_event_term": -0.23125818108622553,
-        "net_per_event": 0.009200777279745581,
-        "net_with_proportional_selection_share": 0.3036256502316039,
-        "selection_share": 3.786849276281114,
-        "sum_event_terms": -3.48322362604951
+        "minimum_event_term": -0.23125818108622376,
+        "net_per_event": 0.009200777279745668,
+        "net_with_proportional_selection_share": 0.30362565023160704,
+        "selection_share": 3.7868492762811146,
+        "sum_event_terms": -3.4832236260495075
       },
       "O3b": {
         "events": 22,
-        "maximum_event_term": -0.01746915490033274,
+        "maximum_event_term": -0.017469154900336292,
         "mean_event_distance_mpc": 1957.8125323073714,
-        "mean_event_term": -0.09234605886066699,
+        "mean_event_term": -0.09234605886066677,
         "median_event_distance_mpc": 1308.4506712673424,
-        "minimum_event_term": -0.2570755379969256,
-        "net_per_event": 0.022406949511487986,
-        "net_with_proportional_selection_share": 0.4929528892527357,
-        "selection_share": 2.5245661841874094,
-        "sum_event_terms": -2.0316132949346737
+        "minimum_event_term": -0.25707553799692384,
+        "net_per_event": 0.02240694951148823,
+        "net_with_proportional_selection_share": 0.49295288925274106,
+        "selection_share": 2.52456618418741,
+        "sum_event_terms": -2.031613294934669
       },
       "O4a": {
         "events": 76,
         "maximum_event_term": -0.015572892512371261,
         "mean_event_distance_mpc": 2868.842279221474,
-        "mean_event_term": -0.14066169589157948,
+        "mean_event_term": -0.1406616958915794,
         "median_event_distance_mpc": 2680.0144473535543,
-        "minimum_event_term": -0.3039396187479113,
-        "net_per_event": -0.025908687519424503,
-        "net_with_proportional_selection_share": -1.969060251476261,
-        "selection_share": 8.721228636283778,
-        "sum_event_terms": -10.690288887760039
+        "minimum_event_term": -0.30393961874790953,
+        "net_per_event": -0.02590868751942444,
+        "net_with_proportional_selection_share": -1.9690602514762574,
+        "selection_share": 8.72122863628378,
+        "sum_event_terms": -10.690288887760037
+      },
+      "O4b": {
+        "events": 35,
+        "maximum_event_term": -0.03423045437316752,
+        "mean_event_distance_mpc": 2697.657170380403,
+        "mean_event_term": -0.13181094349075115,
+        "median_event_distance_mpc": 1939.1538639688365,
+        "minimum_event_term": -0.352265894165642,
+        "net_per_event": -0.01705793511859616,
+        "net_with_proportional_selection_share": -0.5970277291508657,
+        "selection_share": 4.016355293025424,
+        "sum_event_terms": -4.61338302217629
       }
     },
-    "selection_term_pdt_minus_gr": 16.180174180473852,
-    "selection_term_per_event": 0.11475300837215498,
-    "sum_event_terms": -16.83716812469896
+    "selection_term_pdt_minus_gr": 20.19652947349928,
+    "sum_event_terms": -21.450551146875227
   },
   "catalog_sign_change": {
     "delta_at_141_events": -0.6569939442250075,
+    "delta_at_176_events": -1.2540216733759735,
     "delta_at_65_events": 1.3120663072511434,
-    "interpretation": "O4a mean observed-event penalty exceeds the fixed selection contribution per event at this nuisance point; the diagnostic sign changes from PDT to GR",
-    "o4a_incremental_event_term": -10.690288887760039,
-    "o4a_incremental_net": -1.969060251476261,
-    "o4a_incremental_selection_term": 8.721228636283778
+    "interpretation": "O4a changed the fixed-point diagnostic sign from PDT to GR; the first 35 O4b events extend the negative shift",
+    "o4a_incremental_event_term": -10.690288887760037,
+    "o4a_incremental_net": -1.9690602514762574,
+    "o4a_incremental_selection_term": 8.72122863628378,
+    "partial_o4b_events": 35,
+    "partial_o4b_incremental_event_term": -4.61338302217629,
+    "partial_o4b_incremental_net": -0.5970277291508657,
+    "partial_o4b_incremental_selection_term": 4.016355293025424
   },
   "checkpoint_history": [
     {
@@ -970,6 +1196,14 @@
       "nparallel": 8192,
       "scope": "complete O1, O2, O3a, O3b, and O4a",
       "seed": 260907
+    },
+    {
+      "delta_log_likelihood_pdt_minus_gr": -1.2540216733759735,
+      "events": 176,
+      "model_normalization_seed": 260907,
+      "nparallel": 8192,
+      "scope": "complete O1 through O4a plus first 35 of 94 O4b events",
+      "seed": 260907
     }
   ],
   "correction": {
@@ -978,13 +1212,13 @@
     "scope": "component attribution only; no catalog likelihood total changed",
     "supersedes": "the 19-event component attribution in repository commit 1fd4f6e; every reported total likelihood difference remains valid"
   },
-  "delta_log_likelihood_pdt_minus_gr": -0.6569939442250075,
+  "delta_log_likelihood_pdt_minus_gr": -1.2540216733759735,
   "diagnostic_interpretation": {
-    "observed_event_terms": "all 141 favor GR at this fixed nuisance point",
-    "reason": "141 of 235 events and fixed population/background-cosmology nuisance medians; no nuisance marginalization",
-    "selection_term": "favors PDT but no longer exceeds the observed-event sum after O4a",
+    "observed_event_terms": "all 176 favor GR at this fixed nuisance point",
+    "reason": "176 of 235 events, including 35 of 94 O4b events, and fixed population/background-cosmology nuisance medians; no nuisance marginalization",
+    "selection_term": "favors PDT but does not exceed the observed-event sum after O4a and partial O4b",
     "status": "not model evidence",
-    "warning": "the sign may change with the remaining 94 events or nuisance marginalization"
+    "warning": "the sign may change with the remaining 59 events or nuisance marginalization"
   },
   "events": [
     {
@@ -2114,28 +2348,308 @@
       "run": "O4a",
       "selected_group": "C00:IMRPhenomXPHM-SpinTaylor",
       "source_md5": "f715629fe1f5baefe3e736605a581733"
+    },
+    {
+      "event": "GW240413_022019",
+      "median_luminosity_distance_mpc": 571.9658536474074,
+      "posterior_samples": 15179,
+      "run": "O4b",
+      "selected_group": "C00:IMRPhenomXPHM-SpinTaylor",
+      "source_md5": "78210be65686885883b7aee29d7ca0f1"
+    },
+    {
+      "event": "GW240414_054515",
+      "median_luminosity_distance_mpc": 1525.4837741479232,
+      "posterior_samples": 14167,
+      "run": "O4b",
+      "selected_group": "C00:IMRPhenomXPHM-SpinTaylor",
+      "source_md5": "dd0ebcacb2f6088d8ff484d6abe00ad3"
+    },
+    {
+      "event": "GW240420_175625",
+      "median_luminosity_distance_mpc": 2031.0870452586028,
+      "posterior_samples": 11908,
+      "run": "O4b",
+      "selected_group": "C00:IMRPhenomXPHM-SpinTaylor",
+      "source_md5": "71b7b05b95633b48e555056367f59f6e"
+    },
+    {
+      "event": "GW240426_031451",
+      "median_luminosity_distance_mpc": 4000.28803911404,
+      "posterior_samples": 14745,
+      "run": "O4b",
+      "selected_group": "C00:IMRPhenomXPHM-SpinTaylor",
+      "source_md5": "05394d394f901e5f31a3edfa858e52cb"
+    },
+    {
+      "event": "GW240428_225440",
+      "median_luminosity_distance_mpc": 840.647605529873,
+      "posterior_samples": 15573,
+      "run": "O4b",
+      "selected_group": "C00:IMRPhenomXPHM-SpinTaylor",
+      "source_md5": "459051aac148d19145af2419f3350afe"
+    },
+    {
+      "event": "GW240501_033534",
+      "median_luminosity_distance_mpc": 4695.761323416528,
+      "posterior_samples": 17007,
+      "run": "O4b",
+      "selected_group": "C00:IMRPhenomXPHM-SpinTaylor",
+      "source_md5": "ba2e237d6826bd0baf7fb23a2164a12c"
+    },
+    {
+      "event": "GW240505_133552",
+      "median_luminosity_distance_mpc": 4693.063597022441,
+      "posterior_samples": 13399,
+      "run": "O4b",
+      "selected_group": "C00:IMRPhenomXPHM-SpinTaylor",
+      "source_md5": "411886ba571fe6abfbf1f19dbc2033d3"
+    },
+    {
+      "event": "GW240507_041632",
+      "median_luminosity_distance_mpc": 1454.4575818529527,
+      "posterior_samples": 21033,
+      "run": "O4b",
+      "selected_group": "C00:IMRPhenomXPHM-SpinTaylor",
+      "source_md5": "767598f6fef4296589e86cccddba6a54"
+    },
+    {
+      "event": "GW240511_031507",
+      "median_luminosity_distance_mpc": 1990.6183108406444,
+      "posterior_samples": 14800,
+      "run": "O4b",
+      "selected_group": "C00:IMRPhenomXPHM-SpinTaylor",
+      "source_md5": "f002aa1843c86d1986f5c5a907592995"
+    },
+    {
+      "event": "GW240512_024139",
+      "median_luminosity_distance_mpc": 1166.3759249164343,
+      "posterior_samples": 15999,
+      "run": "O4b",
+      "selected_group": "C00:IMRPhenomXPHM-SpinTaylor",
+      "source_md5": "6a0c9700c511e635779084f7b6d95e41"
+    },
+    {
+      "event": "GW240513_183302",
+      "median_luminosity_distance_mpc": 2246.8049336719278,
+      "posterior_samples": 14735,
+      "run": "O4b",
+      "selected_group": "C00:IMRPhenomXPHM-SpinTaylor",
+      "source_md5": "94fe74674c1120ff5f4e935fd3244d02"
+    },
+    {
+      "event": "GW240514_121713",
+      "median_luminosity_distance_mpc": 2590.1099165717233,
+      "posterior_samples": 16943,
+      "run": "O4b",
+      "selected_group": "C00:IMRPhenomXPHM-SpinTaylor",
+      "source_md5": "3fc14fafe9fb2d7a8a4f558cfc4c26bf"
+    },
+    {
+      "event": "GW240515_005301",
+      "median_luminosity_distance_mpc": 3830.583792167333,
+      "posterior_samples": 16489,
+      "run": "O4b",
+      "selected_group": "C00:IMRPhenomXPHM-SpinTaylor",
+      "source_md5": "ad58231383eec553232d2ee8c7ba066f"
+    },
+    {
+      "event": "GW240519_012815",
+      "median_luminosity_distance_mpc": 1742.8229859299583,
+      "posterior_samples": 18123,
+      "run": "O4b",
+      "selected_group": "C00:IMRPhenomXPHM-SpinTaylor",
+      "source_md5": "3563b93fc87b7f174b7f254a2fb6d9a1"
+    },
+    {
+      "event": "GW240520_213616",
+      "median_luminosity_distance_mpc": 1402.039509329965,
+      "posterior_samples": 18432,
+      "run": "O4b",
+      "selected_group": "C00:IMRPhenomXPHM-SpinTaylor",
+      "source_md5": "daeda2d98dd240b6d5ffff78da823c98"
+    },
+    {
+      "event": "GW240526_093944",
+      "median_luminosity_distance_mpc": 1939.1538639688365,
+      "posterior_samples": 18843,
+      "run": "O4b",
+      "selected_group": "C00:IMRPhenomXPHM-SpinTaylor",
+      "source_md5": "ca829fc0153632781a3932f6ed811c0c"
+    },
+    {
+      "event": "GW240527_183429",
+      "median_luminosity_distance_mpc": 6438.322892630863,
+      "posterior_samples": 15363,
+      "run": "O4b",
+      "selected_group": "C00:IMRPhenomXPHM-SpinTaylor",
+      "source_md5": "a156a9d80f0effab6c9d19709e7f3d67"
+    },
+    {
+      "event": "GW240527_230910",
+      "median_luminosity_distance_mpc": 1193.0179724453965,
+      "posterior_samples": 16200,
+      "run": "O4b",
+      "selected_group": "C00:IMRPhenomXPHM-SpinTaylor",
+      "source_md5": "ae9f1adacad5ac12929e7849900b4968"
+    },
+    {
+      "event": "GW240530_012417",
+      "median_luminosity_distance_mpc": 1006.5452952154951,
+      "posterior_samples": 19570,
+      "run": "O4b",
+      "selected_group": "C00:IMRPhenomXPHM-SpinTaylor",
+      "source_md5": "5b2c7884bf0e84146a5ff0a63ae3917d"
+    },
+    {
+      "event": "GW240531_075248",
+      "median_luminosity_distance_mpc": 4137.153536039764,
+      "posterior_samples": 16444,
+      "run": "O4b",
+      "selected_group": "C00:IMRPhenomXPHM-SpinTaylor",
+      "source_md5": "463fddf2b8ed621cb9e47214a3d23c43"
+    },
+    {
+      "event": "GW240601_061200",
+      "median_luminosity_distance_mpc": 5086.185382882741,
+      "posterior_samples": 19639,
+      "run": "O4b",
+      "selected_group": "C00:IMRPhenomXPHM-SpinTaylor",
+      "source_md5": "91b183e575557735c7270bda729c004e"
+    },
+    {
+      "event": "GW240601_231004",
+      "median_luminosity_distance_mpc": 1272.581993425624,
+      "posterior_samples": 15987,
+      "run": "O4b",
+      "selected_group": "C00:IMRPhenomXPHM-SpinTaylor",
+      "source_md5": "1462717db002ccb8a293be6d191f5c52"
+    },
+    {
+      "event": "GW240615_113620",
+      "median_luminosity_distance_mpc": 1564.763478917045,
+      "posterior_samples": 14327,
+      "run": "O4b",
+      "selected_group": "C00:IMRPhenomXPHM-SpinTaylor",
+      "source_md5": "f1820fe91ccd615a0ef089b051504605"
+    },
+    {
+      "event": "GW240615_160735",
+      "median_luminosity_distance_mpc": 3971.2309069381,
+      "posterior_samples": 15859,
+      "run": "O4b",
+      "selected_group": "C00:IMRPhenomXPHM-SpinTaylor",
+      "source_md5": "1da5362ddea3b94596dcbfb1c005835f"
+    },
+    {
+      "event": "GW240618_071627",
+      "median_luminosity_distance_mpc": 5479.306190965877,
+      "posterior_samples": 15339,
+      "run": "O4b",
+      "selected_group": "C00:IMRPhenomXPHM-SpinTaylor",
+      "source_md5": "c00a0df558b8a751bbecc9ef9d5c29f4"
+    },
+    {
+      "event": "GW240621_195059",
+      "median_luminosity_distance_mpc": 1207.9929708546229,
+      "posterior_samples": 16813,
+      "run": "O4b",
+      "selected_group": "C00:IMRPhenomXPHM-SpinTaylor",
+      "source_md5": "13e95de0c98035876d68ee9cb65a87c5"
+    },
+    {
+      "event": "GW240621_200935",
+      "median_luminosity_distance_mpc": 4788.4343433442245,
+      "posterior_samples": 15047,
+      "run": "O4b",
+      "selected_group": "C00:IMRPhenomXPHM-SpinTaylor",
+      "source_md5": "86c9064c494cedd07ab9c0719c959619"
+    },
+    {
+      "event": "GW240621_214041",
+      "median_luminosity_distance_mpc": 6778.69878873355,
+      "posterior_samples": 14901,
+      "run": "O4b",
+      "selected_group": "C00:IMRPhenomXPHM-SpinTaylor",
+      "source_md5": "cafd5e244fbd43bcde1e1744b6246f0c"
+    },
+    {
+      "event": "GW240622_004008",
+      "median_luminosity_distance_mpc": 1471.802665051584,
+      "posterior_samples": 17440,
+      "run": "O4b",
+      "selected_group": "C00:IMRPhenomXPHM-SpinTaylor",
+      "source_md5": "688f0d97a47c3c87e11acb0230bac70a"
+    },
+    {
+      "event": "GW240627_131622",
+      "median_luminosity_distance_mpc": 1352.8540275441046,
+      "posterior_samples": 18210,
+      "run": "O4b",
+      "selected_group": "C00:IMRPhenomXPHM-SpinTaylor",
+      "source_md5": "167616eed506da5acc77440a04f4fc53"
+    },
+    {
+      "event": "GW240629_145256",
+      "median_luminosity_distance_mpc": 1275.0710260873361,
+      "posterior_samples": 14012,
+      "run": "O4b",
+      "selected_group": "C00:IMRPhenomXPHM-SpinTaylor",
+      "source_md5": "acb7322e2993cba8084f23fa25a1cedb"
+    },
+    {
+      "event": "GW240630_101703",
+      "median_luminosity_distance_mpc": 3195.874437926349,
+      "posterior_samples": 15167,
+      "run": "O4b",
+      "selected_group": "C00:IMRPhenomXPHM-SpinTaylor",
+      "source_md5": "f846c78f601d2bebfaa8b39a39bcaa4d"
+    },
+    {
+      "event": "GW240703_191355",
+      "median_luminosity_distance_mpc": 1881.6524009043883,
+      "posterior_samples": 17705,
+      "run": "O4b",
+      "selected_group": "C00:IMRPhenomXPHM-SpinTaylor",
+      "source_md5": "6e1e008d553d215de5bbb296e24df6ee"
+    },
+    {
+      "event": "GW240705_053215",
+      "median_luminosity_distance_mpc": 3733.500351054102,
+      "posterior_samples": 16248,
+      "run": "O4b",
+      "selected_group": "C00:IMRPhenomXPHM-SpinTaylor",
+      "source_md5": "68117a648926f22bc726fe3c2e72ed8e"
+    },
+    {
+      "event": "GW240716_034900",
+      "median_luminosity_distance_mpc": 1861.7482449663373,
+      "posterior_samples": 18295,
+      "run": "O4b",
+      "selected_group": "C00:IMRPhenomXPHM-SpinTaylor",
+      "source_md5": "2a22631c6a37848afc476d1d5f2bae2f"
     }
   ],
   "hypotheses": {
     "GR": {
-      "effective_injections": 47259.59950084,
-      "effective_pe_max": 8163.540892464762,
-      "effective_pe_min": 781.5100171522347,
+      "effective_injections": 47259.59950083983,
+      "effective_pe_max": 8163.540892464704,
+      "effective_pe_min": 498.6872483305867,
       "eps0": 0.0,
-      "likelihood_variance": 0.45180943929977524,
-      "log_likelihood": 394.77089644494293,
-      "mass_pairing_normalization": 0.14959956947129951,
-      "runtime_seconds": 1.1303174999920884
+      "likelihood_variance": 0.6973487403491364,
+      "log_likelihood": 514.8231905912722,
+      "mass_pairing_normalization": 0.14710080843772852,
+      "runtime_seconds": 1.2290769169921987
     },
     "PDT": {
-      "effective_injections": 43447.91935884488,
-      "effective_pe_max": 8163.223661988361,
-      "effective_pe_min": 770.7673369408448,
+      "effective_injections": 43447.91935884458,
+      "effective_pe_max": 8163.223661988303,
+      "effective_pe_min": 525.3493171962617,
       "eps0": 0.08333758478067765,
-      "likelihood_variance": 0.488228581466494,
-      "log_likelihood": 394.1139025007179,
-      "mass_pairing_normalization": 0.14959956947129951,
-      "runtime_seconds": 1.0776498750055907
+      "likelihood_variance": 0.754045780654479,
+      "log_likelihood": 513.5691689178963,
+      "mass_pairing_normalization": 0.14710080843772852,
+      "runtime_seconds": 1.2020444590016268
     }
   },
   "icarogw_commit_detected": "c473f3b2f50e11a88a46cc1625933af1f1249d39",
@@ -2155,18 +2669,25 @@
       "O4a"
     ],
     "expected": 235,
-    "missing": 94,
-    "present": 141,
+    "missing": 59,
+    "partial_runs": {
+      "O4b": {
+        "expected": 94,
+        "missing": 59,
+        "present": 35
+      }
+    },
+    "present": 176,
     "remaining_runs": [
       "O4b"
     ]
   },
   "normalization_invariance_check": {
-    "absolute_delta_log_likelihood_difference": 5.684341886080802e-14,
-    "absolute_event_sum_difference": 1.7763568394002505e-14,
+    "absolute_delta_log_likelihood_difference": 1.1368683772161603e-13,
+    "absolute_event_sum_difference": 7.105427357601002e-15,
     "absolute_selection_term_difference": 7.105427357601002e-15,
-    "first_common_mass_pairing_normalization": 0.14959956947129951,
-    "maximum_absolute_per_event_difference": 4.440892098500626e-15,
+    "first_common_mass_pairing_normalization": 0.14710080843772852,
+    "maximum_absolute_per_event_difference": 3.552713678800501e-15,
     "outcome": "component attribution invariant to numerical roundoff when the common mass model receives the same normalization draw under both propagation hypotheses",
     "second_common_mass_pairing_normalization": 0.1455786267044095,
     "second_model_normalization_seed": 260901
@@ -2174,32 +2695,35 @@
   "pe_prior_reconstruction": {
     "all_values_finite_positive": true,
     "distance_prior": "UniformSourceFrame from each released analytic prior",
+    "events_prepared": 176,
     "explicit_cosmology": "Astropy LambdaCDM(H0=67.9, Om0=0.3065, Ode0=0.6935, Tcmb0=0, Neff=3.04)",
     "explicit_cosmology_event": "GW230529_181500",
     "legacy_regression": "GW191105_143521 prior array reproduced bit for bit after parser extension",
-    "o4a_events": 76
+    "o4a_events": 76,
+    "partial_o4b_events": 35,
+    "posterior_samples_checked": 11930628
   },
   "posterior_subsampling_stability": {
-    "delta_max": -0.6554910315082338,
-    "delta_mean": -0.6670396814798437,
-    "delta_min": -0.6853510425244735,
-    "delta_sample_sd": 0.01100006007993855,
+    "delta_max": -1.2464429652728768,
+    "delta_mean": -1.2567919209955334,
+    "delta_min": -1.2771201168095558,
+    "delta_sample_sd": 0.011818045136402631,
     "delta_values": [
-      -0.6554910315082338,
-      -0.6649976603985692,
-      -0.6647679944786091,
-      -0.6645906784893327,
-      -0.6853510425244735
+      -1.25175179204723,
+      -1.2549256997111797,
+      -1.253719031136825,
+      -1.2464429652728768,
+      -1.2771201168095558
     ],
-    "events": 141,
-    "higher_resolution_delta": -0.6569939442250075,
+    "events": 176,
+    "higher_resolution_delta": -1.2540216733759735,
     "higher_resolution_nparallel": 8192,
     "independent_seeds": [
+      260901,
+      260903,
+      260905,
       260907,
-      260908,
-      260909,
-      260910,
-      260911
+      260909
     ],
     "nparallel": 4096
   },
@@ -2213,9 +2737,9 @@
   },
   "schema_version": 1,
   "settings": {
-    "event_count": 141,
-    "model_normalization_seed": 260900,
-    "neff_injections": 564,
+    "event_count": 176,
+    "model_normalization_seed": 260907,
+    "neff_injections": 704,
     "neff_pe": 20,
     "nparallel": 8192,
     "seed": 260907,

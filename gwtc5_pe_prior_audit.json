@@ -4,7 +4,7 @@
     "all_prior_values_positive": true,
     "catalog_wide_validation_complete": false,
     "maximum_component_mass_density_relative_spread": 2.005582836180966e-15,
-    "prepared_141_event_validation_complete": true
+    "prepared_176_event_validation_complete": true
   },
   "event_count": 6,
   "events": [
@@ -86,9 +86,9 @@
       "O3b",
       "O4a"
     ],
-    "events_checked": 141,
+    "events_checked": 176,
     "events_expected": 235,
-    "events_missing": 94,
+    "events_missing": 59,
     "explicit_lambda_cdm_event": {
       "cosmology": "LambdaCDM(H0=67.9, Om0=0.3065, Ode0=0.6935, Tcmb0=0, Neff=3.04)",
       "event": "GW230529_181500",
@@ -101,9 +101,16 @@
     "method_counts": {
       "official catalog marker: uniform detector-frame component masses and dL^2": 7,
       "sampled (chirp_mass,mass_ratio), transformed with |d(Mc,q)/d(m1,m2)|=Mc/m1^2; PowerLaw": 58,
-      "sampled (chirp_mass,mass_ratio), transformed with |d(Mc,q)/d(m1,m2)|=Mc/m1^2; UniformSourceFrame": 76
+      "sampled (chirp_mass,mass_ratio), transformed with |d(Mc,q)/d(m1,m2)|=Mc/m1^2; UniformSourceFrame": 111
     },
-    "posterior_samples_checked": 11360687,
+    "partial_runs": {
+      "O4b": {
+        "events_checked": 35,
+        "events_expected": 94,
+        "events_missing": 59
+      }
+    },
+    "posterior_samples_checked": 11930628,
     "remaining_runs": [
       "O4b"
     ],
@@ -112,7 +119,8 @@
       "O2": 7,
       "O3a": 33,
       "O3b": 22,
-      "O4a": 76
+      "O4a": 76,
+      "O4b": 35
     }
   },
   "run_coverage": [
