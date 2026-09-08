@@ -211,6 +211,21 @@ bulk flow whose endpoint is the splitter.  At the fixed-mode level it is
 derived from the on-shell bulk dynamics rather than supplied as an independent
 quadratic ansatz.
 
+The normalized oscillator is itself derived from the spin-two theory.  On
+each of the two circular transverse-traceless prepotential modes, Lean reduces
+the published fixed-momentum graviton action to
+
+```text
+L_TT / (4 k^4) = p q' - (q^2+p^2)/2,
+```
+
+where the phase variable is `tau=k t`.  The negative-helicity mode requires
+the opposite canonical momentum orientation because its generalized-curl
+eigenvalue is `-k`; after that forced sign, both helicities give exactly the
+same oscillator.  The exterior quartic dilation multiplies both reduced
+actions by `S_Q`.  See
+[`TT_HELICITY_OSCILLATOR_REDUCTION.md`](TT_HELICITY_OSCILLATOR_REDUCTION.md).
+
 ## Fully specialized quartic chain
 
 For the positive quartic root `Q`, every continuous quantity in the theorem is
@@ -289,5 +304,10 @@ normalizes the bulk Hamiltonian, identifies the boundary generator with the
 oscillator Hamilton principal function at `theta_Q`, and proves its
 Hamilton--Jacobi phase derivative.
 
-All four files compile under the pinned Lean toolchain, contain no `sorry`, and
+`GravityScreening/TTHelicityModeReduction.lean` derives that oscillator action
+from both circular helicities of the fixed-momentum transverse-traceless
+spin-two prepotential action and proves that their exterior quartic actions
+carry exactly `S_Q`.
+
+All five files compile under the pinned Lean toolchain, contain no `sorry`, and
 use only Mathlib's standard logical axioms.

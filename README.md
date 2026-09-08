@@ -109,7 +109,13 @@ generator is exactly that oscillator's Hamilton principal function at
 The remaining physical premise is that a covariant horizon crossing reduces
 to this fixed-mode phase.  See
 [HORIZON_INTERFACE_CAYLEY.md](HORIZON_INTERFACE_CAYLEY.md) and
-[BULK_TO_BOUNDARY_DYNAMICS.md](BULK_TO_BOUNDARY_DYNAMICS.md).
+[BULK_TO_BOUNDARY_DYNAMICS.md](BULK_TO_BOUNDARY_DYNAMICS.md).  The oscillator
+is no longer an abstract auxiliary model: Lean reduces both circular
+helicities of the fixed-momentum transverse-traceless graviton action to that
+same canonical oscillator, with the opposite curl eigenvalue fixing the
+negative-helicity momentum orientation.  The quartic exterior action is
+exactly `S_Q` times the oscillator action for both helicities.  See
+[TT_HELICITY_OSCILLATOR_REDUCTION.md](TT_HELICITY_OSCILLATOR_REDUCTION.md).
 
 ## The quartic Q specialization
 

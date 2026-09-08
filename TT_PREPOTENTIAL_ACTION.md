@@ -109,6 +109,26 @@ branch. The result is therefore a uniform action normalization, rather than a
 change in propagation speed or an imbalance between kinetic and restoring
 terms.
 
+## Exact circular-mode reduction
+
+The two circular generalized-curl eigenvectors have eigenvalues `+k` and
+`-k`.  Lean now restricts the two gravitational prepotentials to each of these
+helicity lines.  After using `tau=k t` and dividing out the common nonzero
+Fourier normalization, both helicities reduce exactly to
+
+\[
+p q'-\frac{q^2+p^2}{2}.
+\]
+
+For the negative-helicity line, the opposite curl eigenvalue fixes the
+opposite canonical momentum orientation.  This makes the reduced symplectic
+term and Hamiltonian identical to the positive-helicity result.  The exterior
+quartic action is therefore `S_Q` times the same unit oscillator for both
+physical graviton helicities.  The oscillator's Hamilton principal function
+at the unique quartic phase is the boundary generator proved in the
+bulk-to-boundary calculation.  See
+[`TT_HELICITY_OSCILLATOR_REDUCTION.md`](TT_HELICITY_OSCILLATOR_REDUCTION.md).
+
 ## Why this matters for Newton's constant
 
 A positive common multiplier of a source-free action cancels from its Euler
@@ -179,6 +199,7 @@ plus the physical derivation of `E_Q` from the Q horizon algebra.
 - `GravityScreening/ErasureSymplectic.lean`
 - `GravityScreening/TTGeneralizedCurl.lean`
 - `GravityScreening/TTHorizonCode.lean`
+- `GravityScreening/TTHelicityModeReduction.lean`
 - Glenn Barnich and Cedric Troessaert, *Manifest spin 2 duality with electric
   and magnetic sources*, especially equations 2.16--2.21, 3.7--3.8, and
   3.21--3.22: <https://arxiv.org/abs/0812.0552>
