@@ -44,6 +44,7 @@ import GravityScreening.RhoQBoostNormalization
 import GravityScreening.BoundaryMeasureNormalization
 import GravityScreening.ObserverGaugeIntegration
 import GravityScreening.ProjectiveModeShell
+import GravityScreening.FourModeGaussianTrace
 import GravityScreening.PauliFrameNormalization
 import GravityScreening.SU2AdjointRotation
 import GravityScreening.SpinTwoDegreeAudit

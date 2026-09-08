@@ -182,6 +182,33 @@ zero-momentum response must be a density over Euclideanized four-mode
 directions with the stated Fourier normalization and Jacobian. That step has
 not yet been derived from the action or spectral trace.
 
+The next theorem removes the radial-coordinate assumption. For every radial
+profile `f`, ordinary four-dimensional Lebesgue measure satisfies
+
+```text
+integral_R4 f(||k||) d^4k
+  = 2*pi^2 * integral_(0,infinity) r^3 f(r) dr.
+```
+
+The kernel also evaluates the relevant Gaussian moment and obtains
+
+```text
+integral_R4 exp(-||k||^2) d^4k = pi^2.
+```
+
+This yields a sharper bulk-boundary candidate for the gravity numerator. The
+first `pi^2` is the raw four-dimensional Gaussian mode trace that already
+turns `(rho Q)^(-15)` into the electromagnetic expression. The second
+`pi^2` is the projective boundary volume specific to the gravitational link.
+Their product is the required `pi^4`.
+
+The theorem deliberately exposes the remaining convention. If the momentum
+measure is instead `d^4k/(2*pi)^4`, Lean obtains `1/(16*pi^2)`. Therefore the
+bulk assignment is not yet a physical derivation: the two-scalar action or
+spectral trace must fix the measure and Gaussian scale, and must either yield
+the raw Lebesgue convention or supply the exact compensating normalization.
+This is a yes-or-no mechanism test.
+
 Independently, Lean proves that the transverse-traceless graviton space at
 fixed nonzero momentum has exactly two real polarizations. On this
 polarization plane, rotational covariance and self-adjointness force a common
@@ -261,6 +288,13 @@ has diagonal value `pi^2`. All consequences of that premise are forced.
 - `projectiveModeShellScalarIntegral_eq_pi_sq_mul`
 - `conformalChannelVertex_projectiveModeShell_eq_electromagneticCoupling`
 - `gravitationalCoupling_eq_projectiveModeShell_link`
+- `fourMode_radial_integral`
+- `gaussian_radial_moment_three`
+- `fourMode_gaussian_integral`
+- `fourierNormalized_fourMode_gaussian_integral`
+- `gaussianModeVertexIntegral_eq_pi_sq_mul`
+- `conformalChannelVertex_gaussianMode_eq_electromagneticCoupling`
+- `gravitationalCoupling_eq_gaussianMode_boundary_link`
 - `pauliAxis_sq`
 - `pauliAxes_halfTrace_orthonormal`
 - `quaternionSU2Matrix_det`

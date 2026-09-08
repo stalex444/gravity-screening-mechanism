@@ -288,6 +288,36 @@ Euclideanized four-mode direction after radial scale is separated. A complete
 derivation must obtain that measure, including Fourier conventions and any
 Jacobian, from the action or spectral trace.
 
+The radial decomposition itself is no longer assumed. Lean now proves the
+generalized polar-coordinate identity
+
+```text
+integral_R4 f(||k||) d^4k
+  = 2*pi^2 * integral_(0,infinity) r^3 f(r) dr.
+```
+
+For the raw unit-scale Gaussian this gives the exact trace
+
+```text
+integral_R4 exp(-||k||^2) d^4k = pi^2.
+```
+
+Thus a constant `(rho Q)^(-15)` vertex under that raw Gaussian trace gives
+the electromagnetic expression exactly. Multiplying by the independently
+derived projective boundary volume gives the two-factor gravity numerator
+`pi^2 * pi^2 = pi^4`: one bulk mode-space factor shared with the gauge
+coupling and one boundary factor specific to the gravitational link.
+
+Lean also proves the normalization fork that the action must settle. With
+the common QFT measure `d^4k/(2*pi)^4`, the same Gaussian integral is
+`1/(16*pi^2)`, not `pi^2`. The new result therefore identifies a precise
+mechanism test rather than hiding a convention: derive the momentum measure,
+Gaussian scale, and boundary normalization from the two-scalar action or an
+explicit spectral trace. If that derivation supplies the raw Lebesgue
+convention used above, the complete `pi^4` numerator follows; if it supplies
+the Fourier-normalized convention without a compensating factor, this route
+fails.
+
 Before the quotient, `(2*pi^2)^2 = 4*pi^4`, matching the associated
 area-quantum form. The remaining correspondence is the PDT identification of
 the round antipodal quotient with the relevant conformal or polarization-frame
