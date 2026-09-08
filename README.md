@@ -220,6 +220,8 @@ therefore demonstrates the importance of both recomputing detectability and
 completing the catalog; the remaining 59 O4b events and nuisance
 marginalization may change the result again.
 
+![GWTC-5 fixed-nuisance cumulative diagnostic and distance dependence](gwtc5_fixed_point_checkpoint.png)
+
 This supersedes the 19-event component split in commit `1fd4f6e`. ICAROGW's
 paired-mass normalization uses a Monte Carlo draw on every population update.
 The total scale-free likelihood cancels that common factor, but a component
