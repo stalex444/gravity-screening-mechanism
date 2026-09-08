@@ -133,6 +133,12 @@ The fixed-mode chain is therefore
 
 Every arrow in this displayed fixed-mode chain is now kernel checked.
 
+The oscillator variables also agree exactly with the intrinsic spin-two
+canonical pair on a null hypersurface: the conformal metric of a cut and one
+half of its densitized shear.  The circular TT norm two cancels the geometric
+factor one half, giving `p delta q` for both helicities.  See
+[`NULL_HORIZON_SPIN_TWO_MODE.md`](NULL_HORIZON_SPIN_TWO_MODE.md).
+
 ## What this establishes
 
 This removes the concern that the oscillator Hamiltonian was independently
@@ -141,13 +147,13 @@ normalization follow from the published duality-symmetric linearized gravity
 action after a circular-mode reduction.  The opposite curl eigenvalues
 explain the canonical orientation change between the two helicities.
 
-The remaining physics problem is localized.  The present theorem does not
-derive the quartic dilation from general relativity or prove that a covariant
-null-horizon crossing selects `theta_Q`.  That requires a reduction of the
-null-boundary symplectic data, with its corner and polarization choices, to
-the fixed-mode phase space above.  The result would fail as a horizon
-mechanism if that reduction selected a different transfer phase or permitted
-an additional independent boundary quadratic.
+The remaining physics problem is localized.  The null-boundary spin-two
+symplectic data have now been reduced to the fixed-mode phase space above.
+The present theorem does not derive the quartic dilation from general
+relativity.  A covariant completion must show that the physical observer
+restriction implements this dilation while its corner convention and the
+null spin-one and spin-zero pairs introduce no independent transfer
+coefficient.
 
 ## Kernel artifact and primary source
 
@@ -167,4 +173,3 @@ axioms.
   and magnetic sources*: <https://arxiv.org/abs/0812.0552>
 - Marc Henneaux and Claudio Teitelboim, *Duality in linearized gravity*:
   <https://arxiv.org/abs/gr-qc/0408101>
-

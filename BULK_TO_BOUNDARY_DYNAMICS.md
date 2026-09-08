@@ -226,6 +226,15 @@ same oscillator.  The exterior quartic dilation multiplies both reduced
 actions by `S_Q`.  See
 [`TT_HELICITY_OSCILLATOR_REDUCTION.md`](TT_HELICITY_OSCILLATOR_REDUCTION.md).
 
+The canonical pair also has an intrinsic null-horizon meaning.  The standard
+null spin-two symplectic potential pairs one half of the densitized shear with
+the conformal metric of a horizon cut.  On either circular TT mode, Lean proves
+that the factor one half cancels the mode norm two and gives exactly `p dq`.
+It then proves equality with the normalized prepotential kinetic term.  Thus
+the variables of the Hamilton principal function are the fixed-mode null
+conformal metric and shear momentum.  See
+[`NULL_HORIZON_SPIN_TWO_MODE.md`](NULL_HORIZON_SPIN_TWO_MODE.md).
+
 ## Fully specialized quartic chain
 
 For the positive quartic root `Q`, every continuous quantity in the theorem is
@@ -309,5 +318,9 @@ from both circular helicities of the fixed-momentum transverse-traceless
 spin-two prepotential action and proves that their exterior quartic actions
 carry exactly `S_Q`.
 
-All five files compile under the pinned Lean toolchain, contain no `sorry`, and
+`GravityScreening/NullHorizonSpinTwoMode.lean` identifies the same canonical
+term with the intrinsic null spin-two shear--conformal-metric pairing on both
+helicities and joins it to the quartic Hamilton--Jacobi endpoint theorem.
+
+All six files compile under the pinned Lean toolchain, contain no `sorry`, and
 use only Mathlib's standard logical axioms.

@@ -116,6 +116,11 @@ same canonical oscillator, with the opposite curl eigenvalue fixing the
 negative-helicity momentum orientation.  The quartic exterior action is
 exactly `S_Q` times the oscillator action for both helicities.  See
 [TT_HELICITY_OSCILLATOR_REDUCTION.md](TT_HELICITY_OSCILLATOR_REDUCTION.md).
+The canonical term is also the fixed-mode form of the intrinsic null-horizon
+spin-two symplectic potential: one half of the densitized shear paired with
+the conformal metric.  Lean proves the normalization exactly for both
+helicities and joins it to the quartic Hamilton--Jacobi endpoint.  See
+[NULL_HORIZON_SPIN_TWO_MODE.md](NULL_HORIZON_SPIN_TWO_MODE.md).
 
 ## The quartic Q specialization
 
