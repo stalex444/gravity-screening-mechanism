@@ -34,6 +34,7 @@ import GravityScreening.TTHelicityModeReduction
 import GravityScreening.NullHorizonSpinTwoMode
 import GravityScreening.NullBoundarySymplecticDilation
 import GravityScreening.QuarticGraphKMSData
+import GravityScreening.QuarticModularAnalyticFlow
 import GravityScreening.SpinTwoDegreeAudit
 import GravityScreening.FirstOrderSourceAction
 import GravityScreening.TransverseTracelessCount

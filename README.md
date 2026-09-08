@@ -144,6 +144,20 @@ by the quartic Perron line.  This removes freedom to choose the modular scale
 once the quartic graph is fixed.  Identifying the null-horizon observable
 algebra with this graph dynamics remains the physical bridge.  See
 [QUARTIC_GRAPH_KMS_SCALE.md](QUARTIC_GRAPH_KMS_SCALE.md).
+The same certificate exhibits coprime return loops of lengths four and seven.
+Together with the published Cuntz--Krieger factor classification, this gives a
+discrete type `III_(1/Q)` modular sector.  Since local relativistic
+quantum-field algebras are generally type `III_1`, the viable placement is a
+distinguished covariant sector inside the horizon algebra.
+
+The graph-selected frequency also has one exact analytic continuation.  Its
+real modular-time values are norm-one phases, while evaluation at one
+negative-imaginary unit is exactly `1/Q`; the corresponding defect is
+`lambda4 = 1 - 1/Q`.  Thus the clock-like rotation and the screening
+precursor are two evaluations of one graph-fixed analytic multiplier.  The
+later two-channel Hamiltonian rotation is its norm-preserving completion, not
+the same phase.  See
+[QUARTIC_MODULAR_ANALYTIC_FLOW.md](QUARTIC_MODULAR_ANALYTIC_FLOW.md).
 
 ## The quartic Q specialization
 
