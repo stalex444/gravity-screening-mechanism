@@ -65,6 +65,7 @@ import GravityScreening.TTGeneralizedCurl
 import GravityScreening.ErasureSymplectic
 import GravityScreening.TTPrepotentialAction
 import GravityScreening.TTConstraintSourceClosure
+import GravityScreening.DoubledTTGaussian
 import GravityScreening.SourcedTTHamiltonianAction
 import GravityScreening.CovariantGravityCompression
 import GravityScreening.PalomarCapstone

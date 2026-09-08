@@ -318,6 +318,40 @@ convention used above, the complete `pi^4` numerator follows; if it supplies
 the Fourier-normalized convention without a compensating factor, this route
 fails.
 
+The bulk calculation is now joined directly to the existing gravitational
+action. The two transverse-traceless polarizations and their Hodge-paired
+partners form four real coordinates. Lean proves that the response matrix is
+the Gram matrix of an explicit triangular frame and that
+
+```text
+det(realDoubledResponse(lambda)) = (1-lambda^2)^2.
+```
+
+The associated quadratic form is exactly the repository's existing
+`doubledHodgeKinetic`, rather than a separately chosen radial model. Its raw
+Gaussian integral is
+
+```text
+integral_R4 exp(-doubledHodgeKinetic(lambda,z)) d^4z
+  = pi^2/(1-lambda^2).
+```
+
+At `lambda=lambda4(Q)`, multiplication by the projective boundary volume
+therefore gives the entire screened numerator in one calculation:
+
+```text
+[pi^2/S_Q] * pi^2 = pi^4/S_Q.
+```
+
+Dividing by the forced 224-channel response reproduces the deposited gravity
+formula exactly. This closes the algebraic and finite-dimensional measure
+chain. The physical seam is now specific: the covariant path integral or
+spectral trace must justify using this raw Gaussian determinant and the
+projective boundary density in the effective coupling. The common Fourier
+measure produces `1/(16*S_Q)` after the boundary multiplication, so the
+normalization choice remains experimentally and mathematically consequential.
+See [BULK_BOUNDARY_PI4.md](BULK_BOUNDARY_PI4.md).
+
 Before the quotient, `(2*pi^2)^2 = 4*pi^4`, matching the associated
 area-quantum form. The remaining correspondence is the PDT identification of
 the round antipodal quotient with the relevant conformal or polarization-frame

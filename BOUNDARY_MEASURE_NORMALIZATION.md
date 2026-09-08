@@ -209,6 +209,39 @@ spectral trace must fix the measure and Gaussian scale, and must either yield
 the raw Lebesgue convention or supply the exact compensating normalization.
 This is a yes-or-no mechanism test.
 
+The Gaussian has now been attached to the actual doubled spin-two response.
+At fixed nonzero momentum, the two real TT polarizations and their Hodge-paired
+partners give four real coordinates. Lean proves that the corresponding
+quadratic form is simultaneously
+
+```text
+z^T realDoubledResponse(lambda) z
+```
+
+and the existing `doubledHodgeKinetic`. An explicit triangular Gram factor
+has determinant `S_lambda`, while the response determinant is
+`S_lambda^2`. Change of variables in the full four-dimensional integral then
+gives
+
+```text
+integral_R4 exp(-doubledHodgeKinetic(lambda,z)) d^4z
+  = pi^2/S_lambda.
+```
+
+For the quartic value `lambda=lambda4(Q)`, multiplying this integral by the
+projective boundary volume proves
+
+```text
+(pi^2/S_Q) * pi^2 = pi^4/S_Q.
+```
+
+Thus screening is not appended to a separate Gaussian normalization: the
+same doubled response produces both the determinant denominator and the bulk
+`pi^2`. Dividing by `(rho Q)^224` is exactly the deposited gravitational
+coupling. The physical functional-measure premise remains visible. With the
+common Fourier-normalized measure, the coupled Gaussian and boundary instead
+give `1/(16 S_Q)`.
+
 Independently, Lean proves that the transverse-traceless graviton space at
 fixed nonzero momentum has exactly two real polarizations. On this
 polarization plane, rotational covariance and self-adjointness force a common
@@ -295,6 +328,16 @@ has diagonal value `pi^2`. All consequences of that premise are forced.
 - `gaussianModeVertexIntegral_eq_pi_sq_mul`
 - `conformalChannelVertex_gaussianMode_eq_electromagneticCoupling`
 - `gravitationalCoupling_eq_gaussianMode_boundary_link`
+- `doubledTTCholesky_gram`
+- `realDoubledResponse_det_of_screening_nonneg`
+- `quarticRealDoubledResponse_det`
+- `doubledTTModeQuadratic_eq_response`
+- `doubledTTModeQuadratic_eq_doubledHodgeKinetic`
+- `doubledTTMode_gaussian_integral`
+- `quarticDoubledTT_gaussian_integral`
+- `quarticDoubledTT_gaussian_mul_projectiveBoundary`
+- `fourierNormalized_quarticDoubledTT_gaussian_mul_projectiveBoundary`
+- `gravitationalCoupling_eq_quarticDoubledTT_gaussian_boundary`
 - `pauliAxis_sq`
 - `pauliAxes_halfTrace_orthonormal`
 - `quaternionSU2Matrix_det`
