@@ -17,7 +17,7 @@ Vol(S^3) = 2 pi^2.
 The antipodal quotient `S^3 -> RP^3` halves this value, so its numerical
 quotient volume is `pi^2`. The numerical equality is proved in Lean. The
 measure-halving theorem for the free antipodal action and the identification
-of `RP^3` with the physical light-ray measurement space remain explicit
+of this round quotient with the physical measurement space remain explicit
 geometric and physical inputs.
 
 Lean also checks the same value directly in polar coordinates:
@@ -30,6 +30,20 @@ Lean also checks the same value directly in polar coordinates:
 
 These are two exact calculations of one quotient geometry. They should not be
 counted as two independent physical identifications.
+
+There is a necessary geometric distinction. A future null direction in
+`3+1` dimensional Minkowski space is a point of the celestial `S^2`.
+`RP^3` can instead describe the full spatial rotation or polarization-frame
+space `SO(3)`, or a round `S^3` conformal slice after antipodal
+identification. The PDT correspondence must select and justify one of those
+three-dimensional spaces; it cannot identify `RP^3` with a null direction
+alone.
+
+Likewise, an abstract Haar measure on compact `SO(3)` may be normalized to
+any total mass. The value `pi^2` here is specifically the Riemannian volume
+inherited from the round unit `S^3` under its two-to-one antipodal quotient.
+This metric normalization is part of the correspondence that remains to be
+derived physically.
 
 Independently, Lean proves that the transverse-traceless graviton space at
 fixed nonzero momentum has exactly two real polarizations. On this

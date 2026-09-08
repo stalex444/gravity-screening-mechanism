@@ -191,9 +191,10 @@ det(pi^2 I_2) = pi^4,
 
 exactly the numerator of the repository's gravitational-coupling formula.
 Before the quotient, `(2*pi^2)^2 = 4*pi^4`, matching the associated
-area-quantum form. The remaining correspondence is the physical
-identification of the antipodal quotient with the light-ray measurement
-space. See
+area-quantum form. The remaining correspondence is the PDT identification of
+the round antipodal quotient with the relevant conformal or polarization-frame
+measurement space. A single null direction by itself lies on the celestial
+`S^2`; it does not supply `RP^3`. See
 [BOUNDARY_MEASURE_NORMALIZATION.md](BOUNDARY_MEASURE_NORMALIZATION.md).
 
 ## The quartic Q specialization
