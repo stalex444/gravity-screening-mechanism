@@ -33,6 +33,7 @@ import GravityScreening.HamiltonPrincipalBoundary
 import GravityScreening.TTHelicityModeReduction
 import GravityScreening.NullHorizonSpinTwoMode
 import GravityScreening.NullBoundarySymplecticDilation
+import GravityScreening.QuarticGraphKMSData
 import GravityScreening.SpinTwoDegreeAudit
 import GravityScreening.FirstOrderSourceAction
 import GravityScreening.TransverseTracelessCount

@@ -127,6 +127,24 @@ quartic dilation preserves the complete potential and weights every exterior
 block by the same `S_Q`, with hidden complement `lambda4^2`.  See
 [NULL_BOUNDARY_SYMPLECTIC_DILATION.md](NULL_BOUNDARY_SYMPLECTIC_DILATION.md).
 
+The modular scale now has an upstream graph-theoretic certificate.  Lean
+proves that the quartic substitution matrix is primitive by exhibiting an
+entrywise-positive tenth power, and that its strictly positive Perron vector
+has eigenvalue `Q`.  The standard finite-graph C*-algebra theorem then places
+the unique critical gauge-KMS state at inverse temperature `log Q`.  Lean
+checks the resulting exact step and defect,
+
+```text
+exp(-log Q) = 1/Q,
+1 - exp(-log Q) = lambda4,
+```
+
+and proves that the second expression is the same inverse-step residue carried
+by the quartic Perron line.  This removes freedom to choose the modular scale
+once the quartic graph is fixed.  Identifying the null-horizon observable
+algebra with this graph dynamics remains the physical bridge.  See
+[QUARTIC_GRAPH_KMS_SCALE.md](QUARTIC_GRAPH_KMS_SCALE.md).
+
 ## The quartic Q specialization
 
 Let `Q` denote the positive real root satisfying
