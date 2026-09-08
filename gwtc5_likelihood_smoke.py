@@ -120,6 +120,7 @@ def parser() -> argparse.ArgumentParser:
     result.add_argument("--nparallel", type=int, default=4096)
     result.add_argument("--neff-pe", type=int, default=20)
     result.add_argument("--seed", type=int, default=260907)
+    result.add_argument("--model-normalization-seed", type=int, default=260900)
     result.add_argument("--zmax", type=float, default=20.0)
     result.add_argument("--beta-q", type=float, default=BETA_Q)
     result.add_argument("--output", type=Path)
@@ -220,6 +221,12 @@ def main() -> int:
     event_log_terms = {}
     selection_log_terms = {}
     for label, exponent in (("GR", 0.0), ("PDT", args.beta_q)):
+        # ICAROGW estimates the paired-mass normalization with Monte Carlo
+        # samples on every population update. The scale-free likelihood cancels
+        # that global factor, but a component attribution does not. Resetting
+        # the seed makes the common mass model use the identical normalization
+        # draw at both propagation points.
+        np.random.seed(args.model_normalization_seed)
         parameters = {
             key: (exponent if key == "eps0" else medians[key])
             for key in rate_model.population_parameters
@@ -243,7 +250,16 @@ def main() -> int:
             "effective_pe_min": float(np.min(pe_neff)),
             "effective_pe_max": float(np.max(pe_neff)),
             "likelihood_variance": float(likelihood.likelihood_variance),
+            "mass_pairing_normalization": float(rate_model.mw.prior.new_norm),
         }
+
+    if not np.isclose(
+        hypotheses["GR"]["mass_pairing_normalization"],
+        hypotheses["PDT"]["mass_pairing_normalization"],
+        rtol=0.0,
+        atol=0.0,
+    ):
+        raise RuntimeError("Common mass model received different normalization draws")
 
     event_delta = event_log_terms["PDT"] - event_log_terms["GR"]
     selection_delta = selection_log_terms["PDT"] - selection_log_terms["GR"]
@@ -263,6 +279,7 @@ def main() -> int:
         "versions": observed_versions,
         "settings": {
             "seed": args.seed,
+            "model_normalization_seed": args.model_normalization_seed,
             "zmax": args.zmax,
             "nparallel": args.nparallel,
             "neff_pe": args.neff_pe,
@@ -279,7 +296,7 @@ def main() -> int:
         "reference_result": reference,
         "hypotheses": hypotheses,
         "attribution": {
-            "definition": "fixed-nuisance diagnostic only; event log-sum-weight terms plus the model-dependent selection term",
+            "definition": "fixed-nuisance diagnostic only; event log-sum-weight terms plus the model-dependent selection term, with an identical Monte Carlo normalization draw for the common paired-mass model",
             "event_terms": [
                 {
                     "event": record["event"],

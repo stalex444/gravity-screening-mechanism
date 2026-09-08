@@ -115,7 +115,9 @@ storage strategy; it does not estimate the eventual sampler runtime.
 The generated data directories and partial downloads are ignored by Git.
 Transient HTTP 408/429/5xx responses and connection failures are retried with
 bounded exponential backoff. Every retry resumes a partial source when the
-server honors byte ranges; a non-transient HTTP error still fails immediately.
+server honors byte ranges. If Zenodo's API content gateway remains unavailable,
+the downloader switches to the corresponding checksum-locked direct file URL;
+a non-transient HTTP error still fails immediately.
 
 ## PE-prior reconstruction
 
@@ -248,29 +250,40 @@ released likelihood's effective-sample and variance checks. The exact inputs,
 versions, settings, and outputs are recorded in
 `gwtc5_likelihood_smoke_audit.json`.
 
-An expanded checkpoint completed all ten O1/O2 events and the first nine
-checksum-locked O3a events before a Zenodo gateway outage interrupted further
-source retrieval. At 8,192 samples per event, the 19-event diagnostic gave
+The expanded checkpoint now contains every O1, O2, and O3a event: 43 of the
+235 events in the released catalog. At 8,192 samples per event and fixed
+nuisance medians, the diagnostic gave
 
 \[
-\log L_{\rm PDT}-\log L_{\rm GR}=+0.7123101012.
+\log L_{\rm PDT}-\log L_{\rm GR}=+0.8191134180.
 \]
 
 The complete O1/O2 value was stable under posterior subsampling: five
 independent 4,096-sample draws gave a mean of `+0.5151304` with sample standard
 deviation `0.0010067`, while an 8,192-sample evaluation gave `+0.5154878`.
 
-The 19-event likelihood attribution is more informative than its sign. The
-observed-event log-sum-weight terms total `-1.1983733`, favoring GR at the
+The corrected likelihood attribution is more informative than its sign. The
+observed-event log-sum-weight terms total `-4.1152659420`, favoring GR at this
 fixed nuisance point, while the model-dependent selection term is
-`+1.9106834`, favoring PDT. Their sum reconstructs `+0.7123101` to numerical
-precision. Eighteen of the nineteen event terms are negative, and their
-correlation with median luminosity distance is `-0.9753`. Thus the positive
-partial-catalog total is produced by the selection correction rather than by
-the observed-event terms. Remaining, generally more distant events and full
-nuisance marginalization can change the sign. The per-event decomposition,
-checkpoint history, checksums, settings, and stability results are recorded in
-`gwtc5_likelihood_checkpoint_audit.json`.
+`+4.9343793600`, favoring PDT. Their sum reconstructs `+0.8191134180` to
+numerical precision. All 43 individual event terms are negative, and their
+correlation with median luminosity distance is `-0.9413`. The positive
+partial-catalog total is therefore produced by the selection correction rather
+than by the observed-event terms. The remaining 192 events and full nuisance
+marginalization can change its sign.
+
+This attribution corrects the 19-event component split recorded in repository
+commit `1fd4f6e`. ICAROGW estimates the paired-mass normalization with Monte
+Carlo draws on each population update. Different draws shift equal and opposite
+constants between the event and selection components, while canceling exactly
+from the scale-free total likelihood. The script now gives the common mass
+model the identical normalization draw under GR and PDT. Repeating the
+43-event calculation with two different common draws changed the event sum,
+selection term, and every per-event difference by less than `9e-15`, while the
+draw-dependent normalization itself changed from `0.14960` to `0.14558`. The
+earlier `+0.7123101` total remains valid; only its decomposition is superseded.
+The corrected per-event decomposition, checkpoint history, checksums, settings,
+and invariance check are recorded in `gwtc5_likelihood_checkpoint_audit.json`.
 
 This remains a diagnostic, not model evidence. It demonstrates why both sides
 of the hierarchical likelihood are indispensable: reweighting the observed

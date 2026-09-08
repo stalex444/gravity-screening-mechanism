@@ -1,125 +1,292 @@
 {
   "attribution": {
-    "definition": "fixed-nuisance diagnostic only; event log-sum-weight terms plus the model-dependent selection term",
+    "definition": "fixed-nuisance diagnostic only; event log-sum-weight terms plus the model-dependent selection term, with an identical Monte Carlo normalization draw for the common paired-mass model",
+    "distance_event_term_pearson_r": -0.9413375403369926,
     "event_terms": [
       {
-        "delta_log_event_term_pdt_minus_gr": -0.016264711950054078,
+        "delta_log_event_term_pdt_minus_gr": -0.030455437127526963,
         "event": "GW150914_095045",
         "median_luminosity_distance_mpc": 463.0273004376536,
         "run": "O1"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.0423592697709978,
+        "delta_log_event_term_pdt_minus_gr": -0.05654999494847246,
         "event": "GW151012_095443",
         "median_luminosity_distance_mpc": 1056.2635049047035,
         "run": "O1"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.032046356330384995,
+        "delta_log_event_term_pdt_minus_gr": -0.04623708150785788,
         "event": "GW151226_033853",
         "median_luminosity_distance_mpc": 471.2247292125912,
         "run": "O1"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.03687339582171312,
+        "delta_log_event_term_pdt_minus_gr": -0.05106412099918778,
         "event": "GW170104_101158",
         "median_luminosity_distance_mpc": 1126.1862689610603,
         "run": "O2"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.007113130786542854,
+        "delta_log_event_term_pdt_minus_gr": -0.021303855964021068,
         "event": "GW170608_020116",
         "median_luminosity_distance_mpc": 334.0212859866297,
         "run": "O2"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.155434883895456,
+        "delta_log_event_term_pdt_minus_gr": -0.16962560907293067,
         "event": "GW170729_185629",
         "median_luminosity_distance_mpc": 2874.1124924232845,
         "run": "O2"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.04298514561052258,
+        "delta_log_event_term_pdt_minus_gr": -0.05717587078799724,
         "event": "GW170809_082821",
         "median_luminosity_distance_mpc": 1116.945513317548,
         "run": "O2"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.020759063236534203,
+        "delta_log_event_term_pdt_minus_gr": -0.03494978841400709,
         "event": "GW170814_103043",
         "median_luminosity_distance_mpc": 599.8824732086889,
         "run": "O2"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.048738277767764515,
+        "delta_log_event_term_pdt_minus_gr": -0.06292900294523918,
         "event": "GW170818_022509",
         "median_luminosity_distance_mpc": 1178.413928247321,
         "run": "O2"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.08756082901001783,
+        "delta_log_event_term_pdt_minus_gr": -0.10175155418749426,
         "event": "GW170823_131358",
         "median_luminosity_distance_mpc": 2115.453395494745,
         "run": "O2"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.046093616391896575,
+        "delta_log_event_term_pdt_minus_gr": -0.06028434156936768,
         "event": "GW190408_181802",
         "median_luminosity_distance_mpc": 1574.6829463802464,
         "run": "O3a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.019823686200423296,
+        "delta_log_event_term_pdt_minus_gr": -0.03401441137789796,
         "event": "GW190412_053044",
         "median_luminosity_distance_mpc": 699.5342450679238,
         "run": "O3a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.21706745590875087,
+        "delta_log_event_term_pdt_minus_gr": -0.23125818108622553,
         "event": "GW190413_134308",
         "median_luminosity_distance_mpc": 4607.0903498702855,
         "run": "O3a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.13227312785520695,
+        "delta_log_event_term_pdt_minus_gr": -0.1464638530326816,
         "event": "GW190421_213856",
         "median_luminosity_distance_mpc": 2958.453571222298,
         "run": "O3a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": 0.003073435751396403,
+        "delta_log_event_term_pdt_minus_gr": -0.011117289426078258,
         "event": "GW190425_081805",
         "median_luminosity_distance_mpc": 143.44818712678145,
         "run": "O3a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.07470098063471653,
+        "delta_log_event_term_pdt_minus_gr": -0.08889170581219119,
         "event": "GW190503_185404",
         "median_luminosity_distance_mpc": 1596.2606456093097,
         "run": "O3a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.07252420033957918,
+        "delta_log_event_term_pdt_minus_gr": -0.08671492551705029,
         "event": "GW190512_180714",
         "median_luminosity_distance_mpc": 1534.3960582776995,
         "run": "O3a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.07043844730910287,
+        "delta_log_event_term_pdt_minus_gr": -0.08462917248657575,
         "event": "GW190513_205428",
         "median_luminosity_distance_mpc": 2283.2604026402532,
         "run": "O3a"
       },
       {
-        "delta_log_event_term_pdt_minus_gr": -0.07839013644423076,
+        "delta_log_event_term_pdt_minus_gr": -0.09258086162170187,
         "event": "GW190517_055101",
         "median_luminosity_distance_mpc": 1919.5893909569302,
         "run": "O3a"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.1691493631701264,
+        "event": "GW190519_153544",
+        "median_luminosity_distance_mpc": 3057.0433476693465,
+        "run": "O3a"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.20912994861518897,
+        "event": "GW190521_030229",
+        "median_luminosity_distance_mpc": 4526.637277364765,
+        "run": "O3a"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.06737967313430104,
+        "event": "GW190521_074359",
+        "median_luminosity_distance_mpc": 961.0488641235978,
+        "run": "O3a"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.10198041038595207,
+        "event": "GW190527_092055",
+        "median_luminosity_distance_mpc": 3221.314749476868,
+        "run": "O3a"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.1666425436065233,
+        "event": "GW190602_175927",
+        "median_luminosity_distance_mpc": 3274.2085809991427,
+        "run": "O3a"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.2030613060191655,
+        "event": "GW190620_030421",
+        "median_luminosity_distance_mpc": 3418.1831698634733,
+        "run": "O3a"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.04752569622839253,
+        "event": "GW190630_185205",
+        "median_luminosity_distance_mpc": 908.0265438377,
+        "run": "O3a"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.14568133155332275,
+        "event": "GW190701_203306",
+        "median_luminosity_distance_mpc": 2217.008139158801,
+        "run": "O3a"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.20673952423613784,
+        "event": "GW190706_222641",
+        "median_luminosity_distance_mpc": 4420.406828420671,
+        "run": "O3a"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.07507558287223048,
+        "event": "GW190707_093326",
+        "median_luminosity_distance_mpc": 841.8587027615642,
+        "run": "O3a"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.05675490763366042,
+        "event": "GW190708_232457",
+        "median_luminosity_distance_mpc": 962.8643521361589,
+        "run": "O3a"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.07720034958881072,
+        "event": "GW190720_000836",
+        "median_luminosity_distance_mpc": 774.5284278778465,
+        "run": "O3a"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.14421831102415616,
+        "event": "GW190727_060333",
+        "median_luminosity_distance_mpc": 3235.4500554577417,
+        "run": "O3a"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.08947579484489765,
+        "event": "GW190728_064510",
+        "median_luminosity_distance_mpc": 906.6300020669082,
+        "run": "O3a"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.13454997454267925,
+        "event": "GW190803_022701",
+        "median_luminosity_distance_mpc": 3572.7985844124755,
+        "run": "O3a"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.016344783020784348,
+        "event": "GW190814_211039",
+        "median_luminosity_distance_mpc": 233.35813588090588,
+        "run": "O3a"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.08343847078059063,
+        "event": "GW190828_063405",
+        "median_luminosity_distance_mpc": 2190.797946085765,
+        "run": "O3a"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.09558108103209051,
+        "event": "GW190828_065509",
+        "median_luminosity_distance_mpc": 1646.2218603384827,
+        "run": "O3a"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.11589326449273862,
+        "event": "GW190910_112807",
+        "median_luminosity_distance_mpc": 1877.9223124589682,
+        "run": "O3a"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.07690168617062376,
+        "event": "GW190915_235702",
+        "median_luminosity_distance_mpc": 1885.507268107101,
+        "run": "O3a"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.037980030864432024,
+        "event": "GW190924_021846",
+        "median_luminosity_distance_mpc": 556.0756389435219,
+        "run": "O3a"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.0467569536388428,
+        "event": "GW190925_232845",
+        "median_luminosity_distance_mpc": 936.9937186468778,
+        "run": "O3a"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.20934255797725498,
+        "event": "GW190929_012149",
+        "median_luminosity_distance_mpc": 3769.2235240484615,
+        "run": "O3a"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.07046533868683724,
+        "event": "GW190930_133541",
+        "median_luminosity_distance_mpc": 789.9014520968567,
+        "run": "O3a"
       }
     ],
-    "reconstructed_delta": 0.712310101186493,
-    "selection_term_pdt_minus_gr": 1.9106833806989916,
-    "sum_event_terms": -1.1983732795124986
+    "negative_event_terms": 43,
+    "positive_event_terms": 0,
+    "reconstructed_delta": 0.8191134179984187,
+    "run_summary": {
+      "O1": {
+        "events": 3,
+        "net_with_proportional_selection_share": 0.2110165115326076,
+        "selection_share": 0.3442590251164649,
+        "sum_event_terms": -0.1332425135838573
+      },
+      "O2": {
+        "events": 7,
+        "net_with_proportional_selection_share": 0.30447125623420734,
+        "selection_share": 0.8032710586050846,
+        "sum_event_terms": -0.4987998023708773
+      },
+      "O3a": {
+        "events": 33,
+        "net_with_proportional_selection_share": 0.30362565023160304,
+        "selection_share": 3.7868492762811132,
+        "sum_event_terms": -3.48322362604951
+      }
+    },
+    "selection_term_pdt_minus_gr": 4.934379360002663,
+    "sum_event_terms": -4.115265942004244
   },
   "checkpoint_history": [
     {
@@ -154,16 +321,31 @@
     {
       "delta_log_likelihood_pdt_minus_gr": 0.7123101011864961,
       "events": 19,
+      "note": "total likelihood difference remains valid; the component split published in commit 1fd4f6e was non-invariant and is superseded by this audit",
       "nparallel": 8192,
       "scope": "complete O1 and O2 plus first nine checksum-locked O3a events",
       "seed": 260907
+    },
+    {
+      "delta_log_likelihood_pdt_minus_gr": 0.8191134179984125,
+      "events": 43,
+      "model_normalization_seed": 260900,
+      "nparallel": 8192,
+      "scope": "complete O1, O2, and O3a",
+      "seed": 260907
     }
   ],
-  "delta_log_likelihood_pdt_minus_gr": 0.7123101011864961,
+  "correction": {
+    "cause": "ICAROGW estimates the paired-mass normalization with Monte Carlo draws on each population update. Independent draws shift equal and opposite constants between the event and selection components while canceling from the scale-free total likelihood.",
+    "repair": "reset a dedicated model-normalization seed before each propagation hypothesis so the identical common mass model receives the identical draw",
+    "scope": "component attribution only; no catalog likelihood total changed",
+    "supersedes": "the 19-event component attribution in repository commit 1fd4f6e; the reported 19-event total likelihood difference remains valid"
+  },
+  "delta_log_likelihood_pdt_minus_gr": 0.8191134179984125,
   "diagnostic_interpretation": {
-    "observed_event_terms": "favor GR at this fixed point",
-    "reason": "partial catalog and fixed population/background-cosmology nuisance parameters; no marginalization",
-    "selection_term": "favors PDT at this fixed point",
+    "observed_event_terms": "all 43 favor GR at this fixed nuisance point under the corrected common normalization",
+    "reason": "43 of 235 events and fixed population/background-cosmology nuisance medians; no nuisance marginalization",
+    "selection_term": "favors PDT at this fixed nuisance point and exceeds the observed-event sum in magnitude",
     "status": "not model evidence",
     "warning": "the sign may change with the remaining events or nuisance marginalization"
   },
@@ -319,26 +501,220 @@
       "run": "O3a",
       "selected_group": "C01:IMRPhenomXPHM",
       "source_md5": "fa713aa8cdf4467c3c4b9af46fc6a6b7"
+    },
+    {
+      "event": "GW190519_153544",
+      "median_luminosity_distance_mpc": 3057.0433476693465,
+      "posterior_samples": 150207,
+      "run": "O3a",
+      "selected_group": "C01:IMRPhenomXPHM",
+      "source_md5": "ce75a83120e850bd145c9a080c4e33c3"
+    },
+    {
+      "event": "GW190521_030229",
+      "median_luminosity_distance_mpc": 4526.637277364765,
+      "posterior_samples": 148527,
+      "run": "O3a",
+      "selected_group": "C01:IMRPhenomXPHM",
+      "source_md5": "e9400820a6ab597836997f044c543902"
+    },
+    {
+      "event": "GW190521_074359",
+      "median_luminosity_distance_mpc": 961.0488641235978,
+      "posterior_samples": 210737,
+      "run": "O3a",
+      "selected_group": "C01:IMRPhenomXPHM",
+      "source_md5": "7e2dbc147e4c8ab211aa1393586e4f9e"
+    },
+    {
+      "event": "GW190527_092055",
+      "median_luminosity_distance_mpc": 3221.314749476868,
+      "posterior_samples": 141653,
+      "run": "O3a",
+      "selected_group": "C01:IMRPhenomXPHM",
+      "source_md5": "281c151f07e20bfbf61b1e7a7fbb268e"
+    },
+    {
+      "event": "GW190602_175927",
+      "median_luminosity_distance_mpc": 3274.2085809991427,
+      "posterior_samples": 155451,
+      "run": "O3a",
+      "selected_group": "C01:IMRPhenomXPHM",
+      "source_md5": "43ac5177a01862b79e134878e62d3c6e"
+    },
+    {
+      "event": "GW190620_030421",
+      "median_luminosity_distance_mpc": 3418.1831698634733,
+      "posterior_samples": 152410,
+      "run": "O3a",
+      "selected_group": "C01:IMRPhenomXPHM",
+      "source_md5": "33f25110b7086a386e5a3f4238462131"
+    },
+    {
+      "event": "GW190630_185205",
+      "median_luminosity_distance_mpc": 908.0265438377,
+      "posterior_samples": 171387,
+      "run": "O3a",
+      "selected_group": "C01:IMRPhenomXPHM",
+      "source_md5": "de53f530f9d6bbcbab7903fc1462c1fd"
+    },
+    {
+      "event": "GW190701_203306",
+      "median_luminosity_distance_mpc": 2217.008139158801,
+      "posterior_samples": 160160,
+      "run": "O3a",
+      "selected_group": "C01:IMRPhenomXPHM",
+      "source_md5": "71b64a3796a8853a78fa60e0376fc03a"
+    },
+    {
+      "event": "GW190706_222641",
+      "median_luminosity_distance_mpc": 4420.406828420671,
+      "posterior_samples": 159868,
+      "run": "O3a",
+      "selected_group": "C01:IMRPhenomXPHM",
+      "source_md5": "41698cc98b3a7764015b41a893eb908e"
+    },
+    {
+      "event": "GW190707_093326",
+      "median_luminosity_distance_mpc": 841.8587027615642,
+      "posterior_samples": 367463,
+      "run": "O3a",
+      "selected_group": "C01:IMRPhenomXPHM",
+      "source_md5": "d9fbb93c21bde485cd26f38190e24ad3"
+    },
+    {
+      "event": "GW190708_232457",
+      "median_luminosity_distance_mpc": 962.8643521361589,
+      "posterior_samples": 94772,
+      "run": "O3a",
+      "selected_group": "C01:IMRPhenomXPHM",
+      "source_md5": "2064a34c15ce2a983e3ff2ff64622963"
+    },
+    {
+      "event": "GW190720_000836",
+      "median_luminosity_distance_mpc": 774.5284278778465,
+      "posterior_samples": 131644,
+      "run": "O3a",
+      "selected_group": "C01:IMRPhenomXPHM",
+      "source_md5": "344c8870a0bf71f35f69d617117a1765"
+    },
+    {
+      "event": "GW190727_060333",
+      "median_luminosity_distance_mpc": 3235.4500554577417,
+      "posterior_samples": 162922,
+      "run": "O3a",
+      "selected_group": "C01:IMRPhenomXPHM",
+      "source_md5": "d7dc060eea8c0b86e1ce00983e740057"
+    },
+    {
+      "event": "GW190728_064510",
+      "median_luminosity_distance_mpc": 906.6300020669082,
+      "posterior_samples": 20000,
+      "run": "O3a",
+      "selected_group": "C01:IMRPhenomXPHM",
+      "source_md5": "388c744e2b1b6b4784756f4b3aaed528"
+    },
+    {
+      "event": "GW190803_022701",
+      "median_luminosity_distance_mpc": 3572.7985844124755,
+      "posterior_samples": 101656,
+      "run": "O3a",
+      "selected_group": "C01:IMRPhenomXPHM",
+      "source_md5": "5d001778a679b1a8f2c608b7abbebe38"
+    },
+    {
+      "event": "GW190814_211039",
+      "median_luminosity_distance_mpc": 233.35813588090588,
+      "posterior_samples": 89500,
+      "run": "O3a",
+      "selected_group": "C01:IMRPhenomXPHM",
+      "source_md5": "cddf95a9932df3b2c0b72ad557e79dd3"
+    },
+    {
+      "event": "GW190828_063405",
+      "median_luminosity_distance_mpc": 2190.797946085765,
+      "posterior_samples": 128000,
+      "run": "O3a",
+      "selected_group": "C01:IMRPhenomXPHM",
+      "source_md5": "91bca9807b25fd563ea15d4fd29a9131"
+    },
+    {
+      "event": "GW190828_065509",
+      "median_luminosity_distance_mpc": 1646.2218603384827,
+      "posterior_samples": 181548,
+      "run": "O3a",
+      "selected_group": "C01:IMRPhenomXPHM",
+      "source_md5": "8a78deb714c9271d63c9f87d2f62301e"
+    },
+    {
+      "event": "GW190910_112807",
+      "median_luminosity_distance_mpc": 1877.9223124589682,
+      "posterior_samples": 159609,
+      "run": "O3a",
+      "selected_group": "C01:IMRPhenomXPHM",
+      "source_md5": "b94149ed8b1636385a45f2282c3f9671"
+    },
+    {
+      "event": "GW190915_235702",
+      "median_luminosity_distance_mpc": 1885.507268107101,
+      "posterior_samples": 144305,
+      "run": "O3a",
+      "selected_group": "C01:IMRPhenomXPHM",
+      "source_md5": "a1b4d4257abbd9ac861fdc76d349c4c8"
+    },
+    {
+      "event": "GW190924_021846",
+      "median_luminosity_distance_mpc": 556.0756389435219,
+      "posterior_samples": 46372,
+      "run": "O3a",
+      "selected_group": "C01:IMRPhenomXPHM",
+      "source_md5": "26488231313495909354b1886199c60f"
+    },
+    {
+      "event": "GW190925_232845",
+      "median_luminosity_distance_mpc": 936.9937186468778,
+      "posterior_samples": 164960,
+      "run": "O3a",
+      "selected_group": "C01:IMRPhenomXPHM",
+      "source_md5": "9e03629caab8e2f44ebaf61e99724184"
+    },
+    {
+      "event": "GW190929_012149",
+      "median_luminosity_distance_mpc": 3769.2235240484615,
+      "posterior_samples": 153782,
+      "run": "O3a",
+      "selected_group": "C01:IMRPhenomXPHM",
+      "source_md5": "1b66d842281c4b516faaf23455dbae2b"
+    },
+    {
+      "event": "GW190930_133541",
+      "median_luminosity_distance_mpc": 789.9014520968567,
+      "posterior_samples": 137344,
+      "run": "O3a",
+      "selected_group": "C01:IMRPhenomXPHM",
+      "source_md5": "9ee67863c5b60adf1288ede818a1cc01"
     }
   ],
   "hypotheses": {
     "GR": {
-      "effective_injections": 47259.59950084016,
-      "effective_pe_max": 6830.891409227855,
-      "effective_pe_min": 1364.7303677567108,
+      "effective_injections": 47259.59950084,
+      "effective_pe_max": 8163.540892464762,
+      "effective_pe_min": 885.6863848393494,
       "eps0": 0.0,
-      "likelihood_variance": 0.010060324552416872,
-      "log_likelihood": 55.653095949288314,
-      "runtime_seconds": 0.7545738339977106
+      "likelihood_variance": 0.04589665799786986,
+      "log_likelihood": 22.863877301640063,
+      "mass_pairing_normalization": 0.14959956947129951,
+      "runtime_seconds": 0.8128856249968521
     },
     "PDT": {
-      "effective_injections": 43447.91935884473,
-      "effective_pe_max": 6826.387024331484,
-      "effective_pe_min": 1400.901830937799,
+      "effective_injections": 43447.91935884488,
+      "effective_pe_max": 8163.223661988361,
+      "effective_pe_min": 909.2178666727472,
       "eps0": 0.08333758478067765,
-      "likelihood_variance": 0.010725610072520536,
-      "log_likelihood": 56.36540605047481,
-      "runtime_seconds": 0.7239078329876065
+      "likelihood_variance": 0.049223390687891756,
+      "log_likelihood": 23.682990719638475,
+      "mass_pairing_normalization": 0.14959956947129951,
+      "runtime_seconds": 0.760327124997275
     }
   },
   "icarogw_commit_detected": "c473f3b2f50e11a88a46cc1625933af1f1249d39",
@@ -348,6 +724,16 @@
     "selected_rows": 1478693,
     "source_md5": "1498cc813a770e6b5da86c8fbf2b3126",
     "total_generated": 1568035640.0
+  },
+  "normalization_invariance_check": {
+    "absolute_delta_log_likelihood_difference": 2.1316282072803006e-14,
+    "absolute_event_sum_difference": 8.881784197001252e-15,
+    "absolute_selection_term_difference": 1.7763568394002505e-15,
+    "first_common_mass_pairing_normalization": 0.14959956947129951,
+    "maximum_absolute_per_event_difference": 3.9968028886505635e-15,
+    "outcome": "component attribution invariant to numerical roundoff when the common mass model receives the same normalization draw under both propagation hypotheses",
+    "second_common_mass_pairing_normalization": 0.1455786267044095,
+    "second_model_normalization_seed": 260901
   },
   "reason": "selected events and fixed nuisance medians; no nuisance marginalization",
   "reference_result": {
@@ -359,8 +745,9 @@
   },
   "schema_version": 1,
   "settings": {
-    "event_count": 19,
-    "neff_injections": 76,
+    "event_count": 43,
+    "model_normalization_seed": 260900,
+    "neff_injections": 172,
     "neff_pe": 20,
     "nparallel": 8192,
     "seed": 260907,

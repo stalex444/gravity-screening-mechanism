@@ -86,6 +86,17 @@ def source_path(cache_dir: Path, item: dict) -> Path:
     return cache_dir / f"{source['record_id']}--{source['filename']}"
 
 
+def zenodo_direct_url(url: str) -> str | None:
+    prefix = "https://zenodo.org/api/records/"
+    if not url.startswith(prefix) or "/files/" not in url or not url.endswith("/content"):
+        return None
+    record_and_file = url[len(prefix) : -len("/content")]
+    record_id, filename = record_and_file.split("/files/", 1)
+    if not record_id.isdigit() or not filename:
+        return None
+    return f"https://zenodo.org/records/{record_id}/files/{filename}?download=1"
+
+
 def download_with_resume(
     url: str, destination: Path, expected_bytes: int, max_attempts: int = 6
 ) -> None:
@@ -94,6 +105,8 @@ def download_with_resume(
     if max_attempts < 1:
         raise ValueError("max_attempts must be positive")
     last_problem = None
+    active_url = url
+    direct_url = zenodo_direct_url(url)
     for attempt in range(1, max_attempts + 1):
         offset = part.stat().st_size if part.exists() else 0
         if offset > expected_bytes:
@@ -101,7 +114,7 @@ def download_with_resume(
         headers = {"User-Agent": "gravity-screening-mechanism/1.0"}
         if offset:
             headers["Range"] = f"bytes={offset}-"
-        request = urllib.request.Request(url, headers=headers)
+        request = urllib.request.Request(active_url, headers=headers)
         try:
             with urllib.request.urlopen(request) as response:  # noqa: S310 -- locked HTTPS URL
                 status = getattr(response, "status", response.getcode())
@@ -129,6 +142,13 @@ def download_with_resume(
 
         if attempt == max_attempts:
             break
+        if direct_url is not None and active_url != direct_url:
+            active_url = direct_url
+            print(
+                "  switching from the Zenodo API gateway to the official direct file endpoint",
+                file=sys.stderr,
+                flush=True,
+            )
         delay = min(2 ** attempt, 30)
         print(
             f"  transient download failure ({last_problem}); retrying in {delay}s "

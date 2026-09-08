@@ -208,14 +208,22 @@ formulas, commands, machine-readable audit, and real-file integration tests
 are recorded in
 [EXACT_GWTC5_RERUN.md](EXACT_GWTC5_RERUN.md).
 
-The diagnostic has since been expanded to complete O1/O2 and nine O3a events.
-At 19 events its fixed-nuisance difference is `+0.7123`, but the decomposition
-shows why that sign is not evidence: observed-event terms contribute `-1.1984`
-while the required selection correction contributes `+1.9107`. Eighteen of
-nineteen individual event terms lean toward GR at this fixed point. The
-partial-catalog result therefore demonstrates the importance of recomputing
-detectability under each propagation law; later events and nuisance
-marginalization may change the sign. The detailed checkpoint is recorded in
+The diagnostic has since been expanded to every O1, O2, and O3a event. Across
+these 43 events its fixed-nuisance difference is `+0.8191`, but the corrected
+decomposition shows why that sign is not evidence: observed-event terms
+contribute `-4.1153` while the required selection correction contributes
+`+4.9344`. All 43 individual event terms lean toward GR at this fixed point.
+The partial-catalog result therefore demonstrates the importance of
+recomputing detectability under each propagation law; the remaining 192 events
+and nuisance marginalization may change the sign.
+
+This supersedes the 19-event component split in commit `1fd4f6e`. ICAROGW's
+paired-mass normalization uses a Monte Carlo draw on every population update.
+The total scale-free likelihood cancels that common factor, but a component
+attribution requires the same draw under both hypotheses. The script now
+enforces that condition, and a second common draw reproduced every corrected
+component to better than `9e-15`. The earlier 19-event total was unaffected.
+The detailed correction and 43-event checkpoint are recorded in
 `gwtc5_likelihood_checkpoint_audit.json`.
 
 The full inference runner is now included as `gwtc5_full_inference.py`. It
