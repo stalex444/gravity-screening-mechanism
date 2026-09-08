@@ -12,9 +12,10 @@ normalization fixes the identity coefficient.  Choosing the minus-chiral core
 weight `1/q` then fixes the remaining coefficient to `lambda4 q`.
 
 The last step is orientation-sensitive: choosing the opposite chiral plane
-would reverse the sign.  The Fisher metric from
+would reverse the sign.  The normalized Fisher scalar from
 `GaussianInformationGeometry` is orientation-blind and recovers only the
-magnitude until that branch is supplied.
+magnitude.  The full positive-measure cone retains the sign as a mixed
+radial--chiral pairing once the outward radial direction is oriented.
 -/
 
 namespace GravityScreening

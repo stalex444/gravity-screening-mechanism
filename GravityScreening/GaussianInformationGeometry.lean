@@ -240,6 +240,95 @@ theorem quartic_fisher_fingerprint_unique
 noncomputable def doubledTTGaussianMass (l : ℝ) : ℝ :=
   Real.pi ^ 2 / screening l
 
+/-- The signed radial velocity of the unnormalized Gaussian mass as the
+Hodge coupling varies.  Unlike the normalized Fisher scalar, this quantity
+is odd in the coupling. -/
+noncomputable def doubledTTGaussianMassVelocity (l : ℝ) : ℝ :=
+  2 * Real.pi ^ 2 * l / screening l ^ 2
+
+/-- The displayed mass velocity is the exact derivative of the Gaussian
+mass away from the Hodge boundary. -/
+theorem doubledTTGaussianMass_hasDerivAt
+    (l : ℝ) (hs : screening l ≠ 0) :
+    HasDerivAt doubledTTGaussianMass (doubledTTGaussianMassVelocity l) l := by
+  have hscreen : HasDerivAt screening (-2 * l) l := by
+    change HasDerivAt (fun x : ℝ => 1 - x ^ 2) (-2 * l) l
+    exact (HasDerivAt.const_sub (1 : ℝ)
+      ((hasDerivAt_id l).pow 2)).congr_deriv (by simp [id_eq])
+  have hpi : HasDerivAt (fun _ : ℝ => Real.pi ^ 2) 0 l :=
+    hasDerivAt_const (x := l) (c := Real.pi ^ 2)
+  have hquot := hpi.div hscreen hs
+  exact hquot.congr_deriv (by
+    simp [doubledTTGaussianMassVelocity]
+    ring)
+
+/-- Reversing Hodge orientation reverses the radial mass velocity. -/
+theorem doubledTTGaussianMassVelocity_neg (l : ℝ) :
+    doubledTTGaussianMassVelocity (-l) =
+      -doubledTTGaussianMassVelocity l := by
+  simp [doubledTTGaussianMassVelocity, screening]
+  ring
+
+/-- Inside the nonsingular Hodge interval, the sign of the radial mass
+velocity is exactly the sign of the coupling. -/
+theorem doubledTTGaussianMassVelocity_pos_iff
+    (l : ℝ) (hl : |l| < 1) :
+    0 < doubledTTGaussianMassVelocity l ↔ 0 < l := by
+  have hs : 0 < screening l := screening_pos (abs_lt.mp hl)
+  have hden : 0 < screening l ^ 2 := sq_pos_of_pos hs
+  unfold doubledTTGaussianMassVelocity
+  rw [div_pos_iff]
+  constructor
+  · intro h
+    rcases h with h | h
+    · have hpi : 0 < Real.pi ^ 2 := sq_pos_of_pos Real.pi_pos
+      nlinarith
+    · exact (not_lt_of_ge (le_of_lt hden) h.2).elim
+  · intro hl0
+    left
+    exact ⟨by positivity, hden⟩
+
+/-- In mass/shape coordinates the normalized shape direction is orthogonal
+to the radial direction, but the physical coupling path also changes the
+mass.  Its mixed pairing with the outward log-mass direction is therefore
+exactly the signed mass velocity. -/
+theorem doubledTTGaussian_fisherCone_mixed_eq_massVelocity
+    {n : ℕ} (l : ℝ) (p dp : Fin n → ℝ)
+    (hl : |l| < 1) (hp : ∀ i, p i ≠ 0)
+    (hsum : ∑ i, p i = 1) (hdp : ∑ i, dp i = 0) :
+    diagonalFisherPair
+        (coneWeight (doubledTTGaussianMass l) p)
+        (coneTangent (doubledTTGaussianMass l)
+          (doubledTTGaussianMass l) p (fun _ => 0))
+        (coneTangent (doubledTTGaussianMass l)
+          (doubledTTGaussianMassVelocity l) p dp) =
+      doubledTTGaussianMassVelocity l := by
+  have hs : 0 < screening l := screening_pos (abs_lt.mp hl)
+  have hm : doubledTTGaussianMass l ≠ 0 := by
+    unfold doubledTTGaussianMass
+    positivity
+  rw [fisherCone_pair_decomposition
+    (doubledTTGaussianMass l) (doubledTTGaussianMass l)
+    (doubledTTGaussianMassVelocity l) p (fun _ => 0) dp
+    hm hp hsum (by simp) hdp]
+  simp [diagonalFisherPair, hm]
+
+/-- The quartic branch points outward in the positive-measure Fisher cone. -/
+theorem quarticDoubledTTGaussianMassVelocity_pos
+    (q : ℝ) (hq : 1 < q) :
+    0 < doubledTTGaussianMassVelocity (lambda4 q) := by
+  have hq0 : 0 < q := by linarith
+  have hl0 : 0 < lambda4 q := by
+    unfold lambda4
+    have : 1 / q < 1 := (div_lt_one hq0).2 hq
+    linarith
+  have hl1 : lambda4 q < 1 := by
+    unfold lambda4
+    have : 0 < 1 / q := one_div_pos.mpr hq0
+    linarith
+  exact (doubledTTGaussianMassVelocity_pos_iff
+    (lambda4 q) (abs_lt.mpr ⟨by linarith, hl1⟩)).2 hl0
+
 /-- The analytic Gaussian integral is exactly the information-cone mass. -/
 theorem doubledTTMode_gaussian_integral_eq_mass
     (l d : ℝ) (hd : d ^ 2 = screening l) (hdpos : 0 < d) :
@@ -283,6 +372,11 @@ theorem doubledTTGaussian_fisherCone_radial_term
 #print axioms GravityScreening.quarticDoubledTTGaussianFisher
 #print axioms GravityScreening.quarticFisher_eq_tensorGaussianResponsePolynomial
 #print axioms GravityScreening.quartic_fisher_fingerprint_unique
+#print axioms GravityScreening.doubledTTGaussianMass_hasDerivAt
+#print axioms GravityScreening.doubledTTGaussianMassVelocity_neg
+#print axioms GravityScreening.doubledTTGaussianMassVelocity_pos_iff
+#print axioms GravityScreening.doubledTTGaussian_fisherCone_mixed_eq_massVelocity
+#print axioms GravityScreening.quarticDoubledTTGaussianMassVelocity_pos
 #print axioms GravityScreening.doubledTTGaussian_fisherCone_radial_term
 
 end GravityScreening

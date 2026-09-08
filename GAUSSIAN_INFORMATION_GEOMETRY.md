@@ -87,7 +87,7 @@ normalization and the graph-selected core weight determine its point.
 
 ## What running the argument backwards reveals
 
-Fisher curvature and Gaussian mass are both unchanged by
+The normalized Fisher curvature and Gaussian mass are both unchanged by
 `lambda -> -lambda`. Lean proves:
 
 ```text
@@ -101,14 +101,34 @@ On the full interval `|lambda|<1`, equality of Fisher curvature forces
 ```
 
 After a branch orientation is chosen, for example `0 <= lambda < 1`, Fisher
-curvature determines `lambda` uniquely. Information geometry therefore fixes
-the magnitude of the Hodge coupling but cannot choose its sign. A separate
-chiral or temporal orientation rule would have to supply that sign. Connecting
-such a rule to the physical gravitational Hodge branch remains open.
+curvature determines `lambda` uniquely. The scalar curvature therefore fixes
+the magnitude of the Hodge coupling but cannot choose its sign.
 
-This is a useful separation. The orientation-blind part of the gravity
-response is encoded by a positive-definite statistical geometry. The arrow is
-extra data from the viewpoint of that geometry.
+The full cone of positive measures contains more information than that scalar.
+The mass changes along the coupling path with signed velocity
+
+```text
+Z'(lambda) = 2 pi^2 lambda/(1-lambda^2)^2.
+```
+
+Lean proves that the mixed Fisher pairing of the coupling tangent with the
+outward log-mass direction is exactly `Z'(lambda)`. It is odd under
+`lambda -> -lambda`, and inside `|lambda|<1` its sign is exactly the sign of
+`lambda`. At the quartic value `lambda4(Q)>0`, the pairing is strictly
+positive.
+
+Thus conditioning to probability one erases two related pieces of data: the
+radial mass and the signed radial component of the chiral coupling path. The
+full positive-measure geometry retains both. This does not select an arrow by
+itself: the outward mass direction and the chirality labeling must have a
+physical meaning. It does identify the precise geometric datum in which such
+an orientation can live. Connecting that datum to the gravitational Hodge
+branch and to a time-oriented reading remains open.
+
+This is a useful separation. The normalized curvature is orientation-blind;
+the unnormalized cone records orientation relative to its outward radial
+direction, while the physical choice of that direction remains a
+correspondence question.
 
 ## Quartic values
 
@@ -122,6 +142,7 @@ S_Q      = 1-lambda4^2
 r_Q      = 1/S_Q
          = 1.03380392009397374921...
 F_Q      = 2.20739434061872154411...
+Z'_Q     = 3.81478912795767227750...
 ```
 
 The exact quartic Fisher value is
@@ -168,6 +189,11 @@ doubledTTGaussianFisher_eq
 doubledTTGaussianFisher_eq_responsePolynomial
 doubledTTGaussianFisher_recovers_abs
 quartic_fisher_fingerprint_unique
+doubledTTGaussianMass_hasDerivAt
+doubledTTGaussianMassVelocity_neg
+doubledTTGaussianMassVelocity_pos_iff
+doubledTTGaussian_fisherCone_mixed_eq_massVelocity
+quarticDoubledTTGaussianMassVelocity_pos
 doubledTTGaussian_fisherCone_radial_term
 doubledResponse_eq_affineChirality_of_symmetries
 realDoubledResponse_unique_of_symmetry_mean_core

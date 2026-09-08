@@ -401,7 +401,19 @@ two commuting TT/Hodge symmetries force an arbitrary four-mode operator to be
 `a I+b C`; mean-one normalization and the selected core weight `1/Q` then
 force `a=1` and `b=lambda4(Q)`. The remaining sign choice is genuinely
 chiral: determinant and Fisher geometry cannot distinguish `lambda` from
-`-lambda`. See
+`-lambda` at the level of scalar curvature. The full positive-measure cone
+does retain a signed mixed term:
+
+```text
+<outward log-mass direction, coupling direction>
+  = Z'(lambda)
+  = 2*pi^2*lambda/(1-lambda^2)^2.
+```
+
+Its sign is exactly the sign of `lambda` inside the positive-precision range,
+and the quartic branch points outward. This locates the missing orientation in
+the radial/chiral relation, while leaving the physical orientation of the
+radial direction to be derived. See
 [GAUSSIAN_INFORMATION_GEOMETRY.md](GAUSSIAN_INFORMATION_GEOMETRY.md) and
 [BULK_BOUNDARY_PI4.md](BULK_BOUNDARY_PI4.md).
 
