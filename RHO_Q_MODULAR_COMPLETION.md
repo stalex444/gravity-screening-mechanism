@@ -130,6 +130,32 @@ things.  The irrational two-frequency spectrum supplies the continuous
 type-`III_1` environment.  The diagonal step supplies the single shared
 `rho*Q` scale used by the coupling grammar.
 
+## Fixed conversion to geometric boost time
+
+For any wedge algebra satisfying the Bisognano--Wichmann convention,
+
+```text
+Delta^(i t) = U(Lambda(-2 pi t)).
+```
+
+The conversion is fixed by relativistic modular theory. It is not a parameter
+that can be adjusted to make the PDT scale agree with a desired frequency.
+Lean now proves that the joint modular multiplier becomes exactly the boost
+eigenphase with spectral weight
+
+```text
+omega_(rho Q) = log(rho Q)/(2 pi).
+```
+
+It also proves that this weight is positive for the positive cubic and quartic
+roots. Thus the arithmetic fixes the frequency and the
+Bisognano--Wichmann theorem fixes its conversion to rapidity.
+
+This is a conditional spacetime statement. The Lean identity is exact under
+the displayed convention; the remaining physical task is to prove that the
+graph-product representation is the relevant gravitational wedge or
+null-horizon algebra.
+
 ## Where the quartic screening factor belongs
 
 The joint step does not replace the quartic defect.  The stages are
@@ -220,6 +246,8 @@ intact.
   intersection, multiplicative independence, and irrational log ratio.
 - `GravityScreening/RhoQModularCompletion.lean` proves the joint analytic flow,
   synchronized inverse ratio, and combined gravity-denominator capstone.
+- `GravityScreening/RhoQBoostNormalization.lean` proves the fixed
+  Bisognano--Wichmann conversion and the resulting joint boost weight.
 - `GravityScreening/UnifiedCouplingGrammar.lean` proves the determinant and
   exponent identities under its displayed coupling definitions.
 - The registered chiral-Padovan proof is published separately in
@@ -242,5 +270,8 @@ Mathlib's standard logical axioms.
 - Horacio Casini, Eduardo Teste, and Gonzalo Torroba, *Modular Hamiltonians on
   the null plane and the Markov property of the vacuum state*:
   <https://arxiv.org/abs/1703.10656>
+- Vincenzo Morinelli, Yoh Tanimoto, and Benedikt Wegener, *Modular Operator
+  for Null Plane Algebras in Free Fields*:
+  <https://doi.org/10.1007/s00220-022-04432-8>
 - Florian Hopfmüller and Laurent Freidel, *Gravity Degrees of Freedom on a
   Null Surface*: <https://arxiv.org/abs/1802.06135>

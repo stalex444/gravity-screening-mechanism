@@ -172,6 +172,30 @@ beside the existing `(rho*Q)^224` response determinant and the distinct
 quartic screening block.  See
 [RHO_Q_MODULAR_COMPLETION.md](RHO_Q_MODULAR_COMPLETION.md).
 
+For a wedge satisfying the Bisognano--Wichmann property, the conversion from
+modular time to geometric boost rapidity is fixed at `-2*pi`. Lean proves
+that the joint flow therefore has boost weight `log(rho*Q)/(2*pi)`; there is
+no adjustable clock-to-rapidity normalization. The exact identity is
+conditional on realizing the graph product as the physical wedge algebra.
+
+The gravity numerator has also been reduced to boundary geometry and the
+physical spin-two degree count. Lean proves that the polar surface measure of
+the unit `S^3` is `2*pi^2`, its numerical antipodal quotient is `pi^2`,
+and the transverse-traceless graviton space has two polarizations.
+Polarization symmetry and self-adjointness force a common boundary response
+to be scalar, so its determinant is
+
+```text
+det(pi^2 I_2) = pi^4,
+```
+
+exactly the numerator of the repository's gravitational-coupling formula.
+Before the quotient, `(2*pi^2)^2 = 4*pi^4`, matching the associated
+area-quantum form. The remaining correspondence is the physical
+identification of the antipodal quotient with the light-ray measurement
+space. See
+[BOUNDARY_MEASURE_NORMALIZATION.md](BOUNDARY_MEASURE_NORMALIZATION.md).
+
 ## The quartic Q specialization
 
 Let `Q` denote the positive real root satisfying
