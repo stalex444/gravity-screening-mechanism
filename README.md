@@ -651,6 +651,17 @@ quartic screening factor. The same capstone retains global information
 conservation, while keeping the carrier identification as an explicit
 hypothesis.
 
+[`LQG_JACOBSON_KMS_AUDIT.md`](LQG_JACOBSON_KMS_AUDIT.md) then removes the need
+to choose a numerical Barbero--Immirzi value.  Lean formalizes the exact
+cancellation in the local boost-energy/Unruh-temperature ratio and proves the
+fixed-area entropy law.  A full capstone keeps the two PDT roles visible:
+`(rho*Q)^224` is the bulk determinant, while the separate quartic determinant
+`S_Q` is the local horizon response.  Jacobson's equation-of-state argument
+also gives the decisive placement test: a common heat/entropy scaling cancels,
+whereas conserved total boost heat together with an `S_Q` exterior entropy
+response gives the inverse Newton response.  Identifying the proved PDT
+visible/hidden channels with those physical variables remains explicit.
+
 ## Palomar comparison surface
 
 The five selected results are:

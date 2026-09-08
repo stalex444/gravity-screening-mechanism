@@ -98,20 +98,23 @@ The determinant-to-area step, the quartic coefficient, and global information
 conservation are closed within the formal model. The carrier identification in
 canonical connection/triad variables remains open.
 
-## Barbero-Immirzi candidates
+## Why no Barbero--Immirzi value is selected
 
-This bridge does not require selecting a numerical Barbero-Immirzi parameter.
-That helps because the PDT materials currently contain two nearby candidates
-from different constructions:
+This bridge does not require selecting a numerical Barbero--Immirzi parameter.
+The PDT materials currently contain two nearby candidates from different
+constructions:
 
 ```text
 kappa log(rho)       = 0.238790513254...
 rho (1-1/Q)          = 0.239545418668...
 ```
 
-Their proximity is not equality. LQG offers a principled adjudication: a PDT
-value should arise in the canonical symplectic structure, the horizon boundary
-condition, or the area spectrum under a fixed state-counting convention.
+Their proximity is not equality, and neither value is used here.  More
+fundamentally, published horizon constructions do not present a single stable
+real number on which this bridge should depend.  The robust result is instead
+the cancellation proved in `LQGHorizonThermodynamics.lean`: the same Immirzi
+factor occurs in local boost energy and physical facet area, so the Clausius
+entropy at fixed physical area is independent of it.
 
 ## Lean surface
 
