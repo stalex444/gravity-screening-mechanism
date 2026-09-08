@@ -113,6 +113,9 @@ the 96,144,364-byte HDF5 file to a 535,918-byte NPZ. This demonstrates the
 storage strategy; it does not estimate the eventual sampler runtime.
 
 The generated data directories and partial downloads are ignored by Git.
+Transient HTTP 408/429/5xx responses and connection failures are retried with
+bounded exponential backoff. Every retry resumes a partial source when the
+server honors byte ranges; a non-transient HTTP error still fails immediately.
 
 ## PE-prior reconstruction
 
@@ -244,6 +247,35 @@ selection correction now run together on official data while satisfying the
 released likelihood's effective-sample and variance checks. The exact inputs,
 versions, settings, and outputs are recorded in
 `gwtc5_likelihood_smoke_audit.json`.
+
+An expanded checkpoint completed all ten O1/O2 events and the first nine
+checksum-locked O3a events before a Zenodo gateway outage interrupted further
+source retrieval. At 8,192 samples per event, the 19-event diagnostic gave
+
+\[
+\log L_{\rm PDT}-\log L_{\rm GR}=+0.7123101012.
+\]
+
+The complete O1/O2 value was stable under posterior subsampling: five
+independent 4,096-sample draws gave a mean of `+0.5151304` with sample standard
+deviation `0.0010067`, while an 8,192-sample evaluation gave `+0.5154878`.
+
+The 19-event likelihood attribution is more informative than its sign. The
+observed-event log-sum-weight terms total `-1.1983733`, favoring GR at the
+fixed nuisance point, while the model-dependent selection term is
+`+1.9106834`, favoring PDT. Their sum reconstructs `+0.7123101` to numerical
+precision. Eighteen of the nineteen event terms are negative, and their
+correlation with median luminosity distance is `-0.9753`. Thus the positive
+partial-catalog total is produced by the selection correction rather than by
+the observed-event terms. Remaining, generally more distant events and full
+nuisance marginalization can change the sign. The per-event decomposition,
+checkpoint history, checksums, settings, and stability results are recorded in
+`gwtc5_likelihood_checkpoint_audit.json`.
+
+This remains a diagnostic, not model evidence. It demonstrates why both sides
+of the hierarchical likelihood are indispensable: reweighting the observed
+events without recomputing detectability would reverse the interpretation of
+this checkpoint.
 
 Reproduce the diagnostic after preparing its two event files and cumulative
 injection file:

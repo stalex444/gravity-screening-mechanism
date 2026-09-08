@@ -16,6 +16,8 @@ import os
 from pathlib import Path
 import sys
 import tempfile
+import time
+import urllib.error
 import urllib.request
 
 CHUNK = 8 * 1024 * 1024
@@ -84,35 +86,61 @@ def source_path(cache_dir: Path, item: dict) -> Path:
     return cache_dir / f"{source['record_id']}--{source['filename']}"
 
 
-def download_with_resume(url: str, destination: Path, expected_bytes: int) -> None:
+def download_with_resume(
+    url: str, destination: Path, expected_bytes: int, max_attempts: int = 6
+) -> None:
     destination.parent.mkdir(parents=True, exist_ok=True)
     part = destination.with_name(destination.name + ".part")
-    offset = part.stat().st_size if part.exists() else 0
-    if offset > expected_bytes:
-        raise ValueError(f"Partial file is larger than the locked source: {part}")
-    headers = {"User-Agent": "gravity-screening-mechanism/1.0"}
-    if offset:
-        headers["Range"] = f"bytes={offset}-"
-    request = urllib.request.Request(url, headers=headers)
-    with urllib.request.urlopen(request) as response:  # noqa: S310 -- locked HTTPS URL
-        status = getattr(response, "status", response.getcode())
-        append = offset > 0 and status == 206
-        mode = "ab" if append else "wb"
-        if offset and not append:
-            offset = 0
-        with part.open(mode) as stream:
-            while True:
-                block = response.read(CHUNK)
-                if not block:
-                    break
-                stream.write(block)
-    observed = part.stat().st_size
-    if observed != expected_bytes:
-        raise ValueError(
-            f"Incomplete download for {destination.name}: expected {expected_bytes}, got {observed}. "
-            "Rerun the same command to resume."
+    if max_attempts < 1:
+        raise ValueError("max_attempts must be positive")
+    last_problem = None
+    for attempt in range(1, max_attempts + 1):
+        offset = part.stat().st_size if part.exists() else 0
+        if offset > expected_bytes:
+            raise ValueError(f"Partial file is larger than the locked source: {part}")
+        headers = {"User-Agent": "gravity-screening-mechanism/1.0"}
+        if offset:
+            headers["Range"] = f"bytes={offset}-"
+        request = urllib.request.Request(url, headers=headers)
+        try:
+            with urllib.request.urlopen(request) as response:  # noqa: S310 -- locked HTTPS URL
+                status = getattr(response, "status", response.getcode())
+                append = offset > 0 and status == 206
+                mode = "ab" if append else "wb"
+                with part.open(mode) as stream:
+                    while True:
+                        block = response.read(CHUNK)
+                        if not block:
+                            break
+                        stream.write(block)
+            observed = part.stat().st_size
+            if observed == expected_bytes:
+                os.replace(part, destination)
+                return
+            last_problem = (
+                f"incomplete response: expected {expected_bytes}, got {observed}"
+            )
+        except urllib.error.HTTPError as exc:
+            if exc.code not in (408, 429, 500, 502, 503, 504):
+                raise
+            last_problem = f"HTTP {exc.code}: {exc.reason}"
+        except (urllib.error.URLError, TimeoutError, ConnectionError) as exc:
+            last_problem = str(exc)
+
+        if attempt == max_attempts:
+            break
+        delay = min(2 ** attempt, 30)
+        print(
+            f"  transient download failure ({last_problem}); retrying in {delay}s "
+            f"[{attempt}/{max_attempts}]",
+            file=sys.stderr,
+            flush=True,
         )
-    os.replace(part, destination)
+        time.sleep(delay)
+    raise RuntimeError(
+        f"Download failed after {max_attempts} attempts for {destination.name}: {last_problem}. "
+        "Rerun the same command to resume."
+    )
 
 
 def decode_value(value):
@@ -269,6 +297,7 @@ def parser() -> argparse.ArgumentParser:
     result.add_argument("--limit", type=int)
     result.add_argument("--download", action="store_true", help="Download missing locked source files.")
     result.add_argument("--delete-source", action="store_true", help="Delete each verified HDF5 source after compact extraction.")
+    result.add_argument("--max-download-attempts", type=int, default=6, help="Bounded retries for transient HTTP and connection failures.")
     result.add_argument("--dry-run", action="store_true", help="Validate and summarize without downloading or extracting.")
     return result
 
@@ -303,7 +332,12 @@ def main() -> int:
                         f"Missing {source}. Rerun with --download or place the locked file there."
                     )
                 print(f"  downloading {human_bytes(item['source']['bytes'])}")
-                download_with_resume(item["source"]["url"], source, item["source"]["bytes"])
+                download_with_resume(
+                    item["source"]["url"],
+                    source,
+                    item["source"]["bytes"],
+                    max_attempts=args.max_download_attempts,
+                )
             if source.stat().st_size != item["source"]["bytes"]:
                 raise ValueError("Source size does not match the lock.")
             observed_md5 = file_md5(source)

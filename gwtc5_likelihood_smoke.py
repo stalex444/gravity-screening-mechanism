@@ -175,6 +175,9 @@ def main() -> int:
             "selected_group": metadata["selected_group"],
             "source_md5": metadata["source"]["md5"],
             "posterior_samples": event_object.nsamples,
+            "median_luminosity_distance_mpc": float(
+                np.median(event_object.posterior_data["luminosity_distance"])
+            ),
         })
 
     with np.load(args.injections, allow_pickle=False) as archive:
@@ -214,6 +217,8 @@ def main() -> int:
     )
 
     hypotheses = {}
+    event_log_terms = {}
+    selection_log_terms = {}
     for label, exponent in (("GR", 0.0), ("PDT", args.beta_q)):
         parameters = {
             key: (exponent if key == "eps0" else medians[key])
@@ -224,6 +229,12 @@ def main() -> int:
         log_likelihood = likelihood.log_likelihood()
         elapsed = time.perf_counter() - started
         pe_neff = likelihood.posterior_samples_dict.get_effective_number_of_PE()
+        event_log_terms[label] = np.log(
+            np.asarray(likelihood.posterior_samples_dict.sum_weights)
+        )
+        selection_log_terms[label] = float(
+            -len(event_records) * np.log(injection_object.pseudo_rate)
+        )
         hypotheses[label] = {
             "eps0": exponent,
             "log_likelihood": float(log_likelihood),
@@ -233,6 +244,15 @@ def main() -> int:
             "effective_pe_max": float(np.max(pe_neff)),
             "likelihood_variance": float(likelihood.likelihood_variance),
         }
+
+    event_delta = event_log_terms["PDT"] - event_log_terms["GR"]
+    selection_delta = selection_log_terms["PDT"] - selection_log_terms["GR"]
+    reconstructed_delta = float(np.sum(event_delta) + selection_delta)
+    direct_delta = hypotheses["PDT"]["log_likelihood"] - hypotheses["GR"]["log_likelihood"]
+    if not np.isclose(reconstructed_delta, direct_delta, rtol=0.0, atol=1e-10):
+        raise RuntimeError(
+            f"Attribution does not reconstruct likelihood difference: {reconstructed_delta} vs {direct_delta}"
+        )
 
     report = {
         "schema_version": 1,
@@ -258,7 +278,24 @@ def main() -> int:
         },
         "reference_result": reference,
         "hypotheses": hypotheses,
-        "delta_log_likelihood_pdt_minus_gr": hypotheses["PDT"]["log_likelihood"] - hypotheses["GR"]["log_likelihood"],
+        "attribution": {
+            "definition": "fixed-nuisance diagnostic only; event log-sum-weight terms plus the model-dependent selection term",
+            "event_terms": [
+                {
+                    "event": record["event"],
+                    "run": record["run"],
+                    "median_luminosity_distance_mpc": record[
+                        "median_luminosity_distance_mpc"
+                    ],
+                    "delta_log_event_term_pdt_minus_gr": float(delta),
+                }
+                for record, delta in zip(event_records, event_delta)
+            ],
+            "sum_event_terms": float(np.sum(event_delta)),
+            "selection_term_pdt_minus_gr": selection_delta,
+            "reconstructed_delta": reconstructed_delta,
+        },
+        "delta_log_likelihood_pdt_minus_gr": direct_delta,
     }
     payload = json.dumps(report, indent=2, sort_keys=True, allow_nan=False) + "\n"
     if args.output:

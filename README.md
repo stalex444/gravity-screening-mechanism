@@ -208,6 +208,16 @@ formulas, commands, machine-readable audit, and real-file integration tests
 are recorded in
 [EXACT_GWTC5_RERUN.md](EXACT_GWTC5_RERUN.md).
 
+The diagnostic has since been expanded to complete O1/O2 and nine O3a events.
+At 19 events its fixed-nuisance difference is `+0.7123`, but the decomposition
+shows why that sign is not evidence: observed-event terms contribute `-1.1984`
+while the required selection correction contributes `+1.9107`. Eighteen of
+nineteen individual event terms lean toward GR at this fixed point. The
+partial-catalog result therefore demonstrates the importance of recomputing
+detectability under each propagation law; later events and nuisance
+marginalization may change the sign. The detailed checkpoint is recorded in
+`gwtc5_likelihood_checkpoint_audit.json`.
+
 The full inference runner is now included as `gwtc5_full_inference.py`. It
 reconstructs and checks the released FullPop priors and Nessai settings, audits
 catalog completeness, and refuses to sample until all 235 events and the
