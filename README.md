@@ -374,6 +374,17 @@ the covariant effective coupling uses this unnormalized fixed-mode determinant
 and projective density after the full momentum and gauge measure is included.
 The common Fourier measure produces `1/(16*S_Q)` after the boundary
 multiplication, so that continuum normalization remains consequential.
+Lean further proves that the normalization-invariant Gaussian response equals
+the orientation-even mean of the two chiral inverse stiffnesses:
+
+```text
+Z_Q/Z_0
+  = (1/2)[1/(1+lambda4)+1/(1-lambda4)]
+  = 1/S_Q.
+```
+
+The same screening factor is therefore obtained by Schur elimination, by the
+Gaussian determinant ratio, and by the Hodge/chiral propagator average.
 See [BULK_BOUNDARY_PI4.md](BULK_BOUNDARY_PI4.md).
 
 Before the quotient, `(2*pi^2)^2 = 4*pi^4`, matching the associated

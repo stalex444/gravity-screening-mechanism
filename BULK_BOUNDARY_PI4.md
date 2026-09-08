@@ -87,6 +87,19 @@ Z(lambda)/Z(0) = 1/S_lambda.
 The screening denominator is therefore a robust determinant ratio. The
 absolute `pi^2` is measure-dependent.
 
+The normalized ratio also agrees with the independent Hodge spectral
+calculation. The two chiral stiffnesses are `1+lambda` and `1-lambda`.
+Lean proves that their orientation-even inverse response is
+
+```text
+(1/2) [1/(1+lambda) + 1/(1-lambda)]
+  = 1/(1-lambda^2)
+  = Z(lambda)/Z(0).
+```
+
+Thus Schur elimination, the normalized Gaussian determinant, and the
+orientation-even chiral propagator give the same screening scalar.
+
 ## The remaining mechanism test
 
 The quadratic operator is no longer missing: it is the existing doubled
@@ -141,5 +154,7 @@ not the TT basis normalization, quadratic response, or determinant.
 - `quarticDoubledTT_tensorMetricActionGaussian_integral`
 - `quarticDoubledTT_tensorMetricActionGaussian_mul_boundary`
 - `gravitationalCoupling_eq_ttTensorMetricActionGaussian_boundary`
+- `quarticTensorMetricGaussian_relativeResponse`
+- `quarticTensorMetricGaussian_relative_eq_chiralCompliance`
 - `projectiveBoundaryVolume_eq_pi_sq`
 - `gravitationalCoupling_eq_electromagnetic_link`

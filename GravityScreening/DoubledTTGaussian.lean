@@ -574,6 +574,58 @@ theorem gravitationalCoupling_eq_ttTensorMetricActionGaussian_boundary
   simp [gravitationalCoupling]
   ring
 
+/-- The TT tensor-metric Gaussian normalized by its uncoupled value has the
+exact quartic screening response. -/
+theorem quarticTensorMetricGaussian_relativeResponse
+    (q : ℝ) (hq : 1 < q) :
+    (∫ z : DoubledTTModeCoordinates,
+        Real.exp
+          (-doubledQuadraticEnergy (lambda4 q) ttTensorMetricBilinear
+            (doubledTTPhysicalPair z) (doubledTTHodgePartnerPair z))) /
+        (∫ z : DoubledTTModeCoordinates,
+          Real.exp (-∑ i, (z i) ^ 2)) =
+      1 / screening (lambda4 q) := by
+  calc
+    (∫ z : DoubledTTModeCoordinates,
+        Real.exp
+          (-doubledQuadraticEnergy (lambda4 q) ttTensorMetricBilinear
+            (doubledTTPhysicalPair z) (doubledTTHodgePartnerPair z))) /
+        (∫ z : DoubledTTModeCoordinates,
+          Real.exp (-∑ i, (z i) ^ 2)) =
+      (∫ z : DoubledTTModeCoordinates,
+          Real.exp (-doubledTTModeQuadratic (lambda4 q) z)) /
+        (∫ z : DoubledTTModeCoordinates,
+          Real.exp (-∑ i, (z i) ^ 2)) := by
+      congr 1
+      apply integral_congr_ae
+      filter_upwards with z
+      rw [doubledQuadraticEnergy_ttTensorMetric]
+    _ = 1 / screening (lambda4 q) :=
+      doubledTTMode_gaussian_relative_response
+        (lambda4 q) (quarticActionAmplitude q)
+          (quarticActionAmplitude_sq q hq)
+          (quarticActionAmplitude_pos q hq)
+
+/-- The normalized Gaussian determinant ratio, the orientation-even mean of
+both chiral inverse stiffnesses, and the rational quartic response are the
+same scalar. -/
+theorem quarticTensorMetricGaussian_relative_eq_chiralCompliance
+    (q : ℝ) (hq : 1 < q) :
+    (∫ z : DoubledTTModeCoordinates,
+        Real.exp
+          (-doubledQuadraticEnergy (lambda4 q) ttTensorMetricBilinear
+            (doubledTTPhysicalPair z) (doubledTTHodgePartnerPair z))) /
+        (∫ z : DoubledTTModeCoordinates,
+          Real.exp (-∑ i, (z i) ^ 2)) =
+      (1 / 2 : ℝ) *
+        (1 / (1 + lambda4 q) + 1 / (1 - lambda4 q)) := by
+  rw [quarticTensorMetricGaussian_relativeResponse q hq]
+  have hq0 : q ≠ 0 := by linarith
+  rw [quartic_screening_identity q hq0]
+  have hden : 2 * q - 1 ≠ 0 := by nlinarith
+  rw [quartic_orientationEven_chiralCompliance q hq]
+  field_simp [hq0, hden]
+
 #print axioms GravityScreening.doubledTTCholesky_det
 #print axioms GravityScreening.doubledTTCholesky_normSq
 #print axioms GravityScreening.doubledTTCholesky_gram
@@ -603,6 +655,8 @@ theorem gravitationalCoupling_eq_ttTensorMetricActionGaussian_boundary
 #print axioms GravityScreening.quarticDoubledTT_tensorMetricActionGaussian_integral
 #print axioms GravityScreening.quarticDoubledTT_tensorMetricActionGaussian_mul_boundary
 #print axioms GravityScreening.gravitationalCoupling_eq_ttTensorMetricActionGaussian_boundary
+#print axioms GravityScreening.quarticTensorMetricGaussian_relativeResponse
+#print axioms GravityScreening.quarticTensorMetricGaussian_relative_eq_chiralCompliance
 
 end
 

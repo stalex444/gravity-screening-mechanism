@@ -258,6 +258,18 @@ correspondence is the use of the unnormalized fixed-mode determinant in the
 covariant effective coupling. With the common Fourier-normalized measure, the
 unit-exponent coupled Gaussian and boundary instead give `1/(16 S_Q)`.
 
+The normalized Gaussian response is also kernel-identified with the
+orientation-even Hodge response:
+
+```text
+Z_Q/Z_0
+  = (1/2)[1/(1+lambda4)+1/(1-lambda4)]
+  = 1/S_Q.
+```
+
+This joins the determinant and chiral-compliance mechanisms without an
+additional coefficient.
+
 Independently, Lean proves that the transverse-traceless graviton space at
 fixed nonzero momentum has exactly two real polarizations. On this
 polarization plane, rotational covariance and self-adjointness force a common
@@ -367,6 +379,8 @@ has diagonal value `pi^2`. All consequences of that premise are forced.
 - `quarticDoubledTT_tensorMetricActionGaussian_integral`
 - `quarticDoubledTT_tensorMetricActionGaussian_mul_boundary`
 - `gravitationalCoupling_eq_ttTensorMetricActionGaussian_boundary`
+- `quarticTensorMetricGaussian_relativeResponse`
+- `quarticTensorMetricGaussian_relative_eq_chiralCompliance`
 - `pauliAxis_sq`
 - `pauliAxes_halfTrace_orthonormal`
 - `quaternionSU2Matrix_det`
