@@ -176,9 +176,13 @@ source frame conjugates `G` to `-J`, and that one centered midpoint step of
 this normalized bulk flow yields the same splitter.  The stronger exact-flow
 theorem proves that the splitter is the continuous Hamiltonian endpoint at
 `theta_Q=arcsin(lambda4)`.  Thus the Cayley coefficient is a rational
-half-angle coordinate, rather than an approximation scheme.  The remaining
-physical question is whether a horizon crossing selects this fixed
-Hamiltonian phase.
+half-angle coordinate, rather than an approximation scheme.  The electric
+source frame also converts the bulk quadratic Hamiltonian exactly into
+`(q^2+p^2)/2`.  Lean identifies the boundary generator with this oscillator's
+Hamilton principal function at `theta_Q` and proves its Hamilton--Jacobi phase
+derivative.  The fixed-mode boundary action is therefore derived from the bulk
+flow.  The remaining physical question is whether the covariant null-horizon
+problem reduces to this fixed Hamiltonian phase.
 See [BULK_TO_BOUNDARY_DYNAMICS.md](BULK_TO_BOUNDARY_DYNAMICS.md).
 
 ## Kernel artifact
@@ -202,6 +206,7 @@ The kernel artifacts are `GravityScreening/HorizonInterfaceCayley.lean`,
 `GravityScreening/QuarticInterfaceField.lean`,
 `GravityScreening/HorizonBoundaryAction.lean`, and
 `GravityScreening/BulkBoundaryDynamics.lean`, and
-`GravityScreening/ExactBulkFlow.lean`.  They compile under the pinned
+`GravityScreening/ExactBulkFlow.lean`, and
+`GravityScreening/HamiltonPrincipalBoundary.lean`.  They compile under the pinned
 Lean toolchain, contain no `sorry`, and use only Mathlib's standard logical
 axioms.

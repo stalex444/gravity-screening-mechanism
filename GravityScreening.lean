@@ -29,6 +29,7 @@ import GravityScreening.HorizonInterfaceCayley
 import GravityScreening.HorizonBoundaryAction
 import GravityScreening.BulkBoundaryDynamics
 import GravityScreening.ExactBulkFlow
+import GravityScreening.HamiltonPrincipalBoundary
 import GravityScreening.SpinTwoDegreeAudit
 import GravityScreening.FirstOrderSourceAction
 import GravityScreening.TransverseTracelessCount

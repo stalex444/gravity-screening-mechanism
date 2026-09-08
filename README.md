@@ -102,9 +102,12 @@ and the canonical electric source frame conjugates it exactly to `-J`.  In
 that frame, the Cayley coordinate `2t_Q` gives the same passive splitter.
 Lean further proves that this is the endpoint of the exact continuous
 Hamiltonian rotation at `theta_Q=arcsin(lambda4)`, rather than a discrete
-approximation.  The remaining physical premise is that horizon crossing
-advances the mode through this fixed phase; the algebraic, variational, and
-continuous-flow maps no longer need to be separately identified.  See
+approximation.  It now also proves that the electric source frame converts the
+bulk Hamiltonian into the unit harmonic oscillator and that the boundary
+generator is exactly that oscillator's Hamilton principal function at
+`theta_Q`; its phase derivative returns the conserved outgoing Hamiltonian.
+The remaining physical premise is that a covariant horizon crossing reduces
+to this fixed-mode phase.  See
 [HORIZON_INTERFACE_CAYLEY.md](HORIZON_INTERFACE_CAYLEY.md) and
 [BULK_TO_BOUNDARY_DYNAMICS.md](BULK_TO_BOUNDARY_DYNAMICS.md).
 

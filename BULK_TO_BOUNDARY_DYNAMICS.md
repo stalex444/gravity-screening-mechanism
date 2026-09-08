@@ -178,6 +178,39 @@ The interface law is therefore variational: it comes from an explicit
 quadratic boundary generator and acts on the same canonical pair as the bulk
 first-order action.
 
+The relation is stronger than agreement of the endpoint equations.  In the
+electric source frame, Lean proves that the squeezed bulk Hamiltonian becomes
+the unit oscillator Hamiltonian
+
+```text
+H_osc(q,p) = (q^2+p^2)/2.
+```
+
+For a phase `theta`, define
+
+```text
+S_theta(q_before,q_after)
+  = [cos(theta)(q_before^2+q_after^2)/2
+     - q_before q_after] / sin(theta).
+```
+
+With the sign convention used above, `F_theta=-S_theta`.  Lean proves the
+Hamilton--Jacobi identity
+
+```text
+partial_theta F_theta
+  = H_osc(q_after,p_after),
+
+p_after = [cos(theta) q_after-q_before]/sin(theta).
+```
+
+It also proves that at `theta=theta_Q`, `F_theta` is exactly the quartic
+horizon generating function.  Thus the boundary functional is the Hamilton
+principal function, up to the stated sign convention, of the same normalized
+bulk flow whose endpoint is the splitter.  At the fixed-mode level it is
+derived from the on-shell bulk dynamics rather than supplied as an independent
+quadratic ansatz.
+
 ## Fully specialized quartic chain
 
 For the positive quartic root `Q`, every continuous quantity in the theorem is
@@ -212,16 +245,18 @@ identifying one horizon crossing with that amount of Hamiltonian phase.
 ## What remains physical
 
 The old algebraic seam has closed: the bulk action, source frame, exact flow,
-boundary generator, Cayley equation, and passive splitter now form one exact
-chain.  The remaining premise is narrower:
+Hamilton principal boundary function, Cayley equation, and passive splitter
+now form one exact chain.  The remaining premise is narrower:
 
 > A physical horizon crossing advances the source-normalized first-order
 > spin-two mode through the fixed phase `theta_Q`.
 
-This premise can be attacked directly.  A derivation from the covariant
-spin-two action with its horizon boundary conditions would close it.  A
-different boundary polarization, phase relation, or additional allowed
-boundary quadratic would show where the proposed mechanism fails.
+This premise can be attacked directly.  The next step is to reduce a covariant
+spin-two action and its null-horizon symplectic potential to one transverse
+traceless mode, then compare its on-shell endpoint action with the principal
+function above.  A different boundary polarization, phase relation, or
+additional allowed boundary quadratic would show where the proposed mechanism
+fails.
 
 The existing canon result concerning a time tick as a commitment event does
 not by itself establish this horizon phase.  Any identification of
@@ -249,5 +284,10 @@ equations, flow group law, exact and unique quartic phase, equality of the
 Cayley and continuous maps, original-frame conjugated flow, and equality of
 its endpoint with both the boundary variation and the passive splitter.
 
-All three files compile under the pinned Lean toolchain, contain no `sorry`,
-and use only Mathlib's standard logical axioms.
+`GravityScreening/HamiltonPrincipalBoundary.lean` proves that the source frame
+normalizes the bulk Hamiltonian, identifies the boundary generator with the
+oscillator Hamilton principal function at `theta_Q`, and proves its
+Hamilton--Jacobi phase derivative.
+
+All four files compile under the pinned Lean toolchain, contain no `sorry`, and
+use only Mathlib's standard logical axioms.
