@@ -385,7 +385,25 @@ Z_Q/Z_0
 
 The same screening factor is therefore obtained by Schur elimination, by the
 Gaussian determinant ratio, and by the Hodge/chiral propagator average.
-See [BULK_BOUNDARY_PI4.md](BULK_BOUNDARY_PI4.md).
+
+The Gaussian family now has an exact information-geometric classification as
+well. Its Fisher--Rao curvature in the Hodge-coupling direction is
+
+```text
+F(lambda) = 2(1+lambda^2)/(1-lambda^2)^2
+          = 4[1/(1-lambda^2)]^2 - 2[1/(1-lambda^2)].
+```
+
+Lean proves that this curvature determines `|lambda|` uniquely in the positive
+precision range, and determines `lambda` after an orientation branch is
+chosen. It also proves the response matrix backwards: self-adjointness and the
+two commuting TT/Hodge symmetries force an arbitrary four-mode operator to be
+`a I+b C`; mean-one normalization and the selected core weight `1/Q` then
+force `a=1` and `b=lambda4(Q)`. The remaining sign choice is genuinely
+chiral: determinant and Fisher geometry cannot distinguish `lambda` from
+`-lambda`. See
+[GAUSSIAN_INFORMATION_GEOMETRY.md](GAUSSIAN_INFORMATION_GEOMETRY.md) and
+[BULK_BOUNDARY_PI4.md](BULK_BOUNDARY_PI4.md).
 
 Before the quotient, `(2*pi^2)^2 = 4*pi^4`, matching the associated
 area-quantum form. The remaining correspondence is the PDT identification of
