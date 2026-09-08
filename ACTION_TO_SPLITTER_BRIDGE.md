@@ -40,6 +40,16 @@ A^(-T) (j,0) = (j/d,0).
 
 No external partner or magnetic source is generated.
 
+This is the same frame already obtained in the constraint analysis. If `T_e`
+is the determinant-one electric source frame and `r^2=d`, Lean proves
+
+```text
+A = r T_e.
+```
+
+The action factor and the constraint frame therefore differ only by the
+overall action scale; they are not separate constructions.
+
 The first column of `A` is already the normalized two-port source direction
 
 ```text
@@ -155,6 +165,7 @@ orthogonal completion selected by this frame.
 - `sourceAdaptedGramFactor_gram`;
 - `sourceAdaptedGramFactor_mul_inverse`;
 - `sourceAdaptedGramFactor_preserves_source_ray`;
+- `sourceAdaptedGramFactor_eq_scaledElectricFrame`;
 - `sourceAdaptedGramFactor_source_column`;
 - `passiveSourceSplitter_source_column`;
 - `sourceAdaptedGramFactor_gramSchmidt`;

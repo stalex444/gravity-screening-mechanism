@@ -60,6 +60,11 @@ A_Q = [[sqrt(S_Q), 0],
        [-lambda4,   1]].
 ```
 
+Lean also proves that this is the raw-scale version of the independently
+derived determinant-one electric-source frame used in the constraint closure.
+The action and constraint calculations therefore use the same canonical
+frame.
+
 Its first column already carries retained and hidden amplitudes
 `(sqrt(S_Q),-lambda4)`.  Keeping that source column fixed, Gram--Schmidt
 produces its unique orientation-preserving orthogonal completion.  Lean proves

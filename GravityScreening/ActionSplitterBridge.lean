@@ -1,4 +1,5 @@
 import GravityScreening.ClockForcesConstitutive
+import GravityScreening.ElectricSourceFrame
 
 /-!
 # From the doubled action Gram block to the passive horizon splitter
@@ -65,6 +66,19 @@ theorem sourceAdaptedGramFactor_preserves_source_ray
     simp [sourceAdaptedGramFactorInverse, Matrix.transpose_apply,
       Matrix.mulVec, dotProduct, Fin.sum_univ_succ, div_eq_mul_inv,
       mul_comm]
+
+/-- The raw Gram factor is exactly the action-scale version of the previously
+constructed determinant-one electric source frame.  Thus the action and
+constraint calculations use the same canonical frame, at different overall
+normalizations. -/
+theorem sourceAdaptedGramFactor_eq_scaledElectricFrame
+    (l d r : ℝ) (hr : r ≠ 0) (hrd : r ^ 2 = d) :
+    sourceAdaptedGramFactor l d = r • electricFrameTransform l r := by
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    simp [sourceAdaptedGramFactor, electricFrameTransform] <;>
+    field_simp [hr] <;>
+    nlinarith [hrd]
 
 /-- The physical source column of the Gram factor already carries retained
 amplitude `d` and oriented hidden amplitude `-l`. -/
@@ -242,6 +256,7 @@ theorem clockWeight_forced_splitter_retained_sq
 #print axioms GravityScreening.sourceAdaptedGramFactor_gram
 #print axioms GravityScreening.sourceAdaptedGramFactor_mul_inverse
 #print axioms GravityScreening.sourceAdaptedGramFactor_preserves_source_ray
+#print axioms GravityScreening.sourceAdaptedGramFactor_eq_scaledElectricFrame
 #print axioms GravityScreening.sourceAdaptedGramFactor_source_column
 #print axioms GravityScreening.passiveSourceSplitter_source_column
 #print axioms GravityScreening.sourceAdaptedGramFactor_gramSchmidt
