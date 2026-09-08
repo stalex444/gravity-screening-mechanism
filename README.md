@@ -254,6 +254,21 @@ gravity response with its second `pi^2` factor. The surviving physical premise
 is that the operational zero-momentum coupling is this inclusive group
 integral with the round projective metric.
 
+The normalization choice is now exposed as a theorem rather than hidden in
+notation. With the same round measure, Lean proves
+
+```text
+inclusive integral of v = pi^2 v,
+normalized group average of v = v.
+```
+
+For every nonzero `v`, these are unequal. Consequently, the `pi^2` factor
+cannot come from ordinary normalized averaging over a redundant gauge orbit.
+The physical mechanism must make the observer orientations count as an
+inclusive family of outcomes, or supply an equivalent unnormalized density
+of states. Establishing that operational statement is now the principal
+physics gap in this route.
+
 Before the quotient, `(2*pi^2)^2 = 4*pi^4`, matching the associated
 area-quantum form. The remaining correspondence is the PDT identification of
 the round antipodal quotient with the relevant conformal or polarization-frame

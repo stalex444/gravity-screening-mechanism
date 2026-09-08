@@ -149,6 +149,21 @@ the operational definition of the physical zero-momentum coupling, and the
 identification of the physical frame metric with the Pauli half-trace metric,
 remain the correspondence premises.
 
+There is a sharp normalization fork. For the same round measure and any
+nonzero scalar vertex, Lean proves
+
+```text
+inclusive integral = pi^2 * vertex,
+normalized average = vertex,
+inclusive integral != normalized average.
+```
+
+Thus a normalized gauge average cannot be the source of the `pi^2` factor.
+The required physical statement is narrower: the measurement must sum over
+distinct frame outcomes with the round density of states, or an independently
+derived operational measure must produce the same unnormalized mass. This is
+the principal unresolved physics step in the boundary-measure route.
+
 Independently, Lean proves that the transverse-traceless graviton space at
 fixed nonzero momentum has exactly two real polarizations. On this
 polarization plane, rotational covariance and self-adjointness force a common
@@ -217,6 +232,9 @@ has diagonal value `pi^2`. All consequences of that premise are forced.
 - `lorentzFixingRestObserver_spatialDet_dichotomy`
 - `orientedLorentzRestFrame_spatialBlock_mem_SO3`
 - `integral_rotationScalar_eq_mass_mul`
+- `normalizedRotationAverage_eq_vertex`
+- `roundIntegral_normalization_fork`
+- `roundIntegral_ne_normalizedAverage`
 - `conformalChannelVertex_integral_eq_electromagneticCoupling`
 - `gravitationalCoupling_eq_integratedObserverVertex_link`
 - `pauliAxis_sq`

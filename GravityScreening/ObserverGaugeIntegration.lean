@@ -33,6 +33,62 @@ theorem integral_rotationScalar_eq_mass_mul
     (∫ _ : ObserverRotationGroup, vertex ∂μ) = μ.real Set.univ * vertex := by
   rw [integral_const, smul_eq_mul]
 
+/-- Dividing an inclusive integral by the total group mass gives the usual
+normalized group average. -/
+noncomputable def normalizedRotationAverage
+    [MeasurableSpace ObserverRotationGroup]
+    (μ : Measure ObserverRotationGroup) (vertex : ℝ) : ℝ :=
+  (∫ _ : ObserverRotationGroup, vertex ∂μ) / μ.real Set.univ
+
+/-- A normalized average of a rotation-scalar vertex cannot generate a group
+volume factor: the total mass cancels exactly. -/
+theorem normalizedRotationAverage_eq_vertex
+    [MeasurableSpace ObserverRotationGroup]
+    (μ : Measure ObserverRotationGroup) [IsFiniteMeasure μ] [μ.IsMulLeftInvariant]
+    (vertex : ℝ)
+    (hMass : μ.real Set.univ ≠ 0) :
+    normalizedRotationAverage μ vertex = vertex := by
+  rw [normalizedRotationAverage, integral_rotationScalar_eq_mass_mul]
+  exact mul_div_cancel_left₀ vertex hMass
+
+/-- For the round projective mass, the inclusive integral and normalized
+average are therefore distinct operations: the former carries `pi^2`, while
+the latter does not. -/
+theorem roundIntegral_normalization_fork
+    [MeasurableSpace ObserverRotationGroup]
+    (μ : Measure ObserverRotationGroup) [IsFiniteMeasure μ] [μ.IsMulLeftInvariant]
+    (vertex : ℝ)
+    (hRoundMass : μ.real Set.univ = projectiveBoundaryVolume) :
+    (∫ _ : ObserverRotationGroup, vertex ∂μ) = Real.pi ^ 2 * vertex ∧
+      normalizedRotationAverage μ vertex = vertex := by
+  have hPiSq : Real.pi ^ 2 ≠ 0 := pow_ne_zero 2 Real.pi_ne_zero
+  have hMass : μ.real Set.univ ≠ 0 := by
+    rw [hRoundMass, projectiveBoundaryVolume_eq_pi_sq]
+    exact hPiSq
+  constructor
+  · rw [integral_rotationScalar_eq_mass_mul, hRoundMass,
+      projectiveBoundaryVolume_eq_pi_sq]
+  · exact normalizedRotationAverage_eq_vertex μ vertex hMass
+
+/-- If the local vertex is nonzero, the two branches of the round-measure
+normalization fork are provably unequal. -/
+theorem roundIntegral_ne_normalizedAverage
+    [MeasurableSpace ObserverRotationGroup]
+    (μ : Measure ObserverRotationGroup) [IsFiniteMeasure μ] [μ.IsMulLeftInvariant]
+    (vertex : ℝ)
+    (hRoundMass : μ.real Set.univ = projectiveBoundaryVolume)
+    (hVertex : vertex ≠ 0) :
+    (∫ _ : ObserverRotationGroup, vertex ∂μ) ≠
+      normalizedRotationAverage μ vertex := by
+  rcases roundIntegral_normalization_fork μ vertex hRoundMass with
+    ⟨hInclusive, hNormalized⟩
+  rw [hInclusive, hNormalized]
+  intro h
+  have hPiSq : Real.pi ^ 2 = 1 := by
+    apply (mul_right_cancel₀ hVertex)
+    simpa using h
+  nlinarith [Real.pi_gt_three]
+
 /-- Under the round projective normalization, inclusive integration of the
 15-channel scalar vertex is exactly the PDT electromagnetic expression. -/
 theorem conformalChannelVertex_integral_eq_electromagneticCoupling
@@ -65,6 +121,9 @@ theorem gravitationalCoupling_eq_integratedObserverVertex_link
   exact gravitationalCoupling_eq_electromagnetic_link rho q hScreen
 
 #print axioms GravityScreening.integral_rotationScalar_eq_mass_mul
+#print axioms GravityScreening.normalizedRotationAverage_eq_vertex
+#print axioms GravityScreening.roundIntegral_normalization_fork
+#print axioms GravityScreening.roundIntegral_ne_normalizedAverage
 #print axioms GravityScreening.conformalChannelVertex_integral_eq_electromagneticCoupling
 #print axioms GravityScreening.gravitationalCoupling_eq_integratedObserverVertex_link
 
