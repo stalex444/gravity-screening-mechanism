@@ -70,6 +70,7 @@ import GravityScreening.GaussianInformationGeometry
 import GravityScreening.HodgeGaussianUniqueness
 import GravityScreening.HodgeOrientationGauge
 import GravityScreening.UnorientedClockGravity
+import GravityScreening.LQGFluxAreaBridge
 import GravityScreening.SourcedTTHamiltonianAction
 import GravityScreening.CovariantGravityCompression
 import GravityScreening.PalomarCapstone

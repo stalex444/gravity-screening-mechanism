@@ -641,6 +641,16 @@ also statistically indifferent between the joint PDT proxy point and the
 corresponding GR benchmark points. This is cross-sector compatibility, not an
 independent confirmation or a derivation of the Hubble identification.
 
+## LQG surface-flux bridge
+
+[`LQG_FLUX_AREA_BRIDGE.md`](LQG_FLUX_AREA_BRIDGE.md) isolates the precise role
+loop quantum gravity can play in the remaining physical interface. If the
+clock-classified response acts on a horizon tangential frame, its determinant
+scales the densitized-triad-style surface flux and positive area by exactly the
+quartic screening factor. The same capstone retains global information
+conservation, while keeping the carrier identification as an explicit
+hypothesis.
+
 ## Palomar comparison surface
 
 The five selected results are:
