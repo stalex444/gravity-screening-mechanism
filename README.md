@@ -696,6 +696,14 @@ information, global conservation, and Jacobson's inverse coupling response.
 The remaining claim is representation-level: that this finite carrier is the
 corresponding physical subalgebra of a gravitational horizon.
 
+[`PERRON_OPTICAL_RAYCHAUDHURI.md`](PERRON_OPTICAL_RAYCHAUDHURI.md)
+realizes the canonical Perron block as the endpoint of an affine null-screen
+Jacobi flow.  Its initial deformation is pure shear, its square is
+`lambda4^2 I`, and its expansion and shear satisfy the exact twist-free
+vacuum Raychaudhuri equation.  The resulting area loss is balanced by the
+one-sided modular-energy increment required by the standard horizon-cut
+constraint.
+
 ## Palomar comparison surface
 
 The five selected results are:
