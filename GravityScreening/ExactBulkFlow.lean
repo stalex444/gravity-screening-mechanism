@@ -158,6 +158,19 @@ theorem quarticInterfacePhase_mem_openQuarterTurn
   · exact Real.arcsin_pos.mpr hlpos
   · exact Real.arcsin_lt_pi_div_two.mpr hllt
 
+/-- The quartic phase is the unique phase on the principal rotation branch
+with sine equal to the action overlap. -/
+theorem quarticInterfacePhase_unique
+    (q phase : ℝ)
+    (hlow : -(Real.pi / 2) ≤ phase)
+    (hhigh : phase ≤ Real.pi / 2)
+    (hsin : Real.sin phase = lambda4 q) :
+    phase = quarticInterfacePhase q := by
+  unfold quarticInterfacePhase
+  have h := Real.arcsin_sin hlow hhigh
+  rw [hsin] at h
+  exact h.symm
+
 /-- At the quartic phase, the exact continuous normalized Hamiltonian flow is
 the parameter-free passive splitter. -/
 theorem quartic_exactRotationFlow_eq_passiveSourceSplitter
@@ -167,6 +180,38 @@ theorem quartic_exactRotationFlow_eq_passiveSourceSplitter
   exact normalizedRotationFlow_eq_passiveSourceSplitter
     (lambda4 q) (quarticActionAmplitude q) (quarticInterfacePhase q)
     (quarticInterfacePhase_sin q hq) (quarticInterfacePhase_cos q)
+
+/-- Equality with the passive splitter fixes the quartic phase uniquely on the
+principal branch. -/
+theorem quarticRotationFlow_phase_unique
+    (q phase : ℝ)
+    (hlow : -(Real.pi / 2) ≤ phase)
+    (hhigh : phase ≤ Real.pi / 2)
+    (hflow : normalizedRotationFlow phase =
+      passiveSourceSplitter (lambda4 q) (quarticActionAmplitude q)) :
+    phase = quarticInterfacePhase q := by
+  have hentry := congrArg
+    (fun M : Matrix (Fin 2) (Fin 2) ℝ => M 0 1) hflow
+  simp [normalizedRotationFlow, passiveSourceSplitter] at hentry
+  exact quarticInterfacePhase_unique q phase hlow hhigh hentry
+
+/-- The algebraic Cayley transfer and the exact continuous Hamiltonian flow
+are the same quartic endpoint map. -/
+theorem quartic_interfaceCayleyMap_eq_exactRotationFlow
+    (q : ℝ) (hq : 1 < q) :
+    interfaceCayleyMap
+        (interfaceCoupling (lambda4 q) (quarticActionAmplitude q)) =
+      normalizedRotationFlow (quarticInterfacePhase q) := by
+  calc
+    interfaceCayleyMap
+        (interfaceCoupling (lambda4 q) (quarticActionAmplitude q)) =
+      passiveSourceSplitter (lambda4 q) (quarticActionAmplitude q) :=
+        interfaceCayleyMap_eq_passiveSourceSplitter
+          (lambda4 q) (quarticActionAmplitude q)
+          (quarticActionAmplitude_sq q hq)
+          (quarticActionAmplitude_pos q hq)
+    _ = normalizedRotationFlow (quarticInterfacePhase q) :=
+      (quartic_exactRotationFlow_eq_passiveSourceSplitter q hq).symm
 
 /-- The exact bulk flow in the original canonical coordinates, obtained by
 conjugating the ordinary rotation back through the electric source frame. -/
@@ -286,6 +331,8 @@ theorem quartic_horizonBoundaryStationary_iff_exactRotationFlow
 #print axioms GravityScreening.normalizedRotationMomentum_hasDerivAt
 #print axioms GravityScreening.normalizedRotationFlow_add
 #print axioms GravityScreening.quartic_exactRotationFlow_eq_passiveSourceSplitter
+#print axioms GravityScreening.quarticRotationFlow_phase_unique
+#print axioms GravityScreening.quartic_interfaceCayleyMap_eq_exactRotationFlow
 #print axioms GravityScreening.normalizedBulkExactFlow_zero
 #print axioms GravityScreening.normalizedBulkExactFlow_add
 #print axioms GravityScreening.electricFrame_maps_normalizedBulkExactFlow

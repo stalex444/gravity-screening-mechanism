@@ -139,6 +139,11 @@ R(theta_Q) = [[d_Q,       lambda_Q],
               [-lambda_Q,      d_Q]].
 ```
 
+Lean also proves uniqueness: on the principal phase interval
+`[-pi/2,pi/2]`, equality with the splitter forces `theta=theta_Q`.  It proves
+in a separate theorem that the earlier algebraic Cayley transfer and this
+exact continuous flow are literally the same matrix.
+
 Conjugating this flow back through the electric source frame gives the exact
 flow in the original bulk coordinates.  Lean proves its identity and
 composition laws and proves that transforming its quartic endpoint to the
@@ -240,9 +245,9 @@ derivatives and their equivalence to the splitter and Cayley matching law.
 - the fully specialized quartic bulk-to-boundary capstone.
 
 `GravityScreening/ExactBulkFlow.lean` proves the continuous rotation
-equations, flow group law, exact quartic phase, original-frame conjugated flow,
-and equality of its endpoint with both the boundary variation and the passive
-splitter.
+equations, flow group law, exact and unique quartic phase, equality of the
+Cayley and continuous maps, original-frame conjugated flow, and equality of
+its endpoint with both the boundary variation and the passive splitter.
 
 All three files compile under the pinned Lean toolchain, contain no `sorry`,
 and use only Mathlib's standard logical axioms.
