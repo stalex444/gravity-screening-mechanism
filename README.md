@@ -686,6 +686,16 @@ operator; calculability enters through its distinguished Perron compression.
 The existence of the required boost-covariant horizon representation remains
 a physical construction to be supplied.
 
+[`CANONICAL_PERRON_HORIZON_BRIDGE.md`](CANONICAL_PERRON_HORIZON_BRIDGE.md)
+then removes the arbitrary response-matrix hypothesis from the finite model.
+The matrix is the canonical biorthogonal Perron compression itself.  A concrete
+two-state tangent carries the exact joint `rho*Q` modular phase through the
+exterior channel, and a single kernel theorem joins that covariance to the
+full 224-dimensional gravity determinant, horizon area and entropy, exterior
+information, global conservation, and Jacobson's inverse coupling response.
+The remaining claim is representation-level: that this finite carrier is the
+corresponding physical subalgebra of a gravitational horizon.
+
 ## Palomar comparison surface
 
 The five selected results are:

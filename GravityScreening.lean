@@ -73,6 +73,7 @@ import GravityScreening.UnorientedClockGravity
 import GravityScreening.LQGFluxAreaBridge
 import GravityScreening.LQGHorizonThermodynamics
 import GravityScreening.PerronHorizonCarrier
+import GravityScreening.CanonicalPerronHorizonBridge
 import GravityScreening.SourcedTTHamiltonianAction
 import GravityScreening.CovariantGravityCompression
 import GravityScreening.PalomarCapstone

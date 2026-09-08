@@ -19,7 +19,7 @@ Perron compression:
   <l_Q, R_Q r_Q>/<l_Q,r_Q> = lambda4 = 1 - 1/Q;
 
 observable response:
-  K_Q = [[1,lambda4],[lambda4,1]],
+  K_Q = [[1,-lambda4],[-lambda4,1]],
   K_Q^T = K_Q,
   det(K_Q) = 1-lambda4^2 = (2Q-1)/Q^2 = S_Q.
 ```
