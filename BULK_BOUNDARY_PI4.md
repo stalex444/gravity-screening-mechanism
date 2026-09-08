@@ -12,6 +12,7 @@ the single normalization test that remains.
 | Gaussian radial moment | `integral_0^infinity r^3 exp(-r^2) dr = 1/2` | Lean theorem |
 | Raw Gaussian mode trace | `integral_R4 exp(-||k||^2) d^4k = pi^2` | Lean theorem |
 | Doubled TT/Hodge Gaussian | `integral_R4 exp(-z^T R_lambda z) d^4z = pi^2/S_lambda` | Lean theorem for `S_lambda>0` |
+| Conventional doubled action | `integral_R4 exp(-(1/2)z^T R_lambda z) d^4z = 4*pi^2/S_lambda` | Lean theorem; factor-four mismatch with the proposed numerator |
 | Common 15-channel vertex | `pi^2 * (rho Q)^(-15) = alpha_EM` as defined in the deposited formula | Exact conditional rewrite |
 | Projective boundary | `Vol(S^3)/2 = pi^2` in the Pauli-fixed unit metric | Lean theorem; physical use is a correspondence |
 | Screened bulk-boundary factor | `(pi^2/S_Q) * pi^2 = pi^4/S_Q` | Lean theorem |
@@ -19,15 +20,15 @@ the single normalization test that remains.
 | Combined exponent | `15 + 209 = 224` | Lean theorem |
 | Combined numerator | `pi^2_bulk * pi^2_boundary = pi^4` | Exact consequence |
 
-The mathematical result is a coherent bulk-boundary split. More strongly, the
-gravity screening factor and the bulk `pi^2` now come from one integral. The
-real doubled response matrix already used in the spin-two/Hodge action is the
-Gram matrix of a triangular change of variables. Its determinant is `S_Q^2`,
-so the four-real-mode Gaussian has mass `pi^2/S_Q`. Multiplication by the
-projective boundary volume gives `pi^4/S_Q` in one exact chain. This is more
-informative than naming `pi^4` as a square or inserting screening afterward:
-the response determinant, screening denominator, bulk normalization, and
-boundary normalization now meet in a single theorem.
+The mathematical result is a coherent bulk-boundary split. The gravity
+screening factor and a bulk Gaussian normalization come from one integral.
+The real doubled response matrix already used in the spin-two/Hodge action is
+the Gram matrix of a triangular change of variables. Its determinant is
+`S_Q^2`, so the unit-exponent four-real-mode Gaussian has mass `pi^2/S_Q`.
+Multiplication by the projective boundary volume gives `pi^4/S_Q` in one exact
+chain. This is more informative than naming `pi^4` as a square or inserting
+screening afterward: the response determinant and screening denominator now
+meet the bulk and boundary calculations in a single theorem.
 
 The four variables have an existing interpretation in the repository: two
 real transverse-traceless polarizations and their independent Hodge-paired
@@ -35,7 +36,15 @@ partners. Lean proves that the integrand is exactly both
 `z^T realDoubledResponse(lambda) z` and the existing
 `doubledHodgeKinetic`. The Gaussian is therefore attached to the action's
 actual response block rather than to an unrelated four-dimensional toy
-integral.
+integral. Lean also identifies its relation to the repository's conventional
+source-free quadratic action exactly: that action is one half of this
+quadratic form.
+
+That factor changes the absolute Gaussian mass. The action-normalized integral
+is `4*pi^2/S_Q`, and after multiplication by the projective boundary it is
+`4*pi^4/S_Q`. Lean proves this differs from the proposed `pi^4/S_Q` target for
+every `Q>1`. Thus the raw unit-exponent identity is a conditional normalization
+branch, not yet the normalization selected by the written action.
 
 ## The decisive normalization fork
 
@@ -64,6 +73,17 @@ Fourier transform, the field normalization, the Gaussian or cutoff scale, and
 the boundary measure. Any compensating factor must arise from those choices;
 it cannot be inserted after the calculation.
 
+One part is invariant under all constant normalizations. Dividing either the
+unit-exponent Gaussian or the half-action Gaussian by its uncoupled value
+cancels the factors `pi^2` and `4*pi^2` respectively, and Lean obtains
+
+```text
+Z(lambda)/Z(0) = 1/S_lambda.
+```
+
+The screening denominator is therefore a robust determinant ratio. The
+absolute `pi^2` is measure-dependent.
+
 ## The remaining mechanism test
 
 The quadratic operator is no longer missing: it is the existing doubled
@@ -77,11 +97,14 @@ spectral trace. That derivation must read off:
 4. the real-mode `k ~ -k` treatment;
 5. the projective boundary normalization.
 
-If the action supplies the raw Gaussian determinant and the Pauli-fixed
-projective boundary coefficient, the entire `pi^4/S_Q` factor is derived. If
-the Fourier-normalized coefficient survives without exact compensation, this
-route is ruled out. The unresolved seam is therefore the physical functional
-measure, not the quadratic response or its determinant.
+The written half-action currently supplies four times the target. To derive
+the proposed coefficient through this route, an independent feature of the
+functional measure must supply an exact factor `1/4`; Fourier reality,
+gauge fixing, and the treatment of the two Hodge-paired modes must be audited
+without counting the same quotient twice. If no such factor follows, the
+Gaussian route derives the relative screening only. The unresolved seam is
+the absolute physical functional measure, not the quadratic response or its
+determinant.
 
 ## Kernel declarations
 
@@ -102,5 +125,12 @@ measure, not the quadratic response or its determinant.
 - `quarticDoubledTT_gaussian_mul_projectiveBoundary`
 - `fourierNormalized_quarticDoubledTT_gaussian_mul_projectiveBoundary`
 - `gravitationalCoupling_eq_quarticDoubledTT_gaussian_boundary`
+- `doubledQuadraticEnergy_ttPairs`
+- `doubledTTMode_actionGaussian_integral`
+- `quarticDoubledTT_actionGaussian_integral`
+- `quarticDoubledTT_actionGaussian_mul_projectiveBoundary`
+- `quarticDoubledTT_actionGaussian_boundary_ne_target`
+- `doubledTTMode_gaussian_relative_response`
+- `doubledTTMode_actionGaussian_relative_response`
 - `projectiveBoundaryVolume_eq_pi_sq`
 - `gravitationalCoupling_eq_electromagnetic_link`

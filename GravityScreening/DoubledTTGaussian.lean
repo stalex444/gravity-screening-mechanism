@@ -6,7 +6,7 @@ import Mathlib.Analysis.SpecialFunctions.Gaussian.FourierTransform
 /-!
 # Gaussian determinant of the doubled transverse-traceless response
 
-The existing real doubled Hodge action has two transverse-traceless
+The existing real doubled Hodge quadratic has two transverse-traceless
 polarization coordinates and two Hodge-paired coordinates.  This file proves
 that its response matrix is an explicit Gram matrix with determinant
 `screening l ^ 2`.  Its raw unit-scale four-dimensional Gaussian integral is
@@ -17,10 +17,12 @@ boundary volume gives `pi^4 / screening (lambda4 q)`.  Dividing by the
 224-channel response reproduces `gravitationalCoupling` exactly.
 
 The physical use of this unnormalized Gaussian determinant in an effective
-coupling remains a correspondence premise.  In particular, an exponent with
-a conventional factor `1/2`, a Fourier-normalized measure, or normalization
-by the partition function changes or cancels the absolute coefficient.  The
-file proves the Fourier-normalized alternative explicitly.
+coupling remains a correspondence premise.  The repository's conventional
+quadratic action contains a factor `1/2`; its Gaussian gives
+`4*pi^2/screening`, not `pi^2/screening`.  A Fourier-normalized measure changes
+the coefficient again, while normalization by the uncoupled partition
+function cancels every absolute power of `pi` and retains exactly
+`1/screening`.  All three forks are proved explicitly below.
 -/
 
 namespace GravityScreening
@@ -278,6 +280,209 @@ theorem gravitationalCoupling_eq_quarticDoubledTT_gaussian_boundary
   simp [gravitationalCoupling]
   ring
 
+/-! ## Conventional half-action normalization -/
+
+abbrev TTRealPolarizationPair := Fin 2 → ℝ
+
+/-- Euclidean bilinear pairing on one real TT polarization pair. -/
+def ttPairDotBilinear :
+    TTRealPolarizationPair →ₗ[ℝ] TTRealPolarizationPair →ₗ[ℝ] ℝ where
+  toFun x :=
+    { toFun := fun y => dotProduct x y
+      map_add' := by
+        intro y z
+        simp [dotProduct, Fin.sum_univ_two]
+        ring
+      map_smul' := by
+        intro c y
+        simp [dotProduct, Fin.sum_univ_two]
+        ring }
+  map_add' := by
+    intro x y
+    ext z
+    simp [dotProduct, Fin.sum_univ_two]
+    ring
+  map_smul' := by
+    intro c x
+    ext z
+    simp [dotProduct, Fin.sum_univ_two]
+    ring
+
+def doubledTTPhysicalPair (z : DoubledTTModeCoordinates) :
+    TTRealPolarizationPair := ![z 0, z 1]
+
+/-- Hodge rotation of the second polarization pair, with the sign convention
+that converts the symmetric action mixing into the oriented Hodge cross term. -/
+def doubledTTHodgePartnerPair (z : DoubledTTModeCoordinates) :
+    TTRealPolarizationPair := ![-z 3, z 2]
+
+/-- On the real TT/Hodge coordinates, the repository's source-free doubled
+quadratic energy is exactly one half of the response quadratic. -/
+theorem doubledQuadraticEnergy_ttPairs
+    (l : ℝ) (z : DoubledTTModeCoordinates) :
+    doubledQuadraticEnergy l ttPairDotBilinear
+        (doubledTTPhysicalPair z) (doubledTTHodgePartnerPair z) =
+      doubledTTModeQuadratic l z / 2 := by
+  simp [doubledQuadraticEnergy, ttPairDotBilinear,
+    doubledTTPhysicalPair, doubledTTHodgePartnerPair, dotProduct,
+    Fin.sum_univ_two, doubledTTModeQuadratic]
+  ring
+
+def doubledTTActionCholesky (l d : ℝ) : Matrix (Fin 4) (Fin 4) ℝ :=
+  (1 / Real.sqrt 2) • doubledTTCholesky l d
+
+lemma inv_sqrt_two_sq : (1 / Real.sqrt 2 : ℝ) ^ 2 = 1 / 2 := by
+  have hs : Real.sqrt (2 : ℝ) ^ 2 = 2 := Real.sq_sqrt (by norm_num)
+  rw [div_pow]
+  norm_num [hs]
+
+lemma inv_sqrt_two_pow_four : (1 / Real.sqrt 2 : ℝ) ^ 4 = 1 / 4 := by
+  rw [show (4 : ℕ) = 2 * 2 by norm_num, pow_mul, inv_sqrt_two_sq]
+  norm_num
+
+theorem doubledTTActionCholesky_det (l d : ℝ) :
+    Matrix.det (doubledTTActionCholesky l d) = d ^ 2 / 4 := by
+  rw [doubledTTActionCholesky, Matrix.det_smul]
+  simp only [Fintype.card_fin]
+  rw [doubledTTCholesky_det, inv_sqrt_two_pow_four]
+  ring
+
+theorem doubledTTActionCholesky_normSq
+    (l d : ℝ) (hd : d ^ 2 = screening l)
+    (z : DoubledTTModeCoordinates) :
+    ∑ i, ((doubledTTActionCholesky l d).mulVec z i) ^ 2 =
+      doubledTTModeQuadratic l z / 2 := by
+  rw [doubledTTActionCholesky, Matrix.smul_mulVec]
+  simp only [Pi.smul_apply, smul_eq_mul]
+  calc
+    ∑ i, ((1 / Real.sqrt 2) *
+        (doubledTTCholesky l d).mulVec z i) ^ 2 =
+        (1 / Real.sqrt 2) ^ 2 *
+          ∑ i, ((doubledTTCholesky l d).mulVec z i) ^ 2 := by
+      rw [Finset.mul_sum]
+      apply Finset.sum_congr rfl
+      intro i hi
+      ring
+    _ = doubledTTModeQuadratic l z / 2 := by
+      rw [doubledTTCholesky_normSq l d hd z, inv_sqrt_two_sq]
+      ring
+
+/-- The conventional half-action Gaussian has mass
+`4*pi^2/screening`, exposing an exact factor-four difference from the
+unit-exponent Gaussian. -/
+theorem doubledTTMode_actionGaussian_integral
+    (l d : ℝ) (hd : d ^ 2 = screening l) (hdpos : 0 < d) :
+    (∫ z : DoubledTTModeCoordinates,
+        Real.exp (-(doubledTTModeQuadratic l z / 2))) =
+      4 * Real.pi ^ 2 / screening l := by
+  have hscreen : 0 < screening l := by
+    rw [← hd]
+    positivity
+  have hdet : Matrix.det (doubledTTActionCholesky l d) ≠ 0 := by
+    rw [doubledTTActionCholesky_det, hd]
+    positivity
+  calc
+    (∫ z : DoubledTTModeCoordinates,
+        Real.exp (-(doubledTTModeQuadratic l z / 2))) =
+        ∫ z : DoubledTTModeCoordinates,
+          standardGaussianFour ((doubledTTActionCholesky l d).mulVec z) := by
+      apply integral_congr_ae
+      filter_upwards with z
+      unfold standardGaussianFour
+      rw [doubledTTActionCholesky_normSq l d hd z]
+    _ = |(Matrix.det (doubledTTActionCholesky l d))⁻¹| * Real.pi ^ 2 :=
+      gaussian_comp_invertible_matrix_four (doubledTTActionCholesky l d) hdet
+    _ = 4 * Real.pi ^ 2 / screening l := by
+      rw [doubledTTActionCholesky_det, hd]
+      rw [abs_of_pos (inv_pos.mpr (by positivity : 0 < screening l / 4))]
+      field_simp [ne_of_gt hscreen]
+
+/-- The actual source-free doubled quadratic energy gives the half-action
+Gaussian, with its factor four, at the quartic coupling. -/
+theorem quarticDoubledTT_actionGaussian_integral
+    (q : ℝ) (hq : 1 < q) :
+    (∫ z : DoubledTTModeCoordinates,
+        Real.exp
+          (-doubledQuadraticEnergy (lambda4 q) ttPairDotBilinear
+            (doubledTTPhysicalPair z) (doubledTTHodgePartnerPair z))) =
+      4 * Real.pi ^ 2 / screening (lambda4 q) := by
+  apply Eq.trans _
+    (doubledTTMode_actionGaussian_integral
+      (lambda4 q) (quarticActionAmplitude q)
+        (quarticActionAmplitude_sq q hq)
+        (quarticActionAmplitude_pos q hq))
+  apply integral_congr_ae
+  filter_upwards with z
+  rw [doubledQuadraticEnergy_ttPairs]
+
+theorem quarticDoubledTT_actionGaussian_mul_projectiveBoundary
+    (q : ℝ) (hq : 1 < q) :
+    (∫ z : DoubledTTModeCoordinates,
+        Real.exp
+          (-doubledQuadraticEnergy (lambda4 q) ttPairDotBilinear
+            (doubledTTPhysicalPair z) (doubledTTHodgePartnerPair z))) *
+        projectiveBoundaryVolume =
+      4 * Real.pi ^ 4 / screening (lambda4 q) := by
+  rw [quarticDoubledTT_actionGaussian_integral q hq,
+    projectiveBoundaryVolume_eq_pi_sq]
+  ring
+
+/-- Without an additional normalization, the conventional half-action
+Gaussian times the projective boundary does not equal the proposed
+`pi^4/screening` gravity factor. -/
+theorem quarticDoubledTT_actionGaussian_boundary_ne_target
+    (q : ℝ) (hq : 1 < q) :
+    (∫ z : DoubledTTModeCoordinates,
+        Real.exp
+          (-doubledQuadraticEnergy (lambda4 q) ttPairDotBilinear
+            (doubledTTPhysicalPair z) (doubledTTHodgePartnerPair z))) *
+        projectiveBoundaryVolume ≠
+      Real.pi ^ 4 / screening (lambda4 q) := by
+  rw [quarticDoubledTT_actionGaussian_mul_projectiveBoundary q hq]
+  have htarget :
+      0 < Real.pi ^ 4 / screening (lambda4 q) :=
+    div_pos (pow_pos Real.pi_pos 4) (quarticScreening_pos q hq)
+  intro heq
+  have heq' :
+      4 * (Real.pi ^ 4 / screening (lambda4 q)) =
+        Real.pi ^ 4 / screening (lambda4 q) := by
+    calc
+      4 * (Real.pi ^ 4 / screening (lambda4 q)) =
+          4 * Real.pi ^ 4 / screening (lambda4 q) := by ring
+      _ = Real.pi ^ 4 / screening (lambda4 q) := heq
+  linarith
+
+/-- Normalizing the raw Gaussian by its uncoupled value cancels every
+absolute power of `pi` and retains exactly the screening response. -/
+theorem doubledTTMode_gaussian_relative_response
+    (l d : ℝ) (hd : d ^ 2 = screening l) (hdpos : 0 < d) :
+    (∫ z : DoubledTTModeCoordinates,
+        Real.exp (-doubledTTModeQuadratic l z)) /
+        (∫ z : DoubledTTModeCoordinates,
+          Real.exp (-∑ i, (z i) ^ 2)) =
+      1 / screening l := by
+  rw [doubledTTMode_gaussian_integral l d hd hdpos,
+    pi_gaussian_product_four]
+  have hs : screening l ≠ 0 := by
+    rw [← hd]
+    positivity
+  field_simp [Real.pi_ne_zero, hs]
+
+/-- The conventional half-action Gaussian has the same normalized screening
+response. Its extra factor four is an absolute measure normalization and
+disappears from the ratio. -/
+theorem doubledTTMode_actionGaussian_relative_response
+    (l d : ℝ) (hd : d ^ 2 = screening l) (hdpos : 0 < d) :
+    (∫ z : DoubledTTModeCoordinates,
+        Real.exp (-(doubledTTModeQuadratic l z / 2))) /
+        (4 * Real.pi ^ 2) =
+      1 / screening l := by
+  rw [doubledTTMode_actionGaussian_integral l d hd hdpos]
+  have hs : screening l ≠ 0 := by
+    rw [← hd]
+    positivity
+  field_simp [Real.pi_ne_zero, hs]
+
 #print axioms GravityScreening.doubledTTCholesky_det
 #print axioms GravityScreening.doubledTTCholesky_normSq
 #print axioms GravityScreening.doubledTTCholesky_gram
@@ -292,6 +497,15 @@ theorem gravitationalCoupling_eq_quarticDoubledTT_gaussian_boundary
 #print axioms GravityScreening.quarticDoubledTT_gaussian_mul_projectiveBoundary
 #print axioms GravityScreening.fourierNormalized_quarticDoubledTT_gaussian_mul_projectiveBoundary
 #print axioms GravityScreening.gravitationalCoupling_eq_quarticDoubledTT_gaussian_boundary
+#print axioms GravityScreening.doubledQuadraticEnergy_ttPairs
+#print axioms GravityScreening.doubledTTActionCholesky_det
+#print axioms GravityScreening.doubledTTActionCholesky_normSq
+#print axioms GravityScreening.doubledTTMode_actionGaussian_integral
+#print axioms GravityScreening.quarticDoubledTT_actionGaussian_integral
+#print axioms GravityScreening.quarticDoubledTT_actionGaussian_mul_projectiveBoundary
+#print axioms GravityScreening.quarticDoubledTT_actionGaussian_boundary_ne_target
+#print axioms GravityScreening.doubledTTMode_gaussian_relative_response
+#print axioms GravityScreening.doubledTTMode_actionGaussian_relative_response
 
 end
 

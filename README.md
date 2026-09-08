@@ -319,7 +319,7 @@ the Fourier-normalized convention without a compensating factor, this route
 fails.
 
 The bulk calculation is now joined directly to the existing gravitational
-action. The two transverse-traceless polarizations and their Hodge-paired
+response. The two transverse-traceless polarizations and their Hodge-paired
 partners form four real coordinates. Lean proves that the response matrix is
 the Gram matrix of an explicit triangular frame and that
 
@@ -344,12 +344,25 @@ therefore gives the entire screened numerator in one calculation:
 ```
 
 Dividing by the forced 224-channel response reproduces the deposited gravity
-formula exactly. This closes the algebraic and finite-dimensional measure
-chain. The physical seam is now specific: the covariant path integral or
-spectral trace must justify using this raw Gaussian determinant and the
-projective boundary density in the effective coupling. The common Fourier
-measure produces `1/(16*S_Q)` after the boundary multiplication, so the
-normalization choice remains experimentally and mathematically consequential.
+formula exactly under this unit-exponent measure.
+
+The repository's conventional source-free doubled action contains one half of
+that quadratic form. Lean now proves its Gaussian integral is
+
+```text
+integral_R4 exp(-(1/2)doubledHodgeKinetic(lambda,z)) d^4z
+  = 4*pi^2/(1-lambda^2).
+```
+
+After the projective boundary multiplication, this is `4*pi^4/S_Q`, and Lean
+proves that it is unequal to the proposed `pi^4/S_Q` target. Normalizing either
+Gaussian by its uncoupled partition function removes every absolute factor of
+`pi` and gives the same invariant response `1/S_Q`. Consequently the
+screening denominator is robust, while the absolute numerator remains a
+functional-measure question. A successful action derivation must produce an
+independent factor `1/4` without double-counting the antipodal quotient. The
+common Fourier measure produces `1/(16*S_Q)` after the boundary multiplication,
+so the normalization choice remains mathematically consequential.
 See [BULK_BOUNDARY_PI4.md](BULK_BOUNDARY_PI4.md).
 
 Before the quotient, `(2*pi^2)^2 = 4*pi^4`, matching the associated

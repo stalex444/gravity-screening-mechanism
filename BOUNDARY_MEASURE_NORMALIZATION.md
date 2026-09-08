@@ -236,11 +236,22 @@ projective boundary volume proves
 ```
 
 Thus screening is not appended to a separate Gaussian normalization: the
-same doubled response produces both the determinant denominator and the bulk
-`pi^2`. Dividing by `(rho Q)^224` is exactly the deposited gravitational
-coupling. The physical functional-measure premise remains visible. With the
-common Fourier-normalized measure, the coupled Gaussian and boundary instead
-give `1/(16 S_Q)`.
+same doubled response produces the determinant denominator. The absolute
+bulk coefficient, however, depends on the action normalization. Lean proves
+that the repository's source-free doubled quadratic energy is exactly one
+half of this response quadratic. Its Gaussian and the projective boundary
+give
+
+```text
+4*pi^4/S_Q,
+```
+
+which Lean proves is unequal to the proposed `pi^4/S_Q` target. Normalizing
+either Gaussian by its uncoupled value cancels every absolute power of `pi`
+and leaves exactly `1/S_Q`. The determinant screening is therefore robust;
+the proposed absolute numerator requires an independently derived factor
+`1/4`. With the common Fourier-normalized measure, the unit-exponent coupled
+Gaussian and boundary instead give `1/(16 S_Q)`.
 
 Independently, Lean proves that the transverse-traceless graviton space at
 fixed nonzero momentum has exactly two real polarizations. On this
@@ -338,6 +349,13 @@ has diagonal value `pi^2`. All consequences of that premise are forced.
 - `quarticDoubledTT_gaussian_mul_projectiveBoundary`
 - `fourierNormalized_quarticDoubledTT_gaussian_mul_projectiveBoundary`
 - `gravitationalCoupling_eq_quarticDoubledTT_gaussian_boundary`
+- `doubledQuadraticEnergy_ttPairs`
+- `doubledTTMode_actionGaussian_integral`
+- `quarticDoubledTT_actionGaussian_integral`
+- `quarticDoubledTT_actionGaussian_mul_projectiveBoundary`
+- `quarticDoubledTT_actionGaussian_boundary_ne_target`
+- `doubledTTMode_gaussian_relative_response`
+- `doubledTTMode_actionGaussian_relative_response`
 - `pauliAxis_sq`
 - `pauliAxes_halfTrace_orthonormal`
 - `quaternionSU2Matrix_det`
