@@ -226,6 +226,20 @@ qubit geometry. They do not validate the gravity interpretation. The new
 content here is the exact chain from that fixed observable normalization to
 the unit `S^3` spin-frame cover and its antipodal action on observables.
 
+The adjoint-action bridge is now explicit as well. Lean computes the real
+three-by-three coefficient matrix induced by `U A U*` on the Pauli space and
+proves that, on the unit sphere,
+
+```text
+R^T R = I,   det R = 1,   R(-a,-b,-c,-d) = R(a,b,c,d).
+```
+
+It therefore lands in the very same Mathlib `SO(3)` type used by the
+rest-observer stabilizer theorem. Lean also proves that the identity rotation
+has exactly two unit-quaternion representatives, `+I` and `-I`. This gives the
+kernel-level algebraic core of the spin-frame double cover. Surjectivity onto
+every element of `SO(3)` is not asserted by this module.
+
 That integration rule is now formalized conditionally. For any finite
 left-invariant measure on the `SO(3)` observer-rotation group with total round
 mass `pi^2`, Lean proves

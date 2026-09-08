@@ -109,6 +109,21 @@ those results and does not treat registration as support for a physical
 claim. It derives the gravity package's unit spin-frame scale from the same
 already formalized observable convention.
 
+The next bridge is also kernel-checked. Conjugation by the quaternion matrix
+on the real Pauli span has an explicit three-by-three coefficient matrix `R`.
+Lean proves, whenever `a^2+b^2+c^2+d^2=1`,
+
+```text
+R^T R = I,   det R = 1,   R(-a,-b,-c,-d) = R(a,b,c,d).
+```
+
+Thus the unit spin frame produces an element of the exact Mathlib `SO(3)`
+type already identified as the oriented rest-observer gauge. The preimage of
+the identity rotation is proved to be exactly the two points `(+1,0,0,0)` and
+`(-1,0,0,0)`. This proves the kernel and antipodal parts of the double-cover
+statement. The global surjectivity of this explicit map onto every `SO(3)`
+matrix is not yet formalized.
+
 The integration step is also explicit. For any finite left-invariant measure
 on the `SO(3)` observer-rotation group, Lean proves that integrating a scalar
 vertex over the group multiplies the vertex by the measure's total mass. If
@@ -211,6 +226,13 @@ has diagonal value `pi^2`. All consequences of that premise are forced.
 - `quaternionSU2Matrix_specialUnitary_iff_unitSphere`
 - `quaternionFrameAction_antipode`
 - `pauliFrame_unitSphere_projectiveVolume_capstone`
+- `quaternionFrameAction_pauliVector`
+- `quaternionPauliRotation_transpose_mul`
+- `quaternionPauliRotation_det`
+- `quaternionPauliRotation_mem_SO3`
+- `unitQuaternionObserverRotation_antipode`
+- `quaternionPauliRotation_eq_one_iff`
+- `pauliAdjoint_observerRotation_capstone`
 - `screenedPlanckElectronRatio`
 - `gravitationalCoupling_eq_inverse_screenedPlanckRatio_sq`
 - `ttBoundaryVolumeResponse_unique_of_symmetry`
