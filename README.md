@@ -668,6 +668,19 @@ equivalent to the BI-free physical-area relation
 Immirzi value, so an invariant construction must use physical area or a
 collective horizon sector.
 
+[`PERRON_LQG_CARRIER_AUDIT.md`](PERRON_LQG_CARRIER_AUDIT.md) closes a further
+representation loophole.  The full four-state quartic residual is directed,
+non-self-adjoint, non-normal, and cannot be made self-adjoint by any
+nondegenerate diagonal information metric.  More generally, an injective map
+that preserves the real adjoint cannot carry it to a static self-adjoint
+horizon observable.  Its canonical left/right Perron compression is instead
+the scalar `lambda4`; that scalar enters the self-adjoint two-channel response
+whose determinant is exactly `S_Q`.  This forces a clean division of roles in
+any proposed bridge: the full quartic operator belongs to transfer or modular
+dynamics, while its invariant compression can enter the area/entropy response.
+The existence of the required boost-covariant horizon representation remains
+a physical construction to be supplied.
+
 ## Palomar comparison surface
 
 The five selected results are:
