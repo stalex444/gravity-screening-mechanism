@@ -95,6 +95,27 @@ polarizations. -/
 noncomputable def ttBoundaryVolumeResponse : Matrix (Fin 2) (Fin 2) ℝ :=
   scalarResponseMatrix 2 projectiveBoundaryVolume
 
+/-- The dimensionless screened Planck-to-electron ratio appearing in the
+deposited gravity formula. -/
+noncomputable def screenedPlanckElectronRatio (rho q : ℝ) : ℝ :=
+  depositedBaselinePlanck 1 rho q *
+    Real.sqrt (screening (lambda4 q))
+
+/-- Primary source of the fourth power: the dimensionless gravitational
+coupling is the inverse square of the screened Planck-to-electron ratio.
+Squaring forces both `112 -> 224` and `pi^2 -> pi^4`. -/
+theorem gravitationalCoupling_eq_inverse_screenedPlanckRatio_sq
+    (rho q : ℝ)
+    (hS : 0 ≤ screening (lambda4 q))
+    (hS0 : screening (lambda4 q) ≠ 0) :
+    gravitationalCoupling rho q =
+      1 / screenedPlanckElectronRatio rho q ^ 2 := by
+  unfold gravitationalCoupling screenedPlanckElectronRatio
+    depositedBaselinePlanck
+  norm_num [gravitationalExponent]
+  field_simp [hS0, Real.pi_ne_zero]
+  rw [Real.sq_sqrt hS]
+
 /-- Symmetry forces any response with the displayed boundary normalization to
 be the canonical two-polarization boundary response. -/
 theorem ttBoundaryVolumeResponse_unique_of_symmetry
@@ -158,6 +179,7 @@ theorem boundaryMeasure_twoPolarization_gravity_capstone :
 #print axioms GravityScreening.projectiveBoundaryVolume_eq_pi_sq
 #print axioms GravityScreening.projectivePolarFactor
 #print axioms GravityScreening.projectivePolarVolume_eq_pi_sq
+#print axioms GravityScreening.gravitationalCoupling_eq_inverse_screenedPlanckRatio_sq
 #print axioms GravityScreening.ttBoundaryVolumeResponse_unique_of_symmetry
 #print axioms GravityScreening.ttBoundaryVolumeResponse_det
 #print axioms GravityScreening.sThreeBoundaryVolume_sq

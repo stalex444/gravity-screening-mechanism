@@ -178,18 +178,25 @@ that the joint flow therefore has boost weight `log(rho*Q)/(2*pi)`; there is
 no adjustable clock-to-rapidity normalization. The exact identity is
 conditional on realizing the graph product as the physical wedge algebra.
 
-The gravity numerator has also been reduced to boundary geometry and the
-physical spin-two degree count. Lean proves that the polar surface measure of
-the unit `S^3` is `2*pi^2`, its numerical antipodal quotient is `pi^2`,
-and the transverse-traceless graviton space has two polarizations.
-Polarization symmetry and self-adjointness force a common boundary response
-to be scalar, so its determinant is
+The source of the gravity numerator is now explicit. The deposited screened
+Planck-to-electron ratio contains `1/pi^2`; because the dimensionless
+gravitational coupling is its inverse square, Lean proves that `112` doubles
+to `224` and `pi^2` squares to `pi^4`.
+
+Boundary geometry gives an exact compatible representation. Lean proves that
+the polar surface measure of the unit `S^3` is `2*pi^2`, its numerical
+antipodal quotient is `pi^2`, and the transverse-traceless graviton space
+has two polarizations. Polarization symmetry and self-adjointness force a
+common boundary response to be scalar, so its determinant is
 
 ```text
 det(pi^2 I_2) = pi^4,
 ```
 
-exactly the numerator of the repository's gravitational-coupling formula.
+exactly the same numerator. This determinant identity does not by itself
+explain why the gravitational response, rather than every two-polarization
+field, should integrate this frame-space measure; that physical placement
+remains to be derived.
 Before the quotient, `(2*pi^2)^2 = 4*pi^4`, matching the associated
 area-quantum form. The remaining correspondence is the PDT identification of
 the round antipodal quotient with the relevant conformal or polarization-frame
