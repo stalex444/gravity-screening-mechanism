@@ -36,7 +36,10 @@ def main():
   if not marks or k-marks[-1] >= 15:
    marks.append(k)
  if n not in marks:
-  marks.append(n)
+  if marks and n-marks[-1] < 15:
+   marks[-1]=n
+  else:
+   marks.append(n)
  for k in marks:
   ax.scatter(k,ct[k-1],s=34,color='#111827',zorder=5)
   ax.annotate(f'{ct[k-1]:+.2f}',(k,ct[k-1]),xytext=(3,7),textcoords='offset points',fontsize=8,color='#111827')

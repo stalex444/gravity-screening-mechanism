@@ -1,7 +1,7 @@
 {
   "attribution": {
     "definition": "fixed-nuisance diagnostic only; event log-sum-weight terms plus the model-dependent selection term, with an identical Monte Carlo normalization draw for the common paired-mass model",
-    "distance_event_term_pearson_r": -0.8804950992171107,
+    "distance_event_term_pearson_r": -0.8774608186952684,
     "event_terms": [
       {
         "delta_log_event_term_pdt_minus_gr": -0.030455437127525187,
@@ -1058,11 +1058,47 @@
         "event": "GW240716_034900",
         "median_luminosity_distance_mpc": 1861.7482449663373,
         "run": "O4b"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.33959098185534176,
+        "event": "GW240824_205609",
+        "median_luminosity_distance_mpc": 5277.078474796599,
+        "run": "O4b"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.12437481435964814,
+        "event": "GW240825_055146",
+        "median_luminosity_distance_mpc": 1254.3384226736518,
+        "run": "O4b"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.07877386456212676,
+        "event": "GW240830_211120",
+        "median_luminosity_distance_mpc": 1143.1560298465631,
+        "run": "O4b"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.08318465210657777,
+        "event": "GW240902_143306",
+        "median_luminosity_distance_mpc": 2864.0649039944933,
+        "run": "O4b"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.1621766883082163,
+        "event": "GW240907_153833",
+        "median_luminosity_distance_mpc": 4482.662655349023,
+        "run": "O4b"
+      },
+      {
+        "delta_log_event_term_pdt_minus_gr": -0.1399459797632865,
+        "event": "GW240908_082628",
+        "median_luminosity_distance_mpc": 3109.3426839522813,
+        "run": "O4b"
       }
     ],
-    "negative_event_terms": 176,
+    "negative_event_terms": 182,
     "positive_event_terms": 0,
-    "reconstructed_delta": -1.2540216733759486,
+    "reconstructed_delta": -1.493550604098214,
     "run_summary": {
       "O1": {
         "events": 3,
@@ -1125,34 +1161,35 @@
         "sum_event_terms": -10.690288887760037
       },
       "O4b": {
-        "events": 35,
+        "events": 41,
         "maximum_event_term": -0.03423045437316752,
-        "mean_event_distance_mpc": 2697.657170380403,
-        "mean_event_term": -0.13181094349075115,
-        "median_event_distance_mpc": 1939.1538639688365,
+        "mean_event_distance_mpc": 2745.0888813152856,
+        "mean_event_term": -0.1351568293446704,
+        "median_event_distance_mpc": 1990.6183108406444,
         "minimum_event_term": -0.352265894165642,
-        "net_per_event": -0.01705793511859616,
-        "net_with_proportional_selection_share": -0.5970277291508657,
-        "selection_share": 4.016355293025424,
-        "sum_event_terms": -4.61338302217629
+        "net_per_event": -0.020403820972515415,
+        "net_with_proportional_selection_share": -0.836556659873132,
+        "selection_share": 4.704873343258354,
+        "sum_event_terms": -5.541430003131486
       }
     },
-    "selection_term_pdt_minus_gr": 20.19652947349928,
+    "selection_term_pdt_minus_gr": 20.885047523732208,
     "selection_term_per_event": 0.11475300837215499,
-    "sum_event_terms": -21.450551146875227
+    "sum_event_terms": -22.378598127830422
   },
   "catalog_sign_change": {
     "delta_at_141_events": -0.6569939442250075,
     "delta_at_176_events": -1.2540216733759735,
+    "delta_at_182_events": -1.4935506040983455,
     "delta_at_65_events": 1.3120663072511434,
-    "interpretation": "O4a changed the fixed-point diagnostic sign from PDT to GR; the first 35 O4b events extend the negative shift",
+    "interpretation": "O4a changed the fixed-point diagnostic sign from PDT to GR; the first 41 O4b events extend the negative shift",
     "o4a_incremental_event_term": -10.690288887760037,
     "o4a_incremental_net": -1.9690602514762574,
     "o4a_incremental_selection_term": 8.72122863628378,
-    "partial_o4b_events": 35,
-    "partial_o4b_incremental_event_term": -4.61338302217629,
-    "partial_o4b_incremental_net": -0.5970277291508657,
-    "partial_o4b_incremental_selection_term": 4.016355293025424
+    "partial_o4b_events": 41,
+    "partial_o4b_incremental_event_term": -5.541430003131486,
+    "partial_o4b_incremental_net": -0.836556659873132,
+    "partial_o4b_incremental_selection_term": 4.704873343258354
   },
   "checkpoint_history": [
     {
@@ -1205,6 +1242,14 @@
       "nparallel": 8192,
       "scope": "complete O1 through O4a plus first 35 of 94 O4b events",
       "seed": 260907
+    },
+    {
+      "delta_log_likelihood_pdt_minus_gr": -1.4935506040983455,
+      "events": 182,
+      "model_normalization_seed": 260907,
+      "nparallel": 8192,
+      "scope": "complete O1 through O4a plus first 41 of 94 O4b events",
+      "seed": 260907
     }
   ],
   "correction": {
@@ -1213,13 +1258,13 @@
     "scope": "component attribution only; no catalog likelihood total changed",
     "supersedes": "the 19-event component attribution in repository commit 1fd4f6e; every reported total likelihood difference remains valid"
   },
-  "delta_log_likelihood_pdt_minus_gr": -1.2540216733759735,
+  "delta_log_likelihood_pdt_minus_gr": -1.4935506040983455,
   "diagnostic_interpretation": {
-    "observed_event_terms": "all 176 favor GR at this fixed nuisance point",
-    "reason": "176 of 235 events, including 35 of 94 O4b events, and fixed population/background-cosmology nuisance medians; no nuisance marginalization",
+    "observed_event_terms": "all 182 favor GR at this fixed nuisance point",
+    "reason": "182 of 235 events, including 41 of 94 O4b events, and fixed population/background-cosmology nuisance medians; no nuisance marginalization",
     "selection_term": "favors PDT but does not exceed the observed-event sum after O4a and partial O4b",
     "status": "not model evidence",
-    "warning": "the sign may change with the remaining 59 events or nuisance marginalization"
+    "warning": "the sign may change with the remaining 53 events or nuisance marginalization"
   },
   "events": [
     {
@@ -2629,6 +2674,54 @@
       "run": "O4b",
       "selected_group": "C00:IMRPhenomXPHM-SpinTaylor",
       "source_md5": "2a22631c6a37848afc476d1d5f2bae2f"
+    },
+    {
+      "event": "GW240824_205609",
+      "median_luminosity_distance_mpc": 5277.078474796599,
+      "posterior_samples": 18553,
+      "run": "O4b",
+      "selected_group": "C00:IMRPhenomXPHM-SpinTaylor",
+      "source_md5": "2c8e7a4898b96edf2f9f9ee66d616f43"
+    },
+    {
+      "event": "GW240825_055146",
+      "median_luminosity_distance_mpc": 1254.3384226736518,
+      "posterior_samples": 20685,
+      "run": "O4b",
+      "selected_group": "C00:IMRPhenomXPHM-SpinTaylor",
+      "source_md5": "8dc1fa89c2c01334d4f03b353eb6824a"
+    },
+    {
+      "event": "GW240830_211120",
+      "median_luminosity_distance_mpc": 1143.1560298465631,
+      "posterior_samples": 18084,
+      "run": "O4b",
+      "selected_group": "C00:IMRPhenomXPHM-SpinTaylor",
+      "source_md5": "49a27d4c3e4ad40251cfb4f2d34b2f00"
+    },
+    {
+      "event": "GW240902_143306",
+      "median_luminosity_distance_mpc": 2864.0649039944933,
+      "posterior_samples": 17797,
+      "run": "O4b",
+      "selected_group": "C00:IMRPhenomXPHM-SpinTaylor",
+      "source_md5": "0872a0e7bdb48eb71eab161a8475e317"
+    },
+    {
+      "event": "GW240907_153833",
+      "median_luminosity_distance_mpc": 4482.662655349023,
+      "posterior_samples": 16343,
+      "run": "O4b",
+      "selected_group": "C00:IMRPhenomXPHM-SpinTaylor",
+      "source_md5": "d2cd070b669abf7d6808bc2af27d4a2e"
+    },
+    {
+      "event": "GW240908_082628",
+      "median_luminosity_distance_mpc": 3109.3426839522813,
+      "posterior_samples": 16245,
+      "run": "O4b",
+      "selected_group": "C00:IMRPhenomXPHM-SpinTaylor",
+      "source_md5": "ac84da59c453d33a63c1093b77f1174b"
     }
   ],
   "hypotheses": {
@@ -2637,20 +2730,20 @@
       "effective_pe_max": 8163.540892464704,
       "effective_pe_min": 498.6872483305867,
       "eps0": 0.0,
-      "likelihood_variance": 0.6973487403491364,
-      "log_likelihood": 514.8231905912722,
+      "likelihood_variance": 0.7459034566164195,
+      "log_likelihood": 538.5077156411464,
       "mass_pairing_normalization": 0.14710080843772852,
-      "runtime_seconds": 1.2290769169921987
+      "runtime_seconds": 1.327053374989191
     },
     "PDT": {
       "effective_injections": 43447.91935884458,
       "effective_pe_max": 8163.223661988303,
       "effective_pe_min": 525.3493171962617,
       "eps0": 0.08333758478067765,
-      "likelihood_variance": 0.754045780654479,
-      "log_likelihood": 513.5691689178963,
+      "likelihood_variance": 0.8065567130380833,
+      "log_likelihood": 537.0141650370481,
       "mass_pairing_normalization": 0.14710080843772852,
-      "runtime_seconds": 1.2020444590016268
+      "runtime_seconds": 1.2456854579795618
     }
   },
   "icarogw_commit_detected": "c473f3b2f50e11a88a46cc1625933af1f1249d39",
@@ -2670,15 +2763,15 @@
       "O4a"
     ],
     "expected": 235,
-    "missing": 59,
+    "missing": 53,
     "partial_runs": {
       "O4b": {
         "expected": 94,
-        "missing": 59,
-        "present": 35
+        "missing": 53,
+        "present": 41
       }
     },
-    "present": 176,
+    "present": 182,
     "remaining_runs": [
       "O4b"
     ]
@@ -2686,7 +2779,7 @@
   "normalization_invariance_check": {
     "absolute_delta_log_likelihood_difference": 1.1368683772161603e-13,
     "absolute_event_sum_difference": 7.105427357601002e-15,
-    "absolute_selection_term_difference": 7.105427357601002e-15,
+    "absolute_selection_term_difference": 1.4210854715202004e-14,
     "first_common_mass_pairing_normalization": 0.14710080843772852,
     "maximum_absolute_per_event_difference": 3.552713678800501e-15,
     "outcome": "component attribution invariant to numerical roundoff when the common mass model receives the same normalization draw under both propagation hypotheses",
@@ -2696,28 +2789,28 @@
   "pe_prior_reconstruction": {
     "all_values_finite_positive": true,
     "distance_prior": "UniformSourceFrame from each released analytic prior",
-    "events_prepared": 176,
+    "events_prepared": 182,
     "explicit_cosmology": "Astropy LambdaCDM(H0=67.9, Om0=0.3065, Ode0=0.6935, Tcmb0=0, Neff=3.04)",
     "explicit_cosmology_event": "GW230529_181500",
     "legacy_regression": "GW191105_143521 prior array reproduced bit for bit after parser extension",
     "o4a_events": 76,
-    "partial_o4b_events": 35,
-    "posterior_samples_checked": 11930628
+    "partial_o4b_events": 41,
+    "posterior_samples_checked": 12038335
   },
   "posterior_subsampling_stability": {
-    "delta_max": -1.2464429652728768,
-    "delta_mean": -1.2567919209955334,
-    "delta_min": -1.2771201168095558,
-    "delta_sample_sd": 0.011818045136402631,
+    "delta_max": -1.491492873106722,
+    "delta_mean": -1.4992394834252536,
+    "delta_min": -1.519281561159005,
+    "delta_sample_sd": 0.011442695967480286,
     "delta_values": [
-      -1.25175179204723,
-      -1.2549256997111797,
-      -1.253719031136825,
-      -1.2464429652728768,
-      -1.2771201168095558
+      -1.4965510656682,
+      -1.496518147480515,
+      -1.4923537697118263,
+      -1.491492873106722,
+      -1.519281561159005
     ],
-    "events": 176,
-    "higher_resolution_delta": -1.2540216733759735,
+    "events": 182,
+    "higher_resolution_delta": -1.4935506040983455,
     "higher_resolution_nparallel": 8192,
     "independent_seeds": [
       260901,
@@ -2736,11 +2829,19 @@
     "published_log_evidence": -2577.8529888343437,
     "published_log_evidence_error": 0.1583576840813912
   },
+  "remaining_catalog_reversal_threshold": {
+    "partial_o4b_mean_event_term": -0.1351568293446704,
+    "projected_full_catalog_delta_if_remaining_mean_matches_first_41_o4b": -2.5749531156416627,
+    "remaining_events": 53,
+    "required_remaining_event_term_sum_for_zero": -4.588358839626,
+    "required_remaining_mean_event_term_for_zero": -0.08657280829483019,
+    "scope": "deterministic consequence of this fixed-nuisance checkpoint; projection is descriptive, not model evidence"
+  },
   "schema_version": 1,
   "settings": {
-    "event_count": 176,
+    "event_count": 182,
     "model_normalization_seed": 260907,
-    "neff_injections": 704,
+    "neff_injections": 728,
     "neff_pe": 20,
     "nparallel": 8192,
     "seed": 260907,

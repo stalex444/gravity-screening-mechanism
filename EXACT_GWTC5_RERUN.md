@@ -166,11 +166,10 @@ formats. The checksum, waveform group, sample count, method, density range,
 and software versions for these checks are recorded in
 `gwtc5_pe_prior_audit.json`.
 
-The evaluator has now processed 176 events through complete O4a and the first
-35 of 94 O4b events, totaling 11,930,628 posterior samples; every reconstructed
+The evaluator has now processed 182 events through complete O4a and the first
+41 of 94 O4b events, totaling 12,038,335 posterior samples; every reconstructed
 density was finite and positive. O4a also exposed one released prior serialized
-with an
-explicit Astropy `LambdaCDM(H0=67.9, Om0=0.3065, Ode0=0.6935)` object rather
+with an explicit Astropy `LambdaCDM(H0=67.9, Om0=0.3065, Ode0=0.6935)` object rather
 than the usual `Planck15_LAL` name. The evaluator parses only the literal
 parameters of that trusted expression and reconstructs the Astropy cosmology
 before creating Bilby's `UniformSourceFrame`. A regression check reproduced an
@@ -261,8 +260,8 @@ released likelihood's effective-sample and variance checks. The exact inputs,
 versions, settings, and outputs are recorded in
 `gwtc5_likelihood_smoke_audit.json`.
 
-The expanded checkpoint now contains 176 of the 235 released events: every
-event through complete O4a plus the first 35 of 94 O4b events. The
+The expanded checkpoint now contains 182 of the 235 released events: every
+event through complete O4a plus the first 41 of 94 O4b events. The
 fixed-nuisance history is:
 
 | Events | Complete scope | `log L_PDT - log L_GR` |
@@ -272,32 +271,34 @@ fixed-nuisance history is:
 | 65 | O1--O3b | `+1.3120663` |
 | 141 | O1--O4a | `-0.6569939` |
 | 176 | O1--O4a + 35 O4b | `-1.2540217` |
+| 182 | O1--O4a + 41 O4b | `-1.4935506` |
 
-O4a changes the sign, and the first 35 O4b events extend that movement. At
+O4a changes the sign, and the first 41 O4b events extend that movement. At
 8,192 samples per event and fixed nuisance medians, the current diagnostic is
 
 \[
-\log L_{\rm PDT}-\log L_{\rm GR}=-1.2540216734.
+\log L_{\rm PDT}-\log L_{\rm GR}=-1.4935506041.
 \]
 
 This value was stable under posterior subsampling: five independent
-4,096-sample draws gave a mean of `-1.2567919` with sample standard deviation
-`0.0118180` and range `-1.2771201` to `-1.2464430`. The 8,192-sample value lies
+4,096-sample draws gave a mean of `-1.4992395` with sample standard deviation
+`0.0114427` and range `-1.5192816` to `-1.4914929`. The 8,192-sample value lies
 inside that range.
 
-The corrected likelihood attribution is more informative than its sign. The
-observed-event log-sum-weight terms total `-21.4505511469`, favoring GR at this
-fixed nuisance point, while the model-dependent selection term is
-`+20.1965294735`, favoring PDT. Their sum reconstructs `-1.2540216734` to
-numerical precision. All 176 individual event terms are negative, and their
-correlation with median luminosity distance is `-0.8805`.
+The observed-event log-sum-weight terms total `-22.3785981278`, favoring GR at
+this fixed nuisance point, while the model-dependent selection term is
+`+20.8850475237`, favoring PDT. Their sum reconstructs `-1.4935506041` to
+numerical precision. All 182 individual event terms are negative.
 
-The scale-free selection term contributes the same `+0.1147530` per event at
-this fixed nuisance point. The 76 O4a events contribute `-1.9690603` net. The
-first 35 O4b events have a median distance of 1,939 Mpc and mean event penalty
-of `-0.1318109`; their event sum is `-4.6133830` against a selection share of
-`+4.0163553`, for a further net change of `-0.5970277`. The remaining 59 O4b
-events and full nuisance marginalization can change the result again.
+The scale-free selection term contributes the same `+0.1147530` per event.
+The 76 O4a events contribute `-1.9690603` net. The first 41 O4b events have
+mean event penalty `-0.1351568`; their event sum is `-5.5414300` against a
+selection share of `+4.7048733`, for a further net change of `-0.8365567`.
+For the full 235-event fixed-point diagnostic to return to zero, the remaining
+53 observed-event terms must average better than `-0.0865728`. That threshold
+is an exact consequence of the current decomposition; projecting the current
+partial-O4b mean onto the remainder would give about `-2.5751`, but that
+projection is descriptive rather than model evidence.
 
 This attribution corrects the 19-event component split recorded in repository
 commit `1fd4f6e`. ICAROGW estimates the paired-mass normalization with Monte
@@ -305,21 +306,21 @@ Carlo draws on each population update. Different draws shift equal and opposite
 constants between the event and selection components, while canceling exactly
 from the scale-free total likelihood. The script now gives the common mass
 model the identical normalization draw under GR and PDT. Repeating the
-176-event calculation with two different common draws changed the event sum
-and selection term by about `7e-15`, the total by about `1e-13`, and every
-per-event difference only at numerical roundoff, while the draw-dependent
-normalization itself changed from `0.14710` to `0.14558`. The earlier
-`+0.7123101` total remains valid; only its decomposition is superseded. The
-corrected per-event decomposition, checkpoint history, checksums, settings,
-and invariance check are recorded in `gwtc5_likelihood_checkpoint_audit.json`.
+182-event calculation with two different common draws changed the event sum
+and selection term at numerical roundoff and the total by about `1e-13`, while
+the draw-dependent normalization itself changed from `0.14710` to `0.14558`.
+The earlier `+0.7123101` total remains valid; only its decomposition is
+superseded. The corrected per-event decomposition, checkpoint history,
+checksums, settings, and invariance check are recorded in
+`gwtc5_likelihood_checkpoint_audit.json`.
 
 This remains a diagnostic, not model evidence. It demonstrates why both sides
 of the hierarchical likelihood are indispensable: reweighting the observed
 events without recomputing detectability would reverse the interpretation of
 this checkpoint.
 
-Reproduce the diagnostic after preparing its two event files and cumulative
-injection file:
+Reproduce the two-event integration smoke test after preparing its event files
+and cumulative injection file:
 
 ```bash
 python3.12 -m venv gwtc5-icarogw-env
@@ -340,10 +341,10 @@ integrity, local storage, both importance-sampling priors, a fixed selection
 rule, and basic ICAROGW integration. Two items still have to be closed before
 an evidence number is defensible:
 
-1. **Catalog-wide prior validation.** The evaluator has passed one real file
-   from each of O1, O2, O3a, O3b, O4a, and O4b, including every prior family
-   presently identified in the lock. It must still run successfully across all
-   235 checksum-locked events to detect event-specific metadata anomalies. The
+1. **Catalog-wide prior validation.** The evaluator has passed all 182 prepared
+   files from O1 through partial O4b, including every prior family presently
+   identified in the lock. It must still run successfully across the remaining
+   53 checksum-locked events to detect event-specific metadata anomalies. The
    full joint `log_prior` column is retained for diagnostics but is not
    substituted for the required marginal density.
 2. **Pipeline validation and compute.** Before evaluating PDT, the reconstructed

@@ -193,9 +193,10 @@ merely described. The checksum lock identifies all 235 official event files
 compacts one HDF5 file at a time. A second pinned script reconstructs the
 marginal PE-prior density and has passed a checksum-locked real event from
 each of O1, O2, O3a, O3b, O4a, and O4b (337,982 posterior samples total). The
-same evaluator has now processed 176 events through complete O4a and the first
-35 of 94 O4b events, covering 11,930,628 posterior samples with finite positive
-densities throughout. The machine-readable coverage record is `gwtc5_pe_prior_audit.json`. The official
+same evaluator has now processed 182 events through complete O4a and the first
+41 of 94 O4b events, covering 12,038,335 posterior samples with finite positive
+densities throughout. The machine-readable coverage record is
+`gwtc5_pe_prior_audit.json`. The official
 1.142 GB cumulative injection file has also been checksum verified and
 compacted with the selection fixed at semianalytic SNR above 10 or
 real-search FAR below 0.25/year: 1,478,693 injections pass, with no overlap
@@ -210,15 +211,15 @@ formulas, commands, machine-readable audit, and real-file integration tests
 are recorded in
 [EXACT_GWTC5_RERUN.md](EXACT_GWTC5_RERUN.md).
 
-The diagnostic has since been expanded to 176 events: every event through
-complete O4a plus the first 35 of 94 O4b events. Its fixed-nuisance difference is now
-`-1.2540`: observed-event terms contribute `-21.4506`, while the required
-selection correction contributes `+20.1965`. All 176 individual event terms
-lean toward GR at this fixed point. The 35-event O4b block contributes
-`-0.5970` net, extending the O4a sign reversal. The partial-catalog result
-therefore demonstrates the importance of both recomputing detectability and
-completing the catalog; the remaining 59 O4b events and nuisance
-marginalization may change the result again.
+The diagnostic has since been expanded to 182 events: every event through
+complete O4a plus the first 41 of 94 O4b events. Its fixed-nuisance difference
+is now `-1.4936`: observed-event terms contribute `-22.3786`, while the required
+selection correction contributes `+20.8850`. All 182 individual event terms
+lean toward GR at this fixed point. The 41-event O4b block contributes
+`-0.8366` net, extending the O4a sign reversal. The remaining 53 O4b events
+would have to average better than `-0.0866` in their observed-event terms to
+return this fixed-point diagnostic to zero. Full nuisance marginalization can
+still change the result.
 
 ![GWTC-5 fixed-nuisance cumulative diagnostic and distance dependence](gwtc5_fixed_point_checkpoint.png)
 
@@ -228,8 +229,8 @@ The total scale-free likelihood cancels that common factor, but a component
 attribution requires the same draw under both hypotheses. The script now
 enforces that condition, and a second common draw reproduced every corrected
 component to about `1e-13` or better. The earlier 19-event total was unaffected.
-Five independent posterior subsamples gave `-1.2771` to `-1.2464`; the detailed
-correction and 176-event checkpoint are recorded in
+Five independent posterior subsamples gave `-1.5193` to `-1.4915`; the detailed
+correction and 182-event checkpoint are recorded in
 `gwtc5_likelihood_checkpoint_audit.json`.
 
 The full inference runner is now included as `gwtc5_full_inference.py`. It
