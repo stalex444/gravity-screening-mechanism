@@ -714,6 +714,15 @@ energy is squared shear while the area is unchanged at first order.  The one
 remaining physical statement is the placement of the Q KMS line on the
 horizon screen.
 
+[`LOCAL_EINSTEIN_CLOSURE.md`](LOCAL_EINSTEIN_CLOSURE.md) proves the
+pointwise tensor step in Jacobson's route.  A symmetric Ricci-minus-source
+tensor whose contraction vanishes on every local null direction is forced to
+be proportional to the metric.  The resulting local Einstein equation uses
+`8 pi G_PDT`, and the same capstone carries the complete rho-Q determinant for
+`1/G_PDT`.  The statement is equation-shape closure in a local orthonormal
+frame; global nonlinear solutions and constancy of the cosmological term lie
+outside this finite tensor theorem.
+
 ## Palomar comparison surface
 
 The five selected results are:
