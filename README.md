@@ -208,6 +208,13 @@ formulas, commands, machine-readable audit, and real-file integration tests
 are recorded in
 [EXACT_GWTC5_RERUN.md](EXACT_GWTC5_RERUN.md).
 
+The full inference runner is now included as `gwtc5_full_inference.py`. It
+reconstructs and checks the released FullPop priors and Nessai settings, audits
+catalog completeness, and refuses to sample until all 235 events and the
+selection archive validate. Its first mode reproduces the collaboration's
+published `cM` evidence; the fixed GR and PDT modes use the same nuisance
+priors and sampler configuration after that reproduction succeeds.
+
 The Hubble benchmark supplies a possible joint test. With
 `chi = Q/rho = 0.9215124457...`, an early-universe value `H0 = 67.4` maps to
 the fixed present value `H0 = 73.1406291...`. The released GW posterior is
@@ -279,6 +286,12 @@ python3.12 -m venv gwtc5-icarogw-env
   --reference-result /path/to/icarogw_fullpop_spectral_cm_narrow.json \
   --events GW151012_095443 GW170823_131358 \
   --output gwtc5_likelihood_smoke_audit.json
+./gwtc5-icarogw-env/bin/python gwtc5_full_inference.py \
+  --mode reference-cm \
+  --event-dir gwtc5-data/events \
+  --injections gwtc5-data/gwtc5_cumulative_icarogw.npz \
+  --reference-result /path/to/icarogw_fullpop_spectral_cm_narrow.json \
+  --plan-output gwtc5-runs/reference-cm-plan.json
 ```
 
 The solution declarations depend only on `propext`, `Classical.choice`, and

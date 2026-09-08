@@ -285,6 +285,55 @@ an evidence number is defensible:
 These are explicit validation and configuration tasks, not adjustable parts of
 the PDT curve.
 
+## Full inference runner
+
+`gwtc5_full_inference.py` closes the run-configuration side of the second seam.
+It reconstructs the serialized Bilby prior dictionary from an official `cM`
+result, verifies the official result checksum, checks every retained event
+against `gwtc5_input_lock.json`, verifies the compact injection selection, and
+constructs the same FullPop-4.0 mass and Madau-rate likelihood used by the
+native diagnostic. The released Nessai settings are checked before a plan is
+accepted: 1,000 live points, stopping criterion 0.1, 16 workers, ten-minute
+checkpoints, likelihood constraints, and multi-valued likelihood handling.
+
+The released prior serializes `peak_constraint` on `[0,5000]` but not its
+conversion function. The runner reconstructs it as
+
+```text
+peak_constraint = mu_g_high - mu_g_low.
+```
+
+Every one of the 7,414 narrow-prior and 7,420 wide-prior released posterior
+samples satisfies this ordering. Reproducing the published `cM` evidence is
+still required as the end-to-end validation of this reconstruction and all
+other input choices.
+
+The runner has three mutually comparable modes:
+
+```text
+reference-cm  sample cM from the released prior and reproduce the release
+gr            fix eps0 = 0
+pdt           fix eps0 = beta_Q
+```
+
+Without `--run-sampler`, it writes or prints a machine-readable plan. With
+`--run-sampler`, it refuses to proceed unless all 235 event files and the
+injection archive pass their locks. The reference run comes first:
+
+```bash
+./gwtc5-icarogw-env/bin/python gwtc5_full_inference.py \
+  --mode reference-cm \
+  --event-dir gwtc5-data/events \
+  --injections gwtc5-data/gwtc5_cumulative_icarogw.npz \
+  --reference-result /path/to/icarogw_fullpop_spectral_cm_narrow.json \
+  --plan-output gwtc5-runs/reference-cm-plan.json
+```
+
+After reviewing the plan, adding `--run-sampler` starts the checkpointed
+Nessai run. A successful reproduction must agree with the released value
+`-2577.85299 +/- 0.15836` within combined sampling uncertainty. Only then are
+the `gr` and `pdt` modes interpreted as the requested model comparison.
+
 ## Evidence protocol
 
 1. Pin Python 3.12, Bilby 2.6.0, and ICAROGW 2.0.3 at commit
