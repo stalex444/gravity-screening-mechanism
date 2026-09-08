@@ -164,6 +164,24 @@ distinct frame outcomes with the round density of states, or an independently
 derived operational measure must produce the same unnormalized mass. This is
 the principal unresolved physics step in the boundary-measure route.
 
+There is now a second, more concrete conditional route. A real field's
+Fourier coefficients obey `h(-k)=conj(h(k))`, which Lean proves makes the mode
+power antipode-even. Lean also proves that the unit shell in four real mode
+coordinates has no antipodal fixed points. Hence counting each real-mode pair
+once gives the exact half-shell integral
+
+```text
+(1/2) * integral_S3 vertex = pi^2 * vertex.
+```
+
+The 15-channel vertex then reproduces the electromagnetic expression and the
+existing `15+209=224` factorization reproduces gravity. This avoids claiming
+that a normalized gauge average generates a volume. Its remaining physical
+premise is specific: after separating the radial scale, the renormalized
+zero-momentum response must be a density over Euclideanized four-mode
+directions with the stated Fourier normalization and Jacobian. That step has
+not yet been derived from the action or spectral trace.
+
 Independently, Lean proves that the transverse-traceless graviton space at
 fixed nonzero momentum has exactly two real polarizations. On this
 polarization plane, rotational covariance and self-adjointness force a common
@@ -237,6 +255,12 @@ has diagonal value `pi^2`. All consequences of that premise are forced.
 - `roundIntegral_ne_normalizedAverage`
 - `conformalChannelVertex_integral_eq_electromagneticCoupling`
 - `gravitationalCoupling_eq_integratedObserverVertex_link`
+- `realityConstrained_modePower_antipode`
+- `unitModeShell_antipode_ne_self`
+- `fourModeShellMeasure_real_univ`
+- `projectiveModeShellScalarIntegral_eq_pi_sq_mul`
+- `conformalChannelVertex_projectiveModeShell_eq_electromagneticCoupling`
+- `gravitationalCoupling_eq_projectiveModeShell_link`
 - `pauliAxis_sq`
 - `pauliAxes_halfTrace_orthonormal`
 - `quaternionSU2Matrix_det`

@@ -269,6 +269,25 @@ inclusive family of outcomes, or supply an equivalent unnormalized density
 of states. Establishing that operational statement is now the principal
 physics gap in this route.
 
+A second conditional route now supplies a concrete density-of-states
+candidate without treating a redundant gauge orbit as an average. For a real
+field, Fourier reality gives `h(-k)=conj(h(k))`, so the power at `k` and `-k`
+is exactly equal. Lean proves that the antipodal action has no fixed point on
+the unit shell in four real mode coordinates. Counting each real-mode pair
+once therefore gives
+
+```text
+(1/2) * integral_S3 vertex = pi^2 * vertex.
+```
+
+For `vertex=(rho Q)^(-15)`, this is exactly the deposited electromagnetic
+expression, and the existing factorization then gives the gravity expression.
+This route replaces the normalization ambiguity with a narrower field-theory
+question: whether the zero-momentum vertex is an unnormalized density per
+Euclideanized four-mode direction after radial scale is separated. A complete
+derivation must obtain that measure, including Fourier conventions and any
+Jacobian, from the action or spectral trace.
+
 Before the quotient, `(2*pi^2)^2 = 4*pi^4`, matching the associated
 area-quantum form. The remaining correspondence is the PDT identification of
 the round antipodal quotient with the relevant conformal or polarization-frame
