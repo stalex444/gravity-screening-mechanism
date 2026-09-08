@@ -98,12 +98,18 @@ def zenodo_direct_url(url: str) -> str | None:
 
 
 def download_with_resume(
-    url: str, destination: Path, expected_bytes: int, max_attempts: int = 6
+    url: str,
+    destination: Path,
+    expected_bytes: int,
+    max_attempts: int = 6,
+    socket_timeout_seconds: float = 120.0,
 ) -> None:
     destination.parent.mkdir(parents=True, exist_ok=True)
     part = destination.with_name(destination.name + ".part")
     if max_attempts < 1:
         raise ValueError("max_attempts must be positive")
+    if socket_timeout_seconds <= 0:
+        raise ValueError("socket_timeout_seconds must be positive")
     last_problem = None
     active_url = url
     direct_url = zenodo_direct_url(url)
@@ -116,7 +122,9 @@ def download_with_resume(
             headers["Range"] = f"bytes={offset}-"
         request = urllib.request.Request(active_url, headers=headers)
         try:
-            with urllib.request.urlopen(request) as response:  # noqa: S310 -- locked HTTPS URL
+            with urllib.request.urlopen(  # noqa: S310 -- locked HTTPS URL
+                request, timeout=socket_timeout_seconds
+            ) as response:
                 status = getattr(response, "status", response.getcode())
                 append = offset > 0 and status == 206
                 mode = "ab" if append else "wb"
@@ -318,6 +326,7 @@ def parser() -> argparse.ArgumentParser:
     result.add_argument("--download", action="store_true", help="Download missing locked source files.")
     result.add_argument("--delete-source", action="store_true", help="Delete each verified HDF5 source after compact extraction.")
     result.add_argument("--max-download-attempts", type=int, default=6, help="Bounded retries for transient HTTP and connection failures.")
+    result.add_argument("--socket-timeout", type=float, default=120.0, help="Seconds without socket progress before retrying a resumable download.")
     result.add_argument("--dry-run", action="store_true", help="Validate and summarize without downloading or extracting.")
     return result
 
@@ -357,6 +366,7 @@ def main() -> int:
                     source,
                     item["source"]["bytes"],
                     max_attempts=args.max_download_attempts,
+                    socket_timeout_seconds=args.socket_timeout,
                 )
             if source.stat().st_size != item["source"]["bytes"]:
                 raise ValueError("Source size does not match the lock.")

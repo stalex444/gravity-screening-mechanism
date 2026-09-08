@@ -117,7 +117,8 @@ Transient HTTP 408/429/5xx responses and connection failures are retried with
 bounded exponential backoff. Every retry resumes a partial source when the
 server honors byte ranges. If Zenodo's API content gateway remains unavailable,
 the downloader switches to the corresponding checksum-locked direct file URL;
-a non-transient HTTP error still fails immediately.
+socket reads with no progress are also bounded so the retry path cannot hang.
+A non-transient HTTP error still fails immediately.
 
 ## PE-prior reconstruction
 
@@ -250,26 +251,29 @@ released likelihood's effective-sample and variance checks. The exact inputs,
 versions, settings, and outputs are recorded in
 `gwtc5_likelihood_smoke_audit.json`.
 
-The expanded checkpoint now contains every O1, O2, and O3a event: 43 of the
-235 events in the released catalog. At 8,192 samples per event and fixed
+The expanded checkpoint now contains every O1, O2, O3a, and O3b event: 65 of
+the 235 events in the released catalog. At 8,192 samples per event and fixed
 nuisance medians, the diagnostic gave
 
 \[
-\log L_{\rm PDT}-\log L_{\rm GR}=+0.8191134180.
+\log L_{\rm PDT}-\log L_{\rm GR}=+1.3120663073.
 \]
 
-The complete O1/O2 value was stable under posterior subsampling: five
-independent 4,096-sample draws gave a mean of `+0.5151304` with sample standard
-deviation `0.0010067`, while an 8,192-sample evaluation gave `+0.5154878`.
+This value was stable under posterior subsampling: five independent
+4,096-sample draws gave a mean of `+1.3137380` with sample standard deviation
+`0.0096420` and range `+1.3058578` to `+1.3270658`. The 8,192-sample value lies
+inside that range.
 
 The corrected likelihood attribution is more informative than its sign. The
-observed-event log-sum-weight terms total `-4.1152659420`, favoring GR at this
+observed-event log-sum-weight terms total `-6.1468792369`, favoring GR at this
 fixed nuisance point, while the model-dependent selection term is
-`+4.9343793600`, favoring PDT. Their sum reconstructs `+0.8191134180` to
-numerical precision. All 43 individual event terms are negative, and their
-correlation with median luminosity distance is `-0.9413`. The positive
+`+7.4589455442`, favoring PDT. Their sum reconstructs `+1.3120663073` to
+numerical precision. All 65 individual event terms are negative, and their
+correlation with median luminosity distance is `-0.9235`. The positive
 partial-catalog total is therefore produced by the selection correction rather
-than by the observed-event terms. The remaining 192 events and full nuisance
+than by the observed-event terms. The complete O3b block added `+0.4930` net:
+`-2.0316` from its 22 observed-event terms and `+2.5246` from its proportional
+selection contribution. The remaining 170 events and full nuisance
 marginalization can change its sign.
 
 This attribution corrects the 19-event component split recorded in repository
@@ -278,7 +282,7 @@ Carlo draws on each population update. Different draws shift equal and opposite
 constants between the event and selection components, while canceling exactly
 from the scale-free total likelihood. The script now gives the common mass
 model the identical normalization draw under GR and PDT. Repeating the
-43-event calculation with two different common draws changed the event sum,
+65-event calculation with two different common draws changed the event sum,
 selection term, and every per-event difference by less than `9e-15`, while the
 draw-dependent normalization itself changed from `0.14960` to `0.14558`. The
 earlier `+0.7123101` total remains valid; only its decomposition is superseded.

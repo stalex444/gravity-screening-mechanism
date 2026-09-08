@@ -208,13 +208,13 @@ formulas, commands, machine-readable audit, and real-file integration tests
 are recorded in
 [EXACT_GWTC5_RERUN.md](EXACT_GWTC5_RERUN.md).
 
-The diagnostic has since been expanded to every O1, O2, and O3a event. Across
-these 43 events its fixed-nuisance difference is `+0.8191`, but the corrected
+The diagnostic has since been expanded to every O1, O2, O3a, and O3b event.
+Across these 65 events its fixed-nuisance difference is `+1.3121`, but the corrected
 decomposition shows why that sign is not evidence: observed-event terms
-contribute `-4.1153` while the required selection correction contributes
-`+4.9344`. All 43 individual event terms lean toward GR at this fixed point.
+contribute `-6.1469` while the required selection correction contributes
+`+7.4589`. All 65 individual event terms lean toward GR at this fixed point.
 The partial-catalog result therefore demonstrates the importance of
-recomputing detectability under each propagation law; the remaining 192 events
+recomputing detectability under each propagation law; the remaining 170 events
 and nuisance marginalization may change the sign.
 
 This supersedes the 19-event component split in commit `1fd4f6e`. ICAROGW's
@@ -223,7 +223,8 @@ The total scale-free likelihood cancels that common factor, but a component
 attribution requires the same draw under both hypotheses. The script now
 enforces that condition, and a second common draw reproduced every corrected
 component to better than `9e-15`. The earlier 19-event total was unaffected.
-The detailed correction and 43-event checkpoint are recorded in
+Five independent posterior subsamples gave `+1.3059` to `+1.3271`; the detailed
+correction and 65-event checkpoint are recorded in
 `gwtc5_likelihood_checkpoint_audit.json`.
 
 The full inference runner is now included as `gwtc5_full_inference.py`. It
