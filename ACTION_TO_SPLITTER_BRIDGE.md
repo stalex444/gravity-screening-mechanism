@@ -138,6 +138,17 @@ variation must show that ordinary stress-energy selects this source-preserving
 frame. Reading an arbitrary factorization of `K` as an S-matrix would not be
 valid.
 
+That target is now explicit.  The centered Hamiltonian interface equation
+
+```text
+(I+tJ) z_after = (I-tJ) z_before,
+t = lambda/(1+sqrt(1-lambda^2)),
+```
+
+uniquely produces `U`.  The exact derivation, algebraic fingerprint, and
+remaining variational test are recorded in
+[HORIZON_INTERFACE_CAYLEY.md](HORIZON_INTERFACE_CAYLEY.md).
+
 ## Remaining physical premise
 
 The new result closes the algebraic gap between the source-preserving doubled

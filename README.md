@@ -76,6 +76,32 @@ ordinary stress-energy to select the positive source-preserving frame; the
 quadratic form alone does not select a scattering frame.  See
 [ACTION_TO_SPLITTER_BRIDGE.md](ACTION_TO_SPLITTER_BRIDGE.md).
 
+The remaining interface datum has now been reduced to one explicit
+Hamiltonian boundary coefficient.  For the symplectic quarter-turn `J`, the
+centered jump law
+
+```text
+(I + t_Q J) z_after = (I - t_Q J) z_before,
+t_Q = lambda4/(1 + sqrt(S_Q)),
+```
+
+has a unique transfer matrix.  Lean proves that it is exactly the passive
+splitter above, is orthogonal with determinant one, and is equivalent to the
+midpoint impulse equation
+
+```text
+J(z_after-z_before) = t_Q(z_after+z_before).
+```
+
+It also proves the exact reciprocal degree-eight equation obeyed by `t_Q`.
+The coupling and exterior amplitude rationally reconstruct one another, so
+Lean proves that they generate the same degree-eight field over the rationals.
+The boundary law adds no independent algebraic parameter.
+This identifies a concrete isotropic quadratic horizon interaction for the
+next variational test; it does not yet derive that boundary interaction from
+the local spin-two action.  See
+[HORIZON_INTERFACE_CAYLEY.md](HORIZON_INTERFACE_CAYLEY.md).
+
 ## The quartic Q specialization
 
 Let `Q` denote the positive real root satisfying

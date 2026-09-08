@@ -25,6 +25,7 @@ import GravityScreening.LorentzPauliFierzSymbol
 import GravityScreening.DoubledSpinTwoOperator
 import GravityScreening.DoubledSpinTwoAction
 import GravityScreening.ActionSplitterBridge
+import GravityScreening.HorizonInterfaceCayley
 import GravityScreening.SpinTwoDegreeAudit
 import GravityScreening.FirstOrderSourceAction
 import GravityScreening.TransverseTracelessCount
@@ -48,6 +49,7 @@ import GravityScreening.CovariantGravityCompression
 import GravityScreening.PalomarCapstone
 import GravityScreening.GravitationalWaveObservables
 import GravityScreening.QuarticResponseIrreducibility
+import GravityScreening.QuarticInterfaceField
 import GravityScreening.CosmologicalQuarticTransport
 import GravityScreening.ThreeDPackingWitness
 import GravityScreening.TetrahedralCoverage

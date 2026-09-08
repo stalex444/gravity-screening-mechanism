@@ -1,0 +1,201 @@
+# The quartic horizon interface as a Hamiltonian Cayley jump
+
+## Result
+
+The bulk doubled action fixes the two-channel quadratic form and its
+source-preserving frame, but it cannot by itself determine a spatial or
+horizon matching rule.  The remaining mechanism can now be stated as one
+precise boundary equation.
+
+Let
+
+```text
+J = [[0,-1],
+     [1, 0]]
+```
+
+be the symplectic quarter-turn, and let `z_-` and `z_+` denote the two-channel
+data immediately before and after the interface.  The centered jump law is
+
+```text
+(I + t J) z_+ = (I - t J) z_-.
+```
+
+Lean proves that this equation has a unique transfer matrix:
+
+```text
+z_+ = C(t) z_-,
+
+       1       [[1-t^2,  2t],
+C(t) = ----- * [              ]].
+      1+t^2    [[ -2t, 1-t^2]]
+```
+
+It also proves, for every real `t`,
+
+```text
+C(t)^T C(t) = I,
+det C(t) = 1.
+```
+
+The interface is therefore passive and lossless without an extra
+normalization condition.
+
+## The coefficient forced by the quartic splitter
+
+Write
+
+```text
+lambda = 1 - 1/Q,
+d      = sqrt(1-lambda^2).
+```
+
+The unique algebraic boundary coefficient is
+
+```text
+t_Q = lambda/(1+d).
+```
+
+This is the rational half-angle coordinate of the splitter.  Lean proves
+
+```text
+2 t_Q/(1+t_Q^2) = lambda
+```
+
+and hence
+
+```text
+C(t_Q) = [[d,       lambda],
+          [-lambda,      d]].
+```
+
+Thus the centered boundary law uniquely yields the same passive splitter
+previously obtained from the source-adapted action Gram factor.  Numerically,
+
+```text
+lambda = 0.18082748660383556...
+d      = 0.98351482962309199...
+t_Q    = 0.09116518006482283...
+2 t_Q  = 0.18233036012964566...
+```
+
+The last number is the strength of the corresponding midpoint Hamiltonian
+impulse.
+
+## Why this is a Hamiltonian mechanism
+
+Lean proves that the matrix jump equation is equivalent to
+
+```text
+J (z_+ - z_-) = t (z_+ + z_-).
+```
+
+If `m=(z_+ + z_-)/2` is the interface midpoint, this becomes
+
+```text
+J Delta z = 2t m.
+```
+
+The right side is the gradient of the isotropic quadratic interface
+Hamiltonian
+
+```text
+H_interface(m) = t ||m||^2.
+```
+
+This gives a concrete candidate for the missing boundary term.  It is a
+single symplectic impulse acting on the canonical pair already present in the
+first-order one-graviton action.  Its Cayley update is exactly lossless and
+produces the required visible/hidden amplitudes.
+
+## Quartic algebraic fingerprint
+
+Eliminating `Q` from
+
+```text
+Q^4 = Q + 1,
+(Q-1)(1+t^2) = 2tQ
+```
+
+gives
+
+```text
+t^8 - 14t^7 + 40t^6 - 82t^5 + 94t^4
+    - 82t^3 + 40t^2 - 14t + 1 = 0.
+```
+
+Lean proves this equation for `t_Q`.  It also proves that the polynomial is
+reciprocal:
+
+```text
+t^8 P(1/t) = P(t).
+```
+
+The positive quartic branch selects the weak member `0<t_Q<1` of the
+reciprocal pair.  Reciprocity by itself is not a Salem classification, and
+none is claimed here.
+
+The coefficient also carries exactly the same algebraic information as the
+exterior amplitude.  The two rational reconstruction formulas are
+
+```text
+lambda = 2t_Q/(1+t_Q^2),
+d      = (1-t_Q^2)/(1+t_Q^2).
+```
+
+Conversely, `t_Q=lambda/(1+d)`, while the existing exterior-amplitude theorem
+recovers `Q` rationally from `d`.  Lean therefore proves
+
+```text
+ℚ(t_Q) = ℚ(d)
+```
+
+as intermediate fields over the rationals and proves
+
+```text
+[ℚ(t_Q):ℚ] = 8.
+```
+
+The boundary Hamiltonian has introduced no independent algebraic parameter:
+it is a different coordinate on the same degree-eight observable field as the
+retained gravitational amplitude.
+
+## What has and has not been derived
+
+The result identifies the exact local interface term sufficient to turn the
+bulk quartic response into the passive horizon splitter.  It removes an
+arbitrary angle and reduces the remaining physical question to a single
+coefficient:
+
+> Does variation of the sourced local spin-two action at the horizon produce
+> the isotropic midpoint boundary Hamiltonian with coefficient
+> `t_Q=lambda4/(1+sqrt(S_Q))`?
+
+The present theorem does not assume that every Gram factor is a scattering
+matrix, and it does not claim that the existing fixed-mode bulk action already
+contains this spatial boundary term.  A full closure must derive this jump
+law from a local action with an explicit horizon boundary contribution.  A
+different boundary variation, an anisotropic quadratic, or a different
+coefficient would falsify this proposed mechanism.
+
+## Kernel artifact
+
+`GravityScreening/HorizonInterfaceCayley.lean` proves:
+
+- invertibility of both centered jump matrices;
+- uniqueness of the Cayley transfer;
+- orthogonality and determinant one;
+- equivalence with the symplectic Hamiltonian impulse equation;
+- reconstruction of the splitter amplitude from the half-angle coefficient;
+- exact equality with the passive source splitter;
+- the quartic degree-eight algebraic equation and its reciprocal identity;
+- equality of the fields generated by the interface coupling and exterior
+  amplitude;
+- exact minimal-polynomial degree eight of the interface coupling;
+- selection of the weak branch `0<t_Q<1`; and
+- uniqueness of the passive splitter under the boundary law.
+
+The kernel artifacts are `GravityScreening/HorizonInterfaceCayley.lean` and
+`GravityScreening/QuarticInterfaceField.lean`.  They compile under the pinned
+Lean toolchain, contain no `sorry`, and use only Mathlib's standard logical
+axioms.
