@@ -2,10 +2,10 @@
 
 ## Result
 
-Once the ordinary source fixes the positive, source-adapted channel frame, the
-passive visible/hidden splitter is latent in the same positive two-channel
-quadratic form that gives the gravity screening determinant.  It then requires
-no independent mixing angle.
+Once the ordinary source fixes the positive source-preserving channel frame,
+the passive visible/hidden splitter is latent in the same two-channel
+quadratic form that gives the gravity screening determinant. No independent
+continuous mixing angle remains.
 
 Write
 
@@ -15,53 +15,52 @@ S      = 1 - lambda^2,
 d      = sqrt(S).
 ```
 
-The doubled action has channel block
+The doubled action has internal channel block
 
 ```text
 K = [[1, -lambda],
      [-lambda, 1]].
 ```
 
-Its positive, source-adapted Gram factor is
+Its positive lower-triangular factor that preserves the ordinary source ray is
 
 ```text
-C = [[1, -lambda],
-     [0,       d]],
+A = [[d,       0],
+     [-lambda, 1]],
 
-C^T C = K.
+A^T A = K.
 ```
 
-The columns of `C` are the ordinary source direction
+Indeed, the inverse transpose sends a pure ordinary source to another pure
+ordinary source:
 
 ```text
-e = (1,0)
+A^(-T) (j,0) = (j/d,0).
 ```
 
-and the normalized quartic residue direction
+No external partner or magnetic source is generated.
+
+The first column of `A` is already the normalized two-port source direction
 
 ```text
-u = (-lambda,d).
+v = (d,-lambda),
+
+||v||^2 = d^2+lambda^2 = 1.
 ```
 
-Reverse Gram--Schmidt keeps `u` fixed and removes it from `e`:
+Keep `v` fixed and orthogonalize the second column `(0,1)` against it:
 
 ```text
-e - <e,u>u
-  = (1-lambda^2, lambda*d)
-  = d (d,lambda).
+(0,1) - <v,(0,1)>v
+  = (lambda*d,1-lambda^2)
+  = d(lambda,d).
 ```
 
-The normalized surviving direction is therefore
+After normalization, the unique positive-orientation completion is therefore
 
 ```text
-v = (d,lambda).
-```
-
-Putting `v` and `u` together gives
-
-```text
-U = [[d,      -lambda],
-     [lambda,       d]].
+U = [[d,       lambda],
+     [-lambda,      d]].
 ```
 
 Lean proves
@@ -71,57 +70,33 @@ U^T U = I,
 det U = 1.
 ```
 
-It also proves uniqueness: once the residue column `(-lambda,d)` is fixed,
-orthogonality and positive orientation force the other column to be
-`(d,lambda)`.  Thus the visible amplitude is `d=sqrt(S)`, the hidden amplitude
-is `lambda`, and no further beam-splitter parameter remains.
+It also proves uniqueness: once the oriented source column `(d,-lambda)` is
+fixed, orthogonality and determinant one force the other column to be
+`(lambda,d)`. The visible amplitude has magnitude `d`, the hidden amplitude
+has magnitude `lambda`, and their weights are `S` and `lambda^2`. Reversing
+the hidden basis changes the sign but not either weight.
 
-## Why this matters
+## Complete exact chain
 
-Previously the doubled action and the horizon erasure map appeared as two
-compatible constructions carrying the same determinant.  This calculation
-shows their exact mathematical relation:
+The existing clock theorem and the new source-frame theorem now compose:
 
 ```text
 quartic core weight 1/Q
     -> exchange-symmetric normalized action block K_Q
-quartic action block
-    -> unique positive source-adapted Gram factor
-    -> reverse Gram--Schmidt against the Q residue
-    -> unique orientation-preserving passive splitter
-    -> visible weight S and hidden weight lambda4^2.
+    -> unique positive source-preserving Gram factor A_Q
+    -> Gram--Schmidt completion of its source column
+    -> unique orientation-preserving passive splitter U_Q
+    -> visible weight S_Q and hidden weight lambda4^2.
 ```
 
 The same `lambda4` that appears as the off-diagonal action overlap becomes the
-hidden branch amplitude.  Its orthogonal complement becomes the exterior
-gravitational amplitude.  The square and minus sign arise from orthogonal
-projection and norm conservation rather than from a separately chosen
-response formula.
+oriented hidden amplitude. Its orthogonal complement becomes the exterior
+amplitude. The square and minus sign arise from the positive action metric,
+orthogonality, and norm conservation.
 
-## Why the source-adapted condition is necessary
-
-The action matrix alone determines a Gram form, not a unique output frame. If
-`O` is any orthogonal matrix, then
-
-```text
-(O C)^T (O C) = C^T C = K.
-```
-
-Lean proves this freedom for an arbitrary two by two orthogonal `O`.  Thus the
-quadratic form alone cannot be advertised as selecting a physical scattering
-angle.  What selects the displayed factor `C` is the additional physical
-structure already present in the sourced theory: the first channel is the
-ordinary matter-coupled direction, the factor is positive and triangular,
-and the residue coordinate has positive orientation.  Lean proves that these
-conditions uniquely fix `C`.
-
-This distinction is useful.  It rules out an accidental inference from a
-matrix factorization while showing exactly what a physical interface or
-horizon calculation must establish: source adaptation of the Gram frame.
-
-For the two TT polarizations, rotational covariance applies this same scalar
-splitter to both plus and cross.  The existing TT rigidity theorem then gives
-the exterior block
+For the two TT polarizations, a polarization-blind tensor product applies the
+same scalar source split to plus and cross. The existing TT rigidity theorem
+then gives the exterior block
 
 ```text
 sqrt(S_Q) I_2.
@@ -133,43 +108,64 @@ The existing same-metric theorem converts this canonical attenuation into
 G_Q = G_0/S_Q.
 ```
 
-## The remaining physical premise
+## Exact limitation
 
-The new result closes the algebraic gap between the source-adapted doubled
-action and the passive splitter.  It does not by itself prove that the quartic
-Perron residue is the physical dual channel of gravity or that the physical
-horizon interface selects the source-adapted Gram frame.  The remaining
-premise can be stated in one line:
+A quadratic Gram matrix does not choose an output frame by itself. If `O` is
+any orthogonal matrix, then
+
+```text
+(O A)^T (O A) = A^T A = K.
+```
+
+Lean proves this freedom for arbitrary orthogonal `O`. The source-preserving
+lower-triangular condition is therefore substantive: it is the extra physical
+structure that chooses `A` from the full orthogonal family. Lean separately
+proves that, once positivity and this source condition are imposed, `A` is
+unique.
+
+This localizes the remaining field-theory test. A horizon or interface
+variation must show that ordinary stress-energy selects this source-preserving
+frame. Reading an arbitrary factorization of `K` as an S-matrix would not be
+valid.
+
+## Remaining physical premise
+
+The new result closes the algebraic gap between the source-preserving doubled
+action and the passive splitter. It does not by itself prove the physical
+identification:
 
 > The ordinary matter-coupled gravitational channel and the normalized
-> quartic Perron-residue channel are the two Gram channels of the physical
-> doubled spin-two quadratic form, with the ordinary source fixing its positive
-> triangular frame.
+> quartic Perron-residue channel are the two Gram coordinates of the physical
+> doubled spin-two quadratic form, with ordinary stress-energy selecting its
+> positive source-preserving frame.
 
-If that identification holds, the splitter, its coefficient, its orientation,
-and its action on both TT polarizations follow without another continuous
-choice.
+If this identification holds, the splitter, its coefficient, its orientation,
+and its uniform action on both TT polarizations follow without another
+continuous choice.
 
-The mechanism fails if the physical quadratic form has a different overlap,
-if the residue channel is not normalized in the TT energy inner product, or
-if the observer restriction is not the orthogonal complement selected by the
-positive action metric.
+The mechanism fails if the physical overlap differs from `lambda4`, if the
+residue is not normalized in the TT energy metric, if the source transformation
+mixes in a partner source, or if the observer restriction is not the
+orthogonal completion selected by this frame.
 
 ## Kernel artifact
 
 `GravityScreening/ActionSplitterBridge.lean` proves:
 
-- `passiveSplitter_residue_column`;
-- `passiveSplitter_source_column`;
-- `channelEmbedding_reverseGramSchmidt`;
-- `passiveSplitter_orthogonal`;
-- `passiveSplitter_det`;
+- `sourceAdaptedGramFactor_gram`;
+- `sourceAdaptedGramFactor_mul_inverse`;
+- `sourceAdaptedGramFactor_preserves_source_ray`;
+- `sourceAdaptedGramFactor_source_column`;
+- `passiveSourceSplitter_source_column`;
+- `sourceAdaptedGramFactor_gramSchmidt`;
+- `passiveSourceSplitter_orthogonal`;
+- `passiveSourceSplitter_det`;
 - `positive_sourceAdapted_gramFactor_unique`;
-- `passiveSplitter_unique`;
 - `leftOrthogonal_gram_invariant`;
+- `passiveSourceSplitter_unique`;
 - `sourceAdaptedActionGram_yields_passiveSplitter`;
 - `clockWeight_yields_sourceAdaptedActionGram_and_passiveSplitter`;
 - `clockWeight_forced_splitter_retained_sq`.
 
-The standalone file compiles under the repository's pinned Lean 4.31.0 and
-uses no `sorry` or nonstandard axioms.
+The file compiles under the repository's pinned Lean 4.31.0 and uses no
+`sorry` or nonstandard axioms.

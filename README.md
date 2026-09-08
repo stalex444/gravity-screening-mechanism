@@ -52,21 +52,23 @@ K_Q = [[1, -lambda4],
        [-lambda4, 1]].
 ```
 
-Its unique positive source-adapted Gram factor has columns `(1,0)` and
-`(-lambda4,sqrt(S_Q))`.  Reverse Gram--Schmidt against the residue column
-then produces the unique orientation-preserving passive splitter with source
-output
+Its unique positive lower-triangular Gram factor that preserves the ordinary
+source ray is
 
 ```text
-(sqrt(S_Q), lambda4).
+A_Q = [[sqrt(S_Q), 0],
+       [-lambda4,   1]].
 ```
 
-Lean proves the Gram-factor uniqueness, the projection identity,
+Its first column already carries retained and hidden amplitudes
+`(sqrt(S_Q),-lambda4)`.  Keeping that source column fixed, Gram--Schmidt
+produces its unique orientation-preserving orthogonal completion.  Lean proves
+the source-ray preservation, Gram-factor uniqueness, projection identity,
 orthogonality, orientation, and the absence of a further splitter angle.  It
 also proves the exact limitation: a Gram matrix is invariant under arbitrary
-left-orthogonal changes of frame.  The physical bridge therefore requires the
-ordinary matter source to select the positive triangular frame; the quadratic
-form alone does not select a scattering frame.  See
+left-orthogonal changes of frame.  The physical bridge therefore requires
+ordinary stress-energy to select the positive source-preserving frame; the
+quadratic form alone does not select a scattering frame.  See
 [ACTION_TO_SPLITTER_BRIDGE.md](ACTION_TO_SPLITTER_BRIDGE.md).
 
 ## The quartic Q specialization
