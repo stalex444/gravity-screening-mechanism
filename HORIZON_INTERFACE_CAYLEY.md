@@ -173,8 +173,12 @@ Lean proves its two canonical variations and proves that they are equivalent
 to the splitter and the centered interface law.  It also proves that the bulk
 quadratic Hamiltonian has a vector field `G` with `G^2=-I`, that the electric
 source frame conjugates `G` to `-J`, and that one centered midpoint step of
-this normalized bulk flow yields the same splitter.  The remaining physical
-question is whether a horizon crossing selects this canonical centered update.
+this normalized bulk flow yields the same splitter.  The stronger exact-flow
+theorem proves that the splitter is the continuous Hamiltonian endpoint at
+`theta_Q=arcsin(lambda4)`.  Thus the Cayley coefficient is a rational
+half-angle coordinate, rather than an approximation scheme.  The remaining
+physical question is whether a horizon crossing selects this fixed
+Hamiltonian phase.
 See [BULK_TO_BOUNDARY_DYNAMICS.md](BULK_TO_BOUNDARY_DYNAMICS.md).
 
 ## Kernel artifact
@@ -197,6 +201,7 @@ See [BULK_TO_BOUNDARY_DYNAMICS.md](BULK_TO_BOUNDARY_DYNAMICS.md).
 The kernel artifacts are `GravityScreening/HorizonInterfaceCayley.lean`,
 `GravityScreening/QuarticInterfaceField.lean`,
 `GravityScreening/HorizonBoundaryAction.lean`, and
-`GravityScreening/BulkBoundaryDynamics.lean`.  They compile under the pinned
+`GravityScreening/BulkBoundaryDynamics.lean`, and
+`GravityScreening/ExactBulkFlow.lean`.  They compile under the pinned
 Lean toolchain, contain no `sorry`, and use only Mathlib's standard logical
 axioms.
