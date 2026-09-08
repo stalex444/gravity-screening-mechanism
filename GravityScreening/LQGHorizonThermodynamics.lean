@@ -1,5 +1,6 @@
 import GravityScreening.LQGFluxAreaBridge
 import GravityScreening.JacobsonPlacement
+import GravityScreening.RhoQBoostNormalization
 import GravityScreening.UnifiedCouplingGrammar
 
 /-!
@@ -77,6 +78,67 @@ theorem lqgFacet_fixedArea_entropy_independent
       lqgFacet_clausius_eq_areaEntropy
         G hbar gamma₂ j₂ acceleration₂ hG hhbar ha₂,
       harea]
+
+/-! ## BI-free matching of the joint modular boost weight -/
+
+/-- Dimensionless boost weight of a maximally oriented LQG facet in the
+linear-simplicity convention. -/
+def lqgFacetBoostWeight (gamma j : ℝ) : ℝ :=
+  gamma * j
+
+/-- The boost weight can be read from physical facet area.  Once area is the
+observable, the separate Immirzi label does not occur. -/
+theorem lqgFacetBoostWeight_eq_areaRatio
+    (G hbar gamma j : ℝ) (hG : G ≠ 0) (hhbar : hbar ≠ 0) :
+    lqgFacetBoostWeight gamma j =
+      lqgFacetArea G hbar gamma j /
+        (8 * Real.pi * G * hbar) := by
+  unfold lqgFacetBoostWeight lqgFacetArea
+  field_simp [hG, hhbar, Real.pi_ne_zero]
+
+/-- Physical area required if the LQG facet boost weight is to equal the joint
+PDT `rho*q` boost weight in the Bisognano--Wichmann normalization.  This is a
+matching target, not an assertion that the LQG area spectrum contains it. -/
+noncomputable def matchedRhoQHorizonArea
+    (G hbar rho q : ℝ) : ℝ :=
+  4 * G * hbar * Real.log (rho * q)
+
+/-- The matched area has exactly the joint PDT boost weight when divided by
+the universal local horizon conversion factor. -/
+theorem matchedRhoQHorizonArea_ratio
+    (G hbar rho q : ℝ) (hG : G ≠ 0) (hhbar : hbar ≠ 0) :
+    matchedRhoQHorizonArea G hbar rho q /
+        (8 * Real.pi * G * hbar) =
+      rhoQBoostWeight rho q := by
+  unfold matchedRhoQHorizonArea rhoQBoostWeight
+  field_simp [hG, hhbar, Real.pi_ne_zero]
+  ring
+
+/-- Exact matching criterion.  A maximally oriented facet carries the joint
+PDT boost frequency exactly when its physical area equals the BI-free matched
+area above. -/
+theorem lqgFacet_matches_rhoQBoost_iff_area
+    (G hbar rho q gamma j : ℝ)
+    (hG : G ≠ 0) (hhbar : hbar ≠ 0) :
+    lqgFacetBoostWeight gamma j = rhoQBoostWeight rho q ↔
+      lqgFacetArea G hbar gamma j =
+        matchedRhoQHorizonArea G hbar rho q := by
+  rw [lqgFacetBoostWeight_eq_areaRatio G hbar gamma j hG hhbar,
+    ← matchedRhoQHorizonArea_ratio G hbar rho q hG hhbar]
+  have hden : 8 * Real.pi * G * hbar ≠ 0 := by
+    exact mul_ne_zero
+      (mul_ne_zero (mul_ne_zero (by norm_num) Real.pi_ne_zero) hG) hhbar
+  exact div_left_inj' hden
+
+/-- A realization on one fixed nonzero magnetic step would determine the
+Immirzi label.  Therefore a BI-independent construction must be phrased in
+physical-area variables or in a collective horizon sector. -/
+theorem singleFacet_rhoQBoostMatch_fixes_immirzi
+    (rho q gamma j : ℝ) (hj : j ≠ 0)
+    (hmatch : lqgFacetBoostWeight gamma j = rhoQBoostWeight rho q) :
+    gamma = rhoQBoostWeight rho q / j := by
+  unfold lqgFacetBoostWeight at hmatch
+  exact (eq_div_iff hj).2 hmatch
 
 /-- Entropy built from physical area inherits any scalar area response. -/
 theorem horizonEntropyFromArea_scale
@@ -225,6 +287,10 @@ theorem unorientedClock_conservedHeat_Jacobson_capstone {n : ℕ}
 
 #print axioms GravityScreening.lqgFacet_clausius_eq_areaEntropy
 #print axioms GravityScreening.lqgFacet_fixedArea_entropy_independent
+#print axioms GravityScreening.lqgFacetBoostWeight_eq_areaRatio
+#print axioms GravityScreening.matchedRhoQHorizonArea_ratio
+#print axioms GravityScreening.lqgFacet_matches_rhoQBoost_iff_area
+#print axioms GravityScreening.singleFacet_rhoQBoostMatch_fixes_immirzi
 #print axioms GravityScreening.horizonEntropyFromArea_scale
 #print axioms GravityScreening.unorientedClock_forces_horizonEntropyResponse
 #print axioms GravityScreening.unorientedClock_areaEntropy_capstone

@@ -64,6 +64,45 @@ object for PDT's quartic graph-KMS sector.
 Neither construction selects `log Q`.  LQG supplies the carrier and the boost
 flow; the quartic graph supplies the arithmetic modular frequency.
 
+## The single-puncture test
+
+The joint PDT modular flow has Bisognano--Wichmann boost weight
+
+```text
+omega_(rho Q) = log(rho Q)/(2 pi).
+```
+
+For a maximally oriented LQG facet, the weak simplicity relation and area
+formula give
+
+```text
+K_f = gamma j = A_f/(8 pi G hbar).
+```
+
+Equating these weights is therefore equivalent to the BI-free physical-area
+condition
+
+```text
+A_f = 4 G hbar log(rho Q).
+```
+
+Lean proves both directions of this equivalence in
+`lqgFacet_matches_rhoQBoost_iff_area`.  The numerical coefficient is
+`4 log(rho Q) = 1.92264061026386...` in units of `G hbar`.
+
+This result also rules out a shortcut.  On one fixed nonzero magnetic label
+`j`, the same match forces
+
+```text
+gamma = omega_(rho Q)/j.
+```
+
+Thus a single-puncture construction expressed in representation labels merely
+chooses an Immirzi value.  A BI-independent construction must instead use the
+physical-area criterion above or realize the quartic mode collectively in the
+thermodynamic horizon algebra.  The theorem does not assert that the standard
+LQG area spectrum contains the displayed area for an arbitrary quantization.
+
 ## Why Jacobson is decisive
 
 Jacobson assumes a local horizon entropy density `eta`,

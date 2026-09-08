@@ -661,6 +661,12 @@ also gives the decisive placement test: a common heat/entropy scaling cancels,
 whereas conserved total boost heat together with an `S_Q` exterior entropy
 response gives the inverse Newton response.  Identifying the proved PDT
 visible/hidden channels with those physical variables remains explicit.
+The same file proves a further necessary condition for the modular bridge:
+matching the joint `rho*Q` boost weight to a maximally oriented LQG facet is
+equivalent to the BI-free physical-area relation
+`A = 4*G*hbar*log(rho*Q)`.  A match on one fixed spin label instead fixes the
+Immirzi value, so an invariant construction must use physical area or a
+collective horizon sector.
 
 ## Palomar comparison surface
 
