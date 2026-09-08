@@ -75,6 +75,7 @@ import GravityScreening.LQGHorizonThermodynamics
 import GravityScreening.PerronHorizonCarrier
 import GravityScreening.CanonicalPerronHorizonBridge
 import GravityScreening.PerronOpticalRaychaudhuri
+import GravityScreening.KMSOpticalBoundarySelection
 import GravityScreening.SourcedTTHamiltonianAction
 import GravityScreening.CovariantGravityCompression
 import GravityScreening.PalomarCapstone

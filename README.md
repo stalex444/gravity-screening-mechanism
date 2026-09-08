@@ -704,6 +704,16 @@ vacuum Raychaudhuri equation.  The resulting area loss is balanced by the
 one-sided modular-energy increment required by the standard horizon-cut
 constraint.
 
+[`KMS_OPTICAL_BOUNDARY_SELECTION.md`](KMS_OPTICAL_BOUNDARY_SELECTION.md)
+proves the reverse selection theorem.  Exchange symmetry, unit screen
+normalization, and the quartic KMS weight `1/Q` on either exchange line fix
+the whole affine null-screen flow up to the sign of its shear.  Its normalized
+unit boost flux is exactly `lambda4^2`, the missing horizon-area fraction.
+This matches the standard perturbative horizon result that graviton null
+energy is squared shear while the area is unchanged at first order.  The one
+remaining physical statement is the placement of the Q KMS line on the
+horizon screen.
+
 ## Palomar comparison surface
 
 The five selected results are:
