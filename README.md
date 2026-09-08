@@ -159,6 +159,19 @@ later two-channel Hamiltonian rotation is its norm-preserving completion, not
 the same phase.  See
 [QUARTIC_MODULAR_ANALYTIC_FLOW.md](QUARTIC_MODULAR_ANALYTIC_FLOW.md).
 
+The cubic and quartic graphs now enter together.  Lean proves that their
+root fields have degrees three and four with trivial intersection, that the
+positive roots are multiplicatively independent, and therefore that
+`log rho / log Q` is irrational.  Their product analytic flow is exactly the
+flow at the joint `rho*Q` scale: it is norm one in real modular time and its
+synchronized imaginary step is `1/(rho*Q)`.  Applying the published
+Araki--Woods factor classification to the two graph-KMS sectors yields a
+hyperfinite type `III_1` product system, the factor class of local relativistic
+quantum field theory.  The same Lean capstone places this joint modular step
+beside the existing `(rho*Q)^224` response determinant and the distinct
+quartic screening block.  See
+[RHO_Q_MODULAR_COMPLETION.md](RHO_Q_MODULAR_COMPLETION.md).
+
 ## The quartic Q specialization
 
 Let `Q` denote the positive real root satisfying

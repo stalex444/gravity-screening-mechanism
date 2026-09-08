@@ -86,6 +86,12 @@ therefore cannot be identified with the whole local horizon algebra.  The
 candidate physical object is a modularly covariant discrete sector or
 subalgebra inside that larger horizon algebra.
 
+`RHO_Q_MODULAR_COMPLETION.md` supplies an explicit abstract ambient factor
+class: the tensor product with the independent cubic graph-KMS sector is
+hyperfinite type `III_1`.  This establishes operator-algebraic compatibility;
+identifying that product state and flow with the physical null-horizon state
+and boost flow remains the spacetime correspondence.
+
 There is a second useful restriction.  A nontrivial half-sided modular
 inclusion with unique vacuum is a type `III_1` setting and does not carry a
 conditional expectation from the larger algebra onto the included algebra.

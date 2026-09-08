@@ -98,6 +98,14 @@ for the graph modular flow `sigma_t^Q` and the horizon modular operator
 `Delta_H`, while preserving the reduced spin-two canonical pairing already
 formalized in this repository.
 
+The companion construction in `RHO_Q_MODULAR_COMPLETION.md` now removes the
+abstract factor-type part of this problem.  Tensoring the cubic and quartic
+graph-KMS sectors gives two discrete modular ratios with irrational log ratio;
+the published Araki--Woods classification therefore makes the product
+hyperfinite type `III_1`.  What remains here is the **physical** placement of
+that concrete product representation in the null-horizon algebra, with its
+modular parameter and spin-two canonical data preserved.
+
 Exact covariance matters.  If the equation holds with the physical modular
 parameter `t`, an arbitrary rescaling of `log Q` is unavailable: the graph
 KMS state has already fixed that scale.  The construction would then carry
@@ -124,6 +132,11 @@ a nontrivial half-sided modular subalgebra.  Published results rule out such a
 conditional expectation in the relevant standard setting.  The visible and
 hidden channels must instead arise after restricting the state or
 representation of the covariantly embedded graph sector.
+
+This restriction is specific to a nontrivial half-sided modular inclusion.
+The cubic--quartic construction uses an ordinary tensor-factor inclusion,
+which does have the canonical product-state slice map.  Whether that slice map
+is the physical gravitational channel is a separate proposed identification.
 
 ## What is proved, imported, and proposed
 

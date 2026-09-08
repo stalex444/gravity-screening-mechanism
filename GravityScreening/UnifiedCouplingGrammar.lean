@@ -73,17 +73,15 @@ electromagnetic determinant, gravity contains 209 further powers of the common
 scale and one quartic two-channel determinant. -/
 theorem gravitationalCoupling_eq_electromagnetic_link
     (rho q : ℝ)
-    (hscale : rho * q ≠ 0)
     (hscreen : screening (lambda4 q) ≠ 0) :
     gravitationalCoupling rho q =
       electromagneticCoupling rho q * Real.pi ^ 2 /
         ((rho * q) ^ gravitationalComplementExponent *
           screening (lambda4 q)) := by
-  include hscale
   unfold gravitationalCoupling electromagneticCoupling
   norm_num [gravitationalExponent, electromagneticExponent,
     gravitationalComplementExponent]
-  field_simp [hscale, hscreen]
+  field_simp [hscreen]
 
 /-- The reciprocal gravitational coupling is the combined determinant divided
 by the squared boundary-volume factor. -/
