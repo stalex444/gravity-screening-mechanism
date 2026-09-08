@@ -236,22 +236,27 @@ projective boundary volume proves
 ```
 
 Thus screening is not appended to a separate Gaussian normalization: the
-same doubled response produces the determinant denominator. The absolute
-bulk coefficient, however, depends on the action normalization. Lean proves
-that the repository's source-free doubled quadratic energy is exactly one
-half of this response quadratic. Its Gaussian and the projective boundary
-give
+same doubled response produces the determinant denominator. If the action's
+factor one half is paired with a coordinate-unit dot product, its Gaussian
+and the projective boundary give
 
 ```text
 4*pi^4/S_Q,
 ```
 
-which Lean proves is unequal to the proposed `pi^4/S_Q` target. Normalizing
-either Gaussian by its uncoupled value cancels every absolute power of `pi`
-and leaves exactly `1/S_Q`. The determinant screening is therefore robust;
-the proposed absolute numerator requires an independently derived factor
-`1/4`. With the common Fourier-normalized measure, the unit-exponent coupled
-Gaussian and boundary instead give `1/(16 S_Q)`.
+which Lean proves is unequal to the proposed `pi^4/S_Q` target. But the
+coordinate-unit choice omits the established tensor normalization. The
+Frobenius pairing of two complete TT tensors is exactly twice their
+plus/cross coordinate dot product. Lean proves that this factor `2` cancels
+the action's factor `1/2`, so the physical TT tensor-metric action returns the
+unit-exponent Gaussian and therefore `pi^4/S_Q` after the boundary factor.
+
+Normalizing either Gaussian by its uncoupled value cancels every absolute
+power of `pi` and leaves exactly `1/S_Q`. The determinant screening and the
+finite TT tensor normalization are therefore robust. The remaining
+correspondence is the use of the unnormalized fixed-mode determinant in the
+covariant effective coupling. With the common Fourier-normalized measure, the
+unit-exponent coupled Gaussian and boundary instead give `1/(16 S_Q)`.
 
 Independently, Lean proves that the transverse-traceless graviton space at
 fixed nonzero momentum has exactly two real polarizations. On this
@@ -356,6 +361,12 @@ has diagonal value `pi^2`. All consequences of that premise are forced.
 - `quarticDoubledTT_actionGaussian_boundary_ne_target`
 - `doubledTTMode_gaussian_relative_response`
 - `doubledTTMode_actionGaussian_relative_response`
+- `ttTensorMetricBilinear_apply`
+- `ttTensorMetricBilinear_eq_tensorPairing`
+- `doubledQuadraticEnergy_ttTensorMetric`
+- `quarticDoubledTT_tensorMetricActionGaussian_integral`
+- `quarticDoubledTT_tensorMetricActionGaussian_mul_boundary`
+- `gravitationalCoupling_eq_ttTensorMetricActionGaussian_boundary`
 - `pauliAxis_sq`
 - `pauliAxes_halfTrace_orthonormal`
 - `quaternionSU2Matrix_det`

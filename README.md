@@ -346,8 +346,8 @@ therefore gives the entire screened numerator in one calculation:
 Dividing by the forced 224-channel response reproduces the deposited gravity
 formula exactly under this unit-exponent measure.
 
-The repository's conventional source-free doubled action contains one half of
-that quadratic form. Lean now proves its Gaussian integral is
+If the repository's conventional factor one half is combined with a
+coordinate-unit dot product, Lean proves the resulting Gaussian integral is
 
 ```text
 integral_R4 exp(-(1/2)doubledHodgeKinetic(lambda,z)) d^4z
@@ -355,14 +355,25 @@ integral_R4 exp(-(1/2)doubledHodgeKinetic(lambda,z)) d^4z
 ```
 
 After the projective boundary multiplication, this is `4*pi^4/S_Q`, and Lean
-proves that it is unequal to the proposed `pi^4/S_Q` target. Normalizing either
+proves that it is unequal to the proposed `pi^4/S_Q` target. The coordinate-unit
+pairing is not the physical TT metric, however. The Frobenius pairing of the
+complete plus/cross tensors is exactly twice the coordinate dot product, a
+factor already proved independently in the horizon-shear module. Lean now
+proves that this factor two cancels the action's factor one half:
+
+```text
+doubledQuadraticEnergy_TT = doubledHodgeKinetic.
+```
+
+The physical tensor-metric fixed-mode action therefore yields `pi^2/S_Q`, and
+with the projective boundary it yields `pi^4/S_Q` exactly. Normalizing either
 Gaussian by its uncoupled partition function removes every absolute factor of
-`pi` and gives the same invariant response `1/S_Q`. Consequently the
-screening denominator is robust, while the absolute numerator remains a
-functional-measure question. A successful action derivation must produce an
-independent factor `1/4` without double-counting the antipodal quotient. The
-common Fourier measure produces `1/(16*S_Q)` after the boundary multiplication,
-so the normalization choice remains mathematically consequential.
+`pi` and gives the invariant response `1/S_Q`. The screening denominator and
+the finite TT basis normalization are now fixed. The remaining premise is that
+the covariant effective coupling uses this unnormalized fixed-mode determinant
+and projective density after the full momentum and gauge measure is included.
+The common Fourier measure produces `1/(16*S_Q)` after the boundary
+multiplication, so that continuum normalization remains consequential.
 See [BULK_BOUNDARY_PI4.md](BULK_BOUNDARY_PI4.md).
 
 Before the quotient, `(2*pi^2)^2 = 4*pi^4`, matching the associated

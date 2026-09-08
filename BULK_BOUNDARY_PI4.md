@@ -12,7 +12,8 @@ the single normalization test that remains.
 | Gaussian radial moment | `integral_0^infinity r^3 exp(-r^2) dr = 1/2` | Lean theorem |
 | Raw Gaussian mode trace | `integral_R4 exp(-||k||^2) d^4k = pi^2` | Lean theorem |
 | Doubled TT/Hodge Gaussian | `integral_R4 exp(-z^T R_lambda z) d^4z = pi^2/S_lambda` | Lean theorem for `S_lambda>0` |
-| Conventional doubled action | `integral_R4 exp(-(1/2)z^T R_lambda z) d^4z = 4*pi^2/S_lambda` | Lean theorem; factor-four mismatch with the proposed numerator |
+| Coordinate-unit half-action | `integral_R4 exp(-(1/2)z^T R_lambda z) d^4z = 4*pi^2/S_lambda` | Lean theorem; counterfactual factor-four mismatch |
+| TT tensor-metric action | `(1/2) B_TT = (1/2)(2 dot)`, hence exponent `z^T R_lambda z` | Lean theorem from the Frobenius TT pairing |
 | Common 15-channel vertex | `pi^2 * (rho Q)^(-15) = alpha_EM` as defined in the deposited formula | Exact conditional rewrite |
 | Projective boundary | `Vol(S^3)/2 = pi^2` in the Pauli-fixed unit metric | Lean theorem; physical use is a correspondence |
 | Screened bulk-boundary factor | `(pi^2/S_Q) * pi^2 = pi^4/S_Q` | Lean theorem |
@@ -36,15 +37,17 @@ partners. Lean proves that the integrand is exactly both
 `z^T realDoubledResponse(lambda) z` and the existing
 `doubledHodgeKinetic`. The Gaussian is therefore attached to the action's
 actual response block rather than to an unrelated four-dimensional toy
-integral. Lean also identifies its relation to the repository's conventional
-source-free quadratic action exactly: that action is one half of this
-quadratic form.
+integral. Lean also identifies its relation to the source-free quadratic
+action exactly. The action contributes a conventional factor `1/2`, while the
+Frobenius pairing of the complete plus/cross TT tensors contributes a factor
+`2`. The two factors cancel, so the tensor-metric action is precisely the
+unit-exponent quadratic used by the Gaussian theorem.
 
-That factor changes the absolute Gaussian mass. The action-normalized integral
-is `4*pi^2/S_Q`, and after multiplication by the projective boundary it is
-`4*pi^4/S_Q`. Lean proves this differs from the proposed `pi^4/S_Q` target for
-every `Q>1`. Thus the raw unit-exponent identity is a conditional normalization
-branch, not yet the normalization selected by the written action.
+This cancellation is structural. Lean proves that replacing the physical TT
+tensor pairing by a coordinate-unit dot product would give `4*pi^2/S_Q` and
+therefore miss the proposed gravity numerator by exactly four. Restoring the
+already proved TT Frobenius metric returns `pi^2/S_Q` without inserting a
+repair factor.
 
 ## The decisive normalization fork
 
@@ -97,14 +100,14 @@ spectral trace. That derivation must read off:
 4. the real-mode `k ~ -k` treatment;
 5. the projective boundary normalization.
 
-The written half-action currently supplies four times the target. To derive
-the proposed coefficient through this route, an independent feature of the
-functional measure must supply an exact factor `1/4`; Fourier reality,
-gauge fixing, and the treatment of the two Hodge-paired modes must be audited
-without counting the same quotient twice. If no such factor follows, the
-Gaussian route derives the relative screening only. The unresolved seam is
-the absolute physical functional measure, not the quadratic response or its
-determinant.
+The finite TT normalization now supplies the target rather than four times the
+target. The remaining work is still physical: justify that the effective
+coupling uses this fixed-mode unnormalized Gaussian determinant and the
+projective boundary density, then carry the normalization through the
+covariant momentum continuum and gauge fixing. Fourier reality and the
+treatment of the two Hodge-paired modes must be audited without counting the
+same quotient twice. The unresolved seam is the covariant functional measure,
+not the TT basis normalization, quadratic response, or determinant.
 
 ## Kernel declarations
 
@@ -132,5 +135,11 @@ determinant.
 - `quarticDoubledTT_actionGaussian_boundary_ne_target`
 - `doubledTTMode_gaussian_relative_response`
 - `doubledTTMode_actionGaussian_relative_response`
+- `ttTensorMetricBilinear_apply`
+- `ttTensorMetricBilinear_eq_tensorPairing`
+- `doubledQuadraticEnergy_ttTensorMetric`
+- `quarticDoubledTT_tensorMetricActionGaussian_integral`
+- `quarticDoubledTT_tensorMetricActionGaussian_mul_boundary`
+- `gravitationalCoupling_eq_ttTensorMetricActionGaussian_boundary`
 - `projectiveBoundaryVolume_eq_pi_sq`
 - `gravitationalCoupling_eq_electromagnetic_link`

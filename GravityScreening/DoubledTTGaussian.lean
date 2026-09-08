@@ -17,12 +17,14 @@ boundary volume gives `pi^4 / screening (lambda4 q)`.  Dividing by the
 224-channel response reproduces `gravitationalCoupling` exactly.
 
 The physical use of this unnormalized Gaussian determinant in an effective
-coupling remains a correspondence premise.  The repository's conventional
-quadratic action contains a factor `1/2`; its Gaussian gives
-`4*pi^2/screening`, not `pi^2/screening`.  A Fourier-normalized measure changes
-the coefficient again, while normalization by the uncoupled partition
-function cancels every absolute power of `pi` and retains exactly
-`1/screening`.  All three forks are proved explicitly below.
+coupling remains a correspondence premise.  The quadratic action contains a
+factor `1/2`, while the physical TT tensor pairing carries the compensating
+Frobenius factor `2`.  Lean proves that these cancel exactly, selecting the
+unit-exponent Gaussian on the fixed TT mode.  It also proves that replacing
+the tensor pairing by a coordinate-unit dot product would produce a
+factor-four mismatch.  A Fourier-normalized measure changes the coefficient
+again, while normalization by the uncoupled partition function cancels every
+absolute power of `pi` and retains exactly `1/screening`.
 -/
 
 namespace GravityScreening
@@ -280,7 +282,7 @@ theorem gravitationalCoupling_eq_quarticDoubledTT_gaussian_boundary
   simp [gravitationalCoupling]
   ring
 
-/-! ## Conventional half-action normalization -/
+/-! ## Coordinate-unit half-action normalization -/
 
 abbrev TTRealPolarizationPair := Fin 2 → ℝ
 
@@ -316,8 +318,8 @@ that converts the symmetric action mixing into the oriented Hodge cross term. -/
 def doubledTTHodgePartnerPair (z : DoubledTTModeCoordinates) :
     TTRealPolarizationPair := ![-z 3, z 2]
 
-/-- On the real TT/Hodge coordinates, the repository's source-free doubled
-quadratic energy is exactly one half of the response quadratic. -/
+/-- If the action bilinear is the coordinate-unit dot product, its doubled
+quadratic energy is one half of the response quadratic. -/
 theorem doubledQuadraticEnergy_ttPairs
     (l : ℝ) (z : DoubledTTModeCoordinates) :
     doubledQuadraticEnergy l ttPairDotBilinear
@@ -397,8 +399,8 @@ theorem doubledTTMode_actionGaussian_integral
       rw [abs_of_pos (inv_pos.mpr (by positivity : 0 < screening l / 4))]
       field_simp [ne_of_gt hscreen]
 
-/-- The actual source-free doubled quadratic energy gives the half-action
-Gaussian, with its factor four, at the quartic coupling. -/
+/-- With the coordinate-unit bilinear, the source-free doubled quadratic
+energy gives the half-action Gaussian and its factor four. -/
 theorem quarticDoubledTT_actionGaussian_integral
     (q : ℝ) (hq : 1 < q) :
     (∫ z : DoubledTTModeCoordinates,
@@ -483,6 +485,95 @@ theorem doubledTTMode_actionGaussian_relative_response
     positivity
   field_simp [Real.pi_ne_zero, hs]
 
+/-! ## Physical TT tensor normalization -/
+
+/-- The physical TT tensor metric in plus/cross coordinates. The factor two
+is the Frobenius norm of the standard TT basis. -/
+def ttTensorMetricBilinear :
+    TTRealPolarizationPair →ₗ[ℝ] TTRealPolarizationPair →ₗ[ℝ] ℝ :=
+  2 • ttPairDotBilinear
+
+theorem ttTensorMetricBilinear_apply
+    (x y : TTRealPolarizationPair) :
+    ttTensorMetricBilinear x y =
+      ttShearPairing (x 0) (x 1) (y 0) (y 1) := by
+  simp [ttTensorMetricBilinear, ttPairDotBilinear, ttShearPairing,
+    dotProduct, Fin.sum_univ_two]
+  ring
+
+/-- The bilinear used here is literally the Frobenius pairing of the complete
+TT tensors, not an independently chosen coordinate normalization. -/
+theorem ttTensorMetricBilinear_eq_tensorPairing
+    (x y : TTRealPolarizationPair) :
+    ttTensorMetricBilinear x y =
+      tensorPairing (ttTensor (x 0) (x 1)) (ttTensor (y 0) (y 1)) := by
+  rw [ttTensor_pairing, ttTensorMetricBilinear_apply]
+
+/-- The conventional factor one half in the doubled action is exactly canceled
+by the factor two in the physical TT tensor pairing. -/
+theorem doubledQuadraticEnergy_ttTensorMetric
+    (l : ℝ) (z : DoubledTTModeCoordinates) :
+    doubledQuadraticEnergy l ttTensorMetricBilinear
+        (doubledTTPhysicalPair z) (doubledTTHodgePartnerPair z) =
+      doubledTTModeQuadratic l z := by
+  simp [doubledQuadraticEnergy, ttTensorMetricBilinear,
+    ttPairDotBilinear, doubledTTPhysicalPair, doubledTTHodgePartnerPair,
+    dotProduct, Fin.sum_univ_two, doubledTTModeQuadratic]
+  ring
+
+/-- In the physical TT tensor metric, the written doubled action selects the
+unit-exponent Gaussian and hence the `pi^2/screening` coefficient on the
+normalized fixed mode. -/
+theorem quarticDoubledTT_tensorMetricActionGaussian_integral
+    (q : ℝ) (hq : 1 < q) :
+    (∫ z : DoubledTTModeCoordinates,
+        Real.exp
+          (-doubledQuadraticEnergy (lambda4 q) ttTensorMetricBilinear
+            (doubledTTPhysicalPair z) (doubledTTHodgePartnerPair z))) =
+      Real.pi ^ 2 / screening (lambda4 q) := by
+  calc
+    (∫ z : DoubledTTModeCoordinates,
+        Real.exp
+          (-doubledQuadraticEnergy (lambda4 q) ttTensorMetricBilinear
+            (doubledTTPhysicalPair z) (doubledTTHodgePartnerPair z))) =
+        ∫ z : DoubledTTModeCoordinates,
+          Real.exp (-doubledTTModeQuadratic (lambda4 q) z) := by
+      apply integral_congr_ae
+      filter_upwards with z
+      rw [doubledQuadraticEnergy_ttTensorMetric]
+    _ = Real.pi ^ 2 / screening (lambda4 q) :=
+      doubledTTMode_gaussian_integral
+        (lambda4 q) (quarticActionAmplitude q)
+          (quarticActionAmplitude_sq q hq)
+          (quarticActionAmplitude_pos q hq)
+
+/-- The fixed-mode tensor action and projective boundary produce the complete
+screened gravity numerator. -/
+theorem quarticDoubledTT_tensorMetricActionGaussian_mul_boundary
+    (q : ℝ) (hq : 1 < q) :
+    (∫ z : DoubledTTModeCoordinates,
+        Real.exp
+          (-doubledQuadraticEnergy (lambda4 q) ttTensorMetricBilinear
+            (doubledTTPhysicalPair z) (doubledTTHodgePartnerPair z))) *
+        projectiveBoundaryVolume =
+      Real.pi ^ 4 / screening (lambda4 q) := by
+  rw [quarticDoubledTT_tensorMetricActionGaussian_integral q hq,
+    projectiveBoundaryVolume_eq_pi_sq]
+  ring
+
+theorem gravitationalCoupling_eq_ttTensorMetricActionGaussian_boundary
+    (rho q : ℝ) (hq : 1 < q) :
+    gravitationalCoupling rho q =
+      ((∫ z : DoubledTTModeCoordinates,
+          Real.exp
+            (-doubledQuadraticEnergy (lambda4 q) ttTensorMetricBilinear
+              (doubledTTPhysicalPair z) (doubledTTHodgePartnerPair z))) *
+        projectiveBoundaryVolume) /
+          (rho * q) ^ gravitationalExponent := by
+  rw [quarticDoubledTT_tensorMetricActionGaussian_mul_boundary q hq]
+  simp [gravitationalCoupling]
+  ring
+
 #print axioms GravityScreening.doubledTTCholesky_det
 #print axioms GravityScreening.doubledTTCholesky_normSq
 #print axioms GravityScreening.doubledTTCholesky_gram
@@ -506,6 +597,12 @@ theorem doubledTTMode_actionGaussian_relative_response
 #print axioms GravityScreening.quarticDoubledTT_actionGaussian_boundary_ne_target
 #print axioms GravityScreening.doubledTTMode_gaussian_relative_response
 #print axioms GravityScreening.doubledTTMode_actionGaussian_relative_response
+#print axioms GravityScreening.ttTensorMetricBilinear_apply
+#print axioms GravityScreening.ttTensorMetricBilinear_eq_tensorPairing
+#print axioms GravityScreening.doubledQuadraticEnergy_ttTensorMetric
+#print axioms GravityScreening.quarticDoubledTT_tensorMetricActionGaussian_integral
+#print axioms GravityScreening.quarticDoubledTT_tensorMetricActionGaussian_mul_boundary
+#print axioms GravityScreening.gravitationalCoupling_eq_ttTensorMetricActionGaussian_boundary
 
 end
 
