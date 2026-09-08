@@ -194,12 +194,21 @@ conjugates have modulus `rho^(-1/2) < 1`, giving the proved decay rate
 ```
 
 The separate chiral-Padovan formalization proves that the factor language has
-an orientation-sensitive witness.  Together these mathematical facts give
+an orientation-sensitive witness.  Its stronger registered theorem fixes the
+exact local threshold: a length-three palindrome remains possible, while the
+reversal of every allowed factor of length at least four is forbidden.  Four
+is therefore the cubic language's orientation threshold, not a universal
+quartic settling time.  Together these mathematical facts give
 the proposed time interpretation: contraction makes alternatives settle;
 chirality selects an ordering of the history; the norm-one modular phase keeps
 the clock moving.
 
 The quartic root is non-Pisot, so its off-Perron data do not all contract.
+The residual carrier makes this explicit: its positive Perron line decays as
+`lambda4^n`, but a negative-real quartic conjugate line expands with a
+multiplier larger than two.  The symmetric `S_Q` response is obtained only
+after the canonical left/right Perron compression; it is not evidence that
+the complete quartic history globally settles.
 The proposed PDT correspondence reads that arithmetic split physically:
 
 | Arithmetic behavior | Proposed physical role |

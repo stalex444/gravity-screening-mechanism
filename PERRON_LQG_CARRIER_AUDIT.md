@@ -37,6 +37,37 @@ f(R_Q)^T != f(R_Q).
 The transpose is the real finite-dimensional adjoint.  Thus the theorem tests
 the minimum algebraic features of a faithful star representation.
 
+## Exact history law and the nonsettling branch
+
+The carrier interpretation is now dynamical rather than verbal.  For every
+nonzero root `x` of `x^4=x+1`, Lean proves
+
+```text
+R_Q^n r_x = lambda4(x)^n r_x
+```
+
+for every natural-number step `n`.  On the positive root `Q`,
+
+```text
+0 < lambda4(Q) < 1,
+lambda4(Q)^n -> 0.
+```
+
+The quartic polynomial also has a real conjugate `r` strictly between `-1`
+and zero.  On that line,
+
+```text
+lambda4(r) = 1-1/r > 2,
+R_Q^n r_r = lambda4(r)^n r_r.
+```
+
+The single theorem `quarticResidual_settle_escape_dichotomy` packages the
+decaying positive line and the expanding negative-real line.  This prevents a
+misreading of the Perron compression: the positive line settles, but the full
+four-state quartic transfer system does not globally contract.  A calculable
+local response and persistent off-Perron information coexist in the same
+operator.
+
 ## Physical meaning
 
 LQG area and flux quantities are represented by observables.  A physical area
@@ -76,6 +107,16 @@ fluctuations become small in the large-area regime.  That makes a collective
 receiving sector more plausible than the single-puncture shortcut, which the
 BI-free matching audit already showed would merely fix a particular Immirzi
 value.
+
+The exact Padovan four-symbol result belongs to a different role.  The
+separately registered chiral-Padovan formalization proves that length three
+still admits an orientation-ambiguous palindrome, while every allowed factor
+of length at least four has a forbidden reversal.  Thus four is the cubic
+history's exact local orientation threshold.  It is not being used here as a
+quartic relaxation deadline.  The proposed joint reading is: the cubic
+language supplies orientation, the quartic carrier supplies persistent
+transfer plus its compressed response, and the `rho*Q` modular product
+supplies the common clock scale.
 
 ## What the theorem rules out
 

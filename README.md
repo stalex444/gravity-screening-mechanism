@@ -678,6 +678,11 @@ the scalar `lambda4`; that scalar enters the self-adjoint two-channel response
 whose determinant is exactly `S_Q`.  This forces a clean division of roles in
 any proposed bridge: the full quartic operator belongs to transfer or modular
 dynamics, while its invariant compression can enter the area/entropy response.
+Lean also proves the exact iterate law on every quartic eigenline.  The
+positive Perron amplitude tends to zero as `lambda4^n`, while a negative-real
+quartic conjugate has residual multiplier greater than two.  The full quartic
+carrier therefore retains an expanding branch and is not a global relaxation
+operator; calculability enters through its distinguished Perron compression.
 The existence of the required boost-covariant horizon representation remains
 a physical construction to be supplied.
 
