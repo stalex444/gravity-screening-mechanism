@@ -413,7 +413,18 @@ does retain a signed mixed term:
 Its sign is exactly the sign of `lambda` inside the positive-precision range,
 and the quartic branch points outward. This locates the missing orientation in
 the radial/chiral relation, while leaving the physical orientation of the
-radial direction to be derived. See
+radial direction to be derived. For the parity-even gravity coefficient, Lean
+now proves that this sign is a basis gauge: reversing both Hodge-partner
+coordinates conjugates `R(lambda)` to `R(-lambda)` and exchanges the two
+chiral planes without changing screening, Gaussian mass, or Fisher curvature.
+
+The quartic clock placement can therefore be stated without choosing a
+channel label. If either exchange eigenspace carries `1/Q`, exchange symmetry
+and unit mean force the response matrix up to this sign gauge and force the
+same determinant `(2Q-1)/Q^2`. The accompanying finite erasure theorem shows
+that this determinant is exactly the exterior fraction of every diagonal
+observable while exterior plus hidden expectation remains globally conserved.
+See [UNORIENTED_CLOCK_INFORMATION_GRAVITY.md](UNORIENTED_CLOCK_INFORMATION_GRAVITY.md),
 [GAUSSIAN_INFORMATION_GEOMETRY.md](GAUSSIAN_INFORMATION_GEOMETRY.md) and
 [BULK_BOUNDARY_PI4.md](BULK_BOUNDARY_PI4.md).
 

@@ -130,6 +130,14 @@ the unnormalized cone records orientation relative to its outward radial
 direction, while the physical choice of that direction remains a
 correspondence question.
 
+For the parity-even gravity response, even that sign choice is unnecessary.
+An orthogonal involution that reverses the Hodge-partner coordinates exchanges
+the two chiral planes and conjugates `R(lambda)` to `R(-lambda)`.  Screening,
+Gaussian mass, and Fisher curvature therefore factor through the quotient
+`lambda ~ -lambda`.  The mixed radial--chiral term remains useful precisely as
+an orientation-odd diagnostic.  See
+`UNORIENTED_CLOCK_INFORMATION_GRAVITY.md`.
+
 ## Quartic values
 
 For the positive root `Q` of `Q^4 = Q + 1`,
@@ -198,6 +206,9 @@ doubledTTGaussian_fisherCone_radial_term
 doubledResponse_eq_affineChirality_of_symmetries
 realDoubledResponse_unique_of_symmetry_mean_core
 symmetry_mean_core_forces_quarticFisher
+realDoubledResponse_neg_conjugate
+orientationEven_response_sign_quotient
+quartic_orientation_sign_is_gauge
 ```
 
 All statements are pure mathematics. Their use as a model of physical gravity
