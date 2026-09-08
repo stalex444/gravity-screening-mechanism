@@ -166,6 +166,15 @@ formats. The checksum, waveform group, sample count, method, density range,
 and software versions for these checks are recorded in
 `gwtc5_pe_prior_audit.json`.
 
+The evaluator has now processed all 141 available events through complete
+O4a, totaling 11,360,687 posterior samples; every reconstructed density was
+finite and positive. O4a also exposed one released prior serialized with an
+explicit Astropy `LambdaCDM(H0=67.9, Om0=0.3065, Ode0=0.6935)` object rather
+than the usual `Planck15_LAL` name. The evaluator parses only the literal
+parameters of that trusted expression and reconstructs the Astropy cosmology
+before creating Bilby's `UniformSourceFrame`. A regression check reproduced an
+earlier O3 prior array bit for bit after this extension.
+
 ## Selection-function reconstruction
 
 `prepare_gwtc5_injections.py` verifies and compacts the official cumulative
@@ -251,30 +260,43 @@ released likelihood's effective-sample and variance checks. The exact inputs,
 versions, settings, and outputs are recorded in
 `gwtc5_likelihood_smoke_audit.json`.
 
-The expanded checkpoint now contains every O1, O2, O3a, and O3b event: 65 of
-the 235 events in the released catalog. At 8,192 samples per event and fixed
-nuisance medians, the diagnostic gave
+The expanded checkpoint now contains every event through O4a: 141 of the 235
+events in the released catalog. The fixed-nuisance history is:
+
+| Events | Complete scope | `log L_PDT - log L_GR` |
+|---:|---|---:|
+| 10 | O1--O2 | `+0.5154878` |
+| 43 | O1--O3a | `+0.8191134` |
+| 65 | O1--O3b | `+1.3120663` |
+| 141 | O1--O4a | `-0.6569939` |
+
+Thus O4a changes the sign. At 8,192 samples per event and fixed nuisance
+medians, the current diagnostic is
 
 \[
-\log L_{\rm PDT}-\log L_{\rm GR}=+1.3120663073.
+\log L_{\rm PDT}-\log L_{\rm GR}=-0.6569939442.
 \]
 
 This value was stable under posterior subsampling: five independent
-4,096-sample draws gave a mean of `+1.3137380` with sample standard deviation
-`0.0096420` and range `+1.3058578` to `+1.3270658`. The 8,192-sample value lies
+4,096-sample draws gave a mean of `-0.6670397` with sample standard deviation
+`0.0110001` and range `-0.6853510` to `-0.6554910`. The 8,192-sample value lies
 inside that range.
 
 The corrected likelihood attribution is more informative than its sign. The
-observed-event log-sum-weight terms total `-6.1468792369`, favoring GR at this
+observed-event log-sum-weight terms total `-16.8371681247`, favoring GR at this
 fixed nuisance point, while the model-dependent selection term is
-`+7.4589455442`, favoring PDT. Their sum reconstructs `+1.3120663073` to
-numerical precision. All 65 individual event terms are negative, and their
-correlation with median luminosity distance is `-0.9235`. The positive
-partial-catalog total is therefore produced by the selection correction rather
-than by the observed-event terms. The complete O3b block added `+0.4930` net:
-`-2.0316` from its 22 observed-event terms and `+2.5246` from its proportional
-selection contribution. The remaining 170 events and full nuisance
-marginalization can change its sign.
+`+16.1801741805`, favoring PDT. Their sum reconstructs `-0.6569939442` to
+numerical precision. All 141 individual event terms are negative, and their
+correlation with median luminosity distance is `-0.9030`.
+
+The scale-free selection term contributes the same `+0.1147530` per event at
+this fixed nuisance point. Before O4a, the mean observed-event penalty in each
+run was smaller in magnitude, so selection controlled the positive total. The
+76 O4a events have a median event distance of 2,680 Mpc and a mean penalty of
+`-0.1406617` per event. Their combined event term is `-10.6902889` against a
+selection share of `+8.7212286`, for an O4a net of `-1.9690603`; this flips the
+65-event `+1.3120663` result to `-0.6569939`. The remaining 94 O4b events and
+full nuisance marginalization can change the result again.
 
 This attribution corrects the 19-event component split recorded in repository
 commit `1fd4f6e`. ICAROGW estimates the paired-mass normalization with Monte
@@ -282,8 +304,8 @@ Carlo draws on each population update. Different draws shift equal and opposite
 constants between the event and selection components, while canceling exactly
 from the scale-free total likelihood. The script now gives the common mass
 model the identical normalization draw under GR and PDT. Repeating the
-65-event calculation with two different common draws changed the event sum,
-selection term, and every per-event difference by less than `9e-15`, while the
+141-event calculation with two different common draws changed the event sum,
+selection term, and every per-event difference by less than `6e-14`, while the
 draw-dependent normalization itself changed from `0.14960` to `0.14558`. The
 earlier `+0.7123101` total remains valid; only its decomposition is superseded.
 The corrected per-event decomposition, checkpoint history, checksums, settings,

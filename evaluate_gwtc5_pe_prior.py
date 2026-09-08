@@ -12,6 +12,7 @@ models.
 from __future__ import annotations
 
 import argparse
+import ast
 import importlib.metadata
 import json
 import os
@@ -82,23 +83,72 @@ def load_compact(path: Path):
     return arrays, metadata
 
 
+def dotted_name(node: ast.AST) -> str:
+    if isinstance(node, ast.Name):
+        return node.id
+    if isinstance(node, ast.Attribute):
+        return dotted_name(node.value) + "." + node.attr
+    raise ValueError("Expected a dotted class name in serialized prior.")
+
+
+def literal_keywords(call: ast.Call) -> dict:
+    if call.args:
+        raise ValueError("Serialized prior contains unsupported positional arguments.")
+    result = {}
+    for keyword in call.keywords:
+        if keyword.arg is None:
+            raise ValueError("Serialized prior contains unsupported expanded keywords.")
+        result[keyword.arg] = ast.literal_eval(keyword.value)
+    return result
+
+
+def distance_prior(description: str):
+    """Rebuild a released distance prior, including an explicit Astropy cosmology."""
+    from bilby.core.prior import PriorDict
+
+    qualified = qualify_gw_prior(description)
+    if "cosmology=LambdaCDM(" not in qualified:
+        return PriorDict(dictionary={"luminosity_distance": qualified})[
+            "luminosity_distance"
+        ]
+
+    from astropy.cosmology import LambdaCDM
+    from bilby.gw.prior import UniformSourceFrame
+
+    outer = ast.parse(qualified, mode="eval").body
+    if not isinstance(outer, ast.Call) or dotted_name(outer.func) != "bilby.gw.prior.UniformSourceFrame":
+        raise ValueError("Explicit LambdaCDM is supported only for UniformSourceFrame.")
+    if outer.args:
+        raise ValueError("Serialized distance prior contains positional arguments.")
+    outer_keywords = {keyword.arg: keyword.value for keyword in outer.keywords}
+    if None in outer_keywords or "cosmology" not in outer_keywords:
+        raise ValueError("Malformed serialized distance prior.")
+    cosmology_call = outer_keywords.pop("cosmology")
+    if not isinstance(cosmology_call, ast.Call) or dotted_name(cosmology_call.func) != "LambdaCDM":
+        raise ValueError("Unsupported explicit cosmology in serialized distance prior.")
+    cosmology = LambdaCDM(**literal_keywords(cosmology_call))
+    prior_keywords = {
+        name: ast.literal_eval(value) for name, value in outer_keywords.items()
+    }
+    return UniformSourceFrame(cosmology=cosmology, **prior_keywords)
+
+
 def ordinary_prior(arrays: dict, metadata: dict):
     import numpy as np
     from bilby.core.prior import Constraint, PriorDict
 
     descriptions = metadata.get("analytic_priors") or {}
-    relevant_names = (
-        "chirp_mass", "mass_ratio", "mass_1", "mass_2", "luminosity_distance"
-    )
+    relevant_names = ("chirp_mass", "mass_ratio", "mass_1", "mass_2")
     relevant = {
         name: qualify_gw_prior(descriptions[name])
         for name in relevant_names
         if name in descriptions
     }
-    if "luminosity_distance" not in relevant:
+    if "luminosity_distance" not in descriptions:
         raise ValueError("No analytic luminosity-distance prior was preserved.")
 
     priors = PriorDict(dictionary=relevant)
+    dl_prior = distance_prior(descriptions["luminosity_distance"])
     m1 = arrays["mass_1"]
     m2 = arrays["mass_2"]
     dl = arrays["luminosity_distance"]
@@ -127,9 +177,9 @@ def ordinary_prior(arrays: dict, metadata: dict):
         if isinstance(prior, Constraint):
             mass_density = mass_density * prior.prob(values)
 
-    distance_density = priors["luminosity_distance"].prob(dl)
+    distance_density = dl_prior.prob(dl)
     density = mass_density * distance_density
-    method = mass_method + "; " + type(priors["luminosity_distance"]).__name__
+    method = mass_method + "; " + type(dl_prior).__name__
     return np.asarray(density), method, "Bilby-normalized density in (m1,m2,dL)"
 
 

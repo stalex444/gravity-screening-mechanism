@@ -193,6 +193,8 @@ merely described. The checksum lock identifies all 235 official event files
 compacts one HDF5 file at a time. A second pinned script reconstructs the
 marginal PE-prior density and has passed a checksum-locked real event from
 each of O1, O2, O3a, O3b, O4a, and O4b (337,982 posterior samples total). The
+same evaluator has now processed all 141 events through complete O4a, covering
+11,360,687 posterior samples with finite positive densities throughout. The
 machine-readable coverage record is `gwtc5_pe_prior_audit.json`. The official
 1.142 GB cumulative injection file has also been checksum verified and
 compacted with the selection fixed at semianalytic SNR above 10 or
@@ -208,23 +210,23 @@ formulas, commands, machine-readable audit, and real-file integration tests
 are recorded in
 [EXACT_GWTC5_RERUN.md](EXACT_GWTC5_RERUN.md).
 
-The diagnostic has since been expanded to every O1, O2, O3a, and O3b event.
-Across these 65 events its fixed-nuisance difference is `+1.3121`, but the corrected
-decomposition shows why that sign is not evidence: observed-event terms
-contribute `-6.1469` while the required selection correction contributes
-`+7.4589`. All 65 individual event terms lean toward GR at this fixed point.
-The partial-catalog result therefore demonstrates the importance of
-recomputing detectability under each propagation law; the remaining 170 events
-and nuisance marginalization may change the sign.
+The diagnostic has since been expanded through complete O4a, or 141 events.
+Its fixed-nuisance difference is now `-0.6570`: observed-event terms contribute
+`-16.8372`, while the required selection correction contributes `+16.1802`.
+All 141 individual event terms lean toward GR at this fixed point. The complete
+O4a block contributes `-1.9691` net and flips the earlier 65-event value of
+`+1.3121`. The partial-catalog result therefore demonstrates the importance of
+both recomputing detectability and completing the catalog; the remaining 94
+O4b events and nuisance marginalization may change the result again.
 
 This supersedes the 19-event component split in commit `1fd4f6e`. ICAROGW's
 paired-mass normalization uses a Monte Carlo draw on every population update.
 The total scale-free likelihood cancels that common factor, but a component
 attribution requires the same draw under both hypotheses. The script now
 enforces that condition, and a second common draw reproduced every corrected
-component to better than `9e-15`. The earlier 19-event total was unaffected.
-Five independent posterior subsamples gave `+1.3059` to `+1.3271`; the detailed
-correction and 65-event checkpoint are recorded in
+component to better than `6e-14`. The earlier 19-event total was unaffected.
+Five independent posterior subsamples gave `-0.6854` to `-0.6555`; the detailed
+correction and 141-event checkpoint are recorded in
 `gwtc5_likelihood_checkpoint_audit.json`.
 
 The full inference runner is now included as `gwtc5_full_inference.py`. It
