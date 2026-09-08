@@ -207,6 +207,25 @@ operational rule that integrates the physical response over this unresolved
 rotation space, together with the round metric and antipodal normalization
 that give it total volume `pi^2`.
 
+The round scale is now tied to the standard observable normalization. Lean
+proves `sigma_j^2=I` for the three Pauli axes and
+`(1/2) Re tr(sigma_j sigma_k)=delta_jk`. In the corresponding quaternion
+coordinates, the special-unitary conditions are equivalent to
+`a^2+b^2+c^2+d^2=1`, so the cover is the unit `S^3`. Antipodal matrices `U`
+and `-U` act identically by conjugation on every observable, supplying the
+antipodal identification algebraically. The remaining correspondence is that
+the physical observer frame uses this Pauli half-trace metric.
+
+This is not a newly chosen quantum normalization. The same Hermitian
+involution convention is already part of the registered Tsirelson entry
+[PALOMAR-2026-08-19-000007](https://palomar-registry.org/entry.html?id=PALOMAR-2026-08-19-000007)
+and the registered entanglement/Werner entry
+[PALOMAR-2026-09-01-000003](https://palomar-registry.org/entry.html?id=PALOMAR-2026-09-01-000003).
+Those registrations establish reusable formal provenance for the upstream
+qubit geometry. They do not validate the gravity interpretation. The new
+content here is the exact chain from that fixed observable normalization to
+the unit `S^3` spin-frame cover and its antipodal action on observables.
+
 That integration rule is now formalized conditionally. For any finite
 left-invariant measure on the `SO(3)` observer-rotation group with total round
 mass `pi^2`, Lean proves

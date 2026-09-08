@@ -43,6 +43,7 @@ import GravityScreening.RhoQModularCompletion
 import GravityScreening.RhoQBoostNormalization
 import GravityScreening.BoundaryMeasureNormalization
 import GravityScreening.ObserverGaugeIntegration
+import GravityScreening.PauliFrameNormalization
 import GravityScreening.SpinTwoDegreeAudit
 import GravityScreening.FirstOrderSourceAction
 import GravityScreening.TransverseTracelessCount

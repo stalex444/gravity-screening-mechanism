@@ -73,8 +73,41 @@ rotations. It also does not choose the scale of the invariant metric.
 Likewise, an abstract Haar measure on compact `SO(3)` may be normalized to
 any total mass. The value `pi^2` here is specifically the Riemannian volume
 inherited from the round unit `S^3` under its two-to-one antipodal quotient.
-This metric normalization is part of the correspondence that remains to be
-derived physically.
+
+The Pauli measurement normalization now fixes the scale of that round cover
+algebraically. Lean proves all three Pauli axes are involutions and are
+orthonormal under the half-trace pairing:
+
+```text
+sigma_j^2 = I,
+(1/2) Re tr(sigma_j sigma_k) = delta_jk.
+```
+
+In the corresponding four real quaternion coordinates, Lean then proves
+
+```text
+U(a,b,c,d)^* U(a,b,c,d) = I and det U(a,b,c,d) = 1
+  iff a^2 + b^2 + c^2 + d^2 = 1.
+```
+
+Thus the same `+-1` observable convention used in the CHSH/Tsirelson setting
+selects the unit `S^3` special-unitary cover. Lean also proves that antipodal
+coefficient vectors give matrices `U` and `-U` with exactly the same
+conjugation action on every qubit observable. This proves the antipodal
+identification underlying the projective quotient. What remains physically is
+to identify the observer-frame metric with this half-trace measurement metric;
+the free antipodal quotient's measure-halving is still an explicit geometric
+input.
+
+The upstream convention has public, registered provenance. It is the
+Hermitian-involution normalization used in
+[PALOMAR-2026-08-19-000007](https://palomar-registry.org/entry.html?id=PALOMAR-2026-08-19-000007)
+for the Tsirelson result and in
+[PALOMAR-2026-09-01-000003](https://palomar-registry.org/entry.html?id=PALOMAR-2026-09-01-000003)
+for the entanglement/Werner package. The present theorem does not re-compare
+those results and does not treat registration as support for a physical
+claim. It derives the gravity package's unit spin-frame scale from the same
+already formalized observable convention.
 
 The integration step is also explicit. For any finite left-invariant measure
 on the `SO(3)` observer-rotation group, Lean proves that integrating a scalar
@@ -97,8 +130,9 @@ alpha_G
 
 Together with `224 = 15 + 209`, this reproduces the full formula. The theorem
 proves the mathematical content of the inclusive-integration rule. Its use as
-the operational definition of the physical zero-momentum coupling remains the
-one correspondence premise.
+the operational definition of the physical zero-momentum coupling, and the
+identification of the physical frame metric with the Pauli half-trace metric,
+remain the correspondence premises.
 
 Independently, Lean proves that the transverse-traceless graviton space at
 fixed nonzero momentum has exactly two real polarizations. On this
@@ -170,6 +204,13 @@ has diagonal value `pi^2`. All consequences of that premise are forced.
 - `integral_rotationScalar_eq_mass_mul`
 - `conformalChannelVertex_integral_eq_electromagneticCoupling`
 - `gravitationalCoupling_eq_integratedObserverVertex_link`
+- `pauliAxis_sq`
+- `pauliAxes_halfTrace_orthonormal`
+- `quaternionSU2Matrix_det`
+- `quaternionSU2Matrix_conjTranspose_mul`
+- `quaternionSU2Matrix_specialUnitary_iff_unitSphere`
+- `quaternionFrameAction_antipode`
+- `pauliFrame_unitSphere_projectiveVolume_capstone`
 - `screenedPlanckElectronRatio`
 - `gravitationalCoupling_eq_inverse_screenedPlanckRatio_sq`
 - `ttBoundaryVolumeResponse_unique_of_symmetry`
