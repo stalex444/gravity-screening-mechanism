@@ -235,6 +235,13 @@ the variables of the Hamilton principal function are the fixed-mode null
 conformal metric and shear momentum.  See
 [`NULL_HORIZON_SPIN_TWO_MODE.md`](NULL_HORIZON_SPIN_TWO_MODE.md).
 
+The same construction extends to the complete intrinsic null canonical
+potential.  Lean packages the spin-two, spin-one, and spin-zero pairs and
+proves that the Q dilation preserves their combined potential globally,
+while every exterior block carries `S_Q` and every hidden block carries
+`lambda4^2`.  See
+[`NULL_BOUNDARY_SYMPLECTIC_DILATION.md`](NULL_BOUNDARY_SYMPLECTIC_DILATION.md).
+
 ## Fully specialized quartic chain
 
 For the positive quartic root `Q`, every continuous quantity in the theorem is
@@ -322,5 +329,9 @@ carry exactly `S_Q`.
 term with the intrinsic null spin-two shear--conformal-metric pairing on both
 helicities and joins it to the quartic Hamilton--Jacobi endpoint theorem.
 
-All six files compile under the pinned Lean toolchain, contain no `sorry`, and
+`GravityScreening/NullBoundarySymplecticDilation.lean` proves global
+preservation and the single complementary exterior/hidden weighting for the
+complete spin-two, spin-one, and spin-zero null canonical potential.
+
+All seven files compile under the pinned Lean toolchain, contain no `sorry`, and
 use only Mathlib's standard logical axioms.

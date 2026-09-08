@@ -126,13 +126,16 @@ The present theorem identifies the correct gravitational phase space and
 shows that the proposed transfer acts on it without a normalization mismatch.
 It does not derive `lambda4` from the Einstein equations alone.
 
-A covariant completion must also track the null spin-one and spin-zero pairs,
-the corner convention, and the source constraints.  Existing repository
-theorems already treat the corresponding lapse/shift source closure in the
-fixed-mode doubled action.  The decisive calculation is to show that the
-observer restriction sends the intrinsic spin-two pair into exterior and
-hidden channels with weights `S_Q` and `lambda4^2`, while preserving the full
-null symplectic form and the ordinary electric source ray.
+A full fixed-mode symplectic check now tracks the null spin-one and spin-zero
+pairs together with this spin-two block.  Lean proves that applying the same Q
+dilation to all five canonical components preserves the complete potential
+and weights every exterior block by `S_Q`, with hidden complement
+`lambda4^2`; see
+[`NULL_BOUNDARY_SYMPLECTIC_DILATION.md`](NULL_BOUNDARY_SYMPLECTIC_DILATION.md).
+Existing repository theorems separately treat lapse/shift source closure in
+the fixed-mode doubled action.  The decisive remaining calculation is to
+derive this dilation from the physical observer restriction while preserving
+the ordinary electric source ray and the intrinsic corner convention.
 
 The mechanism fails if the intrinsic boundary polarization produces a
 different two-port column, if a corner term supplies an independent quadratic
@@ -160,4 +163,3 @@ axioms.
 - Luis Lehner, Robert C. Myers, Eric Poisson, and Rafael D. Sorkin,
   *Gravitational action with null boundaries*:
   <https://arxiv.org/abs/1609.00207>
-

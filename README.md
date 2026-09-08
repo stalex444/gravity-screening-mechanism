@@ -121,6 +121,11 @@ spin-two symplectic potential: one half of the densitized shear paired with
 the conformal metric.  Lean proves the normalization exactly for both
 helicities and joins it to the quartic Hamilton--Jacobi endpoint.  See
 [NULL_HORIZON_SPIN_TWO_MODE.md](NULL_HORIZON_SPIN_TWO_MODE.md).
+The construction now extends to all intrinsic null canonical data.  Packing
+the spin-two, spin-one, and spin-zero pairs together, Lean proves that the
+quartic dilation preserves the complete potential and weights every exterior
+block by the same `S_Q`, with hidden complement `lambda4^2`.  See
+[NULL_BOUNDARY_SYMPLECTIC_DILATION.md](NULL_BOUNDARY_SYMPLECTIC_DILATION.md).
 
 ## The quartic Q specialization
 
