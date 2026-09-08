@@ -41,6 +41,34 @@ d_inferred = d_true / sqrt(s).
 This is a classification result: the matrix, source state, observable, and
 common response are quantified rather than selected after the calculation.
 
+## From the quartic clock to the passive splitter
+
+The local mechanism now has an exact action-to-channel bridge.  Exchange
+symmetry, unit diagonal normalization, and the quartic core weight `1/Q`
+force the internal action block
+
+```text
+K_Q = [[1, -lambda4],
+       [-lambda4, 1]].
+```
+
+Its unique positive source-adapted Gram factor has columns `(1,0)` and
+`(-lambda4,sqrt(S_Q))`.  Reverse Gram--Schmidt against the residue column
+then produces the unique orientation-preserving passive splitter with source
+output
+
+```text
+(sqrt(S_Q), lambda4).
+```
+
+Lean proves the Gram-factor uniqueness, the projection identity,
+orthogonality, orientation, and the absence of a further splitter angle.  It
+also proves the exact limitation: a Gram matrix is invariant under arbitrary
+left-orthogonal changes of frame.  The physical bridge therefore requires the
+ordinary matter source to select the positive triangular frame; the quadratic
+form alone does not select a scattering frame.  See
+[ACTION_TO_SPLITTER_BRIDGE.md](ACTION_TO_SPLITTER_BRIDGE.md).
+
 ## The quartic Q specialization
 
 Let `Q` denote the positive real root satisfying

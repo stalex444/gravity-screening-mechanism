@@ -24,6 +24,7 @@ import GravityScreening.PauliFierzSymbol
 import GravityScreening.LorentzPauliFierzSymbol
 import GravityScreening.DoubledSpinTwoOperator
 import GravityScreening.DoubledSpinTwoAction
+import GravityScreening.ActionSplitterBridge
 import GravityScreening.SpinTwoDegreeAudit
 import GravityScreening.FirstOrderSourceAction
 import GravityScreening.TransverseTracelessCount
